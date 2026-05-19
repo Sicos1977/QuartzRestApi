@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="QuartzRestApi.Tests/QuartzRestApi.Tests.csproj" Id="e99aabc4-f815-487a-8efe-5625e7a07f64" />
+  <Project Path="QuartzRestApi/QuartzRestApi.csproj" />
+</Solution>

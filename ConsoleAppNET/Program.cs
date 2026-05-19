@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Specialized;
 using System.Net;
 using System.Threading;
@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Calendar;
-using QuartzWebApi;
+using QuartzRestApi;
 
 namespace ConsoleAppNET;
 
