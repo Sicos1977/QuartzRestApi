@@ -1,28 +1,602 @@
-# QuartzWebApi
-A self hosted Web API for Quartz.Net, hosting on .net 4.8 is done with OWIN and on .net6 and higher with Kestrel
+﻿# QuartzRestApi
 
-## Installing via NuGet (not yet done)
+A self-hosted REST API library for [Quartz.NET](https://www.quartz-scheduler.net/), built on **.NET 10** with **ASP.NET Core / Kestrel**.
 
-[![NuGet](https://img.shields.io/nuget/v/QuartzWebApi.svg?style=flat-square)](https://www.nuget.org/packages/QuartzWebApi)
+## NuGet
 
-# How to host Quartz.Net
+[![NuGet](https://img.shields.io/nuget/v/QuartzRestApi.svg?style=flat-square)](https://www.nuget.org/packages/QuartzRestApi)
 
-```c#
-var host = new SchedulerHost("http://localhost:44344", <IScheduler>, <ILogger>);
+---
+
+## Architecture
+
+```
++------------------------------------------------------------------+
+|                        Your Application                          |
+|                                                                  |
+|  +----------------------+       +---------------------------+   |
+|  |    SchedulerHost     |       |   SchedulerConnector      |   |
+|  |                      |       |                           |   |
+|  |  Wraps ASP.NET Core  |       |  HttpClient-based C#      |   |
+|  |  Kestrel web server  |       |  client for the REST API  |   |
+|  +----------+-----------+       +---------------+-----------+   |
+|             |  hosts                            |  HTTP calls   |
++-------------|-----------------------------=-----|---------------+
+              |                                   |
+              v                                   v
++-------------------------+         +-------------------------+
+|   REST API (Kestrel)    |<--------|   HTTP REST Requests    |
+|                         |         |   GET / POST / DELETE   |
+|  SchedulerController    |         +-------------------------+
+|  /Scheduler/...         |
++----------+--------------+
+           |  delegates to
+           v
++-------------------------+
+|      Quartz.NET         |
+|   IScheduler instance   |
+|                         |
+|  - Jobs                 |
+|  - Triggers             |
+|  - Calendars            |
++-------------------------+
+```
+
+**Key components:**
+
+| Component | Description |
+|---|---|
+| `SchedulerHost` | Starts an ASP.NET Core / Kestrel HTTP server that exposes the Quartz.NET scheduler as a REST API |
+| `SchedulerController` | ASP.NET Core controller with all scheduler endpoints under the `/Scheduler/` route prefix |
+| `SchedulerConnector` | A typed C# HTTP client that wraps all REST calls so you do not need to craft HTTP requests manually |
+| Wrappers | DTO classes (de)serialised to/from JSON for jobs, triggers, calendars, etc. |
+
+---
+
+## Requirements
+
+- .NET 10 or higher
+- A configured [Quartz.NET](https://www.quartz-scheduler.net/) `IScheduler`
+
+---
+
+## How to host Quartz.NET via the REST API
+
+```csharp
+var host = new SchedulerHost("http://localhost:44344", scheduler, logger);
 host.Start();
 ```
 
-Where `IScheduler` is your Quartz.Net scheduler and `ILogger` any logger that implements the Microsoft ILogger interface (or null if you don't want any logging) 
+- `scheduler` - your `IScheduler` instance from Quartz.NET
+- `logger` - any `Microsoft.Extensions.Logging.ILogger` (or `null` to disable logging)
 
-# How to connect to the host
+To stop the host:
 
-```c#
+```csharp
+host.Stop();
+```
+
+---
+
+## How to connect to the host
+
+```csharp
 var connector = new SchedulerConnector("http://localhost:44344");
 ```
 
-## License Information
+Use the `SchedulerConnector` methods to call the API from C# without dealing with raw HTTP.
 
-QuartzWebApi is Copyright (C) 2022 - 2024 Magic-Sessions and is licensed under the MIT license:
+---
+
+## Logging
+
+QuartzRestApi uses the `Microsoft.Extensions.Logging.ILogger` interface. Any compatible logging library works (Serilog, NLog, etc.).
+
+Built-in loggers are available in the `QuartzRestApi.Loggers` namespace:
+
+```csharp
+// Log to console
+ILogger logger = new QuartzRestApi.Loggers.Console();
+
+// Log to a file
+ILogger logger = new QuartzRestApi.Loggers.Stream(File.OpenWrite("quartz.log"));
+```
+
+Log levels used:
+- `Information` - standard results (booleans, names, DateTimeOffsets)
+- `Debug` - full JSON request/response bodies
+
+---
+
+## REST API Reference
+
+All endpoints are prefixed with `/Scheduler/`.
+
+---
+
+### Scheduler status
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| `GET` | `Scheduler/SchedulerName` | Returns the scheduler name |
+| `GET` | `Scheduler/SchedulerInstanceId` | Returns the scheduler instance id |
+| `GET` | `Scheduler/SchedulerContext` | Returns the scheduler context as a key/value JSON object |
+| `GET` | `Scheduler/GetMetaData` | Returns scheduler metadata |
+| `GET` | `Scheduler/InStandbyMode` | Returns `true` if the scheduler is in standby mode |
+| `GET` | `Scheduler/IsShutdown` | Returns `true` if the scheduler is shut down |
+| `GET` | `Scheduler/IsStarted` | Returns `true` if the scheduler is started |
+
+#### Example - GetMetaData response
+
+```json
+{
+    "InStandbyMode": false,
+    "JobStoreType": "Quartz.Simpl.RAMJobStore, Quartz, Version=3.8.1.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4",
+    "JobStoreClustered": false,
+    "JobsStoreSupportsPersistence": false,
+    "NumbersOfJobsExecuted": 0,
+    "RunningSince": "2024-01-28T11:00:00.0000000+00:00",
+    "SchedulerInstanceId": "NON_CLUSTERED",
+    "SchedulerName": "MyScheduler",
+    "SchedulerRemote": false,
+    "SchedulerType": "Quartz.Impl.StdScheduler, Quartz, Version=3.8.1.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4",
+    "Shutdown": false,
+    "Started": true,
+    "ThreadPoolSize": 10,
+    "ThreadPoolType": "Quartz.Simpl.DefaultThreadPool, Quartz, Version=3.8.1.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4",
+    "Version": "3.8.1.0"
+}
+```
+
+---
+
+### Scheduler lifecycle
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| `POST` | `Scheduler/Start` | Starts the scheduler |
+| `POST` | `Scheduler/StartDelayed/{delay}` | Starts the scheduler after `{delay}` seconds |
+| `POST` | `Scheduler/Standby` | Puts the scheduler in standby mode |
+| `POST` | `Scheduler/Shutdown` | Shuts down the scheduler |
+| `POST` | `Scheduler/Shutdown/{waitForJobsToComplete}` | Shuts down the scheduler; pass `true` to wait for running jobs to complete |
+
+---
+
+### Job groups
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| `GET` | `Scheduler/IsJobGroupPaused/{groupName}` | Returns `true` if the job group is paused |
+| `GET` | `Scheduler/GetJobGroupNames` | Returns all job group names |
+
+---
+
+### Trigger groups
+
+| Method | Route | Description |
+|--------|-------|-------------|
+| `GET` | `Scheduler/IsTriggerGroupPaused/{groupName}` | Returns `true` if the trigger group is paused |
+| `GET` | `Scheduler/GetTriggerGroupNames` | Returns all trigger group names |
+| `GET` | `Scheduler/GetPausedTriggerGroups` | Returns all paused trigger group names |
+
+---
+
+### Scheduling jobs
+
+#### Schedule a job with a job detail and a trigger
+
+`POST Scheduler/ScheduleJobWithJobDetailAndTrigger`
+
+```json
+{
+  "JobDetail": {
+    "JobKey": { "Name": "MyJob", "Group": "MyGroup" },
+    "Description": "My job description",
+    "JobType": "MyNamespace.MyJob",
+    "JobDataMap": { "key": "value" },
+    "Durable": true,
+    "Replace": false,
+    "StoreNonDurableWhileAwaitingScheduling": false
+  },
+  "Trigger": {
+    "TriggerKey": { "Name": "MyTrigger", "Group": "MyGroup" },
+    "Description": "My trigger description",
+    "StartTimeUtc": "2024-01-28T12:00:00+00:00",
+    "EndTimeUtc": null,
+    "CronSchedule": "0 * * ? * *",
+    "Priority": 5,
+    "JobKey": { "Name": "MyJob", "Group": "MyGroup" },
+    "JobDataMap": { "key": "value" }
+  }
+}
+```
+
+> If you get `Could not find an IJob class with the type '...'`, make sure `JobType` includes the full namespace.
+
+#### Schedule a job with a job detail and multiple triggers
+
+`POST Scheduler/ScheduleJobWithJobDetailAndTriggers`
+
+```json
+{
+  "JobDetail": {
+    "JobKey": { "Name": "MyJob", "Group": "MyGroup" },
+    "Description": "description",
+    "JobType": "MyNamespace.MyJob",
+    "JobDataMap": { "key": "value" },
+    "Durable": true,
+    "Replace": false,
+    "StoreNonDurableWhileAwaitingScheduling": false
+  },
+  "Triggers": [
+    {
+      "TriggerKey": { "Name": "MyTrigger", "Group": "MyGroup" },
+      "Description": "description",
+      "CalendarName": null,
+      "CronSchedule": "0 * * ? * *",
+      "Priority": 5,
+      "JobKey": { "Name": "MyJob", "Group": "MyGroup" },
+      "JobDataMap": { "key": "value" }
+    }
+  ],
+  "Replace": false
+}
+```
+
+#### Schedule the trigger with the job identified by the trigger
+
+`POST Scheduler/ScheduleJobIdentifiedWithTrigger`
+
+```json
+{
+    "TriggerKey": { "Name": "MyTrigger", "Group": "MyGroup" },
+    "JobKey": { "Name": "MyJob", "Group": "MyGroup" },
+    "Description": "Description",
+    "CalendarName": null,
+    "JobDataMap": { "Key1": "Value1" },
+    "StartTimeUtc": "2024-01-28T12:00:00+00:00",
+    "EndTimeUtc": null,
+    "FinalFireTimeUtc": null,
+    "CronSchedule": "0 * * ? * *",
+    "Priority": 5
+}
+```
+
+Returns the `DateTimeOffset` of the first scheduled fire time, e.g. `"2024-01-28T12:01:00+00:00"`.
+
+---
+
+### Rescheduling jobs
+
+#### Reschedule a job
+
+`POST Scheduler/RescheduleJob`
+
+```json
+{
+    "CurrentTriggerKey": { "Name": "CurrentTrigger", "Group": "MyGroup" },
+    "NewTrigger": {
+        "TriggerKey": { "Name": "NewTrigger", "Group": "MyGroup" },
+        "JobKey": { "Name": "MyJob", "Group": "MyGroup" },
+        "Description": "Description",
+        "CalendarName": null,
+        "JobDataMap": { "Key1": "Value1" },
+        "StartTimeUtc": "2024-01-28T12:00:00+00:00",
+        "EndTimeUtc": null,
+        "FinalFireTimeUtc": null,
+        "CronSchedule": "0 * * ? * *",
+        "Priority": 5
+    }
+}
+```
+
+Returns `null` if the current trigger was not found, otherwise the first fire time of the new trigger.
+
+---
+
+### Unscheduling jobs
+
+#### Unschedule a job
+
+`POST Scheduler/UnscheduleJob`
+
+```json
+{ "Name": "MyTrigger", "Group": "MyGroup" }
+```
+
+Returns `true` when successfully unscheduled.
+
+#### Unschedule multiple jobs
+
+`POST Scheduler/UnscheduleJobs`
+
+```json
+[
+    { "Name": "Trigger1", "Group": "Group1" },
+    { "Name": "Trigger2", "Group": "Group2" }
+]
+```
+
+Returns `true` when successfully unscheduled.
+
+---
+
+### Adding / deleting jobs
+
+#### Add a job (no trigger)
+
+`POST Scheduler/AddJob`
+
+```json
+{
+    "JobKey": { "Name": "MyJob", "Group": "MyGroup" },
+    "Description": "Description",
+    "JobType": "MyNamespace.MyJob",
+    "JobDataMap": { "Key1": "Value1" },
+    "Durable": true,
+    "Replace": false,
+    "StoreNonDurableWhileAwaitingScheduling": true
+}
+```
+
+#### Delete a job
+
+`POST Scheduler/DeleteJob`
+
+```json
+{ "Name": "MyJob", "Group": "MyGroup" }
+```
+
+Returns `true` when deleted.
+
+#### Delete multiple jobs
+
+`DELETE Scheduler/DeleteJobs`
+
+```json
+[
+    { "Name": "Job1", "Group": "Group1" },
+    { "Name": "Job2", "Group": "Group2" }
+]
+```
+
+---
+
+### Triggering jobs manually
+
+#### Trigger a job immediately
+
+`POST Scheduler/TriggerJobWithJobkey`
+
+```json
+{ "Name": "MyJob", "Group": "MyGroup" }
+```
+
+#### Trigger a job immediately with a JobDataMap
+
+`POST Scheduler/TriggerJobWithDataMap`
+
+```json
+{
+    "JobKey": { "Name": "MyJob", "Group": "MyGroup" },
+    "JobDataMap": { "Key1": "Value1" }
+}
+```
+
+---
+
+### Pausing and resuming
+
+The `Type` field in group matchers can be: `Contains`, `EndsWith`, `Equals` or `StartsWith`.
+
+| Method | Route | Body | Description |
+|--------|-------|------|-------------|
+| `POST` | `Scheduler/PauseJob` | `{ "Name": "...", "Group": "..." }` | Pause a single job |
+| `POST` | `Scheduler/PauseJobs` | `{ "Type": "Contains", "Value": "..." }` | Pause jobs matching group matcher |
+| `POST` | `Scheduler/PauseTrigger` | `{ "Name": "...", "Group": "..." }` | Pause a single trigger |
+| `POST` | `Scheduler/PauseTriggers` | `{ "Type": "Contains", "Value": "..." }` | Pause triggers matching group matcher |
+| `POST` | `Scheduler/PauseAllTriggers` | - | Pause all triggers |
+| `POST` | `Scheduler/ResumeJob` | `{ "Name": "...", "Group": "..." }` | Resume a single job |
+| `POST` | `Scheduler/ResumeJobs` | `{ "Type": "Contains", "Value": "..." }` | Resume jobs matching group matcher |
+| `POST` | `Scheduler/ResumeTrigger` | `{ "Name": "...", "Group": "..." }` | Resume a single trigger |
+| `POST` | `Scheduler/ResumeTriggers` | `{ "Type": "Contains", "Value": "..." }` | Resume triggers matching group matcher |
+| `POST` | `Scheduler/ResumeAllTriggers` | - | Resume all triggers |
+
+---
+
+### Querying jobs and triggers
+
+#### Get currently executing jobs
+
+`GET Scheduler/GetCurrentlyExecutingJobs`
+
+Returns an array of currently executing job context objects.
+
+#### Get job group names
+
+`GET Scheduler/GetJobGroupNames`
+
+```json
+["Group1", "Group2"]
+```
+
+#### Get trigger group names
+
+`GET Scheduler/GetTriggerGroupNames`
+
+```json
+["Group1", "Group2"]
+```
+
+#### Get paused trigger groups
+
+`GET Scheduler/GetPausedTriggerGroups`
+
+```json
+["PausedGroup1"]
+```
+
+#### Get job keys
+
+`GET Scheduler/GetJobKeys` with body:
+
+```json
+{ "Type": "Contains", "Value": "MyGroup" }
+```
+
+Returns:
+
+```json
+[{ "Name": "MyJob", "Group": "MyGroup" }]
+```
+
+#### Get trigger keys
+
+`GET Scheduler/GetTriggerKeys` with body:
+
+```json
+{ "Type": "Contains", "Value": "MyGroup" }
+```
+
+Returns:
+
+```json
+[{ "Name": "MyTrigger", "Group": "MyGroup" }]
+```
+
+#### Get job detail
+
+`GET Scheduler/GetJobDetail` with body:
+
+```json
+{ "Name": "MyJob", "Group": "MyGroup" }
+```
+
+Returns:
+
+```json
+{
+  "JobKey": { "Name": "MyJob", "Group": "MyGroup" },
+  "Description": "My description",
+  "JobType": "MyNamespace.MyJob",
+  "JobDataMap": {},
+  "Durable": false,
+  "Replace": false,
+  "StoreNonDurableWhileAwaitingScheduling": false
+}
+```
+
+#### Get triggers of a job
+
+`GET Scheduler/GetTriggersOfJob` with body:
+
+```json
+{ "Name": "MyJob", "Group": "MyGroup" }
+```
+
+Returns an array of trigger objects.
+
+#### Get a specific trigger
+
+`GET Scheduler/GetTrigger` with body:
+
+```json
+{ "Name": "MyTrigger", "Group": "MyGroup" }
+```
+
+Returns:
+
+```json
+{
+  "TriggerKey": { "Name": "MyTrigger", "Group": "DEFAULT" },
+  "Description": "My trigger",
+  "CalendarName": null,
+  "CronSchedule": null,
+  "NextFireTimeUtc": null,
+  "PreviousFireTimeUtc": "2024-01-28T14:09:21.9475007+01:00",
+  "StartTimeUtc": "2024-01-28T14:09:21.9475007+01:00",
+  "EndTimeUtc": null,
+  "FinalFireTimeUtc": "2024-01-28T14:09:21.9475007+01:00",
+  "Priority": 5,
+  "HasMillisecondPrecision": true,
+  "JobKey": null,
+  "JobDataMap": null
+}
+```
+
+#### Get trigger state
+
+`GET Scheduler/GetTriggerState` with body:
+
+```json
+{ "Name": "MyTrigger", "Group": "MyGroup" }
+```
+
+Returns e.g. `"Normal"`.
+
+---
+
+### Calendars
+
+#### Add a calendar
+
+`POST Scheduler/AddCalendar`
+
+Supported calendar types: `Annual`, `Cron`, `Daily`, `Holiday`, `Monthly`, `Weekly`
+
+Example (Cron calendar):
+
+```json
+{
+  "Name": "MyCronCalendar",
+  "Type": "Cron",
+  "CronExpression": "0 0-5 14 * * ?",
+  "Description": "My description",
+  "Replace": true,
+  "UpdateTriggers": true
+}
+```
+
+#### Delete a calendar
+
+`DELETE Scheduler/DeleteCalendar/{calName}`
+
+Returns `true` or `false`.
+
+#### Get a calendar
+
+`GET Scheduler/GetCalendar/{calName}`
+
+Returns the calendar object (structure depends on calendar type).
+
+#### Get calendar names
+
+`GET Scheduler/GetCalendarNames`
+
+```json
+["MyCalendar1", "MyCalendar2"]
+```
+
+---
+
+### Error responses
+
+When an error occurs the API returns a JSON-serialised .NET exception:
+
+```json
+{
+    "Message": "An error has occurred.",
+    "ExceptionMessage": "Unable to store Trigger: 'MyGroup.MyTrigger', because one already exists with this identification.",
+    "ExceptionType": "Quartz.ObjectAlreadyExistsException",
+    "StackTrace": "... the .NET stack trace ..."
+}
+```
+
+---
+
+## License
+
+QuartzRestApi is Copyright (C) 2022 - 2025 Magic-Sessions and is licensed under the MIT license:
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -36,795 +610,14 @@ QuartzWebApi is Copyright (C) 2022 - 2024 Magic-Sessions and is licensed under t
 
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-    FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
     AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
 
-Core Team
-=========
-    Sicos1977 (Kees van Spelde)
+---
 
-Logging
-=======
+## Core Team
 
-QuartzWebApi uses the Microsoft ILogger interface (https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger?view=dotnet-plat-ext-5.0). You can use any logging library that uses this interface.
-
-QuartzWebApi has some build in loggers that can be found in the ```QuartzWebApi.Logger``` namespace. 
-
-For example
-
-```csharp
-var logger = !string.IsNullOrWhiteSpace(<some logfile>)
-                ? new ChromeHtmlToPdfLib.Loggers.Stream(File.OpenWrite(<some logfile>))
-                : new ChromeHtmlToPdfLib.Loggers.Console();
-```
-
-Most of the log informartion is logged at the `information` level, small answers like `booleans`, `DateTimeOffsets` and small `strings` (like the schedulers name) are also logged at this level. All the json that is received and sent back is logged at the `debug` level.
-
-How to use the API directly
-==========
-
-### Check if a job group is paused
-
-Do a `POST` request to `Scheduler/IsJobGroupPaused/{groupName}`, where `{groupName}` is the name of the group this will return `true` or `false`
-
-### Check if a trigger group is paused
-
-Do a `POST` request to `Scheduler/IsTriggerGroupPaused/{groupName}`, where `{groupName}` is the name of the group this will return `true` or `false`
-
-### Get the schedulers name
-
-Do a `GET` request to `Scheduler/SchedulerName`, this will return the name of the scheduler
-
-### Get the schedulers instance id
-
-Do a `GET` request to `Scheduler/SchedulerInstanceId`, this will return the schedulers instance id
-
-### Get the schedulers context
-
-Do a `GET` request to `Scheduler/SchedulerContext`
-
-When the context is;
-
-- key1 - value1
-- key2 - value2
-- key3 - value3
-
-it will return
-
-```json
-{
-    "key1": "value1",
-    "key2": "value2",
-    "key3": "value3"
-}
-```
-
-### Check if a scheduler is in standby mode
-
-Do a `GET` request to `Scheduler/InStandbyMode` , this will return `true` or `false`
-
-### Check if a scheduler is in shutdown
-
-Do a `GET` request to `Scheduler/Isshutdown` , this will return `true` or `false`
-
-### Get the schedulers meta-data
-
-Do a `GET` request to `Scheduler/GetMetaData` , this will return the meta-data that will look something like this
-
-```json
-{
-    "InStandbyMode": false,
-    "JobStoreType": "Quartz.Simpl.RAMJobStore, Quartz, Version=3.4.0.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4",
-    "JobStoreClustered": false,
-    "JobsStoreSupportsPersistence": false,
-    "NumbersOfJobsExecuted": 0,
-    "RunningSince": "2022-05-11T16:30:06.5957565+00:00",
-    "SchedulerInstanceId": "NON_CLUSTERED",
-    "SchedulerName": "The name of the scheduler",
-    "SchedulerRemote": false,
-    "SchedulerType": "Quartz.Impl.StdScheduler, Quartz, Version=3.4.0.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4",
-    "Shutdown": false,
-    "Started": true,
-    "ThreadPoolSize": 10,
-    "ThreadPoolType": "Quartz.Simpl.DefaultThreadPool, Quartz, Version=3.4.0.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4",
-    "Version": "3.4.0.0"
-}
-```
-
-### Get the currently executing jobs
-
-Do a `GET` request to `Scheduler/GetCurrentlyExecutingJobs` , this will return the currently executing jobs that will look like this
-
-```json
-[
-    "JobGroup1",
-    "JobGroup2"
-]
-```
-
-### Get the job group names
-
-Do a `GET` request to `Scheduler/GetJobGroupNames` , this will return the job group names that will look like this
-
-```json
-[
-    "JobGroup1",
-    "JobGroup2"
-]
-```
-
-### Get the trigger group names
-
-Do a `GET` request to `Scheduler/GetTriggerGroupNames` , this will return
-
-```json
-[
-    "TriggerGroup1",
-    "TriggerGroup2"
-]
-```
-
-### Get the paused trigger groups
-
-Do a `GET` request to `Scheduler/GetPausedTriggerGroups` , this will return
-
-```json
-[
-    "PausedTriggerGroup1",
-    "PausedTriggerGroup2"
-]
-```
-
-### Start the scheduler
-
-Do a `POST` request to `Scheduler/Start`
-
-### Start the scheduler with a delay
-
-Do a `POST` request to `Scheduler/StartDelayed/{delay}` where `{delay}` is the amount of *seconds* you want to delay the start
-
-### Check if the scheduler is started
-
-Do a `GET` request to `Scheduler/IsStarted`, this will return `true` or `false`
-
-### Check if the scheduler is in standby mode
-
-Do a `GET` request to `Scheduler/Standby`, this will return `true` or `false`
-
-### Shutdown the scheduler
-
-Do a `POST` request to `Scheduler/Shutdown`
-
-### Shutdown the scheduler but wait for all jobs to complete
-
-Do a `POST` request to `Scheduler/Shutdown/{waitForJobsToComplete}` where `{waitForJobsToComplete}` is `true`
-
-### Schedule a job with a job detail and a trigger
-
-Do a `POST` request to `Scheduler/ScheduleJobWithJobDetailAndTrigger` with in the body the job detail and the trigger
-   
-```json
-{
-  "JobDetail": {
-    "JobKey": {
-      "Name": "Name",
-      "Group": "Group"
-    },
-    "Description": "description",
-    "JobType": "jobType",
-    "JobDataMap": {
-      "key": "value"
-    },
-    "Durable": true,
-    "Replace": false,
-    "StoreNonDurableWhileAwaitingScheduling": false
-  },
-  "Trigger": {
-    "TriggerKey": {
-      "Name": "name",
-      "Group": "group"
-    },
-    "Description": "description",
-    "StartTimeUtc": "2022-08-15T17:34:04.5786231+00:00",
-    "EndTimeUtc": "2022-08-15T17:34:04.5786231+00:00",
-    "Priority": 5,
-    "CronSchedule": "0 * * ? * *",
-    "Priority": 5,    
-    "JobKey": {
-      "Name": "name",
-      "Group": "value"
-    },
-    "JobDataMap": {
-      "key": "value"
-    }
-  }
-}
-```  
-
-### Schedule the give trigger with the job identified by the trigger
-
-Do a `POST` request to `Scheduler/ScheduleJobIdentifiedWithTrigger` with in the body
-
-```json
-{
-    "TriggerKey": {
-        "Name": "TriggerKeyName",
-        "Group": "TriggerKeyGroup"
-    },
-    "JobKey": {
-        "Name": "JobKeyName",
-        "Group": "JobKeyGroup"
-    },
-    "Description": "Description",
-    "CalendarName": "CalendarName",
-    "JobDataMap": {
-        "Key1": "Value1",
-        "Key2": "Value2"
-    },
-    "StartTimeUtc": "2022-05-12T16:16:37.7210025+00:00",
-    "EndTimeUtc": "2022-05-13T02:16:37.7210025+00:00",
-    "FinalFireTimeUtc": "2022-05-13T22:16:37.7210025+00:00",
-    "CronSchedule": "0 * * ? * *",
-    "Priority": 5
-}
-```
-
-This will return a datetime offset about when the job will be executed, for example `"2022-05-12T16:17:00+00:00"`
-
-### Schedule multiple jobs with one or more associated trigger
-
-TODO: Task ScheduleJobs(IReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>> triggersAndJobs, bool replace);
-
-### Schedule a job with one or more associated trigger
-
-TODO: Task ScheduleJobs(IReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>> triggersAndJobs, bool replace);
-
-### Schedule a job with a job detail and a related set of triggers
-
-Do a `POST` request to `Scheduler/ScheduleJobWithJobDetailAndTriggers` with in the body the job detail and a related set of triggers
-   
-```json
-{
-  "JobDetail": {
-    "JobKey": {
-      "Name": "Name",
-      "Group": "Group"
-    },
-    "Description": "description",
-    "JobType": "jobType",
-    "JobDataMap": {
-      "key": "value"
-    },
-    "Durable": true,
-    "Replace": false,
-    "StoreNonDurableWhileAwaitingScheduling": false
-  },
-  "Triggers": [
-    {
-      "TriggerKey": {
-        "Name": "name",
-        "Group": "group"
-      },
-      "Description": "description",
-      "CalendarName": "calenderName",
-      "CronSchedule": "0 * * ? * *",
-      "Priority": 5,
-      "JobKey": {
-        "Name": "name",
-        "Group": "value"
-      },
-      "JobDataMap": {
-        "key": "value"
-      }
-    }
-  ],
-  "Replace": false
-}
-```   
-   
-When you get an error like `Could not find an IJob class with the type '<the job type>'` then make sure that you have added the full namespace with the `JobType`
-   
-### Unschedule a job
-
-Do a `POST` request to `Scheduler/UnscheduleJob` with in the body the trigger of the job
-   
-```json    
-{
-    "Name": "TriggerKeyName",
-    "Group": "TriggerKeyGroup"
-}
-```    
-    
-this will return `true` when the job is unscheduled or `false` when not    
- 
-### Unschedule multiple jobs
-
-Do a `POST` request to `Scheduler/UnscheduleJobs` with in the body the triggers of the jobs to unschedule
-   
-```json    
-[
-    {
-        "Name": "TriggerKeyName1",
-        "Group": "TriggerKeyGroup1"
-    },
-    {
-        "Name": "TriggerKeyName2",
-        "Group": "TriggerKeyGroup2"
-    }
-]
-```      
-    
-this will return `true` when the jobs are unscheduled or `false` when not
-    
-### Reschedule job
-
-Do a `POST` request to `Scheduler/RescheduleJob` with in the body the reschedulejob object
-
-```json    
-{
-    "CurrentTriggerKey": {
-        "Name": "CurrentTriggerKeyName",
-        "Group": "CurrentTriggerKeyGroup"
-    },
-    "NewTrigger": {
-        "TriggerKey": {
-            "Name": "NewTriggerKeyName",
-            "Group": "NewTriggerKeyGroup"
-        },
-        "JobKey": {
-            "Name": "NewJobKeyName",
-            "Group": "NewJobKeyGroup"
-        },
-        "Description": "Description",
-        "CalendarName": "CalendarName",
-        "JobDataMap": {
-            "Key1": "Value1",
-            "Key2": "Value2"
-        },
-        "StartTimeUtc": "2022-05-12T16:16:37.7210025+00:00",
-        "EndTimeUtc": "2022-05-13T02:16:37.7210025+00:00",
-        "FinalFireTimeUtc": "2022-05-13T22:16:37.7210025+00:00",
-        "CronSchedule": "0 * * ? * *",
-        "Priority": 5
-    }
-}
-```  
-
-Returns 'null' if a trigger with the given name and group was not found and removed from the store (and the new trigger is therefore not stored), otherwise the first fire time of the newly scheduled trigger
-    
-### Add a job with no associated trigger
-
-Do a `POST` request to `Scheduler/AddJob` with in the body the addjob object    
-    
-```json    
-{
-    "JobKey": {
-        "Name": "JobKeyName",
-        "Group": "JobKeyGroup"
-    },
-    "Description": "Description",
-    "JobType": "JobType",
-    "JobDataMap": {
-        "Key1": "Value1",
-        "Key2": "Value2"
-    },
-    "Durable": true,
-    "Replace": false,
-    "StoreNonDurableWhileAwaitingScheduling": true
-}
-```  
-    
-### Delete a job
-
-Do a `POST` request to `Scheduler/DeleteJob` with in the body the key of the job
-   
-```json    
-{
-    "Name": "JobKeyName",
-    "Group": "JobKeyGroup"
-}
-```    
-    
-this will return `true` when the job is deleted or `false` when not        
-    
-### Delete multiple jobs
-
-Do a `DELETE` request to `Scheduler/DeleteJobs` with in the body the keys of the jobs
-   
-```json    
-[
-    {
-        "Name": "JobKeyName1",
-        "Group": "JobKeyGroup1"
-    },
-    {
-        "Name": "JobKeyName2",
-        "Group": "JobKeyGroup2"
-    }
-]
-```    
-    
-### Trigger a job to execute NOW
-
-Do a `POST` request to `Scheduler/TriggerJobWithJobkey` with in the body the key of the job
-   
-```json    
-{
-    "Name": "JobKeyName1",
-    "Group": "JobKeyGroup1"
-}
-```     
-    
-### Trigger a job to execute NOW and associated a JobDataMap
-
-Do a `POST` request to `Scheduler/TriggerJobWithDataMap` with in the body
-   
-```json    
-{    
-    "JobKey": {
-        "Name": "JobKeyName",
-        "Group": "JobKeyGroup"
-    },
-    "JobDataMap": {
-        "Key1": "Value1",
-        "Key2": "Value2"
-    }
-}
-```         
-
-### Pause a job
-    
-Do a `POST` request to `Scheduler/PauseJob` with in the body the key of the job
-   
-```json    
-{
-    "Name": "JobKeyName",
-    "Group": "JobKeyGroup"
-}
-```        
-    
-### Pause multiple jobs
-    
-Do a `POST` request to `Scheduler/PauseJobs` with in the body the group matching object that defined what jobs to pause
-
-The values for `Type` can be: `Contains`, `EndsWith`, `Equals` or `StartsWith`
-    
-```json    
-{
-  "Type": "Contains",
-  "Value": "<The job keys to match>"
-}   
-```     
-    
-### Pause a trigger
-    
-Do a `POST` request to `Scheduler/PauseTrigger` with in the body the triggerkey
-   
-```json    
-{
-    "Name": "TriggerKeyName",
-    "Group": "TriggerKeyGroup"
-}
-```   
-    
-### Pause multiple triggers
-    
-Do a `POST` request to `Scheduler/PauseTriggers` with in the body the group matching object that defined what triggers to pause
-    
-The values for `Type` can be: `Contains`, `EndsWith`, `Equals` or `StartsWith`
-    
-```json    
-{
-  "Type": "Contains",
-  "Value": "<The trigger keys to match>"
-}   
-```        
-    
-### Resume a job
-    
-Do a `POST` request to `Scheduler/ResumeJob` with in the body the key of the job
-    
-```json    
-{
-    "Name": "JobKeyName",
-    "Group": "JobKeyGroup"
-}
-```         
-    
-### Resume multiple jobs
-    
-Do a `POST` request to `Scheduler/ResumeJobs` with in the body the group matching object that defined what jobs to resume
-    
-The values for `Type` can be: `Contains`, `EndsWith`, `Equals` or `StartsWith`
-    
-```json    
-{
-  "Type": "Contains",
-  "Value": "<The job keys to match>"
-}   
-```     
-    
-### Resume a trigger
-    
-Do a `POST` request to `Scheduler/ResumeTrigger` with in the body the key of the trigger
-    
-```json    
-{
-    "Name": "TriggerKeyName",
-    "Group": "TriggerKeyGroup"
-}
-```      
-    
-### Resume multiple triggers
-    
-Do a `POST` request to `Scheduler/ResumeTriggers` with in the body the group matching object that defined what triggers to resume
-    
-The values for `Type` can be: `Contains`, `EndsWith`, `Equals` or `StartsWith`
-    
-```json    
-{
-  "Type": "Contains",
-  "Value": "<The trigger keys to match>"
-}   
-```
-
-### Pause all triggers
-    
-Do a `POST` request to `Scheduler/PauseAllTriggers`
-
-### Resume all triggers
-    
-Do a `POST` request to `Scheduler/ResumeAllTriggers`
-
-### Get job keys
-    
-Do a `GET` request to `Scheduler/GetJobKeys`
-
-The values for `Type` can be: `Contains`, `EndsWith`, `Equals` or `StartsWith`
-    
-```json    
-{
-  "Type": "Contains",
-  "Value": "<The job keys to match>"
-}   
-```     
-
-it will return something like this
-
-```json
-[
-  {
-    "Name": "JobKeyName",
-    "Group": "JobKeyGroup"
-  }
-]
-```
-
-### Get triggers of job
-    
-Do a `GET` request to `Scheduler/GetTriggersOfJob` with in the body the key of the job
-   
-```json    
-{
-    "Name": "JobKeyName",
-    "Group": "JobKeyGroup"
-}
-```     
-
-It will return something like this
-
-```json   
-[
-  {
-    "TriggerKey": {
-      "Name": "triggerKey",
-      "Group": "DEFAULT"
-    },
-    "Description": "TestTrigger",
-    "CalendarName": null,
-    "CronSchedule": null,
-    "NextFireTimeUtc": null,
-    "PreviousFireTimeUtc": "2024-01-28T11:21:14.4966492+01:00",
-    "StartTimeUtc": "2024-01-28T11:21:14.4966492+01:00",
-    "EndTimeUtc": null,
-    "FinalFireTimeUtc": "2024-01-28T11:21:14.4966492+01:00",
-    "Priority": 5,
-    "HasMillisecondPrecision": true,
-    "JobKey": null,
-    "JobDataMap": null
-  }
-]
-```     
-
-### Get trigger keys
-    
-Do a `GET` request to `Scheduler/GetTriggerKeys`
-
-The values for `Type` can be: `Contains`, `EndsWith`, `Equals` or `StartsWith`
-    
-```json    
-{
-  "Type": "Contains",
-  "Value": "<The group keys to match>"
-}   
-```     
-
-it will return something like this
-
-```json
-[
-  {
-    "Name": "triggerKey",
-    "Group": "DEFAULT"
-  }
-]
-```
-
-### Get the job detail
-    
-Do a `GET` request to `Scheduler/GetJobDetail` with in the body the key of the job
-   
-```json    
-{
-    "Name": "JobKeyName",
-    "Group": "JobKeyGroup"
-}
-```     
-
-It will return something like this
-
-```json   
-{
-  "JobKey": {
-    "Name": "JobKeyName",
-    "Group": "JobKeyGroup"
-  },
-  "Description": "Test",
-  "JobType": "QuartzWebApi.TestJob",
-  "JobDataMap": {},
-  "Durable": false,
-  "Replace": false,
-  "StoreNonDurableWhileAwaitingScheduling": false
-}
-```   
-
-### Get trigger
-    
-Do a `GET` request to `Scheduler/GetTrigger` with in the body the key of the trigger
-   
-```json    
-{
-    "Name": "TriggerKeyName",
-    "Group": "TriggerKeyGroup"
-}
-```     
-
-It will return something like this
-
-```json   
-{
-  "TriggerKey": {
-    "Name": "triggerKey",
-    "Group": "DEFAULT"
-  },
-  "Description": "TestTrigger",
-  "CalendarName": null,
-  "CronSchedule": null,
-  "NextFireTimeUtc": null,
-  "PreviousFireTimeUtc": "2024-01-28T14:09:21.9475007+01:00",
-  "StartTimeUtc": "2024-01-28T14:09:21.9475007+01:00",
-  "EndTimeUtc": null,
-  "FinalFireTimeUtc": "2024-01-28T14:09:21.9475007+01:00",
-  "Priority": 5,
-  "HasMillisecondPrecision": true,
-  "JobKey": null,
-  "JobDataMap": null
-}
-```   
-
-Do a `GET` request to `Scheduler/GetTriggerState` with in the body the key of the trigger
-   
-```json    
-{
-    "Name": "TriggerKeyName",
-    "Group": "TriggerKeyGroup"
-}
-```     
-
-It will return something like this
-
-```json   
-"Normal"
-```   
-
-### Add calendar
-
-Do a `POST` request to `Scheduler/AddCalendar` with in the body the body the calendar you want to add, for example
-   
-```json    
-{
-  "Name" : "My new CRON calendar",
-  "Type": "Cron"
-  "CronExpression": "0 0-5 14 * * ?",
-  "Description": "my description"
-  "Replace": true
-  "UpdateTriggers": true
-}
-```     
-
-### Delete a calendar
-
-Do a `DELETE` request to `Scheduler/DeleteCalendar/{calName}` where `calName` is het name of the calendar to delete, this will return `true` or `false`
-
-### Get a calendar
-
-Do a `GET` request to `Scheduler/GetCalendar/{calName}` where `calName` is het name of the calendar to get, when the calendar exists it will return something like this
-
-```json    
-{
-  "CronExpression": "0 0-51 4 * * ?",
-  "Name": null,
-  "Type": "Cron",
-  "TimeZone": {
-    "Id": "W. Europe Standard Time",
-    "DisplayName": "(UTC+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna",
-    "StandardName": "W. Europe Standard Time",
-    "DaylightName": "W. Europe Daylight Time",
-    "BaseUtcOffset": "01:00:00",
-    "AdjustmentRules": [
-      {
-        "DateStart": "0001-01-01T00:00:00",
-        "DateEnd": "9999-12-31T00:00:00",
-        "DaylightDelta": "01:00:00",
-        "DaylightTransitionStart": {
-          "TimeOfDay": "0001-01-01T02:00:00",
-          "Month": 3,
-          "Week": 5,
-          "Day": 1,
-          "DayOfWeek": 0,
-          "IsFixedDateRule": false
-        },
-        "DaylightTransitionEnd": {
-          "TimeOfDay": "0001-01-01T03:00:00",
-          "Month": 10,
-          "Week": 5,
-          "Day": 1,
-          "DayOfWeek": 0,
-          "IsFixedDateRule": false
-        },
-        "BaseUtcOffsetDelta": "00:00:00"
-      }
-    ],
-    "SupportsDaylightSavingTime": true
-  }
-}
-``` 
-
-### Get calendar names
-
-Do a `GET` request to `Scheduler/GetCalendarNames`, it will return something like this
-
-```json
-[
-    "monthlyCalendar",
-    "MynewCRONcalendar"
-]
-```
-
-    
-Errors returned
-===============
-
-When an error occures this is returned as a .NET exception in JSON format like this
-
-```json
-{
-    "Message": "An error has occurred.",
-    "ExceptionMessage": "Unable to store Trigger: 'TriggerKeyGroup.TriggerKeyName', because one already exists with this identification.",
-    "ExceptionType": "Quartz.ObjectAlreadyExistsException",
-    "StackTrace": "... the .NET stack trace ..."
-}
-```
+- [Sicos1977](https://github.com/Sicos1977) (Kees van Spelde)

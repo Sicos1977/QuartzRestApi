@@ -1,9 +1,9 @@
-//
+﻿//
 // RunningJobs.cs
 //
 // Author: Kees van Spelde <sicos2002@hotmail.com>
 //
-// Copyright (c) 2022 - 2024 Magic-Sessions. (www.magic-sessions.com)
+// Copyright (c) 2022 - 2026 Magic-Sessions. (www.magic-sessions.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
