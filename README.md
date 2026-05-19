@@ -10,36 +10,24 @@ A self-hosted REST API library for [Quartz.NET](https://www.quartz-scheduler.net
 
 ## Architecture
 
-```
-+------------------------------------------------------------------+
-|                        Your Application                          |
-|                                                                  |
-|  +----------------------+       +---------------------------+   |
-|  |    SchedulerHost     |       |   SchedulerConnector      |   |
-|  |                      |       |                           |   |
-|  |  Wraps ASP.NET Core  |       |  HttpClient-based C#      |   |
-|  |  Kestrel web server  |       |  client for the REST API  |   |
-|  +----------+-----------+       +---------------+-----------+   |
-|             |  hosts                            |  HTTP calls   |
-+-------------|-----------------------------=-----|---------------+
-              |                                   |
-              v                                   v
-+-------------------------+         +-------------------------+
-|   REST API (Kestrel)    |<--------|   HTTP REST Requests    |
-|                         |         |   GET / POST / DELETE   |
-|  SchedulerController    |         +-------------------------+
-|  /Scheduler/...         |
-+----------+--------------+
-           |  delegates to
-           v
-+-------------------------+
-|      Quartz.NET         |
-|   IScheduler instance   |
-|                         |
-|  - Jobs                 |
-|  - Triggers             |
-|  - Calendars            |
-+-------------------------+
+```mermaid
+graph TD
+    subgraph App["Your Application"]
+        HOST["🖥️ SchedulerHost\nWraps ASP.NET Core\nKestrel web server"]
+        CLIENT["🔌 SchedulerConnector\nHttpClient-based C# client\nfor the REST API"]
+    end
+
+    subgraph API["REST API · Kestrel"]
+        CTRL["⚙️ SchedulerController\n/Scheduler/..."]
+    end
+
+    subgraph Quartz["Quartz.NET"]
+        SCHED["📅 IScheduler\n· Jobs\n· Triggers\n· Calendars"]
+    end
+
+    HOST -- hosts --> CTRL
+    CLIENT -- "HTTP · GET / POST / DELETE" --> CTRL
+    CTRL -- delegates to --> SCHED
 ```
 
 **Key components:**
