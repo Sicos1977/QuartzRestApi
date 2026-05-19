@@ -1,10 +1,10 @@
-﻿using System.Collections.Specialized;
+using System.Collections.Specialized;
 using System.Net;
 using ConsoleApp;
 using Quartz;
 using Quartz.Impl;
 using Quartz.Impl.Calendar;
-using QuartzWebApi;
+using QuartzRestApi;
 
 var properties = new NameValueCollection
 {

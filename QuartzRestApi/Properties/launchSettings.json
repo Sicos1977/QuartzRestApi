@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "QuartzWebApi": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51139;http://localhost:51140"
+    }
+  }
+}
