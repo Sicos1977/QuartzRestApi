@@ -1,3 +1,5 @@
+#TODO: Make all unit tests work
+
 # QuartzRestApi
 
 A self-hosted REST API library for [Quartz.NET](https://www.quartz-scheduler.net/), built on **.NET 10** with **ASP.NET Core / Kestrel**.
