@@ -29,6 +29,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using QuartzRestApi.Security;
 using QuartzRestApi.Wrappers;
 using QuartzRestApi.Wrappers.Calendars;
 // ReSharper disable UnusedMember.Global
@@ -322,8 +323,7 @@ public class SchedulerConnector
     /// </summary>
     public async Task<bool> UnscheduleJobs(TriggerKeys triggerKeys)
     {
-        var response = await _httpClient.PostAsync("Scheduler/UnscheduleJobs",
-            JsonBody(triggerKeys.ToJsonString())).ConfigureAwait(false);
+        var response = await _httpClient.PostAsync("Scheduler/UnscheduleJobs", JsonBody(triggerKeys.ToJsonString())).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -590,8 +590,7 @@ public class SchedulerConnector
     /// </summary>
     public async Task AddCalendar(BaseCalendar calendar)
     {
-        await _httpClient.PostAsync("Scheduler/AddCalendar",
-            JsonBody(calendar.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/AddCalendar", JsonBody(calendar.ToJsonString())).ConfigureAwait(false);
     }
     #endregion
 

@@ -111,57 +111,73 @@ The key is sent and validated via the `X-Api-Key` HTTP header.
 
 ### Multiple API keys with profiles
 
-Each `ApiKeyProfile` pairs a key with an optional whitelist of allowed routes.  
-An **empty whitelist** means the profile has **full access** to all endpoints.  
-When a whitelist is supplied the bearer may **only** call those routes — all others return `403 Forbidden`.
+Each `ApiKeyProfile` pairs an API key with a set of strongly-typed boolean properties -- one per endpoint.
+
+Use `ApiKeyProfile.AllowAll` to start with full access and selectively disable endpoints, or use `ApiKeyProfile.DenyAll` to start with no access and selectively enable only what is needed.
 
 ```csharp
-// Admin — full access (no route restriction)
-var admin = new ApiKeyProfile(
-    name:   "Admin",
-    apiKey: "key-admin-abc123");
+// Admin profile -- full access to all endpoints
+var admin = ApiKeyProfile.AllowAll("Admin", "key-admin-abc123");
 
-// Read-only — may only inspect the scheduler, never mutate it
-var readOnly = new ApiKeyProfile(
-    name:   "ReadOnly",
-    apiKey: "key-readonly-xyz",
-    allowedRoutes: [
-        "Scheduler/SchedulerName",
-        "Scheduler/SchedulerInstanceId",
-        "Scheduler/GetMetaData",
-        "Scheduler/GetJobGroupNames",
-        "Scheduler/GetTriggerGroupNames",
-        "Scheduler/GetJobKeys",
-        "Scheduler/GetJobDetail",
-        "Scheduler/GetTrigger",
-        "Scheduler/GetTriggerState",
-        "Scheduler/GetCurrentlyExecutingJobs",
-    ]);
+// Read-only profile -- start with nothing allowed, then enable only query endpoints
+var readOnly = ApiKeyProfile.DenyAll("ReadOnly", "key-readonly-xyz");
+readOnly.SchedulerName             = true;
+readOnly.SchedulerInstanceId       = true;
+readOnly.GetMetaData               = true;
+readOnly.GetJobGroupNames          = true;
+readOnly.GetTriggerGroupNames      = true;
+readOnly.GetJobKeys                = true;
+readOnly.GetJobDetail              = true;
+readOnly.GetTrigger                = true;
+readOnly.GetTriggerState           = true;
+readOnly.GetCurrentlyExecutingJobs = true;
 
-// Monitoring — lifecycle checks only
-var monitoring = new ApiKeyProfile(
-    name:   "Monitoring",
-    apiKey: "key-mon-def456",
-    allowedRoutes: [
-        "Scheduler/IsStarted",
-        "Scheduler/InStandbyMode",
-        "Scheduler/GetMetaData",
-        "Scheduler/GetCurrentlyExecutingJobs",
-    ]);
+// Monitoring profile -- start with full access, then remove mutating endpoints
+var monitoring = ApiKeyProfile.AllowAll("Monitoring", "key-mon-def456");
+monitoring.Start                              = false;
+monitoring.StartDelayed                       = false;
+monitoring.Standby                            = false;
+monitoring.Shutdown                           = false;
+monitoring.Clear                              = false;
+monitoring.ScheduleJobWithJobDetailAndTrigger  = false;
+monitoring.ScheduleJobIdentifiedWithTrigger    = false;
+monitoring.ScheduleJobWithJobDetailAndTriggers = false;
+monitoring.ScheduleJobs                       = false;
+monitoring.RescheduleJob                      = false;
+monitoring.UnscheduleJob                      = false;
+monitoring.UnscheduleJobs                     = false;
+monitoring.AddJob                             = false;
+monitoring.DeleteJob                          = false;
+monitoring.DeleteJobs                         = false;
+monitoring.TriggerJobWithJobkey               = false;
+monitoring.TriggerJobWithDataMap              = false;
+monitoring.PauseJob                           = false;
+monitoring.PauseJobs                          = false;
+monitoring.PauseTrigger                       = false;
+monitoring.PauseTriggers                      = false;
+monitoring.PauseAllTriggers                   = false;
+monitoring.ResumeJob                          = false;
+monitoring.ResumeJobs                         = false;
+monitoring.ResumeTrigger                      = false;
+monitoring.ResumeTriggers                     = false;
+monitoring.ResumeAllTriggers                  = false;
+monitoring.AddCalendar                        = false;
+monitoring.DeleteCalendar                     = false;
+monitoring.ResetTriggerFromErrorState         = false;
 
 var host = new SchedulerHost("http://localhost:44344", scheduler, logger,
     profiles: [admin, readOnly, monitoring]);
 ```
+#### Persisting profiles
 
-#### Wildcard routes
-
-A trailing `*` matches any suffix:
+Profiles can be saved to and loaded from JSON, making it easy to store them in a configuration file or database:
 
 ```csharp
-allowedRoutes: [
-    "Scheduler/Get*",       // all GET-style queries
-    "Scheduler/Shutdown*",  // both Shutdown and Shutdown/{waitForJobsToComplete}
-]
+// Save
+File.WriteAllText("readOnly.json", readOnly.ToJson());
+
+// Load
+var loaded = ApiKeyProfile.FromJson(File.ReadAllText("readOnly.json"));
 ```
 
 #### HTTP responses

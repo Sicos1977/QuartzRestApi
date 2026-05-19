@@ -27,7 +27,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace QuartzRestApi;
+namespace QuartzRestApi.Security;
 
 /// <summary>
 ///     Holds the API key profiles that are passed from <see cref="SchedulerHost"/>
@@ -69,8 +69,8 @@ internal sealed class ApiKeyOptions
             return;
         }
 
-        // Single key → admin profile with full access (empty whitelist).
-        Profiles = [new ApiKeyProfile("Default", apiKey)];
+        // Single key → admin profile with full access to all endpoints.
+        Profiles = [ApiKeyProfile.AllowAll("Default", apiKey)];
     }
     #endregion
 

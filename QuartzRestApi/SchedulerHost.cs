@@ -23,25 +23,59 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi;
 using Quartz;
+using QuartzRestApi.Security;
+using Scalar.AspNetCore;
 
 namespace QuartzRestApi;
 
 /// <summary>
-///     Acts as a host for the Web API.
+///     Hosts a self-contained REST API for managing and monitoring a Quartz.NET scheduler, providing endpoints for
+///     scheduling operations and status queries. Supports optional API key authentication and structured logging
+///     integration.
 /// </summary>
+/// <remarks>
+///     Use SchedulerHost to expose a Quartz.NET IScheduler instance over HTTP via a Web API. The host can be
+///     configured with or without authentication, and supports both single and multiple API key profiles for access
+///     control. Logging can be integrated by providing an ILogger instance. The API is self-hosted using ASP.NET Core and
+///     Kestrel, and includes OpenAPI (Swagger) documentation for client discovery. Thread safety and lifecycle management
+///     are handled internally; callers should use Start and Stop to control the API's availability.
+/// </remarks>
 public class SchedulerHost
 {
     #region Fields
+    /// <summary>
+    ///    The base address to listen on, e.g. <c>http://localhost:45000</c>.
+    /// </summary>
     private readonly string _baseAddress;
+
+    /// <summary>
+    ///    The Quartz.NET scheduler instance whose state will be exposed via the Web API.
+    /// </summary>
     private readonly IScheduler _scheduler;
+
+    /// <summary>
+    ///     Optional logger.  If provided, it will be injected into the API controllers and
+    ///     used for logging within the host.
+    /// </summary>
     private readonly ILogger _logger;
-    private readonly ApiKeyOptions _apiKeyOptions;
-    private IWebHost _webHost;
+
+    /// <summary>
+    ///     Holds the configuration options for API key security.
+    /// </summary>
+    private readonly Security.ApiKeyOptions _apiKeyOptions;
+
+    /// <summary>
+    ///     Represents the current instance of the web application being configured or run.
+    /// </summary>
+    private WebApplication _app;
     #endregion
 
     #region Constructors
@@ -70,7 +104,7 @@ public class SchedulerHost
         : this(baseAddress, scheduler, logger,
               string.IsNullOrWhiteSpace(apiKey)
                   ? null
-                  : [new ApiKeyProfile("Default", apiKey)])
+                  : [ApiKeyProfile.AllowAll("Default", apiKey)])
     { }
 
     /// <summary>
@@ -90,7 +124,7 @@ public class SchedulerHost
         _baseAddress = baseAddress;
         _scheduler = scheduler;
         _logger = logger;
-        _apiKeyOptions = new ApiKeyOptions(profiles);
+        _apiKeyOptions = new Security.ApiKeyOptions(profiles);
     }
     #endregion
 
@@ -100,22 +134,46 @@ public class SchedulerHost
     /// </summary>
     public void Start()
     {
-        var builder = new WebHostBuilder()
+        var builder = WebApplication.CreateBuilder();
+
+        builder.WebHost
             .UseKestrel()
-            .ConfigureServices(services =>
+            .UseUrls(_baseAddress);
+
+        builder.Logging.ClearProviders();
+
+        builder.Services.AddSingleton(_scheduler);
+        builder.Services.AddSingleton(_apiKeyOptions);
+        builder.Services.AddRouting();
+        builder.Services.AddControllers();
+        builder.Services.AddOpenApi(options =>
+        {
+            options.AddDocumentTransformer((document, _, _) =>
             {
-                services.AddSingleton(_scheduler);
-                services.AddSingleton(_apiKeyOptions);
-            })
-            .UseStartup<Startup>()
-            .UseUrls(_baseAddress)
-            .ConfigureLogging(logging => logging.AddConsole());
+                document.Info = new OpenApiInfo
+                {
+                    Title = "QuartzRestApi",
+                    Version = "v1",
+                    Description = "A self-hosted REST API for Quartz.NET schedulers, built on .NET 10 with ASP.NET Core / Kestrel.",
+                    Contact = new OpenApiContact { Name = "Kees van Spelde", Email = "sicos2002@hotmail.com" },
+                    License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
+                };
+                return System.Threading.Tasks.Task.CompletedTask;
+            });
+        });
 
         if (_logger != null)
-            builder.ConfigureServices(services => services.AddSingleton(_logger));
+            builder.Services.AddSingleton(_logger);
 
-        _webHost = builder.Build();
-        _webHost.Start();
+        _app = builder.Build();
+
+        _app.UseMiddleware<ApiKeyMiddleware>();
+        _app.UseRouting();
+        _app.MapControllers();
+        _app.MapOpenApi();
+        _app.MapScalarApiReference();
+
+        _app.StartAsync().GetAwaiter().GetResult();
     }
     #endregion
 
@@ -125,7 +183,7 @@ public class SchedulerHost
     /// </summary>
     public void Stop()
     {
-        _webHost?.StopAsync();
+        _app?.StopAsync();
     }
     #endregion
 }

@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace QuartzRestApi;
+namespace QuartzRestApi.Security;
 
 /// <summary>
 ///     Middleware that enforces API key authentication and optional per-profile

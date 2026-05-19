@@ -31,13 +31,25 @@ var name = await connector.GetSchedulerName();
 ## Secured quick start
 
 ```csharp
-// Host with a single API key
+// Host with a single API key — grants full access
 var host = new SchedulerHost("http://localhost:44344", scheduler, logger,
     apiKey: "my-secret-key");
 
 // Client that sends the key automatically
 var connector = new SchedulerConnector("http://localhost:44344",
     apiKey: "my-secret-key");
+
+// Or use named profiles with factory methods
+var admin    = ApiKeyProfile.AllowAll("Admin", "key-admin");
+
+var readOnly = ApiKeyProfile.DenyAll("ReadOnly", "key-readonly");
+readOnly.GetMetaData   = true;
+readOnly.GetJobKeys    = true;
+readOnly.GetJobDetail  = true;
+// ...enable any other read endpoints as needed
+
+var hostWithProfiles = new SchedulerHost("http://localhost:44344", scheduler, logger,
+    profiles: [admin, readOnly]);
 ```
 
 ## Links

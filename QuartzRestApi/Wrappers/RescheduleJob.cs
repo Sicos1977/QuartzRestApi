@@ -48,6 +48,26 @@ public class RescheduleJob
     public Trigger Trigger { get; private set; }
     #endregion
 
+    #region Constructor
+    /// <summary>
+    ///     Creates this object and sets its needed properties
+    /// </summary>
+    /// <param name="currentTriggerKey">The current <see cref="TriggerKey" /></param>
+    /// <param name="newTrigger">The new <see cref="Trigger" /></param>
+    public RescheduleJob(TriggerKey currentTriggerKey, Trigger newTrigger)
+    {
+        CurrentTriggerKey = currentTriggerKey;
+        Trigger = newTrigger;
+    }
+
+    /// <summary>
+    ///     Creates this object for JSON deserialization
+    /// </summary>
+    public RescheduleJob()
+    {
+    }
+    #endregion
+
     #region ToJsonString
     /// <summary>
     ///     Returns this object as a json string
