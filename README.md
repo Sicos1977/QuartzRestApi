@@ -1245,7 +1245,7 @@ Returns e.g. `"Normal"`.
 ### Calendars
 
 #### Add a calendar
-
+ 
 `POST Scheduler/AddCalendar`
 
 Supported calendar types: `Annual`, `Cron`, `Daily`, `Holiday`, `Monthly`, `Weekly`
