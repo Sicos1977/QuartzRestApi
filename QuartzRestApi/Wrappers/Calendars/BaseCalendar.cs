@@ -46,7 +46,7 @@ public abstract class BaseCalendar(ICalendar calendar)
     ///     The name of the calendar
     /// </summary>
     [JsonPropertyName("Name")]
-    public string Name { get; internal set; }
+    public string Name { get; set; }
 
     /// <summary>
     ///     The <see cref="CalendarType"/> of the calendar
@@ -81,7 +81,7 @@ public abstract class BaseCalendar(ICalendar calendar)
     /// </summary>
     [JsonPropertyName("Replace")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public bool Replace { get; internal set; }
+    public bool Replace { get; set; }
 
     /// <summary>
     ///     Whether to update existing triggers that
@@ -90,7 +90,7 @@ public abstract class BaseCalendar(ICalendar calendar)
     /// </summary>
     [JsonPropertyName("UpdateTriggers")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public bool UpdateTriggers { get; internal set; }
+    public bool UpdateTriggers { get; set; }
 
     #endregion
 

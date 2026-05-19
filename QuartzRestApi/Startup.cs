@@ -31,6 +31,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Quartz;
+using Scalar.AspNetCore;
 
 namespace QuartzRestApi;
 
@@ -49,6 +50,21 @@ internal class Startup
     {
         services.AddRouting();
         services.AddControllers();
+        services.AddOpenApi(options =>
+        {
+            options.AddDocumentTransformer((document, _, _) =>
+            {
+                document.Info = new()
+                {
+                    Title = "QuartzRestApi",
+                    Version = "v1",
+                    Description = "A self-hosted REST API for Quartz.NET schedulers, built on .NET 10 with ASP.NET Core / Kestrel.",
+                    Contact = new() { Name = "Kees van Spelde", Email = "sicos2002@hotmail.com" },
+                    License = new() { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
+                };
+                return System.Threading.Tasks.Task.CompletedTask;
+            });
+        });
         return services.BuildServiceProvider();
     }
 
@@ -62,11 +78,16 @@ internal class Startup
         if (env.IsDevelopment())
             app.UseDeveloperExceptionPage();
 
+        app.UseMiddleware<ApiKeyMiddleware>();
         app.UseRouting();
 
+        // OpenAPI document endpoint: /openapi/v1.json
+        // Scalar interactive API reference: /scalar/v1
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+            endpoints.MapOpenApi();
+            endpoints.MapScalarApiReference();
         });
     }
 }

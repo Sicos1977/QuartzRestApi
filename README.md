@@ -584,7 +584,7 @@ When an error occurs the API returns a JSON-serialised .NET exception:
 
 ## License
 
-QuartzRestApi is Copyright (C) 2022 - 2025 Magic-Sessions and is licensed under the MIT license:
+QuartzRestApi is Copyright (C) 2022 - 2026 Magic-Sessions and is licensed under the MIT license:
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal

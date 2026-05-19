@@ -35,6 +35,7 @@ using QuartzRestApi.Wrappers.Calendars;
 using JobKey = QuartzRestApi.Wrappers.JobKey;
 using SchedulerMetaData = QuartzRestApi.Wrappers.SchedulerMetaData;
 using TriggerKey = QuartzRestApi.Wrappers.TriggerKey;
+using ScheduleJobsRequest = QuartzRestApi.Wrappers.ScheduleJobs;
 // ReSharper disable RouteTemplates.ActionRoutePrefixCanBeExtractedToControllerRoute
 
 namespace QuartzRestApi.Controllers;
@@ -434,7 +435,7 @@ public class SchedulerController : ControllerBase
     public Task Shutdown(bool waitForJobsToComplete)
     {
         _logger?.LogInformation(waitForJobsToComplete
-            ? "Received request to shutdown the scheduler but wait the the jobs to complete first"
+            ? "Received request to shutdown the scheduler but wait for the jobs to complete first"
             : "Received request to shutdown the scheduler and not to wait for the jobs to complete first");
 
         var result = _scheduler.Shutdown(waitForJobsToComplete);
@@ -493,6 +494,7 @@ public class SchedulerController : ControllerBase
     }
     #endregion
 
+    #region ScheduleJobs
     /// <summary>
     ///     Schedule all the given jobs with the related set of triggers.
     /// </summary>
@@ -507,11 +509,16 @@ public class SchedulerController : ControllerBase
     [Route("Scheduler/ScheduleJobs")]
     public Task ScheduleJobs([FromBody] string json)
     {
-        // IReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>> triggersAndJobs, bool replace
-        //var triggerAndJobs
-        //return _scheduler.ScheduleJobs(trigger);
-        throw new NotImplementedException();
+        _logger?.LogInformation("Received request to schedule multiple jobs with their triggers");
+        _logger?.LogDebug("Received JSON '{Json}'", json);
+
+        var scheduleJobs = ScheduleJobsRequest.FromJsonString(json);
+        var result = _scheduler.ScheduleJobs(scheduleJobs.ToSchedulerDictionary(), scheduleJobs.Replace);
+
+        _logger?.LogDebug("Jobs scheduled");
+        return result;
     }
+    #endregion
 
     #region ScheduleJobWithTriggers
     /// <summary>
@@ -1435,6 +1442,30 @@ public class SchedulerController : ControllerBase
         _logger?.LogInformation("Received request to clear the whole scheduler");
         _scheduler.Clear();
         _logger?.LogInformation("Scheduler cleared");
+    }
+    #endregion
+
+    #region ResetTriggerFromErrorState
+    /// <summary>
+    ///     Remove the given <see cref="ITrigger" /> from the error state and set it back to
+    ///     <see cref="TriggerState.Normal" /> or <see cref="TriggerState.Paused" /> as appropriate.
+    /// </summary>
+    /// <remarks>
+    ///     Only affects triggers that are in <see cref="TriggerState.Error" /> state. If the trigger
+    ///     is not in that state, the call is a no-op.
+    /// </remarks>
+    [HttpPost]
+    [Route("Scheduler/ResetTriggerFromErrorState")]
+    public Task ResetTriggerFromErrorState([FromBody] string json)
+    {
+        _logger?.LogInformation("Received request to reset a trigger from its error state");
+        _logger?.LogDebug("Received JSON '{Json}'", json);
+
+        var triggerKey = TriggerKey.FromJsonString(json);
+        var result = _scheduler.ResetTriggerFromErrorState(triggerKey.ToTriggerKey());
+
+        _logger?.LogInformation("Trigger reset from error state");
+        return result;
     }
     #endregion
 }

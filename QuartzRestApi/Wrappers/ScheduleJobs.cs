@@ -24,9 +24,79 @@
 // THE SOFTWARE.
 //
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Quartz;
 
 namespace QuartzRestApi.Wrappers;
 
-public class ScheduleJobs : List<JobDetail>
+/// <summary>
+///     Json wrapper to schedule multiple <see cref="IJob" />s each with their own set of <see cref="ITrigger" />s.
+///     Maps to <see cref="IScheduler.ScheduleJobs(IReadOnlyDictionary{IJobDetail,IReadOnlyCollection{ITrigger}},bool,System.Threading.CancellationToken)" />.
+/// </summary>
+public class ScheduleJobs
 {
+    #region Properties
+    /// <summary>
+    ///     The list of jobs with their associated triggers to schedule.
+    /// </summary>
+    [JsonPropertyName("Jobs")]
+    public List<JobDetailWithTriggers> Jobs { get; private set; }
+
+    /// <summary>
+    ///     When <c>true</c>, any existing jobs or triggers with the same key will be replaced.
+    /// </summary>
+    [JsonPropertyName("Replace")]
+    public bool Replace { get; private set; }
+    #endregion
+
+    #region Constructor
+    /// <summary>
+    ///     Creates this object and sets its needed properties.
+    /// </summary>
+    /// <param name="jobs">The list of <see cref="JobDetailWithTriggers" /> to schedule</param>
+    /// <param name="replace">When <c>true</c>, existing jobs/triggers with the same key are replaced</param>
+    public ScheduleJobs(List<JobDetailWithTriggers> jobs, bool replace)
+    {
+        Jobs = jobs;
+        Replace = replace;
+    }
+    #endregion
+
+    #region ToSchedulerDictionary
+    /// <summary>
+    ///     Converts the <see cref="Jobs" /> list to the dictionary format expected by
+    ///     <see cref="IScheduler.ScheduleJobs(IReadOnlyDictionary{IJobDetail,IReadOnlyCollection{ITrigger}},bool)" />.
+    /// </summary>
+    public IReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>> ToSchedulerDictionary()
+    {
+        return new ReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>>(
+            Jobs.ToDictionary(
+                j => j.JobDetail.ToJobDetail(),
+                j => j.ToReadOnlyTriggerCollection()));
+    }
+    #endregion
+
+    #region ToJsonString
+    /// <summary>
+    ///     Returns this object as a json string.
+    /// </summary>
+    public string ToJsonString()
+    {
+        return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+    }
+    #endregion
+
+    #region FromJsonString
+    /// <summary>
+    ///     Returns a <see cref="ScheduleJobs" /> object from the given <paramref name="json" /> string.
+    /// </summary>
+    /// <param name="json">The json string</param>
+    public static ScheduleJobs FromJsonString(string json)
+    {
+        return JsonSerializer.Deserialize<ScheduleJobs>(json);
+    }
+    #endregion
 }

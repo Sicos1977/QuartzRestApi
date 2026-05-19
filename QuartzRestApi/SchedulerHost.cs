@@ -23,72 +23,109 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Quartz;
 
 namespace QuartzRestApi;
 
 /// <summary>
-///     Acts as a host for the Web API
+///     Acts as a host for the Web API.
 /// </summary>
-/// <remarks>
-///    Create a new instance of the <see cref="SchedulerHost"/> class
-/// </remarks>
-/// <param name="baseAddress">The base address, e.g. http://localhost:45000</param>
-/// <param name="scheduler"><see cref="IScheduler"/></param>
-/// <param name="logger">><see cref="ILogger"/></param>
-public class SchedulerHost(string baseAddress, IScheduler scheduler, ILogger logger)
+public class SchedulerHost
 {
     #region Fields
-#if NET48
-    private IDisposable _webApp;
-#endif
-#if NET6_0
+    private readonly string _baseAddress;
+    private readonly IScheduler _scheduler;
+    private readonly ILogger _logger;
+    private readonly ApiKeyOptions _apiKeyOptions;
     private IWebHost _webHost;
-#endif    
+    #endregion
+
+    #region Constructors
+    /// <summary>
+    ///     Creates a host without authentication (all endpoints publicly accessible).
+    /// </summary>
+    /// <param name="baseAddress">The base address, e.g. <c>http://localhost:45000</c>.</param>
+    /// <param name="scheduler"><see cref="IScheduler"/></param>
+    /// <param name="logger">Optional <see cref="ILogger"/>.</param>
+    public SchedulerHost(string baseAddress, IScheduler scheduler, ILogger logger)
+        : this(baseAddress, scheduler, logger, (IEnumerable<ApiKeyProfile>)null)
+    { }
+
+    /// <summary>
+    ///     Creates a host with a single API key that grants full access to all endpoints.
+    ///     Backwards-compatible with the previous single-key API.
+    /// </summary>
+    /// <param name="baseAddress">The base address, e.g. <c>http://localhost:45000</c>.</param>
+    /// <param name="scheduler"><see cref="IScheduler"/></param>
+    /// <param name="logger">Optional <see cref="ILogger"/>.</param>
+    /// <param name="apiKey">
+    ///     A single API key with unrestricted access.
+    ///     Pass <see langword="null"/> or an empty string to disable authentication.
+    /// </param>
+    public SchedulerHost(string baseAddress, IScheduler scheduler, ILogger logger, string apiKey)
+        : this(baseAddress, scheduler, logger,
+              string.IsNullOrWhiteSpace(apiKey)
+                  ? null
+                  : [new ApiKeyProfile("Default", apiKey)])
+    { }
+
+    /// <summary>
+    ///     Creates a host with multiple named API key profiles.
+    ///     Each profile can optionally restrict which endpoints its bearer may call.
+    /// </summary>
+    /// <param name="baseAddress">The base address, e.g. <c>http://localhost:45000</c>.</param>
+    /// <param name="scheduler"><see cref="IScheduler"/></param>
+    /// <param name="logger">Optional <see cref="ILogger"/>.</param>
+    /// <param name="profiles">
+    ///     One or more <see cref="ApiKeyProfile"/> instances.
+    ///     Pass <see langword="null"/> or an empty collection to disable authentication.
+    /// </param>
+    public SchedulerHost(string baseAddress, IScheduler scheduler, ILogger logger,
+        IEnumerable<ApiKeyProfile> profiles)
+    {
+        _baseAddress = baseAddress;
+        _scheduler = scheduler;
+        _logger = logger;
+        _apiKeyOptions = new ApiKeyOptions(profiles);
+    }
     #endregion
 
     #region Start
     /// <summary>
-    ///     Start the Web API
+    ///     Starts the Web API.
     /// </summary>
     public void Start()
     {
-#if NET48
-        Startup.Scheduler = scheduler;
-        Startup.Logger = logger;
-        _webApp = WebApp.Start<Startup>(baseAddress);
-#endif
-
-#if NET6_0
         var builder = new WebHostBuilder()
             .UseKestrel()
-            .ConfigureServices(services => services.AddSingleton(scheduler))
+            .ConfigureServices(services =>
+            {
+                services.AddSingleton(_scheduler);
+                services.AddSingleton(_apiKeyOptions);
+            })
             .UseStartup<Startup>()
-            .UseUrls(baseAddress)
-            .ConfigureLogging(logging  => logging.AddConsole());
+            .UseUrls(_baseAddress)
+            .ConfigureLogging(logging => logging.AddConsole());
 
-        if (logger != null)
-            builder.ConfigureServices(services => services.AddSingleton(logger));
+        if (_logger != null)
+            builder.ConfigureServices(services => services.AddSingleton(_logger));
 
         _webHost = builder.Build();
         _webHost.Start();
-#endif
     }
     #endregion
 
     #region Stop
     /// <summary>
-    ///     Stops the Web API
+    ///     Stops the Web API.
     /// </summary>
     public void Stop()
     {
-#if NET48
-        _webApp?.Dispose();
-#endif
-#if NET6_0
-       _webHost?.StopAsync();
-#endif
+        _webHost?.StopAsync();
     }
     #endregion
 }
