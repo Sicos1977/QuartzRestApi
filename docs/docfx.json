@@ -20,7 +20,7 @@
         "files": [ "api/**.yml", "api/index.md" ]
       },
       {
-        "files": [ "*.md", "*.html", "*.json", "toc.yml" ],
+        "files": [ "*.md", "toc.yml" ],
         "src": ".",
         "dest": "."
       }
@@ -28,6 +28,11 @@
     "resource": [
       {
         "files": [ "images/**" ]
+      },
+      {
+        "files": [ "*.html", "*.json" ],
+        "src": ".",
+        "dest": "."
       }
     ],
     "output": "_site",
