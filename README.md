@@ -230,6 +230,29 @@ The OpenAPI specification is also generated automatically during every CI build 
 
 ---
 
+## Error handling
+
+All `SchedulerConnector` methods that communicate with the host throw a `SchedulerConnectorException` when the host returns a non-success HTTP status code (4xx / 5xx). This makes it easy to distinguish transport or server-side errors from other exceptions in your application.
+
+```csharp
+using QuartzRestApi.Exceptions;
+
+try
+{
+    var fireTime = await connector.ScheduleJob(trigger);
+}
+catch (SchedulerConnectorException ex)
+{
+    // ex.Message contains the HTTP status code and the response body,
+    // e.g. "The scheduler host returned HTTP 500 (Internal Server Error). Body: ..."
+    logger.LogError(ex, "Failed to schedule job");
+}
+```
+
+All public methods on `SchedulerConnector` document this exception via `<exception cref="SchedulerConnectorException">` in their XML documentation, so it surfaces as a tooltip in Visual Studio IntelliSense.
+
+---
+
 ## License
 
 QuartzRestApi is Copyright (C) 2022 - 2026 Magic-Sessions and is licensed under the MIT license:

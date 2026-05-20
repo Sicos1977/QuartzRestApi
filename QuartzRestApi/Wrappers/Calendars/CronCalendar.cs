@@ -46,9 +46,15 @@ public class CronCalendar : BaseCalendar
     public string CronExpression { get; internal set; }
     #endregion
 
-    #region Constructor
+    #region Constructors
     /// <summary>
-    ///     Takes a <see cref="Quartz.Impl.Calendar.CronCalendar" /> and wraps it in a json object
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    public CronCalendar() { }
+
+    /// <summary>
+    ///     Takes a <see cref="Quartz.Impl.Calendar.CronCalendar" /> and wraps it in a json object.
     /// </summary>
     /// <param name="cronCalendar"><see cref="Quartz.Impl.Calendar.CronCalendar" /></param>
     public CronCalendar(Quartz.Impl.Calendar.CronCalendar cronCalendar) : base(cronCalendar)

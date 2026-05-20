@@ -98,6 +98,7 @@ public class UnitTests
             .WithIdentity(new Quartz.JobKey("JobKeyName", "JobKeyGroup"))
             .WithDescription("Test")
             .RequestRecovery()
+            .StoreDurably()
             .Build();
 
         var schedulerTrigger = (ISimpleTrigger)TriggerBuilder.Create()
@@ -396,7 +397,7 @@ public class UnitTests
     {
         var matcher = new GroupMatcher<Quartz.TriggerKey>(GroupMatcherType.Equals, "JobKeyGroup");
         var keys = await _connector.GetTriggerKeys(matcher);
-        Assert.IsTrue(keys.Any(k => k.Name == "triggerKey"));
+        Assert.IsTrue(keys.Any(k => k.Name == "TriggerKey"));
     }
     #endregion
 
@@ -422,7 +423,7 @@ public class UnitTests
     {
         var jobKey = new JobKey("JobKeyName", "JobKeyGroup");
         var triggers = await _connector.GetTriggersOfJob(jobKey);
-        Assert.IsTrue(triggers.Any(t => t.TriggerKey.Name == "triggerKey"));
+        Assert.IsTrue(triggers.Any(t => t.TriggerKey.Name == "TriggerKey"));
     }
 
     /// <summary>
@@ -488,7 +489,7 @@ public class UnitTests
     [TestMethod]
     public async Task CheckExistsTriggerKey_Existing()
     {
-        var triggerKey = new TriggerKey("triggerKey", "JobKeyGroup");
+        var triggerKey = new TriggerKey("TriggerKey", "JobKeyGroup");
         var exists = await _connector.CheckExists(triggerKey);
         Assert.IsTrue(exists);
     }
@@ -513,10 +514,11 @@ public class UnitTests
     public async Task PauseJob_And_ResumeJob()
     {
         var jobKey = new JobKey("JobKeyName", "JobKeyGroup");
+        var triggerKey = new TriggerKey("TriggerKey", "JobKeyGroup");
 
         await _connector.PauseJob(jobKey);
-        var paused = await _connector.IsJobGroupPaused("JobKeyGroup");
-        Assert.IsTrue(paused);
+        var state = await _connector.GetTriggerState(triggerKey);
+        Assert.AreEqual("Paused", state);
 
         await _connector.ResumeJob(jobKey);
     }
@@ -542,11 +544,11 @@ public class UnitTests
     [TestMethod]
     public async Task PauseTrigger_And_ResumeTrigger()
     {
-        var triggerKey = new TriggerKey("triggerKey", "JobKeyGroup");
+        var triggerKey = new TriggerKey("TriggerKey", "JobKeyGroup");
 
         await _connector.PauseTrigger(triggerKey);
-        var paused = await _connector.IsTriggerGroupPaused("JobKeyGroup");
-        Assert.IsTrue(paused);
+        var state = await _connector.GetTriggerState(triggerKey);
+        Assert.AreEqual("Paused", state);
 
         await _connector.ResumeTrigger(triggerKey);
     }
@@ -659,21 +661,21 @@ public class UnitTests
 
     /// <summary>
     ///     Verifies that <c>RescheduleJob</c> replaces an existing trigger with a new one
-    ///  and returns a valid next fire time.
+    ///     and returns a valid next fire time.
     /// </summary>
     [TestMethod]
     public async Task RescheduleJob_Test()
     {
         var reschedule = new RescheduleJob(
-            new TriggerKey("triggerKey", "JobKeyGroup"),
-            MakeTrigger("triggerKeyRescheduled", "JobKeyGroup", "JobKeyName", "JobKeyGroup", "0 30 * ? * *"));
+            new TriggerKey("TriggerKey", "JobKeyGroup"),
+            MakeTrigger("TriggerKeyRescheduled", "JobKeyGroup", "JobKeyName", "JobKeyGroup", "0 30 * ? * *"));
 
         var fireTime = await _connector.RescheduleJob(reschedule);
         Assert.IsNotNull(fireTime);
 
         await _connector.RescheduleJob(new RescheduleJob(
-            new TriggerKey("triggerKeyRescheduled", "JobKeyGroup"),
-            MakeTrigger("triggerKey", "JobKeyGroup", "JobKeyName", "JobKeyGroup", "0 * * ? * *")
+            new TriggerKey("TriggerKeyRescheduled", "JobKeyGroup"),
+            MakeTrigger("TriggerKey", "JobKeyGroup", "JobKeyName", "JobKeyGroup", "0 * * ? * *")
         ));
     }
 
@@ -684,13 +686,13 @@ public class UnitTests
     [TestMethod]
     public async Task UnscheduleJob_And_Reschedule()
     {
-        var triggerKey = new TriggerKey("triggerKey", "JobKeyGroup");
+        var triggerKey = new TriggerKey("TriggerKey", "JobKeyGroup");
 
         var unscheduled = await _connector.UnscheduleJob(triggerKey);
         Assert.IsTrue(unscheduled);
 
         var quartzTrigger = TriggerBuilder.Create()
-            .WithIdentity("triggerKey", "JobKeyGroup")
+            .WithIdentity("TriggerKey", "JobKeyGroup")
             .ForJob(new Quartz.JobKey("JobKeyName", "JobKeyGroup"))
             .WithCronSchedule("0 * * ? * *")
             .Build();

@@ -39,16 +39,22 @@ public class JobKeyWithDataMap
     ///     The <see cref="JobKey" />
     /// </summary>
     [JsonPropertyName("JobKey")]
-    public JobKey JobKey { get; private set; }
+    public JobKey JobKey { get; init; }
 
     /// <summary>
     ///     The <see cref="JobDataMap" />
     /// </summary>
     [JsonPropertyName("JobDataMap")]
-    public JobDataMap JobDataMap { get; private set; }
+    public JobDataMap JobDataMap { get; init; }
     #endregion
 
     #region Constructor
+    /// <summary>
+    ///     Parameterless constructor for JSON deserialization
+    /// </summary>
+    [JsonConstructor]
+    public JobKeyWithDataMap() { }
+
     /// <summary>
     ///     Makes this object and sets it's needed properties
     /// </summary>
@@ -58,13 +64,6 @@ public class JobKeyWithDataMap
     {
         JobKey = jobKey;
         JobDataMap = jobDataMap;
-    }
-
-    /// <summary>
-    ///     Makes this object and sets it's needed properties
-    /// </summary>
-    public JobKeyWithDataMap()
-    {
     }
     #endregion
 

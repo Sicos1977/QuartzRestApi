@@ -29,6 +29,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using QuartzRestApi.Exceptions;
 using QuartzRestApi.Security;
 using QuartzRestApi.Wrappers;
 using QuartzRestApi.Wrappers.Calendars;
@@ -74,28 +75,56 @@ public class SchedulerConnector
     private static StringContent JsonBody(string json) => new(JsonSerializer.Serialize(json), Encoding.UTF8, "application/json");
 
     /// <summary>
+    ///     Reads the response body and throws an <see cref="InvalidOperationException"/> when
+    ///     the server returns a non-success HTTP status code.
+    /// </summary>
+    /// <param name="response">The HTTP response message to read.</param>
+    /// <returns>The raw response body string.</returns>
+    /// <exception cref="SchedulerConnectorException">
+    ///     Thrown when the server returns a non-success HTTP status code.
+    /// </exception>
+    private static async Task<string> ReadBodyAsync(HttpResponseMessage response)
+    {
+        var body = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+        if (!response.IsSuccessStatusCode)
+            throw new SchedulerConnectorException($"The scheduler host returned HTTP {(int)response.StatusCode} ({response.ReasonPhrase}). Body: {body}");
+
+        return body;
+    }
+
+    /// <summary>
     ///     Reads the HTTP response content as a string and removes any leading and trailing double-quote characters.
     /// </summary>
-    /// <remarks>
-    ///     This method is useful when the response content is expected to be a JSON string value, which
-    ///     may be enclosed in double quotes.
-    /// </remarks>
-    /// <param name="response">The HTTP response message containing the content to read. Cannot be null.</param>
+    /// <param name="response">The HTTP response message containing the content to read.</param>
     /// <returns>A string containing the response content with surrounding double quotes removed.</returns>
-    private static async Task<string> ReadString(HttpResponseMessage response) => (await response.Content.ReadAsStringAsync().ConfigureAwait(false)).Trim('"');
+    private static async Task<string> ReadString(HttpResponseMessage response) => (await ReadBodyAsync(response).ConfigureAwait(false)).Trim('"');
 
     /// <summary>
     ///     Reads the HTTP response content as a string and parses it as a boolean value.
     /// </summary>
-    /// <param name="response">The HTTP response message containing the content to read. Cannot be null.</param>
+    /// <param name="response">The HTTP response message containing the content to read.</param>
     /// <returns>A boolean value parsed from the response content.</returns>
-    private static async Task<bool> ReadBool(HttpResponseMessage response) => bool.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+    private static async Task<bool> ReadBool(HttpResponseMessage response) => bool.Parse(await ReadBodyAsync(response).ConfigureAwait(false));
+
+    /// <summary>
+    ///     Reads the HTTP response content and deserializes it as <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type to deserialize to.</typeparam>
+    /// <param name="response">The HTTP response message containing the content to read.</param>
+    /// <returns>The deserialized value.</returns>
+    private static async Task<T> ReadJsonAsync<T>(HttpResponseMessage response)
+    {
+        var body = await ReadBodyAsync(response).ConfigureAwait(false);
+        return JsonSerializer.Deserialize<T>(body);
+    }
     #endregion
 
     #region IsJobGroupPaused
     /// <summary>
     ///     Returns <c>true</c> if the given JobGroup is paused
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> IsJobGroupPaused(string groupName)
     {
         var response = await _httpClient.GetAsync($"Scheduler/IsJobGroupPaused/{groupName}").ConfigureAwait(false);
@@ -107,6 +136,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if the given TriggerGroup is paused
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> IsTriggerGroupPaused(string groupName)
     {
         var response = await _httpClient.GetAsync($"Scheduler/IsTriggerGroupPaused/{groupName}").ConfigureAwait(false);
@@ -118,6 +148,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the name of the scheduler
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<string> SchedulerName()
     {
         var response = await _httpClient.GetAsync("Scheduler/SchedulerName").ConfigureAwait(false);
@@ -129,6 +160,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the instance id of the scheduler
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<string> SchedulerInstanceId()
     {
         var response = await _httpClient.GetAsync("Scheduler/SchedulerInstanceId").ConfigureAwait(false);
@@ -140,10 +172,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the <see cref="SchedulerContext" /> of the scheduler
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<SchedulerContext> Context()
     {
         var response = await _httpClient.GetAsync("Scheduler/SchedulerContext").ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return SchedulerContext.FromJsonString(json);
     }
     #endregion
@@ -152,6 +185,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if the scheduler is in standby mode
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> InStandbyMode()
     {
         var response = await _httpClient.GetAsync("Scheduler/InStandbyMode").ConfigureAwait(false);
@@ -163,6 +197,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if the scheduler is shutdown
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> IsShutdown()
     {
         var response = await _httpClient.GetAsync("Scheduler/Isshutdown").ConfigureAwait(false);
@@ -174,6 +209,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if the scheduler has been started
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> IsStarted()
     {
         var response = await _httpClient.GetAsync("Scheduler/IsStarted").ConfigureAwait(false);
@@ -185,10 +221,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns a <see cref="SchedulerMetaData"/> object describing the settings and capabilities of the scheduler
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<SchedulerMetaData> GetMetaData()
     {
         var response = await _httpClient.GetAsync("Scheduler/GetMetaData").ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return SchedulerMetaData.FromJsonString(json);
     }
     #endregion
@@ -197,10 +234,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the list of currently executing jobs
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<JobExecutionContexts> GetCurrentlyExecutingJobs()
     {
         var response = await _httpClient.GetAsync("Scheduler/GetCurrentlyExecutingJobs").ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return JobExecutionContexts.FromJsonString(json);
     }
     #endregion
@@ -209,11 +247,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the names of all known job groups
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<IReadOnlyCollection<string>> GetJobGroupNames()
     {
         var response = await _httpClient.GetAsync("Scheduler/GetJobGroupNames").ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-        return JsonSerializer.Deserialize<List<string>>(json);
+        return await ReadJsonAsync<List<string>>(response).ConfigureAwait(false);
     }
     #endregion
 
@@ -221,11 +259,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the names of all known trigger groups
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<IReadOnlyCollection<string>> GetTriggerGroupNames()
     {
         var response = await _httpClient.GetAsync("Scheduler/GetTriggerGroupNames").ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-        return JsonSerializer.Deserialize<List<string>>(json);
+        return await ReadJsonAsync<List<string>>(response).ConfigureAwait(false);
     }
     #endregion
 
@@ -233,11 +271,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the names of all paused trigger groups
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<IReadOnlyCollection<string>> GetPausedTriggerGroups()
     {
         var response = await _httpClient.GetAsync("Scheduler/GetPausedTriggerGroups").ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-        return JsonSerializer.Deserialize<List<string>>(json);
+        return await ReadJsonAsync<List<string>>(response).ConfigureAwait(false);
     }
     #endregion
 
@@ -293,21 +331,21 @@ public class SchedulerConnector
     /// <summary>
     ///     Schedules a job with a job detail and a single trigger
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<DateTimeOffset> ScheduleJob(JobDetailWithTrigger jobDetailWithTrigger)
     {
         var response = await _httpClient.PostAsync("Scheduler/ScheduleJobWithJobDetailAndTrigger", JsonBody(jobDetailWithTrigger.ToJsonString())).ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-        return JsonSerializer.Deserialize<DateTimeOffset>(json);
+        return await ReadJsonAsync<DateTimeOffset>(response).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Schedules the trigger with the job identified by the trigger
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<DateTimeOffset> ScheduleJob(Trigger trigger)
     {
         var response = await _httpClient.PostAsync("Scheduler/ScheduleJobIdentifiedWithTrigger", JsonBody(trigger.ToJsonString())).ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-        return JsonSerializer.Deserialize<DateTimeOffset>(json);
+        return await ReadJsonAsync<DateTimeOffset>(response).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -331,6 +369,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Removes the trigger with the given key from the scheduler
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> UnscheduleJob(TriggerKey triggerKey)
     {
         var response = await _httpClient.PostAsync("Scheduler/UnscheduleJob", JsonBody(triggerKey.ToJsonString())).ConfigureAwait(false);
@@ -340,6 +379,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Removes all triggers with the given keys from the scheduler
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> UnscheduleJobs(TriggerKeys triggerKeys)
     {
         var response = await _httpClient.PostAsync("Scheduler/UnscheduleJobs", JsonBody(triggerKeys.ToJsonString())).ConfigureAwait(false);
@@ -351,10 +391,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Replaces the current trigger with a new trigger for the same job
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<DateTimeOffset?> RescheduleJob(RescheduleJob rescheduleJob)
     {
         var response = await _httpClient.PostAsync("Scheduler/RescheduleJob", JsonBody(rescheduleJob.ToJsonString())).ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await ReadBodyAsync(response).ConfigureAwait(false);
         if (json == "null") return null;
         return JsonSerializer.Deserialize<DateTimeOffset>(json);
     }
@@ -374,6 +415,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Deletes the job with the given key and all associated triggers
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> DeleteJob(JobKey jobKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Delete, "Scheduler/DeleteJob")
@@ -387,6 +429,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Deletes all jobs with the given keys and their associated triggers
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> DeleteJobs(JobKeys jobKeys)
     {
         var request = new HttpRequestMessage(HttpMethod.Delete, "Scheduler/DeleteJobs")
@@ -512,6 +555,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns all job keys matching the given group matcher
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<JobKeys> GetJobKeys(GroupMatcher<Quartz.JobKey> groupMatcher)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetJobKeys")
@@ -519,7 +563,7 @@ public class SchedulerConnector
             Content = JsonBody(groupMatcher.ToJsonString())
         };
         var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? JobKeys.FromJsonString("[]") : JobKeys.FromJsonString(json);
     }
     #endregion
@@ -528,6 +572,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns all trigger keys matching the given group matcher
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<TriggerKeys> GetTriggerKeys(GroupMatcher<Quartz.TriggerKey> groupMatcher)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetTriggerKeys")
@@ -535,7 +580,7 @@ public class SchedulerConnector
             Content = JsonBody(groupMatcher.ToJsonString())
         };
         var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? TriggerKeys.FromJsonString("[]") : TriggerKeys.FromJsonString(json);
     }
     #endregion
@@ -544,6 +589,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns all triggers associated with the given job key
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<Triggers> GetTriggersOfJob(JobKey jobKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetTriggersOfJob")
@@ -551,7 +597,7 @@ public class SchedulerConnector
             Content = JsonBody(jobKey.ToJsonString())
         };
         var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? Triggers.FromJsonString("[]") : Triggers.FromJsonString(json);
     }
     #endregion
@@ -560,6 +606,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the job detail for the given job key
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<JobDetail> GetJobDetail(JobKey jobKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetJobDetail")
@@ -567,7 +614,7 @@ public class SchedulerConnector
             Content = JsonBody(jobKey.ToJsonString())
         };
         var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? null : JobDetail.FromJsonString(json);
     }
     #endregion
@@ -576,6 +623,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the trigger for the given trigger key
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<Trigger> GetTrigger(TriggerKey triggerKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetTrigger")
@@ -583,7 +631,7 @@ public class SchedulerConnector
             Content = JsonBody(triggerKey.ToJsonString())
         };
         var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? null : Trigger.FromJsonString(json);
     }
     #endregion
@@ -592,6 +640,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the current state of the given trigger
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<string> GetTriggerState(TriggerKey triggerKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetTriggerState")
@@ -617,6 +666,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Deletes the calendar with the given name. Returns <c>true</c> when deleted.
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> DeleteCalendar(string calendarName)
     {
         var request = new HttpRequestMessage(HttpMethod.Delete, $"Scheduler/DeleteCalendar/{calendarName}");
@@ -629,10 +679,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the calendar with the given name as a JSON string
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<string> GetCalendar(string calendarName)
     {
         var response = await _httpClient.GetAsync($"Scheduler/Getcalendar/{calendarName}").ConfigureAwait(false);
-        return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        return await ReadBodyAsync(response).ConfigureAwait(false);
     }
     #endregion
 
@@ -640,11 +691,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the names of all registered calendars
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<IReadOnlyCollection<string>> GetCalendarNames()
     {
         var response = await _httpClient.GetAsync("Scheduler/GetCalendarNames").ConfigureAwait(false);
-        var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-        return JsonSerializer.Deserialize<List<string>>(json);
+        return await ReadJsonAsync<List<string>>(response).ConfigureAwait(false);
     }
     #endregion
 
@@ -652,6 +703,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Requests cancellation of all executing instances of the given job
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> InterruptJob(JobKey jobKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/InterruptJobKey")
@@ -665,6 +717,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Requests cancellation of the executing job instance with the given fire instance id
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> InterruptJob(string fireInstanceId)
     {
         var response = await _httpClient.GetAsync($"Scheduler/interruptfireinstanceid/{fireInstanceId}").ConfigureAwait(false);
@@ -676,6 +729,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if a job with the given key exists
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> CheckExists(JobKey jobKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/CheckExistsJobkey")
@@ -689,6 +743,7 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if a trigger with the given key exists
     /// </summary>
+    /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
     public async Task<bool> CheckExists(TriggerKey triggerKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/CheckExistsTriggerkey")

@@ -44,9 +44,15 @@ public class WeeklyCalendar : BaseCalendar
     public List<bool> DaysExcluded { get; internal set; } = [];
     #endregion
 
-    #region Constructor
+    #region Constructors
     /// <summary>
-    ///     Takes a <see cref="Quartz.Impl.Calendar.WeeklyCalendar" /> and wraps it in a json object
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    public WeeklyCalendar() { }
+
+    /// <summary>
+    ///     Takes a <see cref="Quartz.Impl.Calendar.WeeklyCalendar" /> and wraps it in a json object.
     /// </summary>
     /// <param name="weeklyCalendar"><see cref="Quartz.Impl.Calendar.WeeklyCalendar" /></param>
     public WeeklyCalendar(Quartz.Impl.Calendar.WeeklyCalendar weeklyCalendar) : base(weeklyCalendar)
@@ -93,7 +99,7 @@ public class WeeklyCalendar : BaseCalendar
 
     #region FromJsonString
     /// <summary>
-    ///     Returns the <see cref="json" /> object from the given <paramref name="json" /> string
+    ///     Returns the <see cref="WeeklyCalendar" /> object from the given <paramref name="json" /> string
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>

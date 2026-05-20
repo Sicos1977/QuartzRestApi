@@ -37,13 +37,13 @@ public class Key
     ///     Returns the name of the trigger
     /// </summary>
     [JsonPropertyName("Name")]
-    public string Name { get; internal set; }
+    public string Name { get; init; }
 
     /// <summary>
     ///     Returns the group of the trigger
     /// </summary>
     [JsonPropertyName("Group")]
-    public string Group { get; internal set; }
+    public string Group { get; init; }
     #endregion
 
     #region Constructor

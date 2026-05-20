@@ -41,70 +41,76 @@ public class Trigger : JobKeyWithDataMap
     ///     The <see cref="TriggerKey" />
     /// </summary>
     [JsonPropertyName("TriggerKey")]
-    public TriggerKey TriggerKey { get; private set; }
+    public TriggerKey TriggerKey { get; init; }
 
     /// <summary>
     ///     A description for the <see cref="Trigger" />
     /// </summary>
     [JsonPropertyName("Description")]
-    public string Description { get; private set; }
+    public string Description { get; init; }
 
     /// <summary>
     ///     The name of the calendar to use or <c>null</c> when not
     /// </summary>
     [JsonPropertyName("CalendarName")]
-    public string CalendarName { get; private set; }
+    public string CalendarName { get; init; }
 
     /// <summary>
     ///     The cron schedule
     /// </summary>
     [JsonPropertyName("CronSchedule")]
-    public string CronSchedule { get; private set; }
+    public string CronSchedule { get; init; }
 
     /// <summary>
     ///     The next fire time in UTC format
     /// </summary>
     [JsonPropertyName("NextFireTimeUtc")]
-    public DateTimeOffset? NextFireTimeUtc { get; private set; }
+    public DateTimeOffset? NextFireTimeUtc { get; init; }
 
     /// <summary>
     ///     The previous fire time in UTC format
     /// </summary>
     [JsonPropertyName("PreviousFireTimeUtc")]
-    public DateTimeOffset? PreviousFireTimeUtc { get; private set; }
+    public DateTimeOffset? PreviousFireTimeUtc { get; init; }
 
     /// <summary>
     ///     The start time in UTC format
     /// </summary>
     [JsonPropertyName("StartTimeUtc")]
-    public DateTimeOffset StartTimeUtc { get; private set; }
+    public DateTimeOffset StartTimeUtc { get; init; }
 
     /// <summary>
     ///     The end time in UTC format
     /// </summary>
     [JsonPropertyName("EndTimeUtc")]
-    public DateTimeOffset? EndTimeUtc { get; private set; }
+    public DateTimeOffset? EndTimeUtc { get; init; }
 
     /// <summary>
     ///     The final fire time in UTC format
     /// </summary>
     [JsonPropertyName("FinalFireTimeUtc")]
-    public DateTimeOffset? FinalFireTimeUtc { get; private set; }
+    public DateTimeOffset? FinalFireTimeUtc { get; init; }
 
     /// <summary>
     ///     The priority
     /// </summary>
     [JsonPropertyName("Priority")]
-    public int Priority { get; private set; }
+    public int Priority { get; init; }
 
     /// <summary>
     ///     Returns <c>true</c> when it has millisecond precision
     /// </summary>
     [JsonPropertyName("HasMillisecondPrecision")]
-    public bool HasMillisecondPrecision { get; private set; }
+    public bool HasMillisecondPrecision { get; init; }
     #endregion
 
     #region Constructor
+    /// <summary>
+    ///     Parameterless constructor for JSON deserialization
+    /// </summary>
+    [JsonConstructor]
+    public Trigger() { }
+
     /// <summary>
     ///     Makes this object and sets all it's needed properties
     /// </summary>
@@ -150,12 +156,14 @@ public class Trigger : JobKeyWithDataMap
     ///     Makes this object and sets all it's needed properties
     /// </summary>
     /// <param name="trigger"></param>
-    public Trigger(ITrigger trigger)
+    public Trigger(ITrigger trigger) : base(
+        new JobKey(trigger.JobKey),
+        trigger.JobDataMap)
     {
         TriggerKey = new TriggerKey(trigger.Key);
         Description = trigger.Description;
         CalendarName = trigger.CalendarName;
-        //CronSchedule = trigger;
+        CronSchedule = trigger is ICronTrigger cronTrigger ? cronTrigger.CronExpressionString : null;
         NextFireTimeUtc = trigger.GetNextFireTimeUtc();
         PreviousFireTimeUtc = trigger.GetPreviousFireTimeUtc();
         StartTimeUtc = trigger.StartTimeUtc;

@@ -68,7 +68,7 @@ public class ScheduleJobs
     #region ToSchedulerDictionary
     /// <summary>
     ///     Converts the <see cref="Jobs" /> list to the dictionary format expected by
-    ///     <see cref="IScheduler.ScheduleJobs(IReadOnlyDictionary{IJobDetail,IReadOnlyCollection{ITrigger}},bool)" />.
+    ///     <see cref="IScheduler" />.
     /// </summary>
     public IReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>> ToSchedulerDictionary()
     {

@@ -41,26 +41,26 @@ public class JobDetail
     ///     The key that identifies this jobs uniquely
     /// </summary>
     [JsonPropertyName("JobKey")]
-    public JobKey JobKey { get; private set; }
+    public JobKey JobKey { get; init; }
 
     /// <summary>
     ///     Get or set the description given to the <see cref="IJob" /> instance by its
     ///     creator (if any)
     /// </summary>
     [JsonPropertyName("Description")]
-    public string Description { get; private set; }
+    public string Description { get; init; }
 
     /// <summary>
     ///     Get or sets the instance of <see cref="IJob" /> that will be executed
     /// </summary>
     [JsonPropertyName("JobType")]
-    public string JobType { get; private set; }
+    public string JobType { get; init; }
 
     /// <summary>
     ///     Get or set the <see cref="JobDataMap" /> that is associated with the <see cref="IJob" />
     /// </summary>
     [JsonPropertyName("JobDataMap")]
-    public JobDataMap JobDataMap { get; private set; }
+    public JobDataMap JobDataMap { get; init; }
 
     /// <summary>
     ///     Whether the <see cref="IJob" /> should remain stored after it is
@@ -73,22 +73,28 @@ public class JobDetail
     ///     <see langword="true" /> if the Job should remain persisted after being orphaned
     /// </returns>
     [JsonPropertyName("Durable")]
-    public bool Durable { get; private set; }
+    public bool Durable { get; init; }
 
     /// <summary>
     ///     Whether the <see cref="IJob" /> should be replaced
     /// </summary>
     [JsonPropertyName("Replace")]
-    public bool Replace { get; private set; }
+    public bool Replace { get; init; }
 
     /// <summary>
     ///     Whether the <see cref="IJob" /> should be stored durable while awaiting scheduling
     /// </summary>
     [JsonPropertyName("StoreNonDurableWhileAwaitingScheduling")]
-    public bool StoreNonDurableWhileAwaitingScheduling { get; private set; }
+    public bool StoreNonDurableWhileAwaitingScheduling { get; init; }
     #endregion
 
     #region Constructor
+    /// <summary>
+    ///     Parameterless constructor for JSON deserialization
+    /// </summary>
+    [JsonConstructor]
+    public JobDetail() { }
+
     /// <summary>
     ///     Creates this object and sets it's needed properties
     /// </summary>

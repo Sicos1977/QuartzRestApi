@@ -24,7 +24,6 @@
 // THE SOFTWARE.
 //
 using System;
-using System.ComponentModel;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Quartz;
@@ -34,12 +33,8 @@ namespace QuartzRestApi.Wrappers.Calendars;
 /// <summary>
 ///     The base calendar for all calendars
 /// </summary>
-/// <remarks>
-///     Takes a <see cref="ICalendar" /> and wraps it in a json object
-/// </remarks>
-/// <param name="calendar"><see cref="ICalendar"/></param>
 [JsonConverter(typeof(BaseConverter))]
-public abstract class BaseCalendar(ICalendar calendar)
+public abstract class BaseCalendar
 {
     #region Properties
     /// <summary>
@@ -60,7 +55,7 @@ public abstract class BaseCalendar(ICalendar calendar)
     /// </summary>
     [JsonPropertyName("Description")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public string Description { get; internal set; } = calendar?.Description;
+    public string Description { get; internal set; }
 
     /// <summary>
     ///     The time zone of the calendar
@@ -91,7 +86,23 @@ public abstract class BaseCalendar(ICalendar calendar)
     [JsonPropertyName("UpdateTriggers")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public bool UpdateTriggers { get; set; }
+    #endregion
 
+    #region Constructors
+    /// <summary>
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    protected BaseCalendar() { }
+
+    /// <summary>
+    ///     Creates this object and sets it's needed properties from the given <see cref="ICalendar" />.
+    /// </summary>
+    /// <param name="calendar">The Quartz <see cref="ICalendar" /> to wrap.</param>
+    protected BaseCalendar(ICalendar calendar)
+    {
+        Description = calendar?.Description;
+    }
     #endregion
 
     #region ToJsonString
@@ -107,7 +118,7 @@ public abstract class BaseCalendar(ICalendar calendar)
 
     #region FromJsonString
     /// <summary>
-    ///     Returns the <see cref="json" /> object from the given <paramref name="json" /> string
+    ///     Returns the <see cref="BaseCalendar" /> object from the given <paramref name="json" /> string
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>
@@ -119,5 +130,14 @@ public abstract class BaseCalendar(ICalendar calendar)
     }
     #endregion
 
+    #region ToCalendar
+    /// <summary>
+    ///     Converts the current instance to an equivalent calendar representation.
+    /// </summary>
+    /// <returns>
+    ///     An object that implements the <see cref="ICalendar"/> interface and represents the calendar equivalent of the
+    /// current instance.
+    /// </returns>
     public abstract ICalendar ToCalendar();
+    #endregion
 }

@@ -43,9 +43,15 @@ public class MonthlyCalendar : BaseCalendar
     public List<bool> DaysExcluded { get; internal set; } = [];
     #endregion
 
-    #region Constructor
+    #region Constructors
     /// <summary>
-    ///     Takes a <see cref="Quartz.Impl.Calendar.MonthlyCalendar" /> and wraps it in a json object
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    public MonthlyCalendar() { }
+
+    /// <summary>
+    ///     Takes a <see cref="Quartz.Impl.Calendar.MonthlyCalendar" /> and wraps it in a json object.
     /// </summary>
     /// <param name="monthlyCalendar"><see cref="Quartz.Impl.Calendar.MonthlyCalendar" /></param>
     public MonthlyCalendar(Quartz.Impl.Calendar.MonthlyCalendar monthlyCalendar) : base(monthlyCalendar)

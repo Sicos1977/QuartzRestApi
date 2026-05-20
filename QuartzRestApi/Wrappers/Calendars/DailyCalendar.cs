@@ -110,9 +110,15 @@ public class DailyCalendar : BaseCalendar
     public bool InvertTimeRange { get; internal set; }
     #endregion
 
-    #region Constructor
+    #region Constructors
     /// <summary>
-    ///     Takes a <see cref="Quartz.Impl.Calendar.CronCalendar" /> and wraps it in a json object
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    public DailyCalendar() { }
+
+    /// <summary>
+    ///     Takes a <see cref="Quartz.Impl.Calendar.DailyCalendar" /> and wraps it in a json object.
     /// </summary>
     /// <param name="dailyCalendar"><see cref="Quartz.Impl.Calendar.DailyCalendar" /></param>
     public DailyCalendar(Quartz.Impl.Calendar.DailyCalendar dailyCalendar) : base(dailyCalendar)

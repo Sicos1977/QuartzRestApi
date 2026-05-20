@@ -46,9 +46,15 @@ public class HolidayCalendar : BaseCalendar
     public List<DateTime> ExcludedDates { get; internal set; }
     #endregion
 
-    #region Constructor
+    #region Constructors
     /// <summary>
-    ///     Takes a <see cref="Quartz.Impl.Calendar.HolidayCalendar" /> and wraps it in a json object
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    public HolidayCalendar() { }
+
+    /// <summary>
+    ///     Takes a <see cref="Quartz.Impl.Calendar.HolidayCalendar" /> and wraps it in a json object.
     /// </summary>
     /// <param name="holidayCalendar"><see cref="Quartz.Impl.Calendar.HolidayCalendar" /></param>
     public HolidayCalendar(Quartz.Impl.Calendar.HolidayCalendar holidayCalendar) : base(holidayCalendar)
@@ -95,7 +101,7 @@ public class HolidayCalendar : BaseCalendar
 
     #region FromJsonString
     /// <summary>
-    ///     Returns the <see cref="json" /> object from the given <paramref name="json" /> string
+    ///     Returns the <see cref="HolidayCalendar" /> object from the given <paramref name="json" /> string
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>

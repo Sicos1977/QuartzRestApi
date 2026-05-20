@@ -44,9 +44,15 @@ public class AnnualCalendar : BaseCalendar
     public List<DateTime> DaysExcluded { get; internal set; } = [];
     #endregion
 
-    #region Constructor
+    #region Constructors
     /// <summary>
-    ///     Takes a <see cref="Quartz.Impl.Calendar.AnnualCalendar" /> and wraps it in a json object
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    public AnnualCalendar() { }
+
+    /// <summary>
+    ///     Takes a <see cref="Quartz.Impl.Calendar.AnnualCalendar" /> and wraps it in a json object.
     /// </summary>
     /// <param name="annualCalendar"><see cref="Quartz.Impl.Calendar.AnnualCalendar" /></param>
     public AnnualCalendar(Quartz.Impl.Calendar.AnnualCalendar annualCalendar) : base(annualCalendar)

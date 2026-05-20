@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using Quartz;
 using Quartz.Spi;
@@ -45,7 +46,7 @@ namespace QuartzRestApi;
 ///    operations such as checking the status of job and trigger groups, retrieving scheduler metadata, and managing jobs and triggers.
 /// </summary>
 [ApiController]
-public class SchedulerController : ControllerBase
+public class SchedulerController : ControllerBase, IAsyncActionFilter
 {
     #region Fields
     /// <summary>
@@ -71,6 +72,23 @@ public class SchedulerController : ControllerBase
     {
         _scheduler = scheduler;
         _logger = logger;
+    }
+    #endregion
+
+    #region OnActionExecutionAsync
+    /// <summary>
+    ///     Intercepts every action on this controller and logs any unhandled exception to <see cref="_logger" />.
+    /// </summary>
+    [NonAction]
+    public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+    {
+        var executedContext = await next();
+
+        if (executedContext.Exception != null && !executedContext.ExceptionHandled)
+            _logger?.LogError(
+                executedContext.Exception,
+                "An unhandled exception occurred while executing route '{Route}'",
+                context.ActionDescriptor.DisplayName);
     }
     #endregion
 
@@ -762,16 +780,15 @@ public class SchedulerController : ControllerBase
     /// </summary>
     [HttpPost]
     [Route("Scheduler/PauseJob")]
-    public Task PauseJob([FromBody] string json)
+    public async Task PauseJob([FromBody] string json)
     {
         _logger?.LogInformation("Received request to pause a job that matches the given job key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var result = _scheduler.PauseJob(jobKey.ToJobKey());
+        await _scheduler.PauseJob(jobKey.ToJobKey());
 
         _logger?.LogInformation("Job paused");
-        return result;
     }
     #endregion
 

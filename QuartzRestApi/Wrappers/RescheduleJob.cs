@@ -39,13 +39,13 @@ public class RescheduleJob
     ///     The current trigger key
     /// </summary>
     [JsonPropertyName("CurrentTriggerKey")]
-    public TriggerKey CurrentTriggerKey { get; private set; }
+    public TriggerKey CurrentTriggerKey { get; init; }
 
     /// <summary>
     ///     The new trigger
     /// </summary>
     [JsonPropertyName("NewTrigger")]
-    public Trigger Trigger { get; private set; }
+    public Trigger Trigger { get; init; }
     #endregion
 
     #region Constructor

@@ -38,6 +38,11 @@ public class JobExecutionContexts : List<JobExecutionContext>
 {
     #region Constructor
     /// <summary>
+    ///     Parameterless constructor
+    /// </summary>
+    public JobExecutionContexts() { }
+
+    /// <summary>
     ///     Makes this object and sets it's needed properties
     /// </summary>
     /// <param name="jobExecutionContexts">
@@ -71,7 +76,11 @@ public class JobExecutionContexts : List<JobExecutionContext>
     /// </returns>
     public static JobExecutionContexts FromJsonString(string json)
     {
-        return JsonSerializer.Deserialize<JobExecutionContexts>(json);
+        var list = JsonSerializer.Deserialize<List<JobExecutionContext>>(json);
+        var result = new JobExecutionContexts();
+        if (list != null)
+            result.AddRange(list);
+        return result;
     }
     #endregion
 }
