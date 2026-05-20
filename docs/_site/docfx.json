@@ -1,0 +1,57 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "**/*.csproj" ],
+          "src": "../QuartzRestApi",
+          "exclude": [ "**/obj/**", "**/bin/**" ]
+        }
+      ],
+      "dest": "api",
+      "includePrivateMembers": false,
+      "disableGitFeatures": true,
+      "disableDefaultFilter": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [ "api/**.yml", "api/index.md" ]
+      },
+      {
+        "files": [ "*.md", "toc.yml" ],
+        "src": ".",
+        "dest": "."
+      }
+    ],
+    "resource": [
+      {
+        "files": [ "images/**" ]
+      },
+      {
+        "files": [ "*.html", "*.json" ],
+        "src": ".",
+        "dest": "."
+      }
+    ],
+    "output": "_site",
+    "globalMetadata": {
+      "_appName": "QuartzRestApi",
+      "_appTitle": "QuartzRestApi",
+      "_appLogoPath": "images/logo.png",
+      "_appLogoUrl": "https://github.com/Sicos1977/QuartzRestApi",
+      "_appFaviconPath": "images/favicon.png",
+      "_enableSearch": true,
+      "_appFooter": "Copyright &copy; 2022 - 2026 Magic-Sessions. All rights reserved.",
+      "_gitContribute": {
+        "repo": "https://github.com/Sicos1977/QuartzRestApi",
+        "branch": "main"
+      }
+    },
+    "template": [ "default", "modern", "templates/custom" ],
+    "sitemap": {
+      "baseUrl": "https://sicos1977.github.io/QuartzRestApi"
+    }
+  }
+}

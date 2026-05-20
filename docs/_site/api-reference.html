@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REST API Reference – QuartzRestApi</title>
+  <style>
+    /* Make Scalar fill the full viewport inside the DocFX chrome */
+    body { margin: 0; padding: 0; }
+    #scalar-container { height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="scalar-container"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+  <script>
+    Scalar.createApiReference('#scalar-container', {
+      url: 'openapi.json',
+      theme: 'default',
+      layout: 'modern',
+      defaultHttpClient: {
+        targetKey: 'csharp',
+        clientKey: 'httpclient'
+      }
+    });
+  </script>
+</body>
+</html>

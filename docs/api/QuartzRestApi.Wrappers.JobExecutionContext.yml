@@ -1,0 +1,1149 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Wrappers.JobExecutionContext
+  commentId: T:QuartzRestApi.Wrappers.JobExecutionContext
+  id: JobExecutionContext
+  parent: QuartzRestApi.Wrappers
+  children:
+  - QuartzRestApi.Wrappers.JobExecutionContext.#ctor(Quartz.IJobExecutionContext)
+  - QuartzRestApi.Wrappers.JobExecutionContext.Calendar
+  - QuartzRestApi.Wrappers.JobExecutionContext.FireInstanceId
+  - QuartzRestApi.Wrappers.JobExecutionContext.FireTimeUtc
+  - QuartzRestApi.Wrappers.JobExecutionContext.JobDetail
+  - QuartzRestApi.Wrappers.JobExecutionContext.JobInstance
+  - QuartzRestApi.Wrappers.JobExecutionContext.JobRunTime
+  - QuartzRestApi.Wrappers.JobExecutionContext.MergedJobDataMap
+  - QuartzRestApi.Wrappers.JobExecutionContext.NextFireTimeUtc
+  - QuartzRestApi.Wrappers.JobExecutionContext.PreviousFireTimeUtc
+  - QuartzRestApi.Wrappers.JobExecutionContext.Recovering
+  - QuartzRestApi.Wrappers.JobExecutionContext.RecoveringTriggerKey
+  - QuartzRestApi.Wrappers.JobExecutionContext.RefireCount
+  - QuartzRestApi.Wrappers.JobExecutionContext.ScheduledFireTimeUtc
+  - QuartzRestApi.Wrappers.JobExecutionContext.Scheduler
+  - QuartzRestApi.Wrappers.JobExecutionContext.Trigger
+  langs:
+  - csharp
+  - vb
+  name: JobExecutionContext
+  nameWithType: JobExecutionContext
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext
+  type: Class
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Json wrapper for the Quartz <xref href="Quartz.IJobExecutionContext" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public class JobExecutionContext
+    content.vb: Public Class JobExecutionContext
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.#ctor(Quartz.IJobExecutionContext)
+  commentId: M:QuartzRestApi.Wrappers.JobExecutionContext.#ctor(Quartz.IJobExecutionContext)
+  id: '#ctor(Quartz.IJobExecutionContext)'
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: JobExecutionContext(IJobExecutionContext)
+  nameWithType: JobExecutionContext.JobExecutionContext(IJobExecutionContext)
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.JobExecutionContext(Quartz.IJobExecutionContext)
+  type: Constructor
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Json wrapper for the Quartz <xref href="Quartz.IJobExecutionContext" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public JobExecutionContext(IJobExecutionContext jobExecutionContext)
+    parameters:
+    - id: jobExecutionContext
+      type: Quartz.IJobExecutionContext
+    content.vb: Public Sub New(jobExecutionContext As IJobExecutionContext)
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.#ctor*
+  nameWithType.vb: JobExecutionContext.New(IJobExecutionContext)
+  fullName.vb: QuartzRestApi.Wrappers.JobExecutionContext.New(Quartz.IJobExecutionContext)
+  name.vb: New(IJobExecutionContext)
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.Scheduler
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.Scheduler
+  id: Scheduler
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: Scheduler
+  nameWithType: JobExecutionContext.Scheduler
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.Scheduler
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: >-
+    Get a handle to the <xref href="Quartz.IScheduler" data-throw-if-not-resolved="false"></xref> instance that fired the
+
+    <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Scheduler")]
+
+      public IScheduler Scheduler { get; }
+    parameters: []
+    return:
+      type: Quartz.IScheduler
+    content.vb: >-
+      <JsonPropertyName("Scheduler")>
+
+      Public Property Scheduler As IScheduler
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.Scheduler*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Scheduler
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.Trigger
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.Trigger
+  id: Trigger
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: Trigger
+  nameWithType: JobExecutionContext.Trigger
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.Trigger
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: >-
+    Get a handle to the <xref href="Quartz.ITrigger" data-throw-if-not-resolved="false"></xref> instance that fired the
+
+    <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Trigger")]
+
+      public Trigger Trigger { get; }
+    parameters: []
+    return:
+      type: QuartzRestApi.Wrappers.Trigger
+    content.vb: >-
+      <JsonPropertyName("Trigger")>
+
+      Public Property Trigger As Trigger
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.Trigger*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Trigger
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.Calendar
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.Calendar
+  id: Calendar
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: Calendar
+  nameWithType: JobExecutionContext.Calendar
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.Calendar
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: >-
+    Get a handle to the <xref href="Quartz.ICalendar" data-throw-if-not-resolved="false"></xref> referenced by the <xref href="Quartz.ITrigger" data-throw-if-not-resolved="false"></xref>
+
+    instance that fired the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Calender")]
+
+      public ICalendar Calendar { get; }
+    parameters: []
+    return:
+      type: Quartz.ICalendar
+    content.vb: >-
+      <JsonPropertyName("Calender")>
+
+      Public Property Calendar As ICalendar
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.Calendar*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Calender
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.Recovering
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.Recovering
+  id: Recovering
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: Recovering
+  nameWithType: JobExecutionContext.Recovering
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.Recovering
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: >-
+    If the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> is being re-executed because of a 'recovery'
+
+    situation, this method will return <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Recovering")]
+
+      public bool Recovering { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("Recovering")>
+
+      Public Property Recovering As Boolean
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.Recovering*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Recovering
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.RecoveringTriggerKey
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.RecoveringTriggerKey
+  id: RecoveringTriggerKey
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: RecoveringTriggerKey
+  nameWithType: JobExecutionContext.RecoveringTriggerKey
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.RecoveringTriggerKey
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns the <xref href="QuartzRestApi.Wrappers.TriggerKeys" data-throw-if-not-resolved="false"></xref> of the originally scheduled and now recovering job.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("RecoveringTriggerKey")]
+
+      public TriggerKey RecoveringTriggerKey { get; }
+    parameters: []
+    return:
+      type: Quartz.TriggerKey
+    content.vb: >-
+      <JsonPropertyName("RecoveringTriggerKey")>
+
+      Public Property RecoveringTriggerKey As TriggerKey
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.RecoveringTriggerKey*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: RecoveringTriggerKey
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.RefireCount
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.RefireCount
+  id: RefireCount
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: RefireCount
+  nameWithType: JobExecutionContext.RefireCount
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.RefireCount
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Gets the refire count.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("RefireCount")]
+
+      public int RefireCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <JsonPropertyName("RefireCount")>
+
+      Public Property RefireCount As Integer
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.RefireCount*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: RefireCount
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.MergedJobDataMap
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.MergedJobDataMap
+  id: MergedJobDataMap
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: MergedJobDataMap
+  nameWithType: JobExecutionContext.MergedJobDataMap
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.MergedJobDataMap
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Get the convenience <xref href="Quartz.JobDataMap" data-throw-if-not-resolved="false"></xref> of this execution context.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("MergedJobDataMap")]
+
+      public JobDataMap MergedJobDataMap { get; }
+    parameters: []
+    return:
+      type: Quartz.JobDataMap
+    content.vb: >-
+      <JsonPropertyName("MergedJobDataMap")>
+
+      Public Property MergedJobDataMap As JobDataMap
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.MergedJobDataMap*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: MergedJobDataMap
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.JobDetail
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.JobDetail
+  id: JobDetail
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: JobDetail
+  nameWithType: JobExecutionContext.JobDetail
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.JobDetail
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Get the <xref href="QuartzRestApi.Wrappers.JobExecutionContext.JobDetail" data-throw-if-not-resolved="false"></xref> associated with the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("JobDetail")]
+
+      public JobDetail JobDetail { get; }
+    parameters: []
+    return:
+      type: QuartzRestApi.Wrappers.JobDetail
+    content.vb: >-
+      <JsonPropertyName("JobDetail")>
+
+      Public Property JobDetail As JobDetail
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.JobDetail*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: JobDetail
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.JobInstance
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.JobInstance
+  id: JobInstance
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: JobInstance
+  nameWithType: JobExecutionContext.JobInstance
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.JobInstance
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Get the instance of the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> that was created for this execution.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("JobInstance")]
+
+      public string JobInstance { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("JobInstance")>
+
+      Public Property JobInstance As String
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.JobInstance*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: JobInstance
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.FireTimeUtc
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.FireTimeUtc
+  id: FireTimeUtc
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: FireTimeUtc
+  nameWithType: JobExecutionContext.FireTimeUtc
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.FireTimeUtc
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: The actual time the trigger fired.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("FireTimeUtc")]
+
+      public DateTimeOffset FireTimeUtc { get; }
+    parameters: []
+    return:
+      type: System.DateTimeOffset
+    content.vb: >-
+      <JsonPropertyName("FireTimeUtc")>
+
+      Public Property FireTimeUtc As DateTimeOffset
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.FireTimeUtc*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: FireTimeUtc
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.ScheduledFireTimeUtc
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.ScheduledFireTimeUtc
+  id: ScheduledFireTimeUtc
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: ScheduledFireTimeUtc
+  nameWithType: JobExecutionContext.ScheduledFireTimeUtc
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.ScheduledFireTimeUtc
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: The scheduled time the trigger fired for.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("ScheduledFireTimeUtc")]
+
+      public DateTimeOffset? ScheduledFireTimeUtc { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: >-
+      <JsonPropertyName("ScheduledFireTimeUtc")>
+
+      Public Property ScheduledFireTimeUtc As DateTimeOffset?
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.ScheduledFireTimeUtc*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: ScheduledFireTimeUtc
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.PreviousFireTimeUtc
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.PreviousFireTimeUtc
+  id: PreviousFireTimeUtc
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: PreviousFireTimeUtc
+  nameWithType: JobExecutionContext.PreviousFireTimeUtc
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.PreviousFireTimeUtc
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Gets the previous fire time.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("PreviousFireTimeUtc")]
+
+      public DateTimeOffset? PreviousFireTimeUtc { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: >-
+      <JsonPropertyName("PreviousFireTimeUtc")>
+
+      Public Property PreviousFireTimeUtc As DateTimeOffset?
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.PreviousFireTimeUtc*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: PreviousFireTimeUtc
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.NextFireTimeUtc
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.NextFireTimeUtc
+  id: NextFireTimeUtc
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: NextFireTimeUtc
+  nameWithType: JobExecutionContext.NextFireTimeUtc
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.NextFireTimeUtc
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Gets the next fire time.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("NextFireTimeUtc")]
+
+      public DateTimeOffset? NextFireTimeUtc { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.DateTimeOffset}
+    content.vb: >-
+      <JsonPropertyName("NextFireTimeUtc")>
+
+      Public Property NextFireTimeUtc As DateTimeOffset?
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.NextFireTimeUtc*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: NextFireTimeUtc
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.FireInstanceId
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.FireInstanceId
+  id: FireInstanceId
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: FireInstanceId
+  nameWithType: JobExecutionContext.FireInstanceId
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.FireInstanceId
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Get the unique id that identifies this particular firing instance of the trigger.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("FireInstanceId")]
+
+      public string FireInstanceId { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("FireInstanceId")>
+
+      Public Property FireInstanceId As String
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.FireInstanceId*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: FireInstanceId
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.JobRunTime
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.JobRunTime
+  id: JobRunTime
+  parent: QuartzRestApi.Wrappers.JobExecutionContext
+  langs:
+  - csharp
+  - vb
+  name: JobRunTime
+  nameWithType: JobExecutionContext.JobRunTime
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.JobRunTime
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: The amount of time the job ran for.
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("JobRunTime")]
+
+      public TimeSpan JobRunTime { get; }
+    parameters: []
+    return:
+      type: System.TimeSpan
+    content.vb: >-
+      <JsonPropertyName("JobRunTime")>
+
+      Public Property JobRunTime As TimeSpan
+  overload: QuartzRestApi.Wrappers.JobExecutionContext.JobRunTime*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: JobRunTime
+references:
+- uid: Quartz.IJobExecutionContext
+  commentId: T:Quartz.IJobExecutionContext
+  parent: Quartz
+  isExternal: true
+  name: IJobExecutionContext
+  nameWithType: IJobExecutionContext
+  fullName: Quartz.IJobExecutionContext
+- uid: QuartzRestApi.Wrappers
+  commentId: N:QuartzRestApi.Wrappers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers
+  nameWithType: QuartzRestApi.Wrappers
+  fullName: QuartzRestApi.Wrappers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Quartz
+  commentId: N:Quartz
+  isExternal: true
+  name: Quartz
+  nameWithType: Quartz
+  fullName: Quartz
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.#ctor*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.#ctor
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext__ctor_Quartz_IJobExecutionContext_
+  name: JobExecutionContext
+  nameWithType: JobExecutionContext.JobExecutionContext
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.JobExecutionContext
+  nameWithType.vb: JobExecutionContext.New
+  fullName.vb: QuartzRestApi.Wrappers.JobExecutionContext.New
+  name.vb: New
+- uid: Quartz.IScheduler
+  commentId: T:Quartz.IScheduler
+  parent: Quartz
+  isExternal: true
+  name: IScheduler
+  nameWithType: IScheduler
+  fullName: Quartz.IScheduler
+- uid: Quartz.IJob
+  commentId: T:Quartz.IJob
+  parent: Quartz
+  isExternal: true
+  name: IJob
+  nameWithType: IJob
+  fullName: Quartz.IJob
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.Scheduler*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.Scheduler
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_Scheduler
+  name: Scheduler
+  nameWithType: JobExecutionContext.Scheduler
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.Scheduler
+- uid: Quartz.ITrigger
+  commentId: T:Quartz.ITrigger
+  parent: Quartz
+  isExternal: true
+  name: ITrigger
+  nameWithType: ITrigger
+  fullName: Quartz.ITrigger
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.Trigger*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.Trigger
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_Trigger
+  name: Trigger
+  nameWithType: JobExecutionContext.Trigger
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.Trigger
+- uid: QuartzRestApi.Wrappers.Trigger
+  commentId: T:QuartzRestApi.Wrappers.Trigger
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.Trigger.html
+  name: Trigger
+  nameWithType: Trigger
+  fullName: QuartzRestApi.Wrappers.Trigger
+- uid: Quartz.ICalendar
+  commentId: T:Quartz.ICalendar
+  parent: Quartz
+  isExternal: true
+  name: ICalendar
+  nameWithType: ICalendar
+  fullName: Quartz.ICalendar
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.Calendar*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.Calendar
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_Calendar
+  name: Calendar
+  nameWithType: JobExecutionContext.Calendar
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.Calendar
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.Recovering*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.Recovering
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_Recovering
+  name: Recovering
+  nameWithType: JobExecutionContext.Recovering
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.Recovering
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: QuartzRestApi.Wrappers.TriggerKeys
+  commentId: T:QuartzRestApi.Wrappers.TriggerKeys
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.TriggerKeys.html
+  name: TriggerKeys
+  nameWithType: TriggerKeys
+  fullName: QuartzRestApi.Wrappers.TriggerKeys
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.RecoveringTriggerKey*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.RecoveringTriggerKey
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_RecoveringTriggerKey
+  name: RecoveringTriggerKey
+  nameWithType: JobExecutionContext.RecoveringTriggerKey
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.RecoveringTriggerKey
+- uid: Quartz.TriggerKey
+  commentId: T:Quartz.TriggerKey
+  parent: Quartz
+  isExternal: true
+  name: TriggerKey
+  nameWithType: TriggerKey
+  fullName: Quartz.TriggerKey
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.RefireCount*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.RefireCount
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_RefireCount
+  name: RefireCount
+  nameWithType: JobExecutionContext.RefireCount
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.RefireCount
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: Quartz.JobDataMap
+  commentId: T:Quartz.JobDataMap
+  parent: Quartz
+  isExternal: true
+  name: JobDataMap
+  nameWithType: JobDataMap
+  fullName: Quartz.JobDataMap
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.MergedJobDataMap*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.MergedJobDataMap
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_MergedJobDataMap
+  name: MergedJobDataMap
+  nameWithType: JobExecutionContext.MergedJobDataMap
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.MergedJobDataMap
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.JobDetail
+  commentId: P:QuartzRestApi.Wrappers.JobExecutionContext.JobDetail
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_JobDetail
+  name: JobDetail
+  nameWithType: JobExecutionContext.JobDetail
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.JobDetail
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.JobDetail*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.JobDetail
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_JobDetail
+  name: JobDetail
+  nameWithType: JobExecutionContext.JobDetail
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.JobDetail
+- uid: QuartzRestApi.Wrappers.JobDetail
+  commentId: T:QuartzRestApi.Wrappers.JobDetail
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetail.html
+  name: JobDetail
+  nameWithType: JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetail
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.JobInstance*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.JobInstance
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_JobInstance
+  name: JobInstance
+  nameWithType: JobExecutionContext.JobInstance
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.JobInstance
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.FireTimeUtc*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.FireTimeUtc
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_FireTimeUtc
+  name: FireTimeUtc
+  nameWithType: JobExecutionContext.FireTimeUtc
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.FireTimeUtc
+- uid: System.DateTimeOffset
+  commentId: T:System.DateTimeOffset
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset
+  nameWithType: DateTimeOffset
+  fullName: System.DateTimeOffset
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.ScheduledFireTimeUtc*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.ScheduledFireTimeUtc
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_ScheduledFireTimeUtc
+  name: ScheduledFireTimeUtc
+  nameWithType: JobExecutionContext.ScheduledFireTimeUtc
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.ScheduledFireTimeUtc
+- uid: System.Nullable{System.DateTimeOffset}
+  commentId: T:System.Nullable{System.DateTimeOffset}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  name: DateTimeOffset?
+  nameWithType: DateTimeOffset?
+  fullName: System.DateTimeOffset?
+  spec.csharp:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  spec.vb:
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.PreviousFireTimeUtc*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.PreviousFireTimeUtc
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_PreviousFireTimeUtc
+  name: PreviousFireTimeUtc
+  nameWithType: JobExecutionContext.PreviousFireTimeUtc
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.PreviousFireTimeUtc
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.NextFireTimeUtc*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.NextFireTimeUtc
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_NextFireTimeUtc
+  name: NextFireTimeUtc
+  nameWithType: JobExecutionContext.NextFireTimeUtc
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.NextFireTimeUtc
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.FireInstanceId*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.FireInstanceId
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_FireInstanceId
+  name: FireInstanceId
+  nameWithType: JobExecutionContext.FireInstanceId
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.FireInstanceId
+- uid: QuartzRestApi.Wrappers.JobExecutionContext.JobRunTime*
+  commentId: Overload:QuartzRestApi.Wrappers.JobExecutionContext.JobRunTime
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html#QuartzRestApi_Wrappers_JobExecutionContext_JobRunTime
+  name: JobRunTime
+  nameWithType: JobExecutionContext.JobRunTime
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext.JobRunTime
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan

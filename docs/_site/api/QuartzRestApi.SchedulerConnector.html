@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SchedulerConnector | QuartzRestApi </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SchedulerConnector | QuartzRestApi ">
+      
+      <meta name="description" content="Connects to the">
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://github.com/Sicos1977/QuartzRestApi">
+            <img id="logo" class="svg" src="../images/logo.png" alt="QuartzRestApi">
+            QuartzRestApi
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+          <a class="btn btn-sm ms-2" href="https://github.com/Sicos1977/QuartzRestApi" title="View on GitHub" target="_blank" rel="noopener noreferrer" style="color: inherit;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="QuartzRestApi.SchedulerConnector">
+
+
+
+  <h1 id="QuartzRestApi_SchedulerConnector" data-uid="QuartzRestApi.SchedulerConnector" class="text-break">
+Class SchedulerConnector  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="QuartzRestApi.html">QuartzRestApi</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>QuartzRestApi.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Connects to the <a class="xref" href="QuartzRestApi.SchedulerHost.html">SchedulerHost</a></p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class SchedulerConnector</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">SchedulerConnector</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="QuartzRestApi_SchedulerConnector__ctor_" data-uid="QuartzRestApi.SchedulerConnector.#ctor*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector__ctor_System_String_System_String_" data-uid="QuartzRestApi.SchedulerConnector.#ctor(System.String,System.String)">
+  SchedulerConnector(string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Create a new instance of the <a class="xref" href="QuartzRestApi.SchedulerConnector.html">SchedulerConnector</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SchedulerConnector(string schedulerHostAddress, string apiKey = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>schedulerHostAddress</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The host address of the scheduler</p>
+</dd>
+    <dt><code>apiKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Optional API key. When supplied it is sent as the <code>X-Api-Key</code> header on
+every request. Must match the key configured on the <a class="xref" href="QuartzRestApi.SchedulerHost.html">SchedulerHost</a>.
+Pass <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> or an empty string when the host has no key configured.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="QuartzRestApi_SchedulerConnector_AddCalendar_" data-uid="QuartzRestApi.SchedulerConnector.AddCalendar*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_AddCalendar_QuartzRestApi_Wrappers_Calendars_BaseCalendar_" data-uid="QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)">
+  AddCalendar(BaseCalendar)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a calendar to the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AddCalendar(BaseCalendar calendar)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>calendar</code> <a class="xref" href="QuartzRestApi.Wrappers.Calendars.BaseCalendar.html">BaseCalendar</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_AddJob_" data-uid="QuartzRestApi.SchedulerConnector.AddJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_AddJob_QuartzRestApi_Wrappers_JobDetail_" data-uid="QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)">
+  AddJob(JobDetail)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a job with no associated trigger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AddJob(JobDetail jobDetail)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobDetail</code> <a class="xref" href="QuartzRestApi.Wrappers.JobDetail.html">JobDetail</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_CheckExists_" data-uid="QuartzRestApi.SchedulerConnector.CheckExists*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_JobKey_" data-uid="QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)">
+  CheckExists(JobKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if a job with the given key exists</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; CheckExists(JobKey jobKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKey</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_CheckExists_" data-uid="QuartzRestApi.SchedulerConnector.CheckExists*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_TriggerKey_" data-uid="QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)">
+  CheckExists(TriggerKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if a trigger with the given key exists</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; CheckExists(TriggerKey triggerKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>triggerKey</code> <a class="xref" href="QuartzRestApi.Wrappers.TriggerKey.html">TriggerKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_Clear_" data-uid="QuartzRestApi.SchedulerConnector.Clear*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_Clear" data-uid="QuartzRestApi.SchedulerConnector.Clear">
+  Clear()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clears all scheduling data — all jobs, triggers and calendars</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Clear()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_Context_" data-uid="QuartzRestApi.SchedulerConnector.Context*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_Context" data-uid="QuartzRestApi.SchedulerConnector.Context">
+  Context()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the <a class="xref" href="QuartzRestApi.Wrappers.SchedulerContext.html">SchedulerContext</a> of the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;SchedulerContext&gt; Context()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="QuartzRestApi.Wrappers.SchedulerContext.html">SchedulerContext</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_DeleteCalendar_" data-uid="QuartzRestApi.SchedulerConnector.DeleteCalendar*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_DeleteCalendar_System_String_" data-uid="QuartzRestApi.SchedulerConnector.DeleteCalendar(System.String)">
+  DeleteCalendar(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes the calendar with the given name. Returns <code>true</code> when deleted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; DeleteCalendar(string calendarName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>calendarName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_DeleteJob_" data-uid="QuartzRestApi.SchedulerConnector.DeleteJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_DeleteJob_QuartzRestApi_Wrappers_JobKey_" data-uid="QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)">
+  DeleteJob(JobKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes the job with the given key and all associated triggers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; DeleteJob(JobKey jobKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKey</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_DeleteJobs_" data-uid="QuartzRestApi.SchedulerConnector.DeleteJobs*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_DeleteJobs_QuartzRestApi_Wrappers_JobKeys_" data-uid="QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)">
+  DeleteJobs(JobKeys)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes all jobs with the given keys and their associated triggers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; DeleteJobs(JobKeys jobKeys)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKeys</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKeys.html">JobKeys</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetCalendar_" data-uid="QuartzRestApi.SchedulerConnector.GetCalendar*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetCalendar_System_String_" data-uid="QuartzRestApi.SchedulerConnector.GetCalendar(System.String)">
+  GetCalendar(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the calendar with the given name as a JSON string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetCalendar(string calendarName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>calendarName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetCalendarNames_" data-uid="QuartzRestApi.SchedulerConnector.GetCalendarNames*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetCalendarNames" data-uid="QuartzRestApi.SchedulerConnector.GetCalendarNames">
+  GetCalendarNames()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the names of all registered calendars</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IReadOnlyCollection&lt;string&gt;&gt; GetCalendarNames()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetCurrentlyExecutingJobs_" data-uid="QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetCurrentlyExecutingJobs" data-uid="QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs">
+  GetCurrentlyExecutingJobs()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the list of currently executing jobs</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;JobExecutionContexts&gt; GetCurrentlyExecutingJobs()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="QuartzRestApi.Wrappers.JobExecutionContexts.html">JobExecutionContexts</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetJobDetail_" data-uid="QuartzRestApi.SchedulerConnector.GetJobDetail*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetJobDetail_QuartzRestApi_Wrappers_JobKey_" data-uid="QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)">
+  GetJobDetail(JobKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the job detail for the given job key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;JobDetail&gt; GetJobDetail(JobKey jobKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKey</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="QuartzRestApi.Wrappers.JobDetail.html">JobDetail</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetJobGroupNames_" data-uid="QuartzRestApi.SchedulerConnector.GetJobGroupNames*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetJobGroupNames" data-uid="QuartzRestApi.SchedulerConnector.GetJobGroupNames">
+  GetJobGroupNames()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the names of all known job groups</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IReadOnlyCollection&lt;string&gt;&gt; GetJobGroupNames()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetJobKeys_" data-uid="QuartzRestApi.SchedulerConnector.GetJobKeys*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetJobKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__" data-uid="QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})">
+  GetJobKeys(GroupMatcher&lt;JobKey&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns all job keys matching the given group matcher</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;JobKeys&gt; GetJobKeys(GroupMatcher&lt;JobKey&gt; groupMatcher)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupMatcher</code> <a class="xref" href="QuartzRestApi.Wrappers.GroupMatcher-1.html">GroupMatcher</a>&lt;<span class="xref">JobKey</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="QuartzRestApi.Wrappers.JobKeys.html">JobKeys</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetMetaData_" data-uid="QuartzRestApi.SchedulerConnector.GetMetaData*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetMetaData" data-uid="QuartzRestApi.SchedulerConnector.GetMetaData">
+  GetMetaData()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns a <a class="xref" href="QuartzRestApi.Wrappers.SchedulerMetaData.html">SchedulerMetaData</a> object describing the settings and capabilities of the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;SchedulerMetaData&gt; GetMetaData()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="QuartzRestApi.Wrappers.SchedulerMetaData.html">SchedulerMetaData</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetPausedTriggerGroups_" data-uid="QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetPausedTriggerGroups" data-uid="QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups">
+  GetPausedTriggerGroups()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the names of all paused trigger groups</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IReadOnlyCollection&lt;string&gt;&gt; GetPausedTriggerGroups()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetTrigger_" data-uid="QuartzRestApi.SchedulerConnector.GetTrigger*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetTrigger_QuartzRestApi_Wrappers_TriggerKey_" data-uid="QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)">
+  GetTrigger(TriggerKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the trigger for the given trigger key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Trigger&gt; GetTrigger(TriggerKey triggerKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>triggerKey</code> <a class="xref" href="QuartzRestApi.Wrappers.TriggerKey.html">TriggerKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="QuartzRestApi.Wrappers.Trigger.html">Trigger</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetTriggerGroupNames_" data-uid="QuartzRestApi.SchedulerConnector.GetTriggerGroupNames*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetTriggerGroupNames" data-uid="QuartzRestApi.SchedulerConnector.GetTriggerGroupNames">
+  GetTriggerGroupNames()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the names of all known trigger groups</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IReadOnlyCollection&lt;string&gt;&gt; GetTriggerGroupNames()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetTriggerKeys_" data-uid="QuartzRestApi.SchedulerConnector.GetTriggerKeys*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetTriggerKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__" data-uid="QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})">
+  GetTriggerKeys(GroupMatcher&lt;TriggerKey&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns all trigger keys matching the given group matcher</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;TriggerKeys&gt; GetTriggerKeys(GroupMatcher&lt;TriggerKey&gt; groupMatcher)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupMatcher</code> <a class="xref" href="QuartzRestApi.Wrappers.GroupMatcher-1.html">GroupMatcher</a>&lt;<span class="xref">TriggerKey</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="QuartzRestApi.Wrappers.TriggerKeys.html">TriggerKeys</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetTriggerState_" data-uid="QuartzRestApi.SchedulerConnector.GetTriggerState*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetTriggerState_QuartzRestApi_Wrappers_TriggerKey_" data-uid="QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)">
+  GetTriggerState(TriggerKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the current state of the given trigger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; GetTriggerState(TriggerKey triggerKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>triggerKey</code> <a class="xref" href="QuartzRestApi.Wrappers.TriggerKey.html">TriggerKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_GetTriggersOfJob_" data-uid="QuartzRestApi.SchedulerConnector.GetTriggersOfJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_GetTriggersOfJob_QuartzRestApi_Wrappers_JobKey_" data-uid="QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)">
+  GetTriggersOfJob(JobKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns all triggers associated with the given job key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Triggers&gt; GetTriggersOfJob(JobKey jobKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKey</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="QuartzRestApi.Wrappers.Triggers.html">Triggers</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_InStandbyMode_" data-uid="QuartzRestApi.SchedulerConnector.InStandbyMode*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_InStandbyMode" data-uid="QuartzRestApi.SchedulerConnector.InStandbyMode">
+  InStandbyMode()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if the scheduler is in standby mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; InStandbyMode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_InterruptJob_" data-uid="QuartzRestApi.SchedulerConnector.InterruptJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_InterruptJob_QuartzRestApi_Wrappers_JobKey_" data-uid="QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)">
+  InterruptJob(JobKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Requests cancellation of all executing instances of the given job</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; InterruptJob(JobKey jobKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKey</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_InterruptJob_" data-uid="QuartzRestApi.SchedulerConnector.InterruptJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_InterruptJob_System_String_" data-uid="QuartzRestApi.SchedulerConnector.InterruptJob(System.String)">
+  InterruptJob(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Requests cancellation of the executing job instance with the given fire instance id</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; InterruptJob(string fireInstanceId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fireInstanceId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_IsJobGroupPaused_" data-uid="QuartzRestApi.SchedulerConnector.IsJobGroupPaused*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_IsJobGroupPaused_System_String_" data-uid="QuartzRestApi.SchedulerConnector.IsJobGroupPaused(System.String)">
+  IsJobGroupPaused(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if the given JobGroup is paused</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; IsJobGroupPaused(string groupName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_IsShutdown_" data-uid="QuartzRestApi.SchedulerConnector.IsShutdown*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_IsShutdown" data-uid="QuartzRestApi.SchedulerConnector.IsShutdown">
+  IsShutdown()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if the scheduler is shutdown</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; IsShutdown()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_IsStarted_" data-uid="QuartzRestApi.SchedulerConnector.IsStarted*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_IsStarted" data-uid="QuartzRestApi.SchedulerConnector.IsStarted">
+  IsStarted()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if the scheduler has been started</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; IsStarted()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_IsTriggerGroupPaused_" data-uid="QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_IsTriggerGroupPaused_System_String_" data-uid="QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(System.String)">
+  IsTriggerGroupPaused(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if the given TriggerGroup is paused</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; IsTriggerGroupPaused(string groupName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_PauseAllTriggers_" data-uid="QuartzRestApi.SchedulerConnector.PauseAllTriggers*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_PauseAllTriggers" data-uid="QuartzRestApi.SchedulerConnector.PauseAllTriggers">
+  PauseAllTriggers()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pauses all triggers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task PauseAllTriggers()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_PauseJob_" data-uid="QuartzRestApi.SchedulerConnector.PauseJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_PauseJob_QuartzRestApi_Wrappers_JobKey_" data-uid="QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)">
+  PauseJob(JobKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pauses the job with the given key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task PauseJob(JobKey jobKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKey</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_PauseJobs_" data-uid="QuartzRestApi.SchedulerConnector.PauseJobs*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_PauseJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__" data-uid="QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})">
+  PauseJobs(GroupMatcher&lt;JobKey&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pauses all jobs matching the given group matcher</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task PauseJobs(GroupMatcher&lt;JobKey&gt; groupMatcher)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupMatcher</code> <a class="xref" href="QuartzRestApi.Wrappers.GroupMatcher-1.html">GroupMatcher</a>&lt;<span class="xref">JobKey</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_PauseTrigger_" data-uid="QuartzRestApi.SchedulerConnector.PauseTrigger*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_PauseTrigger_QuartzRestApi_Wrappers_TriggerKey_" data-uid="QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)">
+  PauseTrigger(TriggerKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pauses the trigger with the given key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task PauseTrigger(TriggerKey triggerKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>triggerKey</code> <a class="xref" href="QuartzRestApi.Wrappers.TriggerKey.html">TriggerKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_PauseTriggers_" data-uid="QuartzRestApi.SchedulerConnector.PauseTriggers*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_PauseTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__" data-uid="QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})">
+  PauseTriggers(GroupMatcher&lt;TriggerKey&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pauses all triggers matching the given group matcher</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task PauseTriggers(GroupMatcher&lt;TriggerKey&gt; groupMatcher)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupMatcher</code> <a class="xref" href="QuartzRestApi.Wrappers.GroupMatcher-1.html">GroupMatcher</a>&lt;<span class="xref">TriggerKey</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_RescheduleJob_" data-uid="QuartzRestApi.SchedulerConnector.RescheduleJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_RescheduleJob_QuartzRestApi_Wrappers_RescheduleJob_" data-uid="QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)">
+  RescheduleJob(RescheduleJob)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Replaces the current trigger with a new trigger for the same job</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;DateTimeOffset?&gt; RescheduleJob(RescheduleJob rescheduleJob)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>rescheduleJob</code> <a class="xref" href="QuartzRestApi.Wrappers.RescheduleJob.html">RescheduleJob</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ResetTriggerFromErrorState_" data-uid="QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ResetTriggerFromErrorState_QuartzRestApi_Wrappers_TriggerKey_" data-uid="QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)">
+  ResetTriggerFromErrorState(TriggerKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resets the given trigger from error state back to normal or paused</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResetTriggerFromErrorState(TriggerKey triggerKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>triggerKey</code> <a class="xref" href="QuartzRestApi.Wrappers.TriggerKey.html">TriggerKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ResumeAllTriggers_" data-uid="QuartzRestApi.SchedulerConnector.ResumeAllTriggers*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ResumeAllTriggers" data-uid="QuartzRestApi.SchedulerConnector.ResumeAllTriggers">
+  ResumeAllTriggers()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resumes all triggers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResumeAllTriggers()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ResumeJob_" data-uid="QuartzRestApi.SchedulerConnector.ResumeJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ResumeJob_QuartzRestApi_Wrappers_JobKey_" data-uid="QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)">
+  ResumeJob(JobKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resumes the job with the given key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResumeJob(JobKey jobKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKey</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ResumeJobs_" data-uid="QuartzRestApi.SchedulerConnector.ResumeJobs*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ResumeJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__" data-uid="QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})">
+  ResumeJobs(GroupMatcher&lt;JobKey&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resumes all jobs matching the given group matcher</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResumeJobs(GroupMatcher&lt;JobKey&gt; groupMatcher)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupMatcher</code> <a class="xref" href="QuartzRestApi.Wrappers.GroupMatcher-1.html">GroupMatcher</a>&lt;<span class="xref">JobKey</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ResumeTrigger_" data-uid="QuartzRestApi.SchedulerConnector.ResumeTrigger*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ResumeTrigger_QuartzRestApi_Wrappers_TriggerKey_" data-uid="QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)">
+  ResumeTrigger(TriggerKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resumes the trigger with the given key</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResumeTrigger(TriggerKey triggerKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>triggerKey</code> <a class="xref" href="QuartzRestApi.Wrappers.TriggerKey.html">TriggerKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ResumeTriggers_" data-uid="QuartzRestApi.SchedulerConnector.ResumeTriggers*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ResumeTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__" data-uid="QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})">
+  ResumeTriggers(GroupMatcher&lt;TriggerKey&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resumes all triggers matching the given group matcher</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ResumeTriggers(GroupMatcher&lt;TriggerKey&gt; groupMatcher)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupMatcher</code> <a class="xref" href="QuartzRestApi.Wrappers.GroupMatcher-1.html">GroupMatcher</a>&lt;<span class="xref">TriggerKey</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ScheduleJob_" data-uid="QuartzRestApi.SchedulerConnector.ScheduleJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_JobDetailWithTrigger_" data-uid="QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)">
+  ScheduleJob(JobDetailWithTrigger)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schedules a job with a job detail and a single trigger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;DateTimeOffset&gt; ScheduleJob(JobDetailWithTrigger jobDetailWithTrigger)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobDetailWithTrigger</code> <a class="xref" href="QuartzRestApi.Wrappers.JobDetailWithTrigger.html">JobDetailWithTrigger</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ScheduleJob_" data-uid="QuartzRestApi.SchedulerConnector.ScheduleJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_Trigger_" data-uid="QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)">
+  ScheduleJob(Trigger)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schedules the trigger with the job identified by the trigger</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;DateTimeOffset&gt; ScheduleJob(Trigger trigger)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trigger</code> <a class="xref" href="QuartzRestApi.Wrappers.Trigger.html">Trigger</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ScheduleJobWithTriggers_" data-uid="QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ScheduleJobWithTriggers_QuartzRestApi_Wrappers_JobDetailWithTriggers_" data-uid="QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)">
+  ScheduleJobWithTriggers(JobDetailWithTriggers)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schedules a job with a job detail and multiple triggers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ScheduleJobWithTriggers(JobDetailWithTriggers jobDetailWithTriggers)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobDetailWithTriggers</code> <a class="xref" href="QuartzRestApi.Wrappers.JobDetailWithTriggers.html">JobDetailWithTriggers</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_ScheduleJobs_" data-uid="QuartzRestApi.SchedulerConnector.ScheduleJobs*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_ScheduleJobs_QuartzRestApi_Wrappers_ScheduleJobs_" data-uid="QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)">
+  ScheduleJobs(ScheduleJobs)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schedules multiple jobs, each with their own set of triggers</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ScheduleJobs(ScheduleJobs scheduleJobs)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scheduleJobs</code> <a class="xref" href="QuartzRestApi.Wrappers.ScheduleJobs.html">ScheduleJobs</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_SchedulerInstanceId_" data-uid="QuartzRestApi.SchedulerConnector.SchedulerInstanceId*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_SchedulerInstanceId" data-uid="QuartzRestApi.SchedulerConnector.SchedulerInstanceId">
+  SchedulerInstanceId()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the instance id of the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; SchedulerInstanceId()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_SchedulerName_" data-uid="QuartzRestApi.SchedulerConnector.SchedulerName*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_SchedulerName" data-uid="QuartzRestApi.SchedulerConnector.SchedulerName">
+  SchedulerName()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the name of the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;string&gt; SchedulerName()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_Shutdown_" data-uid="QuartzRestApi.SchedulerConnector.Shutdown*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_Shutdown" data-uid="QuartzRestApi.SchedulerConnector.Shutdown">
+  Shutdown()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Shuts down the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Shutdown()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_Shutdown_" data-uid="QuartzRestApi.SchedulerConnector.Shutdown*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_Shutdown_System_Boolean_" data-uid="QuartzRestApi.SchedulerConnector.Shutdown(System.Boolean)">
+  Shutdown(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Shuts down the scheduler, optionally waiting for running jobs to complete</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Shutdown(bool waitForJobsToComplete)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>waitForJobsToComplete</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_Standby_" data-uid="QuartzRestApi.SchedulerConnector.Standby*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_Standby" data-uid="QuartzRestApi.SchedulerConnector.Standby">
+  Standby()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Puts the scheduler in standby mode</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Standby()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_Start_" data-uid="QuartzRestApi.SchedulerConnector.Start*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_Start" data-uid="QuartzRestApi.SchedulerConnector.Start">
+  Start()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task Start()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_StartDelayed_" data-uid="QuartzRestApi.SchedulerConnector.StartDelayed*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_StartDelayed_System_Int32_" data-uid="QuartzRestApi.SchedulerConnector.StartDelayed(System.Int32)">
+  StartDelayed(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the scheduler after the given delay in seconds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task StartDelayed(int delaySeconds)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>delaySeconds</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_TriggerJob_" data-uid="QuartzRestApi.SchedulerConnector.TriggerJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKey_" data-uid="QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)">
+  TriggerJob(JobKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Triggers the identified job to execute immediately</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task TriggerJob(JobKey jobKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKey</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_TriggerJob_" data-uid="QuartzRestApi.SchedulerConnector.TriggerJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKeyWithDataMap_" data-uid="QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)">
+  TriggerJob(JobKeyWithDataMap)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Triggers the identified job to execute immediately with a data map</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task TriggerJob(JobKeyWithDataMap jobKeyWithDataMap)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>jobKeyWithDataMap</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKeyWithDataMap.html">JobKeyWithDataMap</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_UnscheduleJob_" data-uid="QuartzRestApi.SchedulerConnector.UnscheduleJob*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_UnscheduleJob_QuartzRestApi_Wrappers_TriggerKey_" data-uid="QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)">
+  UnscheduleJob(TriggerKey)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the trigger with the given key from the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; UnscheduleJob(TriggerKey triggerKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>triggerKey</code> <a class="xref" href="QuartzRestApi.Wrappers.TriggerKey.html">TriggerKey</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_SchedulerConnector_UnscheduleJobs_" data-uid="QuartzRestApi.SchedulerConnector.UnscheduleJobs*"></a>
+
+  <h3 id="QuartzRestApi_SchedulerConnector_UnscheduleJobs_QuartzRestApi_Wrappers_TriggerKeys_" data-uid="QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)">
+  UnscheduleJobs(TriggerKeys)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes all triggers with the given keys from the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; UnscheduleJobs(TriggerKeys triggerKeys)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>triggerKeys</code> <a class="xref" href="QuartzRestApi.Wrappers.TriggerKeys.html">TriggerKeys</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; 2022 - 2026 Magic-Sessions. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

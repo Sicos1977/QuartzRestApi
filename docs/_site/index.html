@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>QuartzRestApi | QuartzRestApi </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="QuartzRestApi | QuartzRestApi ">
+      
+      
+      <link rel="icon" href="images/favicon.png">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Sicos1977/QuartzRestApi/blob/main/docs/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://github.com/Sicos1977/QuartzRestApi">
+            <img id="logo" class="svg" src="images/logo.png" alt="QuartzRestApi">
+            QuartzRestApi
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+          <a class="btn btn-sm ms-2" href="https://github.com/Sicos1977/QuartzRestApi" title="View on GitHub" target="_blank" rel="noopener noreferrer" style="color: inherit;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="quartzrestapi">QuartzRestApi</h1>
+
+<p>A self-hosted REST API library for <a href="https://www.quartz-scheduler.net/">Quartz.NET</a>, built on <strong>.NET 10</strong> with <strong>ASP.NET Core / Kestrel</strong>.</p>
+<p>QuartzRestApi wraps your existing <code>IScheduler</code> instance behind an HTTP endpoint so other processes — on the same machine or across a network — can manage jobs and triggers without needing a direct Quartz.NET reference.</p>
+<p><a href="https://www.nuget.org/packages/QuartzRestApi"><img src="https://img.shields.io/nuget/v/QuartzRestApi.svg?style=flat-square" alt="NuGet"></a></p>
+<hr>
+<h2 id="architecture">Architecture</h2>
+<pre><code class="lang-mermaid">graph TD
+    subgraph App[&quot;Your Application&quot;]
+        HOST[&quot;SchedulerHost\nWraps ASP.NET Core\nKestrel web server&quot;]
+        CLIENT[&quot;SchedulerConnector\nHttpClient-based C# client\nfor the REST API&quot;]
+    end
+
+    subgraph API[&quot;REST API - Kestrel&quot;]
+        AUTH[&quot;ApiKeyMiddleware\nOptional API key\n+ profile-based access control&quot;]
+        CTRL[&quot;SchedulerController\n/Scheduler/...&quot;]
+    end
+
+    subgraph Quartz[&quot;Quartz.NET&quot;]
+        SCHED[&quot;IScheduler\n- Jobs\n- Triggers\n- Calendars&quot;]
+    end
+
+    HOST -- hosts --&gt; AUTH
+    AUTH -- authorized --&gt; CTRL
+    CLIENT -- &quot;HTTP - GET / POST / DELETE\nX-Api-Key header&quot; --&gt; AUTH
+    CTRL -- delegates to --&gt; SCHED
+</code></pre>
+<p><strong>Key components:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SchedulerHost</code></td>
+<td>Starts an ASP.NET Core / Kestrel HTTP server that exposes the Quartz.NET scheduler as a REST API</td>
+</tr>
+<tr>
+<td><code>ApiKeyMiddleware</code></td>
+<td>Optional middleware that validates the <code>X-Api-Key</code> header and enforces per-profile route restrictions</td>
+</tr>
+<tr>
+<td><code>ApiKeyProfile</code></td>
+<td>A named profile that pairs an API key with an optional whitelist of allowed endpoints</td>
+</tr>
+<tr>
+<td><code>SchedulerController</code></td>
+<td>ASP.NET Core controller with all scheduler endpoints under the <code>/Scheduler/</code> route prefix</td>
+</tr>
+<tr>
+<td><code>SchedulerConnector</code></td>
+<td>A typed C# HTTP client that wraps all REST calls so you do not need to craft HTTP requests manually</td>
+</tr>
+<tr>
+<td>Wrappers</td>
+<td>DTO classes (de)serialised to/from JSON for jobs, triggers, calendars, etc.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>.NET 10 or higher</li>
+<li>A configured <a href="https://www.quartz-scheduler.net/">Quartz.NET</a> <code>IScheduler</code></li>
+</ul>
+<hr>
+<h2 id="how-to-host-quartznet-via-the-rest-api">How to host Quartz.NET via the REST API</h2>
+<pre><code class="lang-csharp">// No authentication -- all endpoints publicly accessible
+var host = new SchedulerHost(&quot;http://localhost:44344&quot;, scheduler, logger);
+host.Start();
+</code></pre>
+<ul>
+<li><code>scheduler</code> -- your <code>IScheduler</code> instance from Quartz.NET</li>
+<li><code>logger</code> -- any <code>Microsoft.Extensions.Logging.ILogger</code> (or <code>null</code> to disable logging)</li>
+</ul>
+<p>To stop the host:</p>
+<pre><code class="lang-csharp">host.Stop();
+</code></pre>
+<hr>
+<h2 id="how-to-connect-to-the-host">How to connect to the host</h2>
+<pre><code class="lang-csharp">var connector = new SchedulerConnector(&quot;http://localhost:44344&quot;);
+</code></pre>
+<p>Use the <code>SchedulerConnector</code> methods to call the API from C# without dealing with raw HTTP.</p>
+<hr>
+<h2 id="security-api-key-authentication">Security (API key authentication)</h2>
+<p>Authentication is <strong>opt-in</strong>. When no key or profiles are configured every request passes through without any check.</p>
+<h3 id="single-api-key-full-access">Single API key (full access)</h3>
+<pre><code class="lang-csharp">// Host
+var host = new SchedulerHost(&quot;http://localhost:44344&quot;, scheduler, logger,
+    apiKey: &quot;my-secret-key&quot;);
+
+// Client
+var connector = new SchedulerConnector(&quot;http://localhost:44344&quot;,
+    apiKey: &quot;my-secret-key&quot;);
+</code></pre>
+<p>The key is sent and validated via the <code>X-Api-Key</code> HTTP header.</p>
+<h3 id="multiple-api-keys-with-profiles">Multiple API keys with profiles</h3>
+<p>Each <code>ApiKeyProfile</code> pairs an API key with a set of strongly-typed boolean properties -- one per endpoint.</p>
+<p>Use <code>ApiKeyProfile.AllowAll</code> to start with full access and selectively disable endpoints, or use <code>ApiKeyProfile.DenyAll</code> to start with no access and selectively enable only what is needed.</p>
+<pre><code class="lang-csharp">// Admin profile -- full access to all endpoints
+var admin = ApiKeyProfile.AllowAll(&quot;Admin&quot;, &quot;key-admin-abc123&quot;);
+
+// Read-only profile -- start with nothing allowed, then enable only query endpoints
+var readOnly = ApiKeyProfile.DenyAll(&quot;ReadOnly&quot;, &quot;key-readonly-xyz&quot;);
+readOnly.SchedulerName             = true;
+readOnly.SchedulerInstanceId       = true;
+readOnly.GetMetaData               = true;
+readOnly.GetJobGroupNames          = true;
+readOnly.GetTriggerGroupNames      = true;
+readOnly.GetJobKeys                = true;
+readOnly.GetJobDetail              = true;
+readOnly.GetTrigger                = true;
+readOnly.GetTriggerState           = true;
+readOnly.GetCurrentlyExecutingJobs = true;
+
+// Monitoring profile -- start with full access, then remove mutating endpoints
+var monitoring = ApiKeyProfile.AllowAll(&quot;Monitoring&quot;, &quot;key-mon-def456&quot;);
+monitoring.Start                               = false;
+monitoring.StartDelayed                        = false;
+monitoring.Standby                             = false;
+monitoring.Shutdown                            = false;
+monitoring.Clear                               = false;
+monitoring.ScheduleJobWithJobDetailAndTrigger  = false;
+monitoring.ScheduleJobIdentifiedWithTrigger    = false;
+monitoring.ScheduleJobWithJobDetailAndTriggers = false;
+monitoring.ScheduleJobs                        = false;
+monitoring.RescheduleJob                       = false;
+monitoring.UnscheduleJob                       = false;
+monitoring.UnscheduleJobs                      = false;
+monitoring.AddJob                              = false;
+monitoring.DeleteJob                           = false;
+monitoring.DeleteJobs                          = false;
+monitoring.TriggerJobWithJobkey                = false;
+monitoring.TriggerJobWithDataMap               = false;
+monitoring.PauseJob                            = false;
+monitoring.PauseJobs                           = false;
+monitoring.PauseTrigger                        = false;
+monitoring.PauseTriggers                       = false;
+monitoring.PauseAllTriggers                    = false;
+monitoring.ResumeJob                           = false;
+monitoring.ResumeJobs                          = false;
+monitoring.ResumeTrigger                       = false;
+monitoring.ResumeTriggers                      = false;
+monitoring.ResumeAllTriggers                   = false;
+monitoring.AddCalendar                         = false;
+monitoring.DeleteCalendar                      = false;
+monitoring.ResetTriggerFromErrorState          = false;
+
+var host = new SchedulerHost(&quot;http://localhost:44344&quot;, scheduler, logger,
+    profiles: [admin, readOnly, monitoring]);
+</code></pre>
+<h3 id="persisting-profiles">Persisting profiles</h3>
+<p>Profiles can be saved to and loaded from JSON:</p>
+<pre><code class="lang-csharp">// Save
+File.WriteAllText(&quot;readOnly.json&quot;, readOnly.ToJson());
+
+// Load
+var loaded = ApiKeyProfile.FromJson(File.ReadAllText(&quot;readOnly.json&quot;));
+</code></pre>
+<h3 id="http-responses">HTTP responses</h3>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No profiles configured</td>
+<td>Request passes through (no auth)</td>
+</tr>
+<tr>
+<td><code>X-Api-Key</code> header missing</td>
+<td><code>401 Unauthorized</code></td>
+</tr>
+<tr>
+<td>Key not recognised</td>
+<td><code>401 Unauthorized</code></td>
+</tr>
+<tr>
+<td>Key valid, route allowed</td>
+<td>Request passes through</td>
+</tr>
+<tr>
+<td>Key valid, route not in whitelist</td>
+<td><code>403 Forbidden</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="interactive-api-documentation-scalar--openapi">Interactive API documentation (Scalar / OpenAPI)</h2>
+<p>When the host is running, interactive API documentation is available at:</p>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/openapi/v1.json</code></td>
+<td>Raw OpenAPI 3 document</td>
+</tr>
+<tr>
+<td><code>/scalar/v1</code></td>
+<td><a href="https://scalar.com/">Scalar</a> interactive API reference</td>
+</tr>
+</tbody>
+</table>
+<p>Open <code>http://localhost:44344/scalar/v1</code> in a browser to explore and test all endpoints without writing any code.</p>
+<p>The full hosted API reference is also available on this documentation site: <a href="api-reference.html">REST API Reference</a></p>
+<hr>
+<h2 id="logging">Logging</h2>
+<p>QuartzRestApi uses the <code>Microsoft.Extensions.Logging.ILogger</code> interface. Any compatible logging library works (Serilog, NLog, etc.).</p>
+<p>Log levels used:</p>
+<ul>
+<li><code>Information</code> -- standard results (booleans, names, DateTimeOffsets)</li>
+<li><code>Debug</code> -- full JSON request/response bodies</li>
+<li><code>Warning</code> -- rejected requests (missing or invalid API key, forbidden route)</li>
+</ul>
+<hr>
+<h2 id="license">License</h2>
+<p>QuartzRestApi is Copyright (C) 2022 - 2026 Magic-Sessions and is licensed under the <a href="https://opensource.org/licenses/MIT">MIT license</a>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Sicos1977/QuartzRestApi/blob/main/docs/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; 2022 - 2026 Magic-Sessions. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

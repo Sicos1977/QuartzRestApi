@@ -1,0 +1,2879 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.SchedulerConnector
+  commentId: T:QuartzRestApi.SchedulerConnector
+  id: SchedulerConnector
+  parent: QuartzRestApi
+  children:
+  - QuartzRestApi.SchedulerConnector.#ctor(System.String,System.String)
+  - QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+  - QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)
+  - QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)
+  - QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+  - QuartzRestApi.SchedulerConnector.Clear
+  - QuartzRestApi.SchedulerConnector.Context
+  - QuartzRestApi.SchedulerConnector.DeleteCalendar(System.String)
+  - QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)
+  - QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+  - QuartzRestApi.SchedulerConnector.GetCalendar(System.String)
+  - QuartzRestApi.SchedulerConnector.GetCalendarNames
+  - QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs
+  - QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+  - QuartzRestApi.SchedulerConnector.GetJobGroupNames
+  - QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  - QuartzRestApi.SchedulerConnector.GetMetaData
+  - QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups
+  - QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  - QuartzRestApi.SchedulerConnector.GetTriggerGroupNames
+  - QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  - QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+  - QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+  - QuartzRestApi.SchedulerConnector.InStandbyMode
+  - QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)
+  - QuartzRestApi.SchedulerConnector.InterruptJob(System.String)
+  - QuartzRestApi.SchedulerConnector.IsJobGroupPaused(System.String)
+  - QuartzRestApi.SchedulerConnector.IsShutdown
+  - QuartzRestApi.SchedulerConnector.IsStarted
+  - QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(System.String)
+  - QuartzRestApi.SchedulerConnector.PauseAllTriggers
+  - QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)
+  - QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  - QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  - QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  - QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+  - QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+  - QuartzRestApi.SchedulerConnector.ResumeAllTriggers
+  - QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)
+  - QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  - QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  - QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  - QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+  - QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+  - QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+  - QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+  - QuartzRestApi.SchedulerConnector.SchedulerInstanceId
+  - QuartzRestApi.SchedulerConnector.SchedulerName
+  - QuartzRestApi.SchedulerConnector.Shutdown
+  - QuartzRestApi.SchedulerConnector.Shutdown(System.Boolean)
+  - QuartzRestApi.SchedulerConnector.Standby
+  - QuartzRestApi.SchedulerConnector.Start
+  - QuartzRestApi.SchedulerConnector.StartDelayed(System.Int32)
+  - QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)
+  - QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+  - QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+  - QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+  langs:
+  - csharp
+  - vb
+  name: SchedulerConnector
+  nameWithType: SchedulerConnector
+  fullName: QuartzRestApi.SchedulerConnector
+  type: Class
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Connects to the <xref href="QuartzRestApi.SchedulerHost" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public class SchedulerConnector
+    content.vb: Public Class SchedulerConnector
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QuartzRestApi.SchedulerConnector.#ctor(System.String,System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.#ctor(System.String,System.String)
+  id: '#ctor(System.String,System.String)'
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: SchedulerConnector(string, string)
+  nameWithType: SchedulerConnector.SchedulerConnector(string, string)
+  fullName: QuartzRestApi.SchedulerConnector.SchedulerConnector(string, string)
+  type: Constructor
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Create a new instance of the <xref href="QuartzRestApi.SchedulerConnector" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public SchedulerConnector(string schedulerHostAddress, string apiKey = null)
+    parameters:
+    - id: schedulerHostAddress
+      type: System.String
+      description: The host address of the scheduler
+    - id: apiKey
+      type: System.String
+      description: >-
+        Optional API key. When supplied it is sent as the <code>X-Api-Key</code> header on
+
+        every request. Must match the key configured on the <xref href="QuartzRestApi.SchedulerHost" data-throw-if-not-resolved="false"></xref>.
+
+        Pass <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> or an empty string when the host has no key configured.
+    content.vb: Public Sub New(schedulerHostAddress As String, apiKey As String = Nothing)
+  overload: QuartzRestApi.SchedulerConnector.#ctor*
+  nameWithType.vb: SchedulerConnector.New(String, String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.New(String, String)
+  name.vb: New(String, String)
+- uid: QuartzRestApi.SchedulerConnector.IsJobGroupPaused(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.IsJobGroupPaused(System.String)
+  id: IsJobGroupPaused(System.String)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: IsJobGroupPaused(string)
+  nameWithType: SchedulerConnector.IsJobGroupPaused(string)
+  fullName: QuartzRestApi.SchedulerConnector.IsJobGroupPaused(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns <code>true</code> if the given JobGroup is paused
+  example: []
+  syntax:
+    content: public Task<bool> IsJobGroupPaused(string groupName)
+    parameters:
+    - id: groupName
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function IsJobGroupPaused(groupName As String) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.IsJobGroupPaused*
+  nameWithType.vb: SchedulerConnector.IsJobGroupPaused(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.IsJobGroupPaused(String)
+  name.vb: IsJobGroupPaused(String)
+- uid: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(System.String)
+  id: IsTriggerGroupPaused(System.String)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: IsTriggerGroupPaused(string)
+  nameWithType: SchedulerConnector.IsTriggerGroupPaused(string)
+  fullName: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns <code>true</code> if the given TriggerGroup is paused
+  example: []
+  syntax:
+    content: public Task<bool> IsTriggerGroupPaused(string groupName)
+    parameters:
+    - id: groupName
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function IsTriggerGroupPaused(groupName As String) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused*
+  nameWithType.vb: SchedulerConnector.IsTriggerGroupPaused(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(String)
+  name.vb: IsTriggerGroupPaused(String)
+- uid: QuartzRestApi.SchedulerConnector.SchedulerName
+  commentId: M:QuartzRestApi.SchedulerConnector.SchedulerName
+  id: SchedulerName
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: SchedulerName()
+  nameWithType: SchedulerConnector.SchedulerName()
+  fullName: QuartzRestApi.SchedulerConnector.SchedulerName()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the name of the scheduler
+  example: []
+  syntax:
+    content: public Task<string> SchedulerName()
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function SchedulerName() As Task(Of String)
+  overload: QuartzRestApi.SchedulerConnector.SchedulerName*
+- uid: QuartzRestApi.SchedulerConnector.SchedulerInstanceId
+  commentId: M:QuartzRestApi.SchedulerConnector.SchedulerInstanceId
+  id: SchedulerInstanceId
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: SchedulerInstanceId()
+  nameWithType: SchedulerConnector.SchedulerInstanceId()
+  fullName: QuartzRestApi.SchedulerConnector.SchedulerInstanceId()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the instance id of the scheduler
+  example: []
+  syntax:
+    content: public Task<string> SchedulerInstanceId()
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function SchedulerInstanceId() As Task(Of String)
+  overload: QuartzRestApi.SchedulerConnector.SchedulerInstanceId*
+- uid: QuartzRestApi.SchedulerConnector.Context
+  commentId: M:QuartzRestApi.SchedulerConnector.Context
+  id: Context
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: Context()
+  nameWithType: SchedulerConnector.Context()
+  fullName: QuartzRestApi.SchedulerConnector.Context()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the <xref href="QuartzRestApi.Wrappers.SchedulerContext" data-throw-if-not-resolved="false"></xref> of the scheduler
+  example: []
+  syntax:
+    content: public Task<SchedulerContext> Context()
+    return:
+      type: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.SchedulerContext}
+    content.vb: Public Function Context() As Task(Of SchedulerContext)
+  overload: QuartzRestApi.SchedulerConnector.Context*
+- uid: QuartzRestApi.SchedulerConnector.InStandbyMode
+  commentId: M:QuartzRestApi.SchedulerConnector.InStandbyMode
+  id: InStandbyMode
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: InStandbyMode()
+  nameWithType: SchedulerConnector.InStandbyMode()
+  fullName: QuartzRestApi.SchedulerConnector.InStandbyMode()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns <code>true</code> if the scheduler is in standby mode
+  example: []
+  syntax:
+    content: public Task<bool> InStandbyMode()
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function InStandbyMode() As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.InStandbyMode*
+- uid: QuartzRestApi.SchedulerConnector.IsShutdown
+  commentId: M:QuartzRestApi.SchedulerConnector.IsShutdown
+  id: IsShutdown
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: IsShutdown()
+  nameWithType: SchedulerConnector.IsShutdown()
+  fullName: QuartzRestApi.SchedulerConnector.IsShutdown()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns <code>true</code> if the scheduler is shutdown
+  example: []
+  syntax:
+    content: public Task<bool> IsShutdown()
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function IsShutdown() As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.IsShutdown*
+- uid: QuartzRestApi.SchedulerConnector.IsStarted
+  commentId: M:QuartzRestApi.SchedulerConnector.IsStarted
+  id: IsStarted
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: IsStarted()
+  nameWithType: SchedulerConnector.IsStarted()
+  fullName: QuartzRestApi.SchedulerConnector.IsStarted()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns <code>true</code> if the scheduler has been started
+  example: []
+  syntax:
+    content: public Task<bool> IsStarted()
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function IsStarted() As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.IsStarted*
+- uid: QuartzRestApi.SchedulerConnector.GetMetaData
+  commentId: M:QuartzRestApi.SchedulerConnector.GetMetaData
+  id: GetMetaData
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetMetaData()
+  nameWithType: SchedulerConnector.GetMetaData()
+  fullName: QuartzRestApi.SchedulerConnector.GetMetaData()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns a <xref href="QuartzRestApi.Wrappers.SchedulerMetaData" data-throw-if-not-resolved="false"></xref> object describing the settings and capabilities of the scheduler
+  example: []
+  syntax:
+    content: public Task<SchedulerMetaData> GetMetaData()
+    return:
+      type: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.SchedulerMetaData}
+    content.vb: Public Function GetMetaData() As Task(Of SchedulerMetaData)
+  overload: QuartzRestApi.SchedulerConnector.GetMetaData*
+- uid: QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs
+  commentId: M:QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs
+  id: GetCurrentlyExecutingJobs
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentlyExecutingJobs()
+  nameWithType: SchedulerConnector.GetCurrentlyExecutingJobs()
+  fullName: QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the list of currently executing jobs
+  example: []
+  syntax:
+    content: public Task<JobExecutionContexts> GetCurrentlyExecutingJobs()
+    return:
+      type: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.JobExecutionContexts}
+    content.vb: Public Function GetCurrentlyExecutingJobs() As Task(Of JobExecutionContexts)
+  overload: QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs*
+- uid: QuartzRestApi.SchedulerConnector.GetJobGroupNames
+  commentId: M:QuartzRestApi.SchedulerConnector.GetJobGroupNames
+  id: GetJobGroupNames
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetJobGroupNames()
+  nameWithType: SchedulerConnector.GetJobGroupNames()
+  fullName: QuartzRestApi.SchedulerConnector.GetJobGroupNames()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the names of all known job groups
+  example: []
+  syntax:
+    content: public Task<IReadOnlyCollection<string>> GetJobGroupNames()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyCollection{System.String}}
+    content.vb: Public Function GetJobGroupNames() As Task(Of IReadOnlyCollection(Of String))
+  overload: QuartzRestApi.SchedulerConnector.GetJobGroupNames*
+- uid: QuartzRestApi.SchedulerConnector.GetTriggerGroupNames
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTriggerGroupNames
+  id: GetTriggerGroupNames
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetTriggerGroupNames()
+  nameWithType: SchedulerConnector.GetTriggerGroupNames()
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggerGroupNames()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the names of all known trigger groups
+  example: []
+  syntax:
+    content: public Task<IReadOnlyCollection<string>> GetTriggerGroupNames()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyCollection{System.String}}
+    content.vb: Public Function GetTriggerGroupNames() As Task(Of IReadOnlyCollection(Of String))
+  overload: QuartzRestApi.SchedulerConnector.GetTriggerGroupNames*
+- uid: QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups
+  commentId: M:QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups
+  id: GetPausedTriggerGroups
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetPausedTriggerGroups()
+  nameWithType: SchedulerConnector.GetPausedTriggerGroups()
+  fullName: QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the names of all paused trigger groups
+  example: []
+  syntax:
+    content: public Task<IReadOnlyCollection<string>> GetPausedTriggerGroups()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyCollection{System.String}}
+    content.vb: Public Function GetPausedTriggerGroups() As Task(Of IReadOnlyCollection(Of String))
+  overload: QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups*
+- uid: QuartzRestApi.SchedulerConnector.Start
+  commentId: M:QuartzRestApi.SchedulerConnector.Start
+  id: Start
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: SchedulerConnector.Start()
+  fullName: QuartzRestApi.SchedulerConnector.Start()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Starts the scheduler
+  example: []
+  syntax:
+    content: public Task Start()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function Start() As Task
+  overload: QuartzRestApi.SchedulerConnector.Start*
+- uid: QuartzRestApi.SchedulerConnector.StartDelayed(System.Int32)
+  commentId: M:QuartzRestApi.SchedulerConnector.StartDelayed(System.Int32)
+  id: StartDelayed(System.Int32)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: StartDelayed(int)
+  nameWithType: SchedulerConnector.StartDelayed(int)
+  fullName: QuartzRestApi.SchedulerConnector.StartDelayed(int)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Starts the scheduler after the given delay in seconds
+  example: []
+  syntax:
+    content: public Task StartDelayed(int delaySeconds)
+    parameters:
+    - id: delaySeconds
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function StartDelayed(delaySeconds As Integer) As Task
+  overload: QuartzRestApi.SchedulerConnector.StartDelayed*
+  nameWithType.vb: SchedulerConnector.StartDelayed(Integer)
+  fullName.vb: QuartzRestApi.SchedulerConnector.StartDelayed(Integer)
+  name.vb: StartDelayed(Integer)
+- uid: QuartzRestApi.SchedulerConnector.Standby
+  commentId: M:QuartzRestApi.SchedulerConnector.Standby
+  id: Standby
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: Standby()
+  nameWithType: SchedulerConnector.Standby()
+  fullName: QuartzRestApi.SchedulerConnector.Standby()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Puts the scheduler in standby mode
+  example: []
+  syntax:
+    content: public Task Standby()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function Standby() As Task
+  overload: QuartzRestApi.SchedulerConnector.Standby*
+- uid: QuartzRestApi.SchedulerConnector.Shutdown
+  commentId: M:QuartzRestApi.SchedulerConnector.Shutdown
+  id: Shutdown
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: Shutdown()
+  nameWithType: SchedulerConnector.Shutdown()
+  fullName: QuartzRestApi.SchedulerConnector.Shutdown()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Shuts down the scheduler
+  example: []
+  syntax:
+    content: public Task Shutdown()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function Shutdown() As Task
+  overload: QuartzRestApi.SchedulerConnector.Shutdown*
+- uid: QuartzRestApi.SchedulerConnector.Shutdown(System.Boolean)
+  commentId: M:QuartzRestApi.SchedulerConnector.Shutdown(System.Boolean)
+  id: Shutdown(System.Boolean)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: Shutdown(bool)
+  nameWithType: SchedulerConnector.Shutdown(bool)
+  fullName: QuartzRestApi.SchedulerConnector.Shutdown(bool)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Shuts down the scheduler, optionally waiting for running jobs to complete
+  example: []
+  syntax:
+    content: public Task Shutdown(bool waitForJobsToComplete)
+    parameters:
+    - id: waitForJobsToComplete
+      type: System.Boolean
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function Shutdown(waitForJobsToComplete As Boolean) As Task
+  overload: QuartzRestApi.SchedulerConnector.Shutdown*
+  nameWithType.vb: SchedulerConnector.Shutdown(Boolean)
+  fullName.vb: QuartzRestApi.SchedulerConnector.Shutdown(Boolean)
+  name.vb: Shutdown(Boolean)
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+  commentId: M:QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+  id: ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ScheduleJob(JobDetailWithTrigger)
+  nameWithType: SchedulerConnector.ScheduleJob(JobDetailWithTrigger)
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Schedules a job with a job detail and a single trigger
+  example: []
+  syntax:
+    content: public Task<DateTimeOffset> ScheduleJob(JobDetailWithTrigger jobDetailWithTrigger)
+    parameters:
+    - id: jobDetailWithTrigger
+      type: QuartzRestApi.Wrappers.JobDetailWithTrigger
+    return:
+      type: System.Threading.Tasks.Task{System.DateTimeOffset}
+    content.vb: Public Function ScheduleJob(jobDetailWithTrigger As JobDetailWithTrigger) As Task(Of DateTimeOffset)
+  overload: QuartzRestApi.SchedulerConnector.ScheduleJob*
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+  commentId: M:QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+  id: ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ScheduleJob(Trigger)
+  nameWithType: SchedulerConnector.ScheduleJob(Trigger)
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Schedules the trigger with the job identified by the trigger
+  example: []
+  syntax:
+    content: public Task<DateTimeOffset> ScheduleJob(Trigger trigger)
+    parameters:
+    - id: trigger
+      type: QuartzRestApi.Wrappers.Trigger
+    return:
+      type: System.Threading.Tasks.Task{System.DateTimeOffset}
+    content.vb: Public Function ScheduleJob(trigger As Trigger) As Task(Of DateTimeOffset)
+  overload: QuartzRestApi.SchedulerConnector.ScheduleJob*
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+  commentId: M:QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+  id: ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ScheduleJobWithTriggers(JobDetailWithTriggers)
+  nameWithType: SchedulerConnector.ScheduleJobWithTriggers(JobDetailWithTriggers)
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Schedules a job with a job detail and multiple triggers
+  example: []
+  syntax:
+    content: public Task ScheduleJobWithTriggers(JobDetailWithTriggers jobDetailWithTriggers)
+    parameters:
+    - id: jobDetailWithTriggers
+      type: QuartzRestApi.Wrappers.JobDetailWithTriggers
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ScheduleJobWithTriggers(jobDetailWithTriggers As JobDetailWithTriggers) As Task
+  overload: QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers*
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+  commentId: M:QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+  id: ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ScheduleJobs(ScheduleJobs)
+  nameWithType: SchedulerConnector.ScheduleJobs(ScheduleJobs)
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Schedules multiple jobs, each with their own set of triggers
+  example: []
+  syntax:
+    content: public Task ScheduleJobs(ScheduleJobs scheduleJobs)
+    parameters:
+    - id: scheduleJobs
+      type: QuartzRestApi.Wrappers.ScheduleJobs
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ScheduleJobs(scheduleJobs As ScheduleJobs) As Task
+  overload: QuartzRestApi.SchedulerConnector.ScheduleJobs*
+- uid: QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+  id: UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: UnscheduleJob(TriggerKey)
+  nameWithType: SchedulerConnector.UnscheduleJob(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Removes the trigger with the given key from the scheduler
+  example: []
+  syntax:
+    content: public Task<bool> UnscheduleJob(TriggerKey triggerKey)
+    parameters:
+    - id: triggerKey
+      type: QuartzRestApi.Wrappers.TriggerKey
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function UnscheduleJob(triggerKey As TriggerKey) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.UnscheduleJob*
+- uid: QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+  commentId: M:QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+  id: UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: UnscheduleJobs(TriggerKeys)
+  nameWithType: SchedulerConnector.UnscheduleJobs(TriggerKeys)
+  fullName: QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Removes all triggers with the given keys from the scheduler
+  example: []
+  syntax:
+    content: public Task<bool> UnscheduleJobs(TriggerKeys triggerKeys)
+    parameters:
+    - id: triggerKeys
+      type: QuartzRestApi.Wrappers.TriggerKeys
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function UnscheduleJobs(triggerKeys As TriggerKeys) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.UnscheduleJobs*
+- uid: QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+  commentId: M:QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+  id: RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: RescheduleJob(RescheduleJob)
+  nameWithType: SchedulerConnector.RescheduleJob(RescheduleJob)
+  fullName: QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Replaces the current trigger with a new trigger for the same job
+  example: []
+  syntax:
+    content: public Task<DateTimeOffset?> RescheduleJob(RescheduleJob rescheduleJob)
+    parameters:
+    - id: rescheduleJob
+      type: QuartzRestApi.Wrappers.RescheduleJob
+    return:
+      type: System.Threading.Tasks.Task{System.Nullable{System.DateTimeOffset}}
+    content.vb: Public Function RescheduleJob(rescheduleJob As RescheduleJob) As Task(Of DateTimeOffset?)
+  overload: QuartzRestApi.SchedulerConnector.RescheduleJob*
+- uid: QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)
+  commentId: M:QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)
+  id: AddJob(QuartzRestApi.Wrappers.JobDetail)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: AddJob(JobDetail)
+  nameWithType: SchedulerConnector.AddJob(JobDetail)
+  fullName: QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Adds a job with no associated trigger
+  example: []
+  syntax:
+    content: public Task AddJob(JobDetail jobDetail)
+    parameters:
+    - id: jobDetail
+      type: QuartzRestApi.Wrappers.JobDetail
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function AddJob(jobDetail As JobDetail) As Task
+  overload: QuartzRestApi.SchedulerConnector.AddJob*
+- uid: QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)
+  id: DeleteJob(QuartzRestApi.Wrappers.JobKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: DeleteJob(JobKey)
+  nameWithType: SchedulerConnector.DeleteJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Deletes the job with the given key and all associated triggers
+  example: []
+  syntax:
+    content: public Task<bool> DeleteJob(JobKey jobKey)
+    parameters:
+    - id: jobKey
+      type: QuartzRestApi.Wrappers.JobKey
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function DeleteJob(jobKey As JobKey) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.DeleteJob*
+- uid: QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+  commentId: M:QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+  id: DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: DeleteJobs(JobKeys)
+  nameWithType: SchedulerConnector.DeleteJobs(JobKeys)
+  fullName: QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Deletes all jobs with the given keys and their associated triggers
+  example: []
+  syntax:
+    content: public Task<bool> DeleteJobs(JobKeys jobKeys)
+    parameters:
+    - id: jobKeys
+      type: QuartzRestApi.Wrappers.JobKeys
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function DeleteJobs(jobKeys As JobKeys) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.DeleteJobs*
+- uid: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)
+  id: TriggerJob(QuartzRestApi.Wrappers.JobKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: TriggerJob(JobKey)
+  nameWithType: SchedulerConnector.TriggerJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Triggers the identified job to execute immediately
+  example: []
+  syntax:
+    content: public Task TriggerJob(JobKey jobKey)
+    parameters:
+    - id: jobKey
+      type: QuartzRestApi.Wrappers.JobKey
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function TriggerJob(jobKey As JobKey) As Task
+  overload: QuartzRestApi.SchedulerConnector.TriggerJob*
+- uid: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+  commentId: M:QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+  id: TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: TriggerJob(JobKeyWithDataMap)
+  nameWithType: SchedulerConnector.TriggerJob(JobKeyWithDataMap)
+  fullName: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Triggers the identified job to execute immediately with a data map
+  example: []
+  syntax:
+    content: public Task TriggerJob(JobKeyWithDataMap jobKeyWithDataMap)
+    parameters:
+    - id: jobKeyWithDataMap
+      type: QuartzRestApi.Wrappers.JobKeyWithDataMap
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function TriggerJob(jobKeyWithDataMap As JobKeyWithDataMap) As Task
+  overload: QuartzRestApi.SchedulerConnector.TriggerJob*
+- uid: QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)
+  id: PauseJob(QuartzRestApi.Wrappers.JobKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: PauseJob(JobKey)
+  nameWithType: SchedulerConnector.PauseJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Pauses the job with the given key
+  example: []
+  syntax:
+    content: public Task PauseJob(JobKey jobKey)
+    parameters:
+    - id: jobKey
+      type: QuartzRestApi.Wrappers.JobKey
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function PauseJob(jobKey As JobKey) As Task
+  overload: QuartzRestApi.SchedulerConnector.PauseJob*
+- uid: QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  id: PauseJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: PauseJobs(GroupMatcher<JobKey>)
+  nameWithType: SchedulerConnector.PauseJobs(GroupMatcher<JobKey>)
+  fullName: QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher<Quartz.JobKey>)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Pauses all jobs matching the given group matcher
+  example: []
+  syntax:
+    content: public Task PauseJobs(GroupMatcher<JobKey> groupMatcher)
+    parameters:
+    - id: groupMatcher
+      type: QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey}
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function PauseJobs(groupMatcher As GroupMatcher(Of JobKey)) As Task
+  overload: QuartzRestApi.SchedulerConnector.PauseJobs*
+  nameWithType.vb: SchedulerConnector.PauseJobs(GroupMatcher(Of JobKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.JobKey))
+  name.vb: PauseJobs(GroupMatcher(Of JobKey))
+- uid: QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  id: PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: PauseTrigger(TriggerKey)
+  nameWithType: SchedulerConnector.PauseTrigger(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Pauses the trigger with the given key
+  example: []
+  syntax:
+    content: public Task PauseTrigger(TriggerKey triggerKey)
+    parameters:
+    - id: triggerKey
+      type: QuartzRestApi.Wrappers.TriggerKey
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function PauseTrigger(triggerKey As TriggerKey) As Task
+  overload: QuartzRestApi.SchedulerConnector.PauseTrigger*
+- uid: QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  id: PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: PauseTriggers(GroupMatcher<TriggerKey>)
+  nameWithType: SchedulerConnector.PauseTriggers(GroupMatcher<TriggerKey>)
+  fullName: QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher<Quartz.TriggerKey>)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Pauses all triggers matching the given group matcher
+  example: []
+  syntax:
+    content: public Task PauseTriggers(GroupMatcher<TriggerKey> groupMatcher)
+    parameters:
+    - id: groupMatcher
+      type: QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey}
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function PauseTriggers(groupMatcher As GroupMatcher(Of TriggerKey)) As Task
+  overload: QuartzRestApi.SchedulerConnector.PauseTriggers*
+  nameWithType.vb: SchedulerConnector.PauseTriggers(GroupMatcher(Of TriggerKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.TriggerKey))
+  name.vb: PauseTriggers(GroupMatcher(Of TriggerKey))
+- uid: QuartzRestApi.SchedulerConnector.PauseAllTriggers
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseAllTriggers
+  id: PauseAllTriggers
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: PauseAllTriggers()
+  nameWithType: SchedulerConnector.PauseAllTriggers()
+  fullName: QuartzRestApi.SchedulerConnector.PauseAllTriggers()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Pauses all triggers
+  example: []
+  syntax:
+    content: public Task PauseAllTriggers()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function PauseAllTriggers() As Task
+  overload: QuartzRestApi.SchedulerConnector.PauseAllTriggers*
+- uid: QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)
+  id: ResumeJob(QuartzRestApi.Wrappers.JobKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ResumeJob(JobKey)
+  nameWithType: SchedulerConnector.ResumeJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Resumes the job with the given key
+  example: []
+  syntax:
+    content: public Task ResumeJob(JobKey jobKey)
+    parameters:
+    - id: jobKey
+      type: QuartzRestApi.Wrappers.JobKey
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ResumeJob(jobKey As JobKey) As Task
+  overload: QuartzRestApi.SchedulerConnector.ResumeJob*
+- uid: QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  id: ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ResumeJobs(GroupMatcher<JobKey>)
+  nameWithType: SchedulerConnector.ResumeJobs(GroupMatcher<JobKey>)
+  fullName: QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher<Quartz.JobKey>)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Resumes all jobs matching the given group matcher
+  example: []
+  syntax:
+    content: public Task ResumeJobs(GroupMatcher<JobKey> groupMatcher)
+    parameters:
+    - id: groupMatcher
+      type: QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey}
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ResumeJobs(groupMatcher As GroupMatcher(Of JobKey)) As Task
+  overload: QuartzRestApi.SchedulerConnector.ResumeJobs*
+  nameWithType.vb: SchedulerConnector.ResumeJobs(GroupMatcher(Of JobKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.JobKey))
+  name.vb: ResumeJobs(GroupMatcher(Of JobKey))
+- uid: QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  id: ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ResumeTrigger(TriggerKey)
+  nameWithType: SchedulerConnector.ResumeTrigger(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Resumes the trigger with the given key
+  example: []
+  syntax:
+    content: public Task ResumeTrigger(TriggerKey triggerKey)
+    parameters:
+    - id: triggerKey
+      type: QuartzRestApi.Wrappers.TriggerKey
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ResumeTrigger(triggerKey As TriggerKey) As Task
+  overload: QuartzRestApi.SchedulerConnector.ResumeTrigger*
+- uid: QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  id: ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ResumeTriggers(GroupMatcher<TriggerKey>)
+  nameWithType: SchedulerConnector.ResumeTriggers(GroupMatcher<TriggerKey>)
+  fullName: QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher<Quartz.TriggerKey>)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Resumes all triggers matching the given group matcher
+  example: []
+  syntax:
+    content: public Task ResumeTriggers(GroupMatcher<TriggerKey> groupMatcher)
+    parameters:
+    - id: groupMatcher
+      type: QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey}
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ResumeTriggers(groupMatcher As GroupMatcher(Of TriggerKey)) As Task
+  overload: QuartzRestApi.SchedulerConnector.ResumeTriggers*
+  nameWithType.vb: SchedulerConnector.ResumeTriggers(GroupMatcher(Of TriggerKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.TriggerKey))
+  name.vb: ResumeTriggers(GroupMatcher(Of TriggerKey))
+- uid: QuartzRestApi.SchedulerConnector.ResumeAllTriggers
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeAllTriggers
+  id: ResumeAllTriggers
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ResumeAllTriggers()
+  nameWithType: SchedulerConnector.ResumeAllTriggers()
+  fullName: QuartzRestApi.SchedulerConnector.ResumeAllTriggers()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Resumes all triggers
+  example: []
+  syntax:
+    content: public Task ResumeAllTriggers()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ResumeAllTriggers() As Task
+  overload: QuartzRestApi.SchedulerConnector.ResumeAllTriggers*
+- uid: QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  id: GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetJobKeys(GroupMatcher<JobKey>)
+  nameWithType: SchedulerConnector.GetJobKeys(GroupMatcher<JobKey>)
+  fullName: QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher<Quartz.JobKey>)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns all job keys matching the given group matcher
+  example: []
+  syntax:
+    content: public Task<JobKeys> GetJobKeys(GroupMatcher<JobKey> groupMatcher)
+    parameters:
+    - id: groupMatcher
+      type: QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey}
+    return:
+      type: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.JobKeys}
+    content.vb: Public Function GetJobKeys(groupMatcher As GroupMatcher(Of JobKey)) As Task(Of JobKeys)
+  overload: QuartzRestApi.SchedulerConnector.GetJobKeys*
+  nameWithType.vb: SchedulerConnector.GetJobKeys(GroupMatcher(Of JobKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.JobKey))
+  name.vb: GetJobKeys(GroupMatcher(Of JobKey))
+- uid: QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  id: GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetTriggerKeys(GroupMatcher<TriggerKey>)
+  nameWithType: SchedulerConnector.GetTriggerKeys(GroupMatcher<TriggerKey>)
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher<Quartz.TriggerKey>)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns all trigger keys matching the given group matcher
+  example: []
+  syntax:
+    content: public Task<TriggerKeys> GetTriggerKeys(GroupMatcher<TriggerKey> groupMatcher)
+    parameters:
+    - id: groupMatcher
+      type: QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey}
+    return:
+      type: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.TriggerKeys}
+    content.vb: Public Function GetTriggerKeys(groupMatcher As GroupMatcher(Of TriggerKey)) As Task(Of TriggerKeys)
+  overload: QuartzRestApi.SchedulerConnector.GetTriggerKeys*
+  nameWithType.vb: SchedulerConnector.GetTriggerKeys(GroupMatcher(Of TriggerKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.TriggerKey))
+  name.vb: GetTriggerKeys(GroupMatcher(Of TriggerKey))
+- uid: QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+  id: GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetTriggersOfJob(JobKey)
+  nameWithType: SchedulerConnector.GetTriggersOfJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns all triggers associated with the given job key
+  example: []
+  syntax:
+    content: public Task<Triggers> GetTriggersOfJob(JobKey jobKey)
+    parameters:
+    - id: jobKey
+      type: QuartzRestApi.Wrappers.JobKey
+    return:
+      type: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.Triggers}
+    content.vb: Public Function GetTriggersOfJob(jobKey As JobKey) As Task(Of Triggers)
+  overload: QuartzRestApi.SchedulerConnector.GetTriggersOfJob*
+- uid: QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+  id: GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetJobDetail(JobKey)
+  nameWithType: SchedulerConnector.GetJobDetail(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the job detail for the given job key
+  example: []
+  syntax:
+    content: public Task<JobDetail> GetJobDetail(JobKey jobKey)
+    parameters:
+    - id: jobKey
+      type: QuartzRestApi.Wrappers.JobKey
+    return:
+      type: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.JobDetail}
+    content.vb: Public Function GetJobDetail(jobKey As JobKey) As Task(Of JobDetail)
+  overload: QuartzRestApi.SchedulerConnector.GetJobDetail*
+- uid: QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  id: GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetTrigger(TriggerKey)
+  nameWithType: SchedulerConnector.GetTrigger(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the trigger for the given trigger key
+  example: []
+  syntax:
+    content: public Task<Trigger> GetTrigger(TriggerKey triggerKey)
+    parameters:
+    - id: triggerKey
+      type: QuartzRestApi.Wrappers.TriggerKey
+    return:
+      type: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.Trigger}
+    content.vb: Public Function GetTrigger(triggerKey As TriggerKey) As Task(Of Trigger)
+  overload: QuartzRestApi.SchedulerConnector.GetTrigger*
+- uid: QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+  id: GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetTriggerState(TriggerKey)
+  nameWithType: SchedulerConnector.GetTriggerState(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the current state of the given trigger
+  example: []
+  syntax:
+    content: public Task<string> GetTriggerState(TriggerKey triggerKey)
+    parameters:
+    - id: triggerKey
+      type: QuartzRestApi.Wrappers.TriggerKey
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function GetTriggerState(triggerKey As TriggerKey) As Task(Of String)
+  overload: QuartzRestApi.SchedulerConnector.GetTriggerState*
+- uid: QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+  commentId: M:QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+  id: AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: AddCalendar(BaseCalendar)
+  nameWithType: SchedulerConnector.AddCalendar(BaseCalendar)
+  fullName: QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Adds a calendar to the scheduler
+  example: []
+  syntax:
+    content: public Task AddCalendar(BaseCalendar calendar)
+    parameters:
+    - id: calendar
+      type: QuartzRestApi.Wrappers.Calendars.BaseCalendar
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function AddCalendar(calendar As BaseCalendar) As Task
+  overload: QuartzRestApi.SchedulerConnector.AddCalendar*
+- uid: QuartzRestApi.SchedulerConnector.DeleteCalendar(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.DeleteCalendar(System.String)
+  id: DeleteCalendar(System.String)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: DeleteCalendar(string)
+  nameWithType: SchedulerConnector.DeleteCalendar(string)
+  fullName: QuartzRestApi.SchedulerConnector.DeleteCalendar(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Deletes the calendar with the given name. Returns <code>true</code> when deleted.
+  example: []
+  syntax:
+    content: public Task<bool> DeleteCalendar(string calendarName)
+    parameters:
+    - id: calendarName
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function DeleteCalendar(calendarName As String) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.DeleteCalendar*
+  nameWithType.vb: SchedulerConnector.DeleteCalendar(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.DeleteCalendar(String)
+  name.vb: DeleteCalendar(String)
+- uid: QuartzRestApi.SchedulerConnector.GetCalendar(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetCalendar(System.String)
+  id: GetCalendar(System.String)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetCalendar(string)
+  nameWithType: SchedulerConnector.GetCalendar(string)
+  fullName: QuartzRestApi.SchedulerConnector.GetCalendar(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the calendar with the given name as a JSON string
+  example: []
+  syntax:
+    content: public Task<string> GetCalendar(string calendarName)
+    parameters:
+    - id: calendarName
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.String}
+    content.vb: Public Function GetCalendar(calendarName As String) As Task(Of String)
+  overload: QuartzRestApi.SchedulerConnector.GetCalendar*
+  nameWithType.vb: SchedulerConnector.GetCalendar(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.GetCalendar(String)
+  name.vb: GetCalendar(String)
+- uid: QuartzRestApi.SchedulerConnector.GetCalendarNames
+  commentId: M:QuartzRestApi.SchedulerConnector.GetCalendarNames
+  id: GetCalendarNames
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: GetCalendarNames()
+  nameWithType: SchedulerConnector.GetCalendarNames()
+  fullName: QuartzRestApi.SchedulerConnector.GetCalendarNames()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns the names of all registered calendars
+  example: []
+  syntax:
+    content: public Task<IReadOnlyCollection<string>> GetCalendarNames()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyCollection{System.String}}
+    content.vb: Public Function GetCalendarNames() As Task(Of IReadOnlyCollection(Of String))
+  overload: QuartzRestApi.SchedulerConnector.GetCalendarNames*
+- uid: QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)
+  id: InterruptJob(QuartzRestApi.Wrappers.JobKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: InterruptJob(JobKey)
+  nameWithType: SchedulerConnector.InterruptJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Requests cancellation of all executing instances of the given job
+  example: []
+  syntax:
+    content: public Task<bool> InterruptJob(JobKey jobKey)
+    parameters:
+    - id: jobKey
+      type: QuartzRestApi.Wrappers.JobKey
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function InterruptJob(jobKey As JobKey) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.InterruptJob*
+- uid: QuartzRestApi.SchedulerConnector.InterruptJob(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.InterruptJob(System.String)
+  id: InterruptJob(System.String)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: InterruptJob(string)
+  nameWithType: SchedulerConnector.InterruptJob(string)
+  fullName: QuartzRestApi.SchedulerConnector.InterruptJob(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Requests cancellation of the executing job instance with the given fire instance id
+  example: []
+  syntax:
+    content: public Task<bool> InterruptJob(string fireInstanceId)
+    parameters:
+    - id: fireInstanceId
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function InterruptJob(fireInstanceId As String) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.InterruptJob*
+  nameWithType.vb: SchedulerConnector.InterruptJob(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.InterruptJob(String)
+  name.vb: InterruptJob(String)
+- uid: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)
+  id: CheckExists(QuartzRestApi.Wrappers.JobKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: CheckExists(JobKey)
+  nameWithType: SchedulerConnector.CheckExists(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns <code>true</code> if a job with the given key exists
+  example: []
+  syntax:
+    content: public Task<bool> CheckExists(JobKey jobKey)
+    parameters:
+    - id: jobKey
+      type: QuartzRestApi.Wrappers.JobKey
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function CheckExists(jobKey As JobKey) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.CheckExists*
+- uid: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+  id: CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: CheckExists(TriggerKey)
+  nameWithType: SchedulerConnector.CheckExists(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Returns <code>true</code> if a trigger with the given key exists
+  example: []
+  syntax:
+    content: public Task<bool> CheckExists(TriggerKey triggerKey)
+    parameters:
+    - id: triggerKey
+      type: QuartzRestApi.Wrappers.TriggerKey
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function CheckExists(triggerKey As TriggerKey) As Task(Of Boolean)
+  overload: QuartzRestApi.SchedulerConnector.CheckExists*
+- uid: QuartzRestApi.SchedulerConnector.Clear
+  commentId: M:QuartzRestApi.SchedulerConnector.Clear
+  id: Clear
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: SchedulerConnector.Clear()
+  fullName: QuartzRestApi.SchedulerConnector.Clear()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Clears all scheduling data — all jobs, triggers and calendars
+  example: []
+  syntax:
+    content: public Task Clear()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function Clear() As Task
+  overload: QuartzRestApi.SchedulerConnector.Clear*
+- uid: QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+  id: ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+  parent: QuartzRestApi.SchedulerConnector
+  langs:
+  - csharp
+  - vb
+  name: ResetTriggerFromErrorState(TriggerKey)
+  nameWithType: SchedulerConnector.ResetTriggerFromErrorState(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi
+  summary: Resets the given trigger from error state back to normal or paused
+  example: []
+  syntax:
+    content: public Task ResetTriggerFromErrorState(TriggerKey triggerKey)
+    parameters:
+    - id: triggerKey
+      type: QuartzRestApi.Wrappers.TriggerKey
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ResetTriggerFromErrorState(triggerKey As TriggerKey) As Task
+  overload: QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState*
+references:
+- uid: QuartzRestApi.SchedulerHost
+  commentId: T:QuartzRestApi.SchedulerHost
+  href: QuartzRestApi.SchedulerHost.html
+  name: SchedulerHost
+  nameWithType: SchedulerHost
+  fullName: QuartzRestApi.SchedulerHost
+- uid: QuartzRestApi
+  commentId: N:QuartzRestApi
+  href: QuartzRestApi.html
+  name: QuartzRestApi
+  nameWithType: QuartzRestApi
+  fullName: QuartzRestApi
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QuartzRestApi.SchedulerConnector
+  commentId: T:QuartzRestApi.SchedulerConnector
+  href: QuartzRestApi.SchedulerConnector.html
+  name: SchedulerConnector
+  nameWithType: SchedulerConnector
+  fullName: QuartzRestApi.SchedulerConnector
+- uid: QuartzRestApi.SchedulerConnector.#ctor*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.#ctor
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector__ctor_System_String_System_String_
+  name: SchedulerConnector
+  nameWithType: SchedulerConnector.SchedulerConnector
+  fullName: QuartzRestApi.SchedulerConnector.SchedulerConnector
+  nameWithType.vb: SchedulerConnector.New
+  fullName.vb: QuartzRestApi.SchedulerConnector.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QuartzRestApi.SchedulerConnector.IsJobGroupPaused*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.IsJobGroupPaused
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsJobGroupPaused_System_String_
+  name: IsJobGroupPaused
+  nameWithType: SchedulerConnector.IsJobGroupPaused
+  fullName: QuartzRestApi.SchedulerConnector.IsJobGroupPaused
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsTriggerGroupPaused_System_String_
+  name: IsTriggerGroupPaused
+  nameWithType: SchedulerConnector.IsTriggerGroupPaused
+  fullName: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused
+- uid: QuartzRestApi.SchedulerConnector.SchedulerName*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.SchedulerName
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerName
+  name: SchedulerName
+  nameWithType: SchedulerConnector.SchedulerName
+  fullName: QuartzRestApi.SchedulerConnector.SchedulerName
+- uid: System.Threading.Tasks.Task{System.String}
+  commentId: T:System.Threading.Tasks.Task{System.String}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<string>
+  nameWithType: Task<string>
+  fullName: System.Threading.Tasks.Task<string>
+  nameWithType.vb: Task(Of String)
+  fullName.vb: System.Threading.Tasks.Task(Of String)
+  name.vb: Task(Of String)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.SchedulerInstanceId*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.SchedulerInstanceId
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerInstanceId
+  name: SchedulerInstanceId
+  nameWithType: SchedulerConnector.SchedulerInstanceId
+  fullName: QuartzRestApi.SchedulerConnector.SchedulerInstanceId
+- uid: QuartzRestApi.Wrappers.SchedulerContext
+  commentId: T:QuartzRestApi.Wrappers.SchedulerContext
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.SchedulerContext.html
+  name: SchedulerContext
+  nameWithType: SchedulerContext
+  fullName: QuartzRestApi.Wrappers.SchedulerContext
+- uid: QuartzRestApi.SchedulerConnector.Context*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.Context
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Context
+  name: Context
+  nameWithType: SchedulerConnector.Context
+  fullName: QuartzRestApi.SchedulerConnector.Context
+- uid: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.SchedulerContext}
+  commentId: T:System.Threading.Tasks.Task{QuartzRestApi.Wrappers.SchedulerContext}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SchedulerContext>
+  nameWithType: Task<SchedulerContext>
+  fullName: System.Threading.Tasks.Task<QuartzRestApi.Wrappers.SchedulerContext>
+  nameWithType.vb: Task(Of SchedulerContext)
+  fullName.vb: System.Threading.Tasks.Task(Of QuartzRestApi.Wrappers.SchedulerContext)
+  name.vb: Task(Of SchedulerContext)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: QuartzRestApi.Wrappers.SchedulerContext
+    name: SchedulerContext
+    href: QuartzRestApi.Wrappers.SchedulerContext.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuartzRestApi.Wrappers.SchedulerContext
+    name: SchedulerContext
+    href: QuartzRestApi.Wrappers.SchedulerContext.html
+  - name: )
+- uid: QuartzRestApi.Wrappers
+  commentId: N:QuartzRestApi.Wrappers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers
+  nameWithType: QuartzRestApi.Wrappers
+  fullName: QuartzRestApi.Wrappers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+- uid: QuartzRestApi.SchedulerConnector.InStandbyMode*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.InStandbyMode
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InStandbyMode
+  name: InStandbyMode
+  nameWithType: SchedulerConnector.InStandbyMode
+  fullName: QuartzRestApi.SchedulerConnector.InStandbyMode
+- uid: QuartzRestApi.SchedulerConnector.IsShutdown*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.IsShutdown
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsShutdown
+  name: IsShutdown
+  nameWithType: SchedulerConnector.IsShutdown
+  fullName: QuartzRestApi.SchedulerConnector.IsShutdown
+- uid: QuartzRestApi.SchedulerConnector.IsStarted*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.IsStarted
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsStarted
+  name: IsStarted
+  nameWithType: SchedulerConnector.IsStarted
+  fullName: QuartzRestApi.SchedulerConnector.IsStarted
+- uid: QuartzRestApi.Wrappers.SchedulerMetaData
+  commentId: T:QuartzRestApi.Wrappers.SchedulerMetaData
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.SchedulerMetaData.html
+  name: SchedulerMetaData
+  nameWithType: SchedulerMetaData
+  fullName: QuartzRestApi.Wrappers.SchedulerMetaData
+- uid: QuartzRestApi.SchedulerConnector.GetMetaData*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetMetaData
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetMetaData
+  name: GetMetaData
+  nameWithType: SchedulerConnector.GetMetaData
+  fullName: QuartzRestApi.SchedulerConnector.GetMetaData
+- uid: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.SchedulerMetaData}
+  commentId: T:System.Threading.Tasks.Task{QuartzRestApi.Wrappers.SchedulerMetaData}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SchedulerMetaData>
+  nameWithType: Task<SchedulerMetaData>
+  fullName: System.Threading.Tasks.Task<QuartzRestApi.Wrappers.SchedulerMetaData>
+  nameWithType.vb: Task(Of SchedulerMetaData)
+  fullName.vb: System.Threading.Tasks.Task(Of QuartzRestApi.Wrappers.SchedulerMetaData)
+  name.vb: Task(Of SchedulerMetaData)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: QuartzRestApi.Wrappers.SchedulerMetaData
+    name: SchedulerMetaData
+    href: QuartzRestApi.Wrappers.SchedulerMetaData.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuartzRestApi.Wrappers.SchedulerMetaData
+    name: SchedulerMetaData
+    href: QuartzRestApi.Wrappers.SchedulerMetaData.html
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCurrentlyExecutingJobs
+  name: GetCurrentlyExecutingJobs
+  nameWithType: SchedulerConnector.GetCurrentlyExecutingJobs
+  fullName: QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs
+- uid: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.JobExecutionContexts}
+  commentId: T:System.Threading.Tasks.Task{QuartzRestApi.Wrappers.JobExecutionContexts}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<JobExecutionContexts>
+  nameWithType: Task<JobExecutionContexts>
+  fullName: System.Threading.Tasks.Task<QuartzRestApi.Wrappers.JobExecutionContexts>
+  nameWithType.vb: Task(Of JobExecutionContexts)
+  fullName.vb: System.Threading.Tasks.Task(Of QuartzRestApi.Wrappers.JobExecutionContexts)
+  name.vb: Task(Of JobExecutionContexts)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: QuartzRestApi.Wrappers.JobExecutionContexts
+    name: JobExecutionContexts
+    href: QuartzRestApi.Wrappers.JobExecutionContexts.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuartzRestApi.Wrappers.JobExecutionContexts
+    name: JobExecutionContexts
+    href: QuartzRestApi.Wrappers.JobExecutionContexts.html
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.GetJobGroupNames*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetJobGroupNames
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobGroupNames
+  name: GetJobGroupNames
+  nameWithType: SchedulerConnector.GetJobGroupNames
+  fullName: QuartzRestApi.SchedulerConnector.GetJobGroupNames
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyCollection{System.String}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.IReadOnlyCollection{System.String}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<IReadOnlyCollection<string>>
+  nameWithType: Task<IReadOnlyCollection<string>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyCollection<string>>
+  nameWithType.vb: Task(Of IReadOnlyCollection(Of String))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.IReadOnlyCollection(Of String))
+  name.vb: Task(Of IReadOnlyCollection(Of String))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.GetTriggerGroupNames*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetTriggerGroupNames
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerGroupNames
+  name: GetTriggerGroupNames
+  nameWithType: SchedulerConnector.GetTriggerGroupNames
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggerGroupNames
+- uid: QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetPausedTriggerGroups
+  name: GetPausedTriggerGroups
+  nameWithType: SchedulerConnector.GetPausedTriggerGroups
+  fullName: QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups
+- uid: QuartzRestApi.SchedulerConnector.Start*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.Start
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Start
+  name: Start
+  nameWithType: SchedulerConnector.Start
+  fullName: QuartzRestApi.SchedulerConnector.Start
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: QuartzRestApi.SchedulerConnector.StartDelayed*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.StartDelayed
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_StartDelayed_System_Int32_
+  name: StartDelayed
+  nameWithType: SchedulerConnector.StartDelayed
+  fullName: QuartzRestApi.SchedulerConnector.StartDelayed
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: QuartzRestApi.SchedulerConnector.Standby*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.Standby
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Standby
+  name: Standby
+  nameWithType: SchedulerConnector.Standby
+  fullName: QuartzRestApi.SchedulerConnector.Standby
+- uid: QuartzRestApi.SchedulerConnector.Shutdown*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.Shutdown
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Shutdown
+  name: Shutdown
+  nameWithType: SchedulerConnector.Shutdown
+  fullName: QuartzRestApi.SchedulerConnector.Shutdown
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.ScheduleJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_JobDetailWithTrigger_
+  name: ScheduleJob
+  nameWithType: SchedulerConnector.ScheduleJob
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJob
+- uid: QuartzRestApi.Wrappers.JobDetailWithTrigger
+  commentId: T:QuartzRestApi.Wrappers.JobDetailWithTrigger
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetailWithTrigger.html
+  name: JobDetailWithTrigger
+  nameWithType: JobDetailWithTrigger
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTrigger
+- uid: System.Threading.Tasks.Task{System.DateTimeOffset}
+  commentId: T:System.Threading.Tasks.Task{System.DateTimeOffset}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DateTimeOffset>
+  nameWithType: Task<DateTimeOffset>
+  fullName: System.Threading.Tasks.Task<System.DateTimeOffset>
+  nameWithType.vb: Task(Of DateTimeOffset)
+  fullName.vb: System.Threading.Tasks.Task(Of System.DateTimeOffset)
+  name.vb: Task(Of DateTimeOffset)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: )
+- uid: QuartzRestApi.Wrappers.Trigger
+  commentId: T:QuartzRestApi.Wrappers.Trigger
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.Trigger.html
+  name: Trigger
+  nameWithType: Trigger
+  fullName: QuartzRestApi.Wrappers.Trigger
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobWithTriggers_QuartzRestApi_Wrappers_JobDetailWithTriggers_
+  name: ScheduleJobWithTriggers
+  nameWithType: SchedulerConnector.ScheduleJobWithTriggers
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  commentId: T:QuartzRestApi.Wrappers.JobDetailWithTriggers
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html
+  name: JobDetailWithTriggers
+  nameWithType: JobDetailWithTriggers
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJobs*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.ScheduleJobs
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobs_QuartzRestApi_Wrappers_ScheduleJobs_
+  name: ScheduleJobs
+  nameWithType: SchedulerConnector.ScheduleJobs
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJobs
+- uid: QuartzRestApi.Wrappers.ScheduleJobs
+  commentId: T:QuartzRestApi.Wrappers.ScheduleJobs
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.ScheduleJobs.html
+  name: ScheduleJobs
+  nameWithType: ScheduleJobs
+  fullName: QuartzRestApi.Wrappers.ScheduleJobs
+- uid: QuartzRestApi.SchedulerConnector.UnscheduleJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.UnscheduleJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJob_QuartzRestApi_Wrappers_TriggerKey_
+  name: UnscheduleJob
+  nameWithType: SchedulerConnector.UnscheduleJob
+  fullName: QuartzRestApi.SchedulerConnector.UnscheduleJob
+- uid: QuartzRestApi.Wrappers.TriggerKey
+  commentId: T:QuartzRestApi.Wrappers.TriggerKey
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.TriggerKey.html
+  name: TriggerKey
+  nameWithType: TriggerKey
+  fullName: QuartzRestApi.Wrappers.TriggerKey
+- uid: QuartzRestApi.SchedulerConnector.UnscheduleJobs*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.UnscheduleJobs
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJobs_QuartzRestApi_Wrappers_TriggerKeys_
+  name: UnscheduleJobs
+  nameWithType: SchedulerConnector.UnscheduleJobs
+  fullName: QuartzRestApi.SchedulerConnector.UnscheduleJobs
+- uid: QuartzRestApi.Wrappers.TriggerKeys
+  commentId: T:QuartzRestApi.Wrappers.TriggerKeys
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.TriggerKeys.html
+  name: TriggerKeys
+  nameWithType: TriggerKeys
+  fullName: QuartzRestApi.Wrappers.TriggerKeys
+- uid: QuartzRestApi.SchedulerConnector.RescheduleJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.RescheduleJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_RescheduleJob_QuartzRestApi_Wrappers_RescheduleJob_
+  name: RescheduleJob
+  nameWithType: SchedulerConnector.RescheduleJob
+  fullName: QuartzRestApi.SchedulerConnector.RescheduleJob
+- uid: QuartzRestApi.Wrappers.RescheduleJob
+  commentId: T:QuartzRestApi.Wrappers.RescheduleJob
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.RescheduleJob.html
+  name: RescheduleJob
+  nameWithType: RescheduleJob
+  fullName: QuartzRestApi.Wrappers.RescheduleJob
+- uid: System.Threading.Tasks.Task{System.Nullable{System.DateTimeOffset}}
+  commentId: T:System.Threading.Tasks.Task{System.Nullable{System.DateTimeOffset}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<DateTimeOffset?>
+  nameWithType: Task<DateTimeOffset?>
+  fullName: System.Threading.Tasks.Task<System.DateTimeOffset?>
+  nameWithType.vb: Task(Of DateTimeOffset?)
+  fullName.vb: System.Threading.Tasks.Task(Of System.DateTimeOffset?)
+  name.vb: Task(Of DateTimeOffset?)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: '?'
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.AddJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.AddJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddJob_QuartzRestApi_Wrappers_JobDetail_
+  name: AddJob
+  nameWithType: SchedulerConnector.AddJob
+  fullName: QuartzRestApi.SchedulerConnector.AddJob
+- uid: QuartzRestApi.Wrappers.JobDetail
+  commentId: T:QuartzRestApi.Wrappers.JobDetail
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetail.html
+  name: JobDetail
+  nameWithType: JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetail
+- uid: QuartzRestApi.SchedulerConnector.DeleteJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.DeleteJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJob_QuartzRestApi_Wrappers_JobKey_
+  name: DeleteJob
+  nameWithType: SchedulerConnector.DeleteJob
+  fullName: QuartzRestApi.SchedulerConnector.DeleteJob
+- uid: QuartzRestApi.Wrappers.JobKey
+  commentId: T:QuartzRestApi.Wrappers.JobKey
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobKey.html
+  name: JobKey
+  nameWithType: JobKey
+  fullName: QuartzRestApi.Wrappers.JobKey
+- uid: QuartzRestApi.SchedulerConnector.DeleteJobs*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.DeleteJobs
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJobs_QuartzRestApi_Wrappers_JobKeys_
+  name: DeleteJobs
+  nameWithType: SchedulerConnector.DeleteJobs
+  fullName: QuartzRestApi.SchedulerConnector.DeleteJobs
+- uid: QuartzRestApi.Wrappers.JobKeys
+  commentId: T:QuartzRestApi.Wrappers.JobKeys
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobKeys.html
+  name: JobKeys
+  nameWithType: JobKeys
+  fullName: QuartzRestApi.Wrappers.JobKeys
+- uid: QuartzRestApi.SchedulerConnector.TriggerJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.TriggerJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKey_
+  name: TriggerJob
+  nameWithType: SchedulerConnector.TriggerJob
+  fullName: QuartzRestApi.SchedulerConnector.TriggerJob
+- uid: QuartzRestApi.Wrappers.JobKeyWithDataMap
+  commentId: T:QuartzRestApi.Wrappers.JobKeyWithDataMap
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobKeyWithDataMap.html
+  name: JobKeyWithDataMap
+  nameWithType: JobKeyWithDataMap
+  fullName: QuartzRestApi.Wrappers.JobKeyWithDataMap
+- uid: QuartzRestApi.SchedulerConnector.PauseJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.PauseJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJob_QuartzRestApi_Wrappers_JobKey_
+  name: PauseJob
+  nameWithType: SchedulerConnector.PauseJob
+  fullName: QuartzRestApi.SchedulerConnector.PauseJob
+- uid: QuartzRestApi.SchedulerConnector.PauseJobs*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.PauseJobs
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  name: PauseJobs
+  nameWithType: SchedulerConnector.PauseJobs
+  fullName: QuartzRestApi.SchedulerConnector.PauseJobs
+- uid: QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey}
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey}
+  parent: QuartzRestApi.Wrappers
+  definition: QuartzRestApi.Wrappers.GroupMatcher`1
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  name: GroupMatcher<JobKey>
+  nameWithType: GroupMatcher<JobKey>
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<Quartz.JobKey>
+  nameWithType.vb: GroupMatcher(Of JobKey)
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.JobKey)
+  name.vb: GroupMatcher(Of JobKey)
+  spec.csharp:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - uid: Quartz.JobKey
+    name: JobKey
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Quartz.JobKey
+    name: JobKey
+    isExternal: true
+  - name: )
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcher`1
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  name: GroupMatcher<T>
+  nameWithType: GroupMatcher<T>
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>
+  nameWithType.vb: GroupMatcher(Of T)
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T)
+  name.vb: GroupMatcher(Of T)
+  spec.csharp:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.PauseTrigger*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.PauseTrigger
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  name: PauseTrigger
+  nameWithType: SchedulerConnector.PauseTrigger
+  fullName: QuartzRestApi.SchedulerConnector.PauseTrigger
+- uid: QuartzRestApi.SchedulerConnector.PauseTriggers*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.PauseTriggers
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  name: PauseTriggers
+  nameWithType: SchedulerConnector.PauseTriggers
+  fullName: QuartzRestApi.SchedulerConnector.PauseTriggers
+- uid: QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey}
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey}
+  parent: QuartzRestApi.Wrappers
+  definition: QuartzRestApi.Wrappers.GroupMatcher`1
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  name: GroupMatcher<TriggerKey>
+  nameWithType: GroupMatcher<TriggerKey>
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<Quartz.TriggerKey>
+  nameWithType.vb: GroupMatcher(Of TriggerKey)
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.TriggerKey)
+  name.vb: GroupMatcher(Of TriggerKey)
+  spec.csharp:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - uid: Quartz.TriggerKey
+    name: TriggerKey
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Quartz.TriggerKey
+    name: TriggerKey
+    isExternal: true
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.PauseAllTriggers*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.PauseAllTriggers
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseAllTriggers
+  name: PauseAllTriggers
+  nameWithType: SchedulerConnector.PauseAllTriggers
+  fullName: QuartzRestApi.SchedulerConnector.PauseAllTriggers
+- uid: QuartzRestApi.SchedulerConnector.ResumeJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.ResumeJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJob_QuartzRestApi_Wrappers_JobKey_
+  name: ResumeJob
+  nameWithType: SchedulerConnector.ResumeJob
+  fullName: QuartzRestApi.SchedulerConnector.ResumeJob
+- uid: QuartzRestApi.SchedulerConnector.ResumeJobs*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.ResumeJobs
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  name: ResumeJobs
+  nameWithType: SchedulerConnector.ResumeJobs
+  fullName: QuartzRestApi.SchedulerConnector.ResumeJobs
+- uid: QuartzRestApi.SchedulerConnector.ResumeTrigger*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.ResumeTrigger
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  name: ResumeTrigger
+  nameWithType: SchedulerConnector.ResumeTrigger
+  fullName: QuartzRestApi.SchedulerConnector.ResumeTrigger
+- uid: QuartzRestApi.SchedulerConnector.ResumeTriggers*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.ResumeTriggers
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  name: ResumeTriggers
+  nameWithType: SchedulerConnector.ResumeTriggers
+  fullName: QuartzRestApi.SchedulerConnector.ResumeTriggers
+- uid: QuartzRestApi.SchedulerConnector.ResumeAllTriggers*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.ResumeAllTriggers
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeAllTriggers
+  name: ResumeAllTriggers
+  nameWithType: SchedulerConnector.ResumeAllTriggers
+  fullName: QuartzRestApi.SchedulerConnector.ResumeAllTriggers
+- uid: QuartzRestApi.SchedulerConnector.GetJobKeys*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetJobKeys
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  name: GetJobKeys
+  nameWithType: SchedulerConnector.GetJobKeys
+  fullName: QuartzRestApi.SchedulerConnector.GetJobKeys
+- uid: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.JobKeys}
+  commentId: T:System.Threading.Tasks.Task{QuartzRestApi.Wrappers.JobKeys}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<JobKeys>
+  nameWithType: Task<JobKeys>
+  fullName: System.Threading.Tasks.Task<QuartzRestApi.Wrappers.JobKeys>
+  nameWithType.vb: Task(Of JobKeys)
+  fullName.vb: System.Threading.Tasks.Task(Of QuartzRestApi.Wrappers.JobKeys)
+  name.vb: Task(Of JobKeys)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: QuartzRestApi.Wrappers.JobKeys
+    name: JobKeys
+    href: QuartzRestApi.Wrappers.JobKeys.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuartzRestApi.Wrappers.JobKeys
+    name: JobKeys
+    href: QuartzRestApi.Wrappers.JobKeys.html
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.GetTriggerKeys*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetTriggerKeys
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  name: GetTriggerKeys
+  nameWithType: SchedulerConnector.GetTriggerKeys
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggerKeys
+- uid: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.TriggerKeys}
+  commentId: T:System.Threading.Tasks.Task{QuartzRestApi.Wrappers.TriggerKeys}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TriggerKeys>
+  nameWithType: Task<TriggerKeys>
+  fullName: System.Threading.Tasks.Task<QuartzRestApi.Wrappers.TriggerKeys>
+  nameWithType.vb: Task(Of TriggerKeys)
+  fullName.vb: System.Threading.Tasks.Task(Of QuartzRestApi.Wrappers.TriggerKeys)
+  name.vb: Task(Of TriggerKeys)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: QuartzRestApi.Wrappers.TriggerKeys
+    name: TriggerKeys
+    href: QuartzRestApi.Wrappers.TriggerKeys.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuartzRestApi.Wrappers.TriggerKeys
+    name: TriggerKeys
+    href: QuartzRestApi.Wrappers.TriggerKeys.html
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.GetTriggersOfJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetTriggersOfJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggersOfJob_QuartzRestApi_Wrappers_JobKey_
+  name: GetTriggersOfJob
+  nameWithType: SchedulerConnector.GetTriggersOfJob
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggersOfJob
+- uid: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.Triggers}
+  commentId: T:System.Threading.Tasks.Task{QuartzRestApi.Wrappers.Triggers}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Triggers>
+  nameWithType: Task<Triggers>
+  fullName: System.Threading.Tasks.Task<QuartzRestApi.Wrappers.Triggers>
+  nameWithType.vb: Task(Of Triggers)
+  fullName.vb: System.Threading.Tasks.Task(Of QuartzRestApi.Wrappers.Triggers)
+  name.vb: Task(Of Triggers)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: QuartzRestApi.Wrappers.Triggers
+    name: Triggers
+    href: QuartzRestApi.Wrappers.Triggers.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuartzRestApi.Wrappers.Triggers
+    name: Triggers
+    href: QuartzRestApi.Wrappers.Triggers.html
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.GetJobDetail*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetJobDetail
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobDetail_QuartzRestApi_Wrappers_JobKey_
+  name: GetJobDetail
+  nameWithType: SchedulerConnector.GetJobDetail
+  fullName: QuartzRestApi.SchedulerConnector.GetJobDetail
+- uid: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.JobDetail}
+  commentId: T:System.Threading.Tasks.Task{QuartzRestApi.Wrappers.JobDetail}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<JobDetail>
+  nameWithType: Task<JobDetail>
+  fullName: System.Threading.Tasks.Task<QuartzRestApi.Wrappers.JobDetail>
+  nameWithType.vb: Task(Of JobDetail)
+  fullName.vb: System.Threading.Tasks.Task(Of QuartzRestApi.Wrappers.JobDetail)
+  name.vb: Task(Of JobDetail)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: QuartzRestApi.Wrappers.JobDetail
+    name: JobDetail
+    href: QuartzRestApi.Wrappers.JobDetail.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuartzRestApi.Wrappers.JobDetail
+    name: JobDetail
+    href: QuartzRestApi.Wrappers.JobDetail.html
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.GetTrigger*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetTrigger
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  name: GetTrigger
+  nameWithType: SchedulerConnector.GetTrigger
+  fullName: QuartzRestApi.SchedulerConnector.GetTrigger
+- uid: System.Threading.Tasks.Task{QuartzRestApi.Wrappers.Trigger}
+  commentId: T:System.Threading.Tasks.Task{QuartzRestApi.Wrappers.Trigger}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Trigger>
+  nameWithType: Task<Trigger>
+  fullName: System.Threading.Tasks.Task<QuartzRestApi.Wrappers.Trigger>
+  nameWithType.vb: Task(Of Trigger)
+  fullName.vb: System.Threading.Tasks.Task(Of QuartzRestApi.Wrappers.Trigger)
+  name.vb: Task(Of Trigger)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: QuartzRestApi.Wrappers.Trigger
+    name: Trigger
+    href: QuartzRestApi.Wrappers.Trigger.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuartzRestApi.Wrappers.Trigger
+    name: Trigger
+    href: QuartzRestApi.Wrappers.Trigger.html
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.GetTriggerState*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetTriggerState
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerState_QuartzRestApi_Wrappers_TriggerKey_
+  name: GetTriggerState
+  nameWithType: SchedulerConnector.GetTriggerState
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggerState
+- uid: QuartzRestApi.SchedulerConnector.AddCalendar*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.AddCalendar
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddCalendar_QuartzRestApi_Wrappers_Calendars_BaseCalendar_
+  name: AddCalendar
+  nameWithType: SchedulerConnector.AddCalendar
+  fullName: QuartzRestApi.SchedulerConnector.AddCalendar
+- uid: QuartzRestApi.Wrappers.Calendars.BaseCalendar
+  commentId: T:QuartzRestApi.Wrappers.Calendars.BaseCalendar
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.BaseCalendar.html
+  name: BaseCalendar
+  nameWithType: BaseCalendar
+  fullName: QuartzRestApi.Wrappers.Calendars.BaseCalendar
+- uid: QuartzRestApi.Wrappers.Calendars
+  commentId: N:QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers.Calendars
+  nameWithType: QuartzRestApi.Wrappers.Calendars
+  fullName: QuartzRestApi.Wrappers.Calendars
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers.Calendars
+    name: Calendars
+    href: QuartzRestApi.Wrappers.Calendars.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers.Calendars
+    name: Calendars
+    href: QuartzRestApi.Wrappers.Calendars.html
+- uid: QuartzRestApi.SchedulerConnector.DeleteCalendar*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.DeleteCalendar
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteCalendar_System_String_
+  name: DeleteCalendar
+  nameWithType: SchedulerConnector.DeleteCalendar
+  fullName: QuartzRestApi.SchedulerConnector.DeleteCalendar
+- uid: QuartzRestApi.SchedulerConnector.GetCalendar*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetCalendar
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendar_System_String_
+  name: GetCalendar
+  nameWithType: SchedulerConnector.GetCalendar
+  fullName: QuartzRestApi.SchedulerConnector.GetCalendar
+- uid: QuartzRestApi.SchedulerConnector.GetCalendarNames*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.GetCalendarNames
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendarNames
+  name: GetCalendarNames
+  nameWithType: SchedulerConnector.GetCalendarNames
+  fullName: QuartzRestApi.SchedulerConnector.GetCalendarNames
+- uid: QuartzRestApi.SchedulerConnector.InterruptJob*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.InterruptJob
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InterruptJob_QuartzRestApi_Wrappers_JobKey_
+  name: InterruptJob
+  nameWithType: SchedulerConnector.InterruptJob
+  fullName: QuartzRestApi.SchedulerConnector.InterruptJob
+- uid: QuartzRestApi.SchedulerConnector.CheckExists*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.CheckExists
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_JobKey_
+  name: CheckExists
+  nameWithType: SchedulerConnector.CheckExists
+  fullName: QuartzRestApi.SchedulerConnector.CheckExists
+- uid: QuartzRestApi.SchedulerConnector.Clear*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.Clear
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Clear
+  name: Clear
+  nameWithType: SchedulerConnector.Clear
+  fullName: QuartzRestApi.SchedulerConnector.Clear
+- uid: QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState*
+  commentId: Overload:QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResetTriggerFromErrorState_QuartzRestApi_Wrappers_TriggerKey_
+  name: ResetTriggerFromErrorState
+  nameWithType: SchedulerConnector.ResetTriggerFromErrorState
+  fullName: QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState

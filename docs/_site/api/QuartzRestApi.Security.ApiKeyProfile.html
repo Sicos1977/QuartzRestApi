@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ApiKeyProfile | QuartzRestApi </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ApiKeyProfile | QuartzRestApi ">
+      
+      <meta name="description" content="Represents a named API key profile that controls which Scheduler endpoints the bearer of  is allowed to call.">
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://github.com/Sicos1977/QuartzRestApi">
+            <img id="logo" class="svg" src="../images/logo.png" alt="QuartzRestApi">
+            QuartzRestApi
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+          <a class="btn btn-sm ms-2" href="https://github.com/Sicos1977/QuartzRestApi" title="View on GitHub" target="_blank" rel="noopener noreferrer" style="color: inherit;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="QuartzRestApi.Security.ApiKeyProfile">
+
+
+
+  <h1 id="QuartzRestApi_Security_ApiKeyProfile" data-uid="QuartzRestApi.Security.ApiKeyProfile" class="text-break">
+Class ApiKeyProfile  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="QuartzRestApi.html">QuartzRestApi</a>.<a class="xref" href="QuartzRestApi.Security.html">Security</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>QuartzRestApi.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents a named API key profile that controls which Scheduler endpoints
+the bearer of <a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ApiKey">ApiKey</a> is allowed to call.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ApiKeyProfile</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ApiKeyProfile</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+  <h2 id="QuartzRestApi_Security_ApiKeyProfile_examples">Examples</h2>
+  <pre><code class="lang-csharp">// Admin profile — full access to all endpoints.
+var admin = ApiKeyProfile.AllowAll("Admin", "key-admin-xyz789");
+
+// Read-only profile — start with no access, then selectively enable query endpoints.
+var readOnly = ApiKeyProfile.DenyAll("ReadOnly", "key-readonly-abc123");
+readOnly.SchedulerName          = true;
+readOnly.SchedulerInstanceId    = true;
+readOnly.GetMetaData            = true;
+readOnly.GetJobGroupNames       = true;
+readOnly.GetTriggerGroupNames   = true;
+readOnly.GetJobKeys             = true;
+readOnly.GetJobDetail           = true;
+readOnly.GetTrigger             = true;
+readOnly.GetTriggerState        = true;
+readOnly.GetCurrentlyExecutingJobs = true;
+
+var host = new SchedulerHost("http://localhost:45000", scheduler, logger,
+    profiles: [admin, readOnly]);
+
+// Persist a profile to disk and reload it:
+File.WriteAllText("readOnly.json", readOnly.ToJson());
+var loaded = ApiKeyProfile.FromJson(File.ReadAllText("readOnly.json"));</code></pre>
+
+
+  <h2 id="QuartzRestApi_Security_ApiKeyProfile_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>
+    Every endpoint has a corresponding <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">bool</a> property on this
+    class. All properties default to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> (full access).
+    Set a property to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> to block that endpoint for this profile.
+</p>
+<p>
+    The profile can be persisted to JSON with <a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ToJson">ToJson()</a> and restored
+    with <a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_FromJson_System_String_">FromJson(string)</a>, making it easy to store profiles in a configuration
+    file or database.
+</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile__ctor_" data-uid="QuartzRestApi.Security.ApiKeyProfile.#ctor*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile__ctor" data-uid="QuartzRestApi.Security.ApiKeyProfile.#ctor">
+  ApiKeyProfile()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parameterless constructor used during JSON deserialization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonConstructor]
+public ApiKeyProfile()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_AddCalendar_" data-uid="QuartzRestApi.Security.ApiKeyProfile.AddCalendar*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_AddCalendar" data-uid="QuartzRestApi.Security.ApiKeyProfile.AddCalendar">
+  AddCalendar
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/AddCalendar</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddCalendar_QuartzRestApi_Wrappers_Calendars_BaseCalendar_">AddCalendar(BaseCalendar)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddCalendar { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_AddJob_" data-uid="QuartzRestApi.Security.ApiKeyProfile.AddJob*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_AddJob" data-uid="QuartzRestApi.Security.ApiKeyProfile.AddJob">
+  AddJob
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/AddJob</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddJob_QuartzRestApi_Wrappers_JobDetail_">AddJob(JobDetail)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool AddJob { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ApiKey_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ApiKey*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ApiKey" data-uid="QuartzRestApi.Security.ApiKeyProfile.ApiKey">
+  ApiKey
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The secret API key that identifies this profile.
+Sent by the client in the <code>X-Api-Key</code> HTTP header.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ApiKey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_CheckExistsJobKey_" data-uid="QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_CheckExistsJobKey" data-uid="QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey">
+  CheckExistsJobKey
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/CheckExistsJobKey</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_JobKey_">CheckExists(JobKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CheckExistsJobKey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_CheckExistsTriggerKey_" data-uid="QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_CheckExistsTriggerKey" data-uid="QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey">
+  CheckExistsTriggerKey
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/CheckExistsTriggerKey</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_TriggerKey_">CheckExists(TriggerKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool CheckExistsTriggerKey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_Clear_" data-uid="QuartzRestApi.Security.ApiKeyProfile.Clear*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_Clear" data-uid="QuartzRestApi.Security.ApiKeyProfile.Clear">
+  Clear
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/Clear</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Clear">Clear()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Clear { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_DeleteCalendar_" data-uid="QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_DeleteCalendar" data-uid="QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar">
+  DeleteCalendar
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>DELETE Scheduler/DeleteCalendar/{calName}</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteCalendar_System_String_">DeleteCalendar(string)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DeleteCalendar { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_DeleteJob_" data-uid="QuartzRestApi.Security.ApiKeyProfile.DeleteJob*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_DeleteJob" data-uid="QuartzRestApi.Security.ApiKeyProfile.DeleteJob">
+  DeleteJob
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>DELETE Scheduler/DeleteJob</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJob_QuartzRestApi_Wrappers_JobKey_">DeleteJob(JobKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DeleteJob { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_DeleteJobs_" data-uid="QuartzRestApi.Security.ApiKeyProfile.DeleteJobs*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_DeleteJobs" data-uid="QuartzRestApi.Security.ApiKeyProfile.DeleteJobs">
+  DeleteJobs
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>DELETE Scheduler/DeleteJobs</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJobs_QuartzRestApi_Wrappers_JobKeys_">DeleteJobs(JobKeys)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool DeleteJobs { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetCalendar_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetCalendar*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetCalendar" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetCalendar">
+  GetCalendar
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetCalendar/{calName}</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendar_System_String_">GetCalendar(string)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetCalendar { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetCalendarNames_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetCalendarNames" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames">
+  GetCalendarNames
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetCalendarNames</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendarNames">GetCalendarNames()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetCalendarNames { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetCurrentlyExecutingJobs_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetCurrentlyExecutingJobs" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs">
+  GetCurrentlyExecutingJobs
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetCurrentlyExecutingJobs</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCurrentlyExecutingJobs">GetCurrentlyExecutingJobs()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetCurrentlyExecutingJobs { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetJobDetail_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetJobDetail*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetJobDetail" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetJobDetail">
+  GetJobDetail
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetJobDetail</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobDetail_QuartzRestApi_Wrappers_JobKey_">GetJobDetail(JobKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetJobDetail { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetJobGroupNames_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetJobGroupNames" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames">
+  GetJobGroupNames
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetJobGroupNames</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobGroupNames">GetJobGroupNames()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetJobGroupNames { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetJobKeys_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetJobKeys*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetJobKeys" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetJobKeys">
+  GetJobKeys
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetJobKeys</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__">GetJobKeys(GroupMatcher&lt;JobKey&gt;)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetJobKeys { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetMetaData_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetMetaData*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetMetaData" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetMetaData">
+  GetMetaData
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetMetaData</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetMetaData">GetMetaData()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetMetaData { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetPausedTriggerGroups_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetPausedTriggerGroups" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups">
+  GetPausedTriggerGroups
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetPausedTriggerGroups</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetPausedTriggerGroups">GetPausedTriggerGroups()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetPausedTriggerGroups { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetTrigger_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetTrigger" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTrigger">
+  GetTrigger
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetTrigger</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTrigger_QuartzRestApi_Wrappers_TriggerKey_">GetTrigger(TriggerKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetTrigger { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetTriggerGroupNames_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetTriggerGroupNames" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames">
+  GetTriggerGroupNames
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetTriggerGroupNames</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerGroupNames">GetTriggerGroupNames()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetTriggerGroupNames { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetTriggerKeys_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetTriggerKeys" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys">
+  GetTriggerKeys
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetTriggerKeys</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__">GetTriggerKeys(GroupMatcher&lt;TriggerKey&gt;)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetTriggerKeys { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetTriggerState_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTriggerState*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetTriggerState" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTriggerState">
+  GetTriggerState
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetTriggerState</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerState_QuartzRestApi_Wrappers_TriggerKey_">GetTriggerState(TriggerKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetTriggerState { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_GetTriggersOfJob_" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_GetTriggersOfJob" data-uid="QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob">
+  GetTriggersOfJob
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/GetTriggersOfJob</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggersOfJob_QuartzRestApi_Wrappers_JobKey_">GetTriggersOfJob(JobKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool GetTriggersOfJob { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_InStandbyMode_" data-uid="QuartzRestApi.Security.ApiKeyProfile.InStandbyMode*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_InStandbyMode" data-uid="QuartzRestApi.Security.ApiKeyProfile.InStandbyMode">
+  InStandbyMode
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/InStandbyMode</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InStandbyMode">InStandbyMode()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool InStandbyMode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_InterruptFireInstanceId_" data-uid="QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_InterruptFireInstanceId" data-uid="QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId">
+  InterruptFireInstanceId
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/InterruptFireInstanceId/{fireInstanceId}</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InterruptJob_System_String_">InterruptJob(string)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool InterruptFireInstanceId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_InterruptJobKey_" data-uid="QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_InterruptJobKey" data-uid="QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey">
+  InterruptJobKey
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/InterruptJobKey</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InterruptJob_QuartzRestApi_Wrappers_JobKey_">InterruptJob(JobKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool InterruptJobKey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_IsJobGroupPaused_" data-uid="QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_IsJobGroupPaused" data-uid="QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused">
+  IsJobGroupPaused
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/IsJobGroupPaused/{groupName}</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsJobGroupPaused_System_String_">IsJobGroupPaused(string)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsJobGroupPaused { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_IsShutdown_" data-uid="QuartzRestApi.Security.ApiKeyProfile.IsShutdown*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_IsShutdown" data-uid="QuartzRestApi.Security.ApiKeyProfile.IsShutdown">
+  IsShutdown
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/IsShutdown</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsShutdown">IsShutdown()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsShutdown { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_IsStarted_" data-uid="QuartzRestApi.Security.ApiKeyProfile.IsStarted*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_IsStarted" data-uid="QuartzRestApi.Security.ApiKeyProfile.IsStarted">
+  IsStarted
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/IsStarted</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsStarted">IsStarted()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsStarted { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_IsTriggerGroupPaused_" data-uid="QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_IsTriggerGroupPaused" data-uid="QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused">
+  IsTriggerGroupPaused
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/IsTriggerGroupPaused/{groupName}</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsTriggerGroupPaused_System_String_">IsTriggerGroupPaused(string)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsTriggerGroupPaused { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_Name_" data-uid="QuartzRestApi.Security.ApiKeyProfile.Name*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_Name" data-uid="QuartzRestApi.Security.ApiKeyProfile.Name">
+  Name
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A human-readable name for this profile, used in log messages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_PauseAllTriggers_" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_PauseAllTriggers" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers">
+  PauseAllTriggers
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/PauseAllTriggers</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseAllTriggers">PauseAllTriggers()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PauseAllTriggers { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_PauseJob_" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseJob*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_PauseJob" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseJob">
+  PauseJob
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/PauseJob</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJob_QuartzRestApi_Wrappers_JobKey_">PauseJob(JobKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PauseJob { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_PauseJobs_" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseJobs*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_PauseJobs" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseJobs">
+  PauseJobs
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/PauseJobs</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__">PauseJobs(GroupMatcher&lt;JobKey&gt;)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PauseJobs { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_PauseTrigger_" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_PauseTrigger" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseTrigger">
+  PauseTrigger
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/PauseTrigger</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTrigger_QuartzRestApi_Wrappers_TriggerKey_">PauseTrigger(TriggerKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PauseTrigger { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_PauseTriggers_" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseTriggers*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_PauseTriggers" data-uid="QuartzRestApi.Security.ApiKeyProfile.PauseTriggers">
+  PauseTriggers
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/PauseTriggers</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__">PauseTriggers(GroupMatcher&lt;TriggerKey&gt;)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PauseTriggers { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_RescheduleJob_" data-uid="QuartzRestApi.Security.ApiKeyProfile.RescheduleJob*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_RescheduleJob" data-uid="QuartzRestApi.Security.ApiKeyProfile.RescheduleJob">
+  RescheduleJob
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/RescheduleJob</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_RescheduleJob_QuartzRestApi_Wrappers_RescheduleJob_">RescheduleJob(RescheduleJob)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RescheduleJob { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ResetTriggerFromErrorState_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ResetTriggerFromErrorState" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState">
+  ResetTriggerFromErrorState
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ResetTriggerFromErrorState</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResetTriggerFromErrorState_QuartzRestApi_Wrappers_TriggerKey_">ResetTriggerFromErrorState(TriggerKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResetTriggerFromErrorState { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ResumeAllTriggers_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ResumeAllTriggers" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers">
+  ResumeAllTriggers
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ResumeAllTriggers</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeAllTriggers">ResumeAllTriggers()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResumeAllTriggers { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ResumeJob_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeJob*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ResumeJob" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeJob">
+  ResumeJob
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ResumeJob</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJob_QuartzRestApi_Wrappers_JobKey_">ResumeJob(JobKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResumeJob { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ResumeJobs_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeJobs*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ResumeJobs" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeJobs">
+  ResumeJobs
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ResumeJobs</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__">ResumeJobs(GroupMatcher&lt;JobKey&gt;)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResumeJobs { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ResumeTrigger_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ResumeTrigger" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger">
+  ResumeTrigger
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ResumeTrigger</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTrigger_QuartzRestApi_Wrappers_TriggerKey_">ResumeTrigger(TriggerKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResumeTrigger { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ResumeTriggers_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ResumeTriggers" data-uid="QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers">
+  ResumeTriggers
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ResumeTriggers</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__">ResumeTriggers(GroupMatcher&lt;TriggerKey&gt;)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ResumeTriggers { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ScheduleJobIdentifiedWithTrigger_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ScheduleJobIdentifiedWithTrigger" data-uid="QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger">
+  ScheduleJobIdentifiedWithTrigger
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ScheduleJobIdentifiedWithTrigger</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_Trigger_">ScheduleJob(Trigger)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ScheduleJobIdentifiedWithTrigger { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ScheduleJobWithJobDetailAndTrigger_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ScheduleJobWithJobDetailAndTrigger" data-uid="QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger">
+  ScheduleJobWithJobDetailAndTrigger
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ScheduleJobWithJobDetailAndTrigger</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_JobDetailWithTrigger_">ScheduleJob(JobDetailWithTrigger)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ScheduleJobWithJobDetailAndTrigger { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ScheduleJobWithJobDetailAndTriggers_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ScheduleJobWithJobDetailAndTriggers" data-uid="QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers">
+  ScheduleJobWithJobDetailAndTriggers
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ScheduleJobWithJobDetailAndTriggers</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobWithTriggers_QuartzRestApi_Wrappers_JobDetailWithTriggers_">ScheduleJobWithTriggers(JobDetailWithTriggers)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ScheduleJobWithJobDetailAndTriggers { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ScheduleJobs_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ScheduleJobs" data-uid="QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs">
+  ScheduleJobs
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/ScheduleJobs</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobs_QuartzRestApi_Wrappers_ScheduleJobs_">ScheduleJobs(ScheduleJobs)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool ScheduleJobs { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_SchedulerContext_" data-uid="QuartzRestApi.Security.ApiKeyProfile.SchedulerContext*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_SchedulerContext" data-uid="QuartzRestApi.Security.ApiKeyProfile.SchedulerContext">
+  SchedulerContext
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/SchedulerContext</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Context">Context()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SchedulerContext { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_SchedulerInstanceId_" data-uid="QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_SchedulerInstanceId" data-uid="QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId">
+  SchedulerInstanceId
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/SchedulerInstanceId</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerInstanceId">SchedulerInstanceId()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SchedulerInstanceId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_SchedulerName_" data-uid="QuartzRestApi.Security.ApiKeyProfile.SchedulerName*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_SchedulerName" data-uid="QuartzRestApi.Security.ApiKeyProfile.SchedulerName">
+  SchedulerName
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>GET Scheduler/SchedulerName</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerName">SchedulerName()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool SchedulerName { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_Shutdown_" data-uid="QuartzRestApi.Security.ApiKeyProfile.Shutdown*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_Shutdown" data-uid="QuartzRestApi.Security.ApiKeyProfile.Shutdown">
+  Shutdown
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/Shutdown</code> and
+<code>POST Scheduler/Shutdown/{waitForJobsToComplete}</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Shutdown">Shutdown()</a> and
+<a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Shutdown_System_Boolean_">Shutdown(bool)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Shutdown { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_Standby_" data-uid="QuartzRestApi.Security.ApiKeyProfile.Standby*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_Standby" data-uid="QuartzRestApi.Security.ApiKeyProfile.Standby">
+  Standby
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/Standby</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Standby">Standby()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Standby { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_Start_" data-uid="QuartzRestApi.Security.ApiKeyProfile.Start*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_Start" data-uid="QuartzRestApi.Security.ApiKeyProfile.Start">
+  Start
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/Start</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Start">Start()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Start { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_StartDelayed_" data-uid="QuartzRestApi.Security.ApiKeyProfile.StartDelayed*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_StartDelayed" data-uid="QuartzRestApi.Security.ApiKeyProfile.StartDelayed">
+  StartDelayed
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/StartDelayed/{delay}</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_StartDelayed_System_Int32_">StartDelayed(int)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool StartDelayed { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_TriggerJobWithDataMap_" data-uid="QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_TriggerJobWithDataMap" data-uid="QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap">
+  TriggerJobWithDataMap
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/TriggerJobWithDataMap</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKeyWithDataMap_">TriggerJob(JobKeyWithDataMap)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TriggerJobWithDataMap { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_TriggerJobWithJobkey_" data-uid="QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_TriggerJobWithJobkey" data-uid="QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey">
+  TriggerJobWithJobkey
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/TriggerJobWithJobkey</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKey_">TriggerJob(JobKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TriggerJobWithJobkey { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_UnscheduleJob_" data-uid="QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_UnscheduleJob" data-uid="QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob">
+  UnscheduleJob
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/UnscheduleJob</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJob_QuartzRestApi_Wrappers_TriggerKey_">UnscheduleJob(TriggerKey)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UnscheduleJob { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_UnscheduleJobs_" data-uid="QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_UnscheduleJobs" data-uid="QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs">
+  UnscheduleJobs
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Allows access to <code>POST Scheduler/UnscheduleJobs</code>.
+<br>Corresponds to <a class="xref" href="QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJobs_QuartzRestApi_Wrappers_TriggerKeys_">UnscheduleJobs(TriggerKeys)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool UnscheduleJobs { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_AllowAll_" data-uid="QuartzRestApi.Security.ApiKeyProfile.AllowAll*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_AllowAll_System_String_System_String_" data-uid="QuartzRestApi.Security.ApiKeyProfile.AllowAll(System.String,System.String)">
+  AllowAll(string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html">ApiKeyProfile</a> with access to <b>all</b> endpoints enabled.
+Use this as a starting point for an admin profile, or selectively set properties
+to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> to restrict access.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ApiKeyProfile AllowAll(string name, string apiKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A human-readable name for this profile, used in log messages.</p>
+</dd>
+    <dt><code>apiKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The secret API key for this profile, sent in the <code>X-Api-Key</code> header.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html">ApiKeyProfile</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown when <code class="paramref">name</code> or <code class="paramref">apiKey</code> is null or empty.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_DenyAll_" data-uid="QuartzRestApi.Security.ApiKeyProfile.DenyAll*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_DenyAll_System_String_System_String_" data-uid="QuartzRestApi.Security.ApiKeyProfile.DenyAll(System.String,System.String)">
+  DenyAll(string, string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new <a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html">ApiKeyProfile</a> with access to <b>all</b> endpoints denied.
+Use this as a starting point for a restricted profile, then selectively set properties
+to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to grant access to specific endpoints.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ApiKeyProfile DenyAll(string name, string apiKey)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>name</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A human-readable name for this profile, used in log messages.</p>
+</dd>
+    <dt><code>apiKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The secret API key for this profile, sent in the <code>X-Api-Key</code> header.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html">ApiKeyProfile</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown when <code class="paramref">name</code> or <code class="paramref">apiKey</code> is null or empty.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_FromJson_" data-uid="QuartzRestApi.Security.ApiKeyProfile.FromJson*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_FromJson_System_String_" data-uid="QuartzRestApi.Security.ApiKeyProfile.FromJson(System.String)">
+  FromJson(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deserializes an <a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html">ApiKeyProfile</a> from a JSON string
+produced by <a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ToJson">ToJson()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ApiKeyProfile FromJson(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The JSON string to deserialize.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html">ApiKeyProfile</a></dt>
+    <dd><p>The deserialized <a class="xref" href="QuartzRestApi.Security.ApiKeyProfile.html">ApiKeyProfile</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown when <code class="paramref">json</code> is null or whitespace.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonexception">JsonException</a></dt>
+    <dd><p>Thrown when <code class="paramref">json</code> is not valid JSON.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="QuartzRestApi_Security_ApiKeyProfile_ToJson_" data-uid="QuartzRestApi.Security.ApiKeyProfile.ToJson*"></a>
+
+  <h3 id="QuartzRestApi_Security_ApiKeyProfile_ToJson" data-uid="QuartzRestApi.Security.ApiKeyProfile.ToJson">
+  ToJson()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Serializes this profile to an indented JSON string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToJson()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A JSON representation of this profile.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; 2022 - 2026 Magic-Sessions. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

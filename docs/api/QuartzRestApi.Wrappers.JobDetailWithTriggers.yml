@@ -1,0 +1,789 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  commentId: T:QuartzRestApi.Wrappers.JobDetailWithTriggers
+  id: JobDetailWithTriggers
+  parent: QuartzRestApi.Wrappers
+  children:
+  - QuartzRestApi.Wrappers.JobDetailWithTriggers.#ctor(QuartzRestApi.Wrappers.JobDetail,System.Collections.Generic.List{QuartzRestApi.Wrappers.Trigger})
+  - QuartzRestApi.Wrappers.JobDetailWithTriggers.FromJsonString(System.String)
+  - QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail
+  - QuartzRestApi.Wrappers.JobDetailWithTriggers.Replace
+  - QuartzRestApi.Wrappers.JobDetailWithTriggers.ToJsonString
+  - QuartzRestApi.Wrappers.JobDetailWithTriggers.ToReadOnlyTriggerCollection
+  - QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers
+  langs:
+  - csharp
+  - vb
+  name: JobDetailWithTriggers
+  nameWithType: JobDetailWithTriggers
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  type: Class
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Json wrapper to create a <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> with a list of <xref href="Quartz.ITrigger" data-throw-if-not-resolved="false"></xref>s
+  example: []
+  syntax:
+    content: public class JobDetailWithTriggers
+    content.vb: Public Class JobDetailWithTriggers
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail
+  commentId: P:QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail
+  id: JobDetail
+  parent: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  langs:
+  - csharp
+  - vb
+  name: JobDetail
+  nameWithType: JobDetailWithTriggers.JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: <xref href="QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("JobDetail")]
+
+      public JobDetail JobDetail { get; }
+    parameters: []
+    return:
+      type: QuartzRestApi.Wrappers.JobDetail
+    content.vb: >-
+      <JsonPropertyName("JobDetail")>
+
+      Public Property JobDetail As JobDetail
+  overload: QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: JobDetail
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers
+  commentId: P:QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers
+  id: Triggers
+  parent: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  langs:
+  - csharp
+  - vb
+  name: Triggers
+  nameWithType: JobDetailWithTriggers.Triggers
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: A list with related <xref href="QuartzRestApi.Wrappers.Trigger" data-throw-if-not-resolved="false"></xref>'s
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Triggers")]
+
+      public List<Trigger> Triggers { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{QuartzRestApi.Wrappers.Trigger}
+    content.vb: >-
+      <JsonPropertyName("Triggers")>
+
+      Public Property Triggers As List(Of Trigger)
+  overload: QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Triggers
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.Replace
+  commentId: P:QuartzRestApi.Wrappers.JobDetailWithTriggers.Replace
+  id: Replace
+  parent: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  langs:
+  - csharp
+  - vb
+  name: Replace
+  nameWithType: JobDetailWithTriggers.Replace
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.Replace
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: <code>true</code> when the job needs to be replaced
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Replace")]
+
+      public bool Replace { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("Replace")>
+
+      Public Property Replace As Boolean
+  overload: QuartzRestApi.Wrappers.JobDetailWithTriggers.Replace*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Replace
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.#ctor(QuartzRestApi.Wrappers.JobDetail,System.Collections.Generic.List{QuartzRestApi.Wrappers.Trigger})
+  commentId: M:QuartzRestApi.Wrappers.JobDetailWithTriggers.#ctor(QuartzRestApi.Wrappers.JobDetail,System.Collections.Generic.List{QuartzRestApi.Wrappers.Trigger})
+  id: '#ctor(QuartzRestApi.Wrappers.JobDetail,System.Collections.Generic.List{QuartzRestApi.Wrappers.Trigger})'
+  parent: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  langs:
+  - csharp
+  - vb
+  name: JobDetailWithTriggers(JobDetail, List<Trigger>)
+  nameWithType: JobDetailWithTriggers.JobDetailWithTriggers(JobDetail, List<Trigger>)
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetailWithTriggers(QuartzRestApi.Wrappers.JobDetail, System.Collections.Generic.List<QuartzRestApi.Wrappers.Trigger>)
+  type: Constructor
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Makes this object and sets it's needed properties
+  example: []
+  syntax:
+    content: public JobDetailWithTriggers(JobDetail jobDetail, List<Trigger> triggers)
+    parameters:
+    - id: jobDetail
+      type: QuartzRestApi.Wrappers.JobDetail
+      description: <xref href="QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail" data-throw-if-not-resolved="false"></xref>
+    - id: triggers
+      type: System.Collections.Generic.List{QuartzRestApi.Wrappers.Trigger}
+      description: A list with related <xref href="QuartzRestApi.Wrappers.Trigger" data-throw-if-not-resolved="false"></xref>'s
+    content.vb: Public Sub New(jobDetail As JobDetail, triggers As List(Of Trigger))
+  overload: QuartzRestApi.Wrappers.JobDetailWithTriggers.#ctor*
+  nameWithType.vb: JobDetailWithTriggers.New(JobDetail, List(Of Trigger))
+  fullName.vb: QuartzRestApi.Wrappers.JobDetailWithTriggers.New(QuartzRestApi.Wrappers.JobDetail, System.Collections.Generic.List(Of QuartzRestApi.Wrappers.Trigger))
+  name.vb: New(JobDetail, List(Of Trigger))
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToReadOnlyTriggerCollection
+  commentId: M:QuartzRestApi.Wrappers.JobDetailWithTriggers.ToReadOnlyTriggerCollection
+  id: ToReadOnlyTriggerCollection
+  parent: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  langs:
+  - csharp
+  - vb
+  name: ToReadOnlyTriggerCollection()
+  nameWithType: JobDetailWithTriggers.ToReadOnlyTriggerCollection()
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToReadOnlyTriggerCollection()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns the <xref href="QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers" data-throw-if-not-resolved="false"></xref> as a <xref href="System.Collections.Generic.IReadOnlyCollection%601" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public IReadOnlyCollection<ITrigger> ToReadOnlyTriggerCollection()
+    return:
+      type: System.Collections.Generic.IReadOnlyCollection{Quartz.ITrigger}
+      description: ''
+    content.vb: Public Function ToReadOnlyTriggerCollection() As IReadOnlyCollection(Of ITrigger)
+  overload: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToReadOnlyTriggerCollection*
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToJsonString
+  commentId: M:QuartzRestApi.Wrappers.JobDetailWithTriggers.ToJsonString
+  id: ToJsonString
+  parent: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  langs:
+  - csharp
+  - vb
+  name: ToJsonString()
+  nameWithType: JobDetailWithTriggers.ToJsonString()
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToJsonString()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns this object as a json string
+  example: []
+  syntax:
+    content: public string ToJsonString()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Function ToJsonString() As String
+  overload: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToJsonString*
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.FromJsonString(System.String)
+  commentId: M:QuartzRestApi.Wrappers.JobDetailWithTriggers.FromJsonString(System.String)
+  id: FromJsonString(System.String)
+  parent: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  langs:
+  - csharp
+  - vb
+  name: FromJsonString(string)
+  nameWithType: JobDetailWithTriggers.FromJsonString(string)
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.FromJsonString(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns the <xref href="QuartzRestApi.Wrappers.JobDetailWithTriggers" data-throw-if-not-resolved="false"></xref> object from the given <code class="paramref">json</code> string
+  example: []
+  syntax:
+    content: public static JobDetailWithTriggers FromJsonString(string json)
+    parameters:
+    - id: json
+      type: System.String
+      description: The json string
+    return:
+      type: QuartzRestApi.Wrappers.JobDetailWithTriggers
+      description: <xref href="QuartzRestApi.Wrappers.Trigger" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Shared Function FromJsonString(json As String) As JobDetailWithTriggers
+  overload: QuartzRestApi.Wrappers.JobDetailWithTriggers.FromJsonString*
+  nameWithType.vb: JobDetailWithTriggers.FromJsonString(String)
+  fullName.vb: QuartzRestApi.Wrappers.JobDetailWithTriggers.FromJsonString(String)
+  name.vb: FromJsonString(String)
+references:
+- uid: Quartz.IJob
+  commentId: T:Quartz.IJob
+  parent: Quartz
+  isExternal: true
+  name: IJob
+  nameWithType: IJob
+  fullName: Quartz.IJob
+- uid: Quartz.ITrigger
+  commentId: T:Quartz.ITrigger
+  parent: Quartz
+  isExternal: true
+  name: ITrigger
+  nameWithType: ITrigger
+  fullName: Quartz.ITrigger
+- uid: QuartzRestApi.Wrappers
+  commentId: N:QuartzRestApi.Wrappers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers
+  nameWithType: QuartzRestApi.Wrappers
+  fullName: QuartzRestApi.Wrappers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Quartz
+  commentId: N:Quartz
+  isExternal: true
+  name: Quartz
+  nameWithType: Quartz
+  fullName: Quartz
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail
+  commentId: P:QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html#QuartzRestApi_Wrappers_JobDetailWithTriggers_JobDetail
+  name: JobDetail
+  nameWithType: JobDetailWithTriggers.JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html#QuartzRestApi_Wrappers_JobDetailWithTriggers_JobDetail
+  name: JobDetail
+  nameWithType: JobDetailWithTriggers.JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetail
+- uid: QuartzRestApi.Wrappers.JobDetail
+  commentId: T:QuartzRestApi.Wrappers.JobDetail
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetail.html
+  name: JobDetail
+  nameWithType: JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetail
+- uid: QuartzRestApi.Wrappers.Trigger
+  commentId: T:QuartzRestApi.Wrappers.Trigger
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.Trigger.html
+  name: Trigger
+  nameWithType: Trigger
+  fullName: QuartzRestApi.Wrappers.Trigger
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html#QuartzRestApi_Wrappers_JobDetailWithTriggers_Triggers
+  name: Triggers
+  nameWithType: JobDetailWithTriggers.Triggers
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers
+- uid: System.Collections.Generic.List{QuartzRestApi.Wrappers.Trigger}
+  commentId: T:System.Collections.Generic.List{QuartzRestApi.Wrappers.Trigger}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Trigger>
+  nameWithType: List<Trigger>
+  fullName: System.Collections.Generic.List<QuartzRestApi.Wrappers.Trigger>
+  nameWithType.vb: List(Of Trigger)
+  fullName.vb: System.Collections.Generic.List(Of QuartzRestApi.Wrappers.Trigger)
+  name.vb: List(Of Trigger)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QuartzRestApi.Wrappers.Trigger
+    name: Trigger
+    href: QuartzRestApi.Wrappers.Trigger.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QuartzRestApi.Wrappers.Trigger
+    name: Trigger
+    href: QuartzRestApi.Wrappers.Trigger.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.Replace*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetailWithTriggers.Replace
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html#QuartzRestApi_Wrappers_JobDetailWithTriggers_Replace
+  name: Replace
+  nameWithType: JobDetailWithTriggers.Replace
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.Replace
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.#ctor*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetailWithTriggers.#ctor
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html#QuartzRestApi_Wrappers_JobDetailWithTriggers__ctor_QuartzRestApi_Wrappers_JobDetail_System_Collections_Generic_List_QuartzRestApi_Wrappers_Trigger__
+  name: JobDetailWithTriggers
+  nameWithType: JobDetailWithTriggers.JobDetailWithTriggers
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.JobDetailWithTriggers
+  nameWithType.vb: JobDetailWithTriggers.New
+  fullName.vb: QuartzRestApi.Wrappers.JobDetailWithTriggers.New
+  name.vb: New
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers
+  commentId: P:QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html#QuartzRestApi_Wrappers_JobDetailWithTriggers_Triggers
+  name: Triggers
+  nameWithType: JobDetailWithTriggers.Triggers
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.Triggers
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToReadOnlyTriggerCollection*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetailWithTriggers.ToReadOnlyTriggerCollection
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html#QuartzRestApi_Wrappers_JobDetailWithTriggers_ToReadOnlyTriggerCollection
+  name: ToReadOnlyTriggerCollection
+  nameWithType: JobDetailWithTriggers.ToReadOnlyTriggerCollection
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToReadOnlyTriggerCollection
+- uid: System.Collections.Generic.IReadOnlyCollection{Quartz.ITrigger}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{Quartz.ITrigger}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<ITrigger>
+  nameWithType: IReadOnlyCollection<ITrigger>
+  fullName: System.Collections.Generic.IReadOnlyCollection<Quartz.ITrigger>
+  nameWithType.vb: IReadOnlyCollection(Of ITrigger)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of Quartz.ITrigger)
+  name.vb: IReadOnlyCollection(Of ITrigger)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: Quartz.ITrigger
+    name: ITrigger
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Quartz.ITrigger
+    name: ITrigger
+    isExternal: true
+  - name: )
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToJsonString*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetailWithTriggers.ToJsonString
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html#QuartzRestApi_Wrappers_JobDetailWithTriggers_ToJsonString
+  name: ToJsonString
+  nameWithType: JobDetailWithTriggers.ToJsonString
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.ToJsonString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  commentId: T:QuartzRestApi.Wrappers.JobDetailWithTriggers
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html
+  name: JobDetailWithTriggers
+  nameWithType: JobDetailWithTriggers
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers.FromJsonString*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetailWithTriggers.FromJsonString
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html#QuartzRestApi_Wrappers_JobDetailWithTriggers_FromJsonString_System_String_
+  name: FromJsonString
+  nameWithType: JobDetailWithTriggers.FromJsonString
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers.FromJsonString

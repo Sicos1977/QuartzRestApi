@@ -1,0 +1,110 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Wrappers.Calendars
+  commentId: N:QuartzRestApi.Wrappers.Calendars
+  id: QuartzRestApi.Wrappers.Calendars
+  children:
+  - QuartzRestApi.Wrappers.Calendars.AnnualCalendar
+  - QuartzRestApi.Wrappers.Calendars.BaseCalendar
+  - QuartzRestApi.Wrappers.Calendars.CalendarType
+  - QuartzRestApi.Wrappers.Calendars.CronCalendar
+  - QuartzRestApi.Wrappers.Calendars.DailyCalendar
+  - QuartzRestApi.Wrappers.Calendars.HolidayCalendar
+  - QuartzRestApi.Wrappers.Calendars.MonthlyCalendar
+  - QuartzRestApi.Wrappers.Calendars.WeeklyCalendar
+  langs:
+  - csharp
+  - vb
+  name: QuartzRestApi.Wrappers.Calendars
+  nameWithType: QuartzRestApi.Wrappers.Calendars
+  fullName: QuartzRestApi.Wrappers.Calendars
+  type: Namespace
+  assemblies:
+  - QuartzRestApi
+references:
+- uid: QuartzRestApi.Wrappers.Calendars.AnnualCalendar
+  commentId: T:QuartzRestApi.Wrappers.Calendars.AnnualCalendar
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.AnnualCalendar.html
+  name: AnnualCalendar
+  nameWithType: AnnualCalendar
+  fullName: QuartzRestApi.Wrappers.Calendars.AnnualCalendar
+- uid: QuartzRestApi.Wrappers.Calendars.BaseCalendar
+  commentId: T:QuartzRestApi.Wrappers.Calendars.BaseCalendar
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.BaseCalendar.html
+  name: BaseCalendar
+  nameWithType: BaseCalendar
+  fullName: QuartzRestApi.Wrappers.Calendars.BaseCalendar
+- uid: QuartzRestApi.Wrappers.Calendars.CalendarType
+  commentId: T:QuartzRestApi.Wrappers.Calendars.CalendarType
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.CalendarType.html
+  name: CalendarType
+  nameWithType: CalendarType
+  fullName: QuartzRestApi.Wrappers.Calendars.CalendarType
+- uid: QuartzRestApi.Wrappers.Calendars.CronCalendar
+  commentId: T:QuartzRestApi.Wrappers.Calendars.CronCalendar
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.CronCalendar.html
+  name: CronCalendar
+  nameWithType: CronCalendar
+  fullName: QuartzRestApi.Wrappers.Calendars.CronCalendar
+- uid: QuartzRestApi.Wrappers.Calendars.DailyCalendar
+  commentId: T:QuartzRestApi.Wrappers.Calendars.DailyCalendar
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.DailyCalendar.html
+  name: DailyCalendar
+  nameWithType: DailyCalendar
+  fullName: QuartzRestApi.Wrappers.Calendars.DailyCalendar
+- uid: QuartzRestApi.Wrappers.Calendars.HolidayCalendar
+  commentId: T:QuartzRestApi.Wrappers.Calendars.HolidayCalendar
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.HolidayCalendar.html
+  name: HolidayCalendar
+  nameWithType: HolidayCalendar
+  fullName: QuartzRestApi.Wrappers.Calendars.HolidayCalendar
+- uid: QuartzRestApi.Wrappers.Calendars.MonthlyCalendar
+  commentId: T:QuartzRestApi.Wrappers.Calendars.MonthlyCalendar
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.MonthlyCalendar.html
+  name: MonthlyCalendar
+  nameWithType: MonthlyCalendar
+  fullName: QuartzRestApi.Wrappers.Calendars.MonthlyCalendar
+- uid: QuartzRestApi.Wrappers.Calendars.WeeklyCalendar
+  commentId: T:QuartzRestApi.Wrappers.Calendars.WeeklyCalendar
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.WeeklyCalendar.html
+  name: WeeklyCalendar
+  nameWithType: WeeklyCalendar
+  fullName: QuartzRestApi.Wrappers.Calendars.WeeklyCalendar
+- uid: QuartzRestApi.Wrappers.Calendars
+  commentId: N:QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers.Calendars
+  nameWithType: QuartzRestApi.Wrappers.Calendars
+  fullName: QuartzRestApi.Wrappers.Calendars
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers.Calendars
+    name: Calendars
+    href: QuartzRestApi.Wrappers.Calendars.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers.Calendars
+    name: Calendars
+    href: QuartzRestApi.Wrappers.Calendars.html

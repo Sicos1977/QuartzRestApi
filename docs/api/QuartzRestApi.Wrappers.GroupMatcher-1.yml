@@ -1,0 +1,675 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcher`1
+  id: GroupMatcher`1
+  parent: QuartzRestApi.Wrappers
+  children:
+  - QuartzRestApi.Wrappers.GroupMatcher`1.#ctor(QuartzRestApi.Wrappers.GroupMatcherType,System.String)
+  - QuartzRestApi.Wrappers.GroupMatcher`1.FromJsonString(System.String)
+  - QuartzRestApi.Wrappers.GroupMatcher`1.ToGroupMatcher
+  - QuartzRestApi.Wrappers.GroupMatcher`1.ToJsonString
+  - QuartzRestApi.Wrappers.GroupMatcher`1.Type
+  - QuartzRestApi.Wrappers.GroupMatcher`1.Value
+  langs:
+  - csharp
+  - vb
+  name: GroupMatcher<T>
+  nameWithType: GroupMatcher<T>
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>
+  type: Class
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Json wrapper for the Quartz <xref href="Quartz.Impl.Matchers.GroupMatcher%601" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public class GroupMatcher<T> where T : Key<T>'
+    typeParameters:
+    - id: T
+      description: ''
+    content.vb: Public Class GroupMatcher(Of T As Key(Of T))
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  nameWithType.vb: GroupMatcher(Of T)
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T)
+  name.vb: GroupMatcher(Of T)
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.Type
+  commentId: P:QuartzRestApi.Wrappers.GroupMatcher`1.Type
+  id: Type
+  parent: QuartzRestApi.Wrappers.GroupMatcher`1
+  langs:
+  - csharp
+  - vb
+  name: Type
+  nameWithType: GroupMatcher<T>.Type
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.Type
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: The <xref href="QuartzRestApi.Wrappers.GroupMatcherType" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: >-
+      [JsonConverter(typeof(JsonStringEnumConverter))]
+
+      [JsonPropertyName("Type")]
+
+      public GroupMatcherType Type { get; }
+    parameters: []
+    return:
+      type: QuartzRestApi.Wrappers.GroupMatcherType
+    content.vb: >-
+      <JsonConverter(GetType(JsonStringEnumConverter))>
+
+      <JsonPropertyName("Type")>
+
+      Public Property Type As GroupMatcherType
+  overload: QuartzRestApi.Wrappers.GroupMatcher`1.Type*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonConverterAttribute
+    ctor: System.Text.Json.Serialization.JsonConverterAttribute.#ctor(System.Type)
+    arguments:
+    - type: System.Type
+      value: System.Text.Json.Serialization.JsonStringEnumConverter
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Type
+  nameWithType.vb: GroupMatcher(Of T).Type
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).Type
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.Value
+  commentId: P:QuartzRestApi.Wrappers.GroupMatcher`1.Value
+  id: Value
+  parent: QuartzRestApi.Wrappers.GroupMatcher`1
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: GroupMatcher<T>.Value
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.Value
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: The value to match
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Value")]
+
+      public string Value { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("Value")>
+
+      Public Property Value As String
+  overload: QuartzRestApi.Wrappers.GroupMatcher`1.Value*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Value
+  nameWithType.vb: GroupMatcher(Of T).Value
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).Value
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.#ctor(QuartzRestApi.Wrappers.GroupMatcherType,System.String)
+  commentId: M:QuartzRestApi.Wrappers.GroupMatcher`1.#ctor(QuartzRestApi.Wrappers.GroupMatcherType,System.String)
+  id: '#ctor(QuartzRestApi.Wrappers.GroupMatcherType,System.String)'
+  parent: QuartzRestApi.Wrappers.GroupMatcher`1
+  langs:
+  - csharp
+  - vb
+  name: GroupMatcher(GroupMatcherType, string)
+  nameWithType: GroupMatcher<T>.GroupMatcher(GroupMatcherType, string)
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.GroupMatcher(QuartzRestApi.Wrappers.GroupMatcherType, string)
+  type: Constructor
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Makes this object and sets it's needed properties
+  example: []
+  syntax:
+    content: public GroupMatcher(GroupMatcherType type, string value)
+    parameters:
+    - id: type
+      type: QuartzRestApi.Wrappers.GroupMatcherType
+      description: The <xref href="QuartzRestApi.Wrappers.GroupMatcherType" data-throw-if-not-resolved="false"></xref>
+    - id: value
+      type: System.String
+      description: The value to match
+    content.vb: Public Sub New(type As GroupMatcherType, value As String)
+  overload: QuartzRestApi.Wrappers.GroupMatcher`1.#ctor*
+  nameWithType.vb: GroupMatcher(Of T).New(GroupMatcherType, String)
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).New(QuartzRestApi.Wrappers.GroupMatcherType, String)
+  name.vb: New(GroupMatcherType, String)
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.ToJsonString
+  commentId: M:QuartzRestApi.Wrappers.GroupMatcher`1.ToJsonString
+  id: ToJsonString
+  parent: QuartzRestApi.Wrappers.GroupMatcher`1
+  langs:
+  - csharp
+  - vb
+  name: ToJsonString()
+  nameWithType: GroupMatcher<T>.ToJsonString()
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.ToJsonString()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns this object as a json string
+  example: []
+  syntax:
+    content: public string ToJsonString()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Function ToJsonString() As String
+  overload: QuartzRestApi.Wrappers.GroupMatcher`1.ToJsonString*
+  nameWithType.vb: GroupMatcher(Of T).ToJsonString()
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).ToJsonString()
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.FromJsonString(System.String)
+  commentId: M:QuartzRestApi.Wrappers.GroupMatcher`1.FromJsonString(System.String)
+  id: FromJsonString(System.String)
+  parent: QuartzRestApi.Wrappers.GroupMatcher`1
+  langs:
+  - csharp
+  - vb
+  name: FromJsonString(string)
+  nameWithType: GroupMatcher<T>.FromJsonString(string)
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.FromJsonString(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns the <xref href="QuartzRestApi.Wrappers.GroupMatcher%601" data-throw-if-not-resolved="false"></xref> object from the given <code class="paramref">json</code> string
+  example: []
+  syntax:
+    content: public static GroupMatcher<T> FromJsonString(string json)
+    parameters:
+    - id: json
+      type: System.String
+      description: The json string
+    return:
+      type: QuartzRestApi.Wrappers.GroupMatcher`1
+      description: <xref href="QuartzRestApi.Wrappers.Trigger" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Shared Function FromJsonString(json As String) As GroupMatcher(Of T)
+  overload: QuartzRestApi.Wrappers.GroupMatcher`1.FromJsonString*
+  nameWithType.vb: GroupMatcher(Of T).FromJsonString(String)
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).FromJsonString(String)
+  name.vb: FromJsonString(String)
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.ToGroupMatcher
+  commentId: M:QuartzRestApi.Wrappers.GroupMatcher`1.ToGroupMatcher
+  id: ToGroupMatcher
+  parent: QuartzRestApi.Wrappers.GroupMatcher`1
+  langs:
+  - csharp
+  - vb
+  name: ToGroupMatcher()
+  nameWithType: GroupMatcher<T>.ToGroupMatcher()
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.ToGroupMatcher()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  syntax:
+    content: public GroupMatcher<T> ToGroupMatcher()
+    return:
+      type: Quartz.Impl.Matchers.GroupMatcher{{T}}
+    content.vb: Public Function ToGroupMatcher() As GroupMatcher(Of T)
+  overload: QuartzRestApi.Wrappers.GroupMatcher`1.ToGroupMatcher*
+  nameWithType.vb: GroupMatcher(Of T).ToGroupMatcher()
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).ToGroupMatcher()
+references:
+- uid: Quartz.Impl.Matchers.GroupMatcher`1
+  commentId: T:Quartz.Impl.Matchers.GroupMatcher`1
+  isExternal: true
+  name: GroupMatcher<TKey>
+  nameWithType: GroupMatcher<TKey>
+  fullName: Quartz.Impl.Matchers.GroupMatcher<TKey>
+  nameWithType.vb: GroupMatcher(Of TKey)
+  fullName.vb: Quartz.Impl.Matchers.GroupMatcher(Of TKey)
+  name.vb: GroupMatcher(Of TKey)
+  spec.csharp:
+  - uid: Quartz.Impl.Matchers.GroupMatcher`1
+    name: GroupMatcher
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: '>'
+  spec.vb:
+  - uid: Quartz.Impl.Matchers.GroupMatcher`1
+    name: GroupMatcher
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: )
+- uid: QuartzRestApi.Wrappers
+  commentId: N:QuartzRestApi.Wrappers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers
+  nameWithType: QuartzRestApi.Wrappers
+  fullName: QuartzRestApi.Wrappers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QuartzRestApi.Wrappers.GroupMatcherType
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcherType
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.GroupMatcherType.html
+  name: GroupMatcherType
+  nameWithType: GroupMatcherType
+  fullName: QuartzRestApi.Wrappers.GroupMatcherType
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.Type*
+  commentId: Overload:QuartzRestApi.Wrappers.GroupMatcher`1.Type
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html#QuartzRestApi_Wrappers_GroupMatcher_1_Type
+  name: Type
+  nameWithType: GroupMatcher<T>.Type
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.Type
+  nameWithType.vb: GroupMatcher(Of T).Type
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).Type
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.Value*
+  commentId: Overload:QuartzRestApi.Wrappers.GroupMatcher`1.Value
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html#QuartzRestApi_Wrappers_GroupMatcher_1_Value
+  name: Value
+  nameWithType: GroupMatcher<T>.Value
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.Value
+  nameWithType.vb: GroupMatcher(Of T).Value
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).Value
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.#ctor*
+  commentId: Overload:QuartzRestApi.Wrappers.GroupMatcher`1.#ctor
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html#QuartzRestApi_Wrappers_GroupMatcher_1__ctor_QuartzRestApi_Wrappers_GroupMatcherType_System_String_
+  name: GroupMatcher
+  nameWithType: GroupMatcher<T>.GroupMatcher
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.GroupMatcher
+  nameWithType.vb: GroupMatcher(Of T).New
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).New
+  name.vb: New
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.ToJsonString*
+  commentId: Overload:QuartzRestApi.Wrappers.GroupMatcher`1.ToJsonString
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html#QuartzRestApi_Wrappers_GroupMatcher_1_ToJsonString
+  name: ToJsonString
+  nameWithType: GroupMatcher<T>.ToJsonString
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.ToJsonString
+  nameWithType.vb: GroupMatcher(Of T).ToJsonString
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).ToJsonString
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcher`1
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  name: GroupMatcher<T>
+  nameWithType: GroupMatcher<T>
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>
+  nameWithType.vb: GroupMatcher(Of T)
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T)
+  name.vb: GroupMatcher(Of T)
+  spec.csharp:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: QuartzRestApi.Wrappers.Trigger
+  commentId: T:QuartzRestApi.Wrappers.Trigger
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.Trigger.html
+  name: Trigger
+  nameWithType: Trigger
+  fullName: QuartzRestApi.Wrappers.Trigger
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.FromJsonString*
+  commentId: Overload:QuartzRestApi.Wrappers.GroupMatcher`1.FromJsonString
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html#QuartzRestApi_Wrappers_GroupMatcher_1_FromJsonString_System_String_
+  name: FromJsonString
+  nameWithType: GroupMatcher<T>.FromJsonString
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.FromJsonString
+  nameWithType.vb: GroupMatcher(Of T).FromJsonString
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).FromJsonString
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1.ToGroupMatcher*
+  commentId: Overload:QuartzRestApi.Wrappers.GroupMatcher`1.ToGroupMatcher
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html#QuartzRestApi_Wrappers_GroupMatcher_1_ToGroupMatcher
+  name: ToGroupMatcher
+  nameWithType: GroupMatcher<T>.ToGroupMatcher
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>.ToGroupMatcher
+  nameWithType.vb: GroupMatcher(Of T).ToGroupMatcher
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T).ToGroupMatcher
+- uid: Quartz.Impl.Matchers.GroupMatcher{{T}}
+  commentId: T:Quartz.Impl.Matchers.GroupMatcher{`0}
+  parent: Quartz.Impl.Matchers
+  definition: Quartz.Impl.Matchers.GroupMatcher`1
+  name: GroupMatcher<T>
+  nameWithType: GroupMatcher<T>
+  fullName: Quartz.Impl.Matchers.GroupMatcher<T>
+  nameWithType.vb: GroupMatcher(Of T)
+  fullName.vb: Quartz.Impl.Matchers.GroupMatcher(Of T)
+  name.vb: GroupMatcher(Of T)
+  spec.csharp:
+  - uid: Quartz.Impl.Matchers.GroupMatcher`1
+    name: GroupMatcher
+    isExternal: true
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: Quartz.Impl.Matchers.GroupMatcher`1
+    name: GroupMatcher
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: Quartz.Impl.Matchers
+  commentId: N:Quartz.Impl.Matchers
+  isExternal: true
+  name: Quartz.Impl.Matchers
+  nameWithType: Quartz.Impl.Matchers
+  fullName: Quartz.Impl.Matchers
+  spec.csharp:
+  - uid: Quartz
+    name: Quartz
+    isExternal: true
+  - name: .
+  - uid: Quartz.Impl
+    name: Impl
+    isExternal: true
+  - name: .
+  - uid: Quartz.Impl.Matchers
+    name: Matchers
+    isExternal: true
+  spec.vb:
+  - uid: Quartz
+    name: Quartz
+    isExternal: true
+  - name: .
+  - uid: Quartz.Impl
+    name: Impl
+    isExternal: true
+  - name: .
+  - uid: Quartz.Impl.Matchers
+    name: Matchers
+    isExternal: true

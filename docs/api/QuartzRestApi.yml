@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi
+  commentId: N:QuartzRestApi
+  id: QuartzRestApi
+  children:
+  - QuartzRestApi.SchedulerConnector
+  - QuartzRestApi.SchedulerHost
+  langs:
+  - csharp
+  - vb
+  name: QuartzRestApi
+  nameWithType: QuartzRestApi
+  fullName: QuartzRestApi
+  type: Namespace
+  assemblies:
+  - QuartzRestApi
+references:
+- uid: QuartzRestApi.SchedulerConnector
+  commentId: T:QuartzRestApi.SchedulerConnector
+  href: QuartzRestApi.SchedulerConnector.html
+  name: SchedulerConnector
+  nameWithType: SchedulerConnector
+  fullName: QuartzRestApi.SchedulerConnector
+- uid: QuartzRestApi.SchedulerHost
+  commentId: T:QuartzRestApi.SchedulerHost
+  href: QuartzRestApi.SchedulerHost.html
+  name: SchedulerHost
+  nameWithType: SchedulerHost
+  fullName: QuartzRestApi.SchedulerHost

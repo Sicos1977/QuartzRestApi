@@ -1,0 +1,866 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Wrappers.JobDetail
+  commentId: T:QuartzRestApi.Wrappers.JobDetail
+  id: JobDetail
+  parent: QuartzRestApi.Wrappers
+  children:
+  - QuartzRestApi.Wrappers.JobDetail.#ctor(Quartz.IJobDetail)
+  - QuartzRestApi.Wrappers.JobDetail.#ctor(QuartzRestApi.Wrappers.JobKey,System.String,System.String,Quartz.JobDataMap,System.Boolean,System.Boolean,System.Boolean)
+  - QuartzRestApi.Wrappers.JobDetail.Description
+  - QuartzRestApi.Wrappers.JobDetail.Durable
+  - QuartzRestApi.Wrappers.JobDetail.FromJsonString(System.String)
+  - QuartzRestApi.Wrappers.JobDetail.JobDataMap
+  - QuartzRestApi.Wrappers.JobDetail.JobKey
+  - QuartzRestApi.Wrappers.JobDetail.JobType
+  - QuartzRestApi.Wrappers.JobDetail.Replace
+  - QuartzRestApi.Wrappers.JobDetail.StoreNonDurableWhileAwaitingScheduling
+  - QuartzRestApi.Wrappers.JobDetail.ToJobDetail
+  - QuartzRestApi.Wrappers.JobDetail.ToJsonString
+  langs:
+  - csharp
+  - vb
+  name: JobDetail
+  nameWithType: JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetail
+  type: Class
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Json wrapper for the Quartz <xref href="Quartz.IJobDetail" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public class JobDetail
+    content.vb: Public Class JobDetail
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QuartzRestApi.Wrappers.JobDetail.JobKey
+  commentId: P:QuartzRestApi.Wrappers.JobDetail.JobKey
+  id: JobKey
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: JobKey
+  nameWithType: JobDetail.JobKey
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobKey
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: The key that identifies this jobs uniquely
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("JobKey")]
+
+      public JobKey JobKey { get; }
+    parameters: []
+    return:
+      type: QuartzRestApi.Wrappers.JobKey
+    content.vb: >-
+      <JsonPropertyName("JobKey")>
+
+      Public Property JobKey As JobKey
+  overload: QuartzRestApi.Wrappers.JobDetail.JobKey*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: JobKey
+- uid: QuartzRestApi.Wrappers.JobDetail.Description
+  commentId: P:QuartzRestApi.Wrappers.JobDetail.Description
+  id: Description
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: JobDetail.Description
+  fullName: QuartzRestApi.Wrappers.JobDetail.Description
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: >-
+    Get or set the description given to the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> instance by its
+
+    creator (if any)
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Description")]
+
+      public string Description { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("Description")>
+
+      Public Property Description As String
+  overload: QuartzRestApi.Wrappers.JobDetail.Description*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Description
+- uid: QuartzRestApi.Wrappers.JobDetail.JobType
+  commentId: P:QuartzRestApi.Wrappers.JobDetail.JobType
+  id: JobType
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: JobType
+  nameWithType: JobDetail.JobType
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobType
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Get or sets the instance of <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> that will be executed
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("JobType")]
+
+      public string JobType { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <JsonPropertyName("JobType")>
+
+      Public Property JobType As String
+  overload: QuartzRestApi.Wrappers.JobDetail.JobType*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: JobType
+- uid: QuartzRestApi.Wrappers.JobDetail.JobDataMap
+  commentId: P:QuartzRestApi.Wrappers.JobDetail.JobDataMap
+  id: JobDataMap
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: JobDataMap
+  nameWithType: JobDetail.JobDataMap
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobDataMap
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Get or set the <xref href="QuartzRestApi.Wrappers.JobDetail.JobDataMap" data-throw-if-not-resolved="false"></xref> that is associated with the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("JobDataMap")]
+
+      public JobDataMap JobDataMap { get; }
+    parameters: []
+    return:
+      type: Quartz.JobDataMap
+    content.vb: >-
+      <JsonPropertyName("JobDataMap")>
+
+      Public Property JobDataMap As JobDataMap
+  overload: QuartzRestApi.Wrappers.JobDetail.JobDataMap*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: JobDataMap
+- uid: QuartzRestApi.Wrappers.JobDetail.Durable
+  commentId: P:QuartzRestApi.Wrappers.JobDetail.Durable
+  id: Durable
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: Durable
+  nameWithType: JobDetail.Durable
+  fullName: QuartzRestApi.Wrappers.JobDetail.Durable
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: >-
+    Whether the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> should remain stored after it is
+
+    orphaned (no <xref href="Quartz.ITrigger" data-throw-if-not-resolved="false"></xref>s point to it)
+  remarks: If not explicitly set, the default value is <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Durable")]
+
+      public bool Durable { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+      description: <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the Job should remain persisted after being orphaned
+    content.vb: >-
+      <JsonPropertyName("Durable")>
+
+      Public Property Durable As Boolean
+  overload: QuartzRestApi.Wrappers.JobDetail.Durable*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Durable
+- uid: QuartzRestApi.Wrappers.JobDetail.Replace
+  commentId: P:QuartzRestApi.Wrappers.JobDetail.Replace
+  id: Replace
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: Replace
+  nameWithType: JobDetail.Replace
+  fullName: QuartzRestApi.Wrappers.JobDetail.Replace
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Whether the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> should be replaced
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("Replace")]
+
+      public bool Replace { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("Replace")>
+
+      Public Property Replace As Boolean
+  overload: QuartzRestApi.Wrappers.JobDetail.Replace*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: Replace
+- uid: QuartzRestApi.Wrappers.JobDetail.StoreNonDurableWhileAwaitingScheduling
+  commentId: P:QuartzRestApi.Wrappers.JobDetail.StoreNonDurableWhileAwaitingScheduling
+  id: StoreNonDurableWhileAwaitingScheduling
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: StoreNonDurableWhileAwaitingScheduling
+  nameWithType: JobDetail.StoreNonDurableWhileAwaitingScheduling
+  fullName: QuartzRestApi.Wrappers.JobDetail.StoreNonDurableWhileAwaitingScheduling
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Whether the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> should be stored durable while awaiting scheduling
+  example: []
+  syntax:
+    content: >-
+      [JsonPropertyName("StoreNonDurableWhileAwaitingScheduling")]
+
+      public bool StoreNonDurableWhileAwaitingScheduling { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <JsonPropertyName("StoreNonDurableWhileAwaitingScheduling")>
+
+      Public Property StoreNonDurableWhileAwaitingScheduling As Boolean
+  overload: QuartzRestApi.Wrappers.JobDetail.StoreNonDurableWhileAwaitingScheduling*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonPropertyNameAttribute
+    ctor: System.Text.Json.Serialization.JsonPropertyNameAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: StoreNonDurableWhileAwaitingScheduling
+- uid: QuartzRestApi.Wrappers.JobDetail.#ctor(QuartzRestApi.Wrappers.JobKey,System.String,System.String,Quartz.JobDataMap,System.Boolean,System.Boolean,System.Boolean)
+  commentId: M:QuartzRestApi.Wrappers.JobDetail.#ctor(QuartzRestApi.Wrappers.JobKey,System.String,System.String,Quartz.JobDataMap,System.Boolean,System.Boolean,System.Boolean)
+  id: '#ctor(QuartzRestApi.Wrappers.JobKey,System.String,System.String,Quartz.JobDataMap,System.Boolean,System.Boolean,System.Boolean)'
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: JobDetail(JobKey, string, string, JobDataMap, bool, bool, bool)
+  nameWithType: JobDetail.JobDetail(JobKey, string, string, JobDataMap, bool, bool, bool)
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobDetail(QuartzRestApi.Wrappers.JobKey, string, string, Quartz.JobDataMap, bool, bool, bool)
+  type: Constructor
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Creates this object and sets it's needed properties
+  example: []
+  syntax:
+    content: public JobDetail(JobKey jobKey, string description, string jobType, JobDataMap jobDataMap, bool durable, bool replace, bool storeNonDurableWhileAwaitingScheduling)
+    parameters:
+    - id: jobKey
+      type: QuartzRestApi.Wrappers.JobKey
+      description: The key that identifies this jobs uniquely
+    - id: description
+      type: System.String
+      description: >-
+        Get or set the description given to the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> instance by its
+
+        creator (if any)
+    - id: jobType
+      type: System.String
+      description: Get or sets the instance of <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> that will be executed
+    - id: jobDataMap
+      type: Quartz.JobDataMap
+      description: Get or set the <xref href="QuartzRestApi.Wrappers.JobDetail.JobDataMap" data-throw-if-not-resolved="false"></xref> that is associated with the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref>
+    - id: durable
+      type: System.Boolean
+      description: >-
+        Whether the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> should remain stored after it is
+
+        orphaned (no <xref href="Quartz.ITrigger" data-throw-if-not-resolved="false"></xref>s point to it)
+    - id: replace
+      type: System.Boolean
+      description: Whether the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> should be replaced
+    - id: storeNonDurableWhileAwaitingScheduling
+      type: System.Boolean
+      description: >-
+        Whether the <xref href="Quartz.IJob" data-throw-if-not-resolved="false"></xref> should be stored durable
+
+        while awaiting scheduling
+    content.vb: Public Sub New(jobKey As JobKey, description As String, jobType As String, jobDataMap As JobDataMap, durable As Boolean, replace As Boolean, storeNonDurableWhileAwaitingScheduling As Boolean)
+  overload: QuartzRestApi.Wrappers.JobDetail.#ctor*
+  nameWithType.vb: JobDetail.New(JobKey, String, String, JobDataMap, Boolean, Boolean, Boolean)
+  fullName.vb: QuartzRestApi.Wrappers.JobDetail.New(QuartzRestApi.Wrappers.JobKey, String, String, Quartz.JobDataMap, Boolean, Boolean, Boolean)
+  name.vb: New(JobKey, String, String, JobDataMap, Boolean, Boolean, Boolean)
+- uid: QuartzRestApi.Wrappers.JobDetail.#ctor(Quartz.IJobDetail)
+  commentId: M:QuartzRestApi.Wrappers.JobDetail.#ctor(Quartz.IJobDetail)
+  id: '#ctor(Quartz.IJobDetail)'
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: JobDetail(IJobDetail)
+  nameWithType: JobDetail.JobDetail(IJobDetail)
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobDetail(Quartz.IJobDetail)
+  type: Constructor
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Create this object and sets it's needed properties
+  example: []
+  syntax:
+    content: public JobDetail(IJobDetail jobDetail)
+    parameters:
+    - id: jobDetail
+      type: Quartz.IJobDetail
+      description: <xref href="Quartz.IJobDetail" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Sub New(jobDetail As IJobDetail)
+  overload: QuartzRestApi.Wrappers.JobDetail.#ctor*
+  nameWithType.vb: JobDetail.New(IJobDetail)
+  fullName.vb: QuartzRestApi.Wrappers.JobDetail.New(Quartz.IJobDetail)
+  name.vb: New(IJobDetail)
+- uid: QuartzRestApi.Wrappers.JobDetail.ToJobDetail
+  commentId: M:QuartzRestApi.Wrappers.JobDetail.ToJobDetail
+  id: ToJobDetail
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: ToJobDetail()
+  nameWithType: JobDetail.ToJobDetail()
+  fullName: QuartzRestApi.Wrappers.JobDetail.ToJobDetail()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns this object as a Quartz <xref href="Quartz.IJobDetail" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: public IJobDetail ToJobDetail()
+    return:
+      type: Quartz.IJobDetail
+      description: ''
+    content.vb: Public Function ToJobDetail() As IJobDetail
+  overload: QuartzRestApi.Wrappers.JobDetail.ToJobDetail*
+- uid: QuartzRestApi.Wrappers.JobDetail.ToJsonString
+  commentId: M:QuartzRestApi.Wrappers.JobDetail.ToJsonString
+  id: ToJsonString
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: ToJsonString()
+  nameWithType: JobDetail.ToJsonString()
+  fullName: QuartzRestApi.Wrappers.JobDetail.ToJsonString()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns this object as a json string
+  example: []
+  syntax:
+    content: public string ToJsonString()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Function ToJsonString() As String
+  overload: QuartzRestApi.Wrappers.JobDetail.ToJsonString*
+- uid: QuartzRestApi.Wrappers.JobDetail.FromJsonString(System.String)
+  commentId: M:QuartzRestApi.Wrappers.JobDetail.FromJsonString(System.String)
+  id: FromJsonString(System.String)
+  parent: QuartzRestApi.Wrappers.JobDetail
+  langs:
+  - csharp
+  - vb
+  name: FromJsonString(string)
+  nameWithType: JobDetail.FromJsonString(string)
+  fullName: QuartzRestApi.Wrappers.JobDetail.FromJsonString(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns the <xref href="QuartzRestApi.Wrappers.JobDetail" data-throw-if-not-resolved="false"></xref> object from the given <code class="paramref">json</code> string
+  example: []
+  syntax:
+    content: public static JobDetail FromJsonString(string json)
+    parameters:
+    - id: json
+      type: System.String
+      description: The json string
+    return:
+      type: QuartzRestApi.Wrappers.JobDetail
+      description: <xref href="QuartzRestApi.Wrappers.Trigger" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Shared Function FromJsonString(json As String) As JobDetail
+  overload: QuartzRestApi.Wrappers.JobDetail.FromJsonString*
+  nameWithType.vb: JobDetail.FromJsonString(String)
+  fullName.vb: QuartzRestApi.Wrappers.JobDetail.FromJsonString(String)
+  name.vb: FromJsonString(String)
+references:
+- uid: Quartz.IJobDetail
+  commentId: T:Quartz.IJobDetail
+  parent: Quartz
+  isExternal: true
+  name: IJobDetail
+  nameWithType: IJobDetail
+  fullName: Quartz.IJobDetail
+- uid: QuartzRestApi.Wrappers
+  commentId: N:QuartzRestApi.Wrappers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers
+  nameWithType: QuartzRestApi.Wrappers
+  fullName: QuartzRestApi.Wrappers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Quartz
+  commentId: N:Quartz
+  isExternal: true
+  name: Quartz
+  nameWithType: Quartz
+  fullName: Quartz
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QuartzRestApi.Wrappers.JobDetail.JobKey*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.JobKey
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_JobKey
+  name: JobKey
+  nameWithType: JobDetail.JobKey
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobKey
+- uid: QuartzRestApi.Wrappers.JobKey
+  commentId: T:QuartzRestApi.Wrappers.JobKey
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobKey.html
+  name: JobKey
+  nameWithType: JobKey
+  fullName: QuartzRestApi.Wrappers.JobKey
+- uid: Quartz.IJob
+  commentId: T:Quartz.IJob
+  parent: Quartz
+  isExternal: true
+  name: IJob
+  nameWithType: IJob
+  fullName: Quartz.IJob
+- uid: QuartzRestApi.Wrappers.JobDetail.Description*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.Description
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_Description
+  name: Description
+  nameWithType: JobDetail.Description
+  fullName: QuartzRestApi.Wrappers.JobDetail.Description
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QuartzRestApi.Wrappers.JobDetail.JobType*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.JobType
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_JobType
+  name: JobType
+  nameWithType: JobDetail.JobType
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobType
+- uid: QuartzRestApi.Wrappers.JobDetail.JobDataMap
+  commentId: P:QuartzRestApi.Wrappers.JobDetail.JobDataMap
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_JobDataMap
+  name: JobDataMap
+  nameWithType: JobDetail.JobDataMap
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobDataMap
+- uid: QuartzRestApi.Wrappers.JobDetail.JobDataMap*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.JobDataMap
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_JobDataMap
+  name: JobDataMap
+  nameWithType: JobDetail.JobDataMap
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobDataMap
+- uid: Quartz.JobDataMap
+  commentId: T:Quartz.JobDataMap
+  parent: Quartz
+  isExternal: true
+  name: JobDataMap
+  nameWithType: JobDataMap
+  fullName: Quartz.JobDataMap
+- uid: Quartz.ITrigger
+  commentId: T:Quartz.ITrigger
+  parent: Quartz
+  isExternal: true
+  name: ITrigger
+  nameWithType: ITrigger
+  fullName: Quartz.ITrigger
+- uid: QuartzRestApi.Wrappers.JobDetail.Durable*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.Durable
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_Durable
+  name: Durable
+  nameWithType: JobDetail.Durable
+  fullName: QuartzRestApi.Wrappers.JobDetail.Durable
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: QuartzRestApi.Wrappers.JobDetail.Replace*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.Replace
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_Replace
+  name: Replace
+  nameWithType: JobDetail.Replace
+  fullName: QuartzRestApi.Wrappers.JobDetail.Replace
+- uid: QuartzRestApi.Wrappers.JobDetail.StoreNonDurableWhileAwaitingScheduling*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.StoreNonDurableWhileAwaitingScheduling
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_StoreNonDurableWhileAwaitingScheduling
+  name: StoreNonDurableWhileAwaitingScheduling
+  nameWithType: JobDetail.StoreNonDurableWhileAwaitingScheduling
+  fullName: QuartzRestApi.Wrappers.JobDetail.StoreNonDurableWhileAwaitingScheduling
+- uid: QuartzRestApi.Wrappers.JobDetail.#ctor*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.#ctor
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail__ctor_QuartzRestApi_Wrappers_JobKey_System_String_System_String_Quartz_JobDataMap_System_Boolean_System_Boolean_System_Boolean_
+  name: JobDetail
+  nameWithType: JobDetail.JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetail.JobDetail
+  nameWithType.vb: JobDetail.New
+  fullName.vb: QuartzRestApi.Wrappers.JobDetail.New
+  name.vb: New
+- uid: QuartzRestApi.Wrappers.JobDetail.ToJobDetail*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.ToJobDetail
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_ToJobDetail
+  name: ToJobDetail
+  nameWithType: JobDetail.ToJobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetail.ToJobDetail
+- uid: QuartzRestApi.Wrappers.JobDetail.ToJsonString*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.ToJsonString
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_ToJsonString
+  name: ToJsonString
+  nameWithType: JobDetail.ToJsonString
+  fullName: QuartzRestApi.Wrappers.JobDetail.ToJsonString
+- uid: QuartzRestApi.Wrappers.JobDetail
+  commentId: T:QuartzRestApi.Wrappers.JobDetail
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetail.html
+  name: JobDetail
+  nameWithType: JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetail
+- uid: QuartzRestApi.Wrappers.Trigger
+  commentId: T:QuartzRestApi.Wrappers.Trigger
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.Trigger.html
+  name: Trigger
+  nameWithType: Trigger
+  fullName: QuartzRestApi.Wrappers.Trigger
+- uid: QuartzRestApi.Wrappers.JobDetail.FromJsonString*
+  commentId: Overload:QuartzRestApi.Wrappers.JobDetail.FromJsonString
+  href: QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_FromJsonString_System_String_
+  name: FromJsonString
+  nameWithType: JobDetail.FromJsonString
+  fullName: QuartzRestApi.Wrappers.JobDetail.FromJsonString

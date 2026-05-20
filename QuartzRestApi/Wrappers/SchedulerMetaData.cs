@@ -185,8 +185,7 @@ public class SchedulerMetaData
     /// </returns>
     public static SchedulerMetaData FromJsonString(string json)
     {
-        var str = JsonSerializer.Deserialize<string>(json);
-        return JsonSerializer.Deserialize<SchedulerMetaData>(str);
+        return JsonSerializer.Deserialize<SchedulerMetaData>(json);
     }
     #endregion
 }

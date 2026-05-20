@@ -38,7 +38,7 @@ public sealed class SchedulerContext : Quartz.SchedulerContext
     ///     Needed for json de-serialization
     /// </summary>
     [JsonConstructor]
-    internal SchedulerContext()
+    public SchedulerContext()
     {
 
     }
@@ -71,8 +71,7 @@ public sealed class SchedulerContext : Quartz.SchedulerContext
     /// </returns>
     public static SchedulerContext FromJsonString(string json)
     {
-        var str = JsonSerializer.Deserialize<string>(json);
-        var result = JsonSerializer.Deserialize<SchedulerContext>(str);
+        var result = JsonSerializer.Deserialize<SchedulerContext>(json);
         return new SchedulerContext(result);
     }
     #endregion

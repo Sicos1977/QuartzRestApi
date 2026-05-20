@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Controllers
+  commentId: N:QuartzRestApi.Controllers
+  id: QuartzRestApi.Controllers
+  children:
+  - QuartzRestApi.Controllers.SchedulerController
+  langs:
+  - csharp
+  - vb
+  name: QuartzRestApi.Controllers
+  nameWithType: QuartzRestApi.Controllers
+  fullName: QuartzRestApi.Controllers
+  type: Namespace
+  assemblies:
+  - QuartzRestApi
+references:
+- uid: QuartzRestApi.Controllers.SchedulerController
+  commentId: T:QuartzRestApi.Controllers.SchedulerController
+  href: QuartzRestApi.Controllers.SchedulerController.html
+  name: SchedulerController
+  nameWithType: SchedulerController
+  fullName: QuartzRestApi.Controllers.SchedulerController

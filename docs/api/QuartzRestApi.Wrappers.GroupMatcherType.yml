@@ -1,0 +1,196 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Wrappers.GroupMatcherType
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcherType
+  id: GroupMatcherType
+  parent: QuartzRestApi.Wrappers
+  children:
+  - QuartzRestApi.Wrappers.GroupMatcherType.Contains
+  - QuartzRestApi.Wrappers.GroupMatcherType.EndsWith
+  - QuartzRestApi.Wrappers.GroupMatcherType.Equals
+  - QuartzRestApi.Wrappers.GroupMatcherType.StartsWith
+  langs:
+  - csharp
+  - vb
+  name: GroupMatcherType
+  nameWithType: GroupMatcherType
+  fullName: QuartzRestApi.Wrappers.GroupMatcherType
+  type: Enum
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: The matching type
+  example: []
+  syntax:
+    content: public enum GroupMatcherType
+    content.vb: Public Enum GroupMatcherType
+- uid: QuartzRestApi.Wrappers.GroupMatcherType.Contains
+  commentId: F:QuartzRestApi.Wrappers.GroupMatcherType.Contains
+  id: Contains
+  parent: QuartzRestApi.Wrappers.GroupMatcherType
+  langs:
+  - csharp
+  - vb
+  name: Contains
+  nameWithType: GroupMatcherType.Contains
+  fullName: QuartzRestApi.Wrappers.GroupMatcherType.Contains
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Should contain
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "Contains")]
+
+      Contains = 0
+    return:
+      type: QuartzRestApi.Wrappers.GroupMatcherType
+    content.vb: >-
+      <DataMember(Name:="Contains")>
+
+      Contains = 0
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Contains
+- uid: QuartzRestApi.Wrappers.GroupMatcherType.EndsWith
+  commentId: F:QuartzRestApi.Wrappers.GroupMatcherType.EndsWith
+  id: EndsWith
+  parent: QuartzRestApi.Wrappers.GroupMatcherType
+  langs:
+  - csharp
+  - vb
+  name: EndsWith
+  nameWithType: GroupMatcherType.EndsWith
+  fullName: QuartzRestApi.Wrappers.GroupMatcherType.EndsWith
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Should end with
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "EndsWith")]
+
+      EndsWith = 1
+    return:
+      type: QuartzRestApi.Wrappers.GroupMatcherType
+    content.vb: >-
+      <DataMember(Name:="EndsWith")>
+
+      EndsWith = 1
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: EndsWith
+- uid: QuartzRestApi.Wrappers.GroupMatcherType.Equals
+  commentId: F:QuartzRestApi.Wrappers.GroupMatcherType.Equals
+  id: Equals
+  parent: QuartzRestApi.Wrappers.GroupMatcherType
+  langs:
+  - csharp
+  - vb
+  name: Equals
+  nameWithType: GroupMatcherType.Equals
+  fullName: QuartzRestApi.Wrappers.GroupMatcherType.Equals
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Should equal
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "Equals")]
+
+      Equals = 2
+    return:
+      type: QuartzRestApi.Wrappers.GroupMatcherType
+    content.vb: >-
+      <DataMember(Name:="Equals")>
+
+      Equals = 2
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Equals
+- uid: QuartzRestApi.Wrappers.GroupMatcherType.StartsWith
+  commentId: F:QuartzRestApi.Wrappers.GroupMatcherType.StartsWith
+  id: StartsWith
+  parent: QuartzRestApi.Wrappers.GroupMatcherType
+  langs:
+  - csharp
+  - vb
+  name: StartsWith
+  nameWithType: GroupMatcherType.StartsWith
+  fullName: QuartzRestApi.Wrappers.GroupMatcherType.StartsWith
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Should start with
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "StartsWith")]
+
+      StartsWith = 3
+    return:
+      type: QuartzRestApi.Wrappers.GroupMatcherType
+    content.vb: >-
+      <DataMember(Name:="StartsWith")>
+
+      StartsWith = 3
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: StartsWith
+references:
+- uid: QuartzRestApi.Wrappers
+  commentId: N:QuartzRestApi.Wrappers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers
+  nameWithType: QuartzRestApi.Wrappers
+  fullName: QuartzRestApi.Wrappers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+- uid: QuartzRestApi.Wrappers.GroupMatcherType
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcherType
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.GroupMatcherType.html
+  name: GroupMatcherType
+  nameWithType: GroupMatcherType
+  fullName: QuartzRestApi.Wrappers.GroupMatcherType

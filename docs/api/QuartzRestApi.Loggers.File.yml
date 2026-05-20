@@ -1,0 +1,744 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Loggers.File
+  commentId: T:QuartzRestApi.Loggers.File
+  id: File
+  parent: QuartzRestApi.Loggers
+  children:
+  - QuartzRestApi.Loggers.File.#ctor(System.String)
+  langs:
+  - csharp
+  - vb
+  name: File
+  nameWithType: File
+  fullName: QuartzRestApi.Loggers.File
+  type: Class
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Loggers
+  summary: Writes log information to a file
+  example: []
+  syntax:
+    content: 'public class File : Stream, ILogger, IDisposable'
+    content.vb: Public Class File Inherits Stream Implements ILogger, IDisposable
+  inheritance:
+  - System.Object
+  - QuartzRestApi.Loggers.Stream
+  implements:
+  - Microsoft.Extensions.Logging.ILogger
+  - System.IDisposable
+  inheritedMembers:
+  - QuartzRestApi.Loggers.Stream.BeginScope``1({TState})
+  - QuartzRestApi.Loggers.Stream.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  - QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,{TState},System.Exception,System.Func{{TState},System.Exception,System.String})
+  - QuartzRestApi.Loggers.Stream.Dispose
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QuartzRestApi.Loggers.File.#ctor(System.String)
+  commentId: M:QuartzRestApi.Loggers.File.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: QuartzRestApi.Loggers.File
+  langs:
+  - csharp
+  - vb
+  name: File(string)
+  nameWithType: File.File(string)
+  fullName: QuartzRestApi.Loggers.File.File(string)
+  type: Constructor
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Loggers
+  summary: Logs information to the given <code class="paramref">fileName</code>
+  example: []
+  syntax:
+    content: public File(string fileName)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: ''
+    content.vb: Public Sub New(fileName As String)
+  overload: QuartzRestApi.Loggers.File.#ctor*
+  nameWithType.vb: File.New(String)
+  fullName.vb: QuartzRestApi.Loggers.File.New(String)
+  name.vb: New(String)
+references:
+- uid: QuartzRestApi.Loggers
+  commentId: N:QuartzRestApi.Loggers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Loggers
+  nameWithType: QuartzRestApi.Loggers
+  fullName: QuartzRestApi.Loggers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Loggers
+    name: Loggers
+    href: QuartzRestApi.Loggers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Loggers
+    name: Loggers
+    href: QuartzRestApi.Loggers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: QuartzRestApi.Loggers.Stream
+  commentId: T:QuartzRestApi.Loggers.Stream
+  parent: QuartzRestApi.Loggers
+  href: QuartzRestApi.Loggers.Stream.html
+  name: Stream
+  nameWithType: Stream
+  fullName: QuartzRestApi.Loggers.Stream
+- uid: Microsoft.Extensions.Logging.ILogger
+  commentId: T:Microsoft.Extensions.Logging.ILogger
+  parent: Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger
+  name: ILogger
+  nameWithType: ILogger
+  fullName: Microsoft.Extensions.Logging.ILogger
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: QuartzRestApi.Loggers.Stream.BeginScope``1({TState})
+  commentId: M:QuartzRestApi.Loggers.Stream.BeginScope``1(``0)
+  parent: QuartzRestApi.Loggers.Stream
+  definition: QuartzRestApi.Loggers.Stream.BeginScope``1(``0)
+  href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_BeginScope__1___0_
+  name: BeginScope<TState>(TState)
+  nameWithType: Stream.BeginScope<TState>(TState)
+  fullName: QuartzRestApi.Loggers.Stream.BeginScope<TState>(TState)
+  nameWithType.vb: Stream.BeginScope(Of TState)(TState)
+  fullName.vb: QuartzRestApi.Loggers.Stream.BeginScope(Of TState)(TState)
+  name.vb: BeginScope(Of TState)(TState)
+  spec.csharp:
+  - uid: QuartzRestApi.Loggers.Stream.BeginScope``1(``0)
+    name: BeginScope
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_BeginScope__1___0_
+  - name: <
+  - name: TState
+  - name: '>'
+  - name: (
+  - name: TState
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.Loggers.Stream.BeginScope``1(``0)
+    name: BeginScope
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_BeginScope__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TState
+  - name: )
+  - name: (
+  - name: TState
+  - name: )
+- uid: QuartzRestApi.Loggers.Stream.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  commentId: M:QuartzRestApi.Loggers.Stream.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  parent: QuartzRestApi.Loggers.Stream
+  isExternal: true
+  href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_IsEnabled_Microsoft_Extensions_Logging_LogLevel_
+  name: IsEnabled(LogLevel)
+  nameWithType: Stream.IsEnabled(LogLevel)
+  fullName: QuartzRestApi.Loggers.Stream.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  spec.csharp:
+  - uid: QuartzRestApi.Loggers.Stream.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+    name: IsEnabled
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_IsEnabled_Microsoft_Extensions_Logging_LogLevel_
+  - name: (
+  - uid: Microsoft.Extensions.Logging.LogLevel
+    name: LogLevel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.Loggers.Stream.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+    name: IsEnabled
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_IsEnabled_Microsoft_Extensions_Logging_LogLevel_
+  - name: (
+  - uid: Microsoft.Extensions.Logging.LogLevel
+    name: LogLevel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel
+  - name: )
+- uid: QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,{TState},System.Exception,System.Func{{TState},System.Exception,System.String})
+  commentId: M:QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+  parent: QuartzRestApi.Loggers.Stream
+  definition: QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+  href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__
+  name: Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, string>)
+  nameWithType: Stream.Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, string>)
+  fullName: QuartzRestApi.Loggers.Stream.Log<TState>(Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, TState, System.Exception, System.Func<TState, System.Exception, string>)
+  nameWithType.vb: Stream.Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+  fullName.vb: QuartzRestApi.Loggers.Stream.Log(Of TState)(Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, TState, System.Exception, System.Func(Of TState, System.Exception, String))
+  name.vb: Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+  spec.csharp:
+  - uid: QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+    name: Log
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__
+  - name: <
+  - name: TState
+  - name: '>'
+  - name: (
+  - uid: Microsoft.Extensions.Logging.LogLevel
+    name: LogLevel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.Logging.EventId
+    name: EventId
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: TState
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+    name: Log
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TState
+  - name: )
+  - name: (
+  - uid: Microsoft.Extensions.Logging.LogLevel
+    name: LogLevel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.Logging.EventId
+    name: EventId
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TState
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: QuartzRestApi.Loggers.Stream.Dispose
+  commentId: M:QuartzRestApi.Loggers.Stream.Dispose
+  parent: QuartzRestApi.Loggers.Stream
+  href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_Dispose
+  name: Dispose()
+  nameWithType: Stream.Dispose()
+  fullName: QuartzRestApi.Loggers.Stream.Dispose()
+  spec.csharp:
+  - uid: QuartzRestApi.Loggers.Stream.Dispose
+    name: Dispose
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_Dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.Loggers.Stream.Dispose
+    name: Dispose
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_Dispose
+  - name: (
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: QuartzRestApi.Loggers.Stream.BeginScope``1(``0)
+  commentId: M:QuartzRestApi.Loggers.Stream.BeginScope``1(``0)
+  href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_BeginScope__1___0_
+  name: BeginScope<TState>(TState)
+  nameWithType: Stream.BeginScope<TState>(TState)
+  fullName: QuartzRestApi.Loggers.Stream.BeginScope<TState>(TState)
+  nameWithType.vb: Stream.BeginScope(Of TState)(TState)
+  fullName.vb: QuartzRestApi.Loggers.Stream.BeginScope(Of TState)(TState)
+  name.vb: BeginScope(Of TState)(TState)
+  spec.csharp:
+  - uid: QuartzRestApi.Loggers.Stream.BeginScope``1(``0)
+    name: BeginScope
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_BeginScope__1___0_
+  - name: <
+  - name: TState
+  - name: '>'
+  - name: (
+  - name: TState
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.Loggers.Stream.BeginScope``1(``0)
+    name: BeginScope
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_BeginScope__1___0_
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TState
+  - name: )
+  - name: (
+  - name: TState
+  - name: )
+- uid: QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+  commentId: M:QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+  isExternal: true
+  href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__
+  name: Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, string>)
+  nameWithType: Stream.Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, string>)
+  fullName: QuartzRestApi.Loggers.Stream.Log<TState>(Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, TState, System.Exception, System.Func<TState, System.Exception, string>)
+  nameWithType.vb: Stream.Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+  fullName.vb: QuartzRestApi.Loggers.Stream.Log(Of TState)(Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, TState, System.Exception, System.Func(Of TState, System.Exception, String))
+  name.vb: Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+  spec.csharp:
+  - uid: QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+    name: Log
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__
+  - name: <
+  - name: TState
+  - name: '>'
+  - name: (
+  - uid: Microsoft.Extensions.Logging.LogLevel
+    name: LogLevel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.Logging.EventId
+    name: EventId
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: <
+  - name: TState
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.Loggers.Stream.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+    name: Log
+    href: QuartzRestApi.Loggers.Stream.html#QuartzRestApi_Loggers_Stream_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TState
+  - name: )
+  - name: (
+  - uid: Microsoft.Extensions.Logging.LogLevel
+    name: LogLevel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loglevel
+  - name: ','
+  - name: " "
+  - uid: Microsoft.Extensions.Logging.EventId
+    name: EventId
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid
+  - name: ','
+  - name: " "
+  - name: TState
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.Func`3
+    name: Func
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.func-3
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TState
+  - name: ','
+  - name: " "
+  - uid: System.Exception
+    name: Exception
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.exception
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: QuartzRestApi.Loggers.File.#ctor*
+  commentId: Overload:QuartzRestApi.Loggers.File.#ctor
+  href: QuartzRestApi.Loggers.File.html#QuartzRestApi_Loggers_File__ctor_System_String_
+  name: File
+  nameWithType: File.File
+  fullName: QuartzRestApi.Loggers.File.File
+  nameWithType.vb: File.New
+  fullName.vb: QuartzRestApi.Loggers.File.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

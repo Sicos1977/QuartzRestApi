@@ -1,0 +1,4187 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Wrappers.SchedulerContext
+  commentId: T:QuartzRestApi.Wrappers.SchedulerContext
+  id: SchedulerContext
+  parent: QuartzRestApi.Wrappers
+  children:
+  - QuartzRestApi.Wrappers.SchedulerContext.FromJsonString(System.String)
+  - QuartzRestApi.Wrappers.SchedulerContext.ToJsonString
+  langs:
+  - csharp
+  - vb
+  name: SchedulerContext
+  nameWithType: SchedulerContext
+  fullName: QuartzRestApi.Wrappers.SchedulerContext
+  type: Class
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: A json wrapper for the <xref href="Quartz.SchedulerContext" data-throw-if-not-resolved="false"></xref>
+  example: []
+  syntax:
+    content: 'public sealed class SchedulerContext : SchedulerContext, IDictionary<string, object>, ICollection<KeyValuePair<string, object>>, IEnumerable<KeyValuePair<string, object>>, IDictionary, ICollection, IEnumerable, ISerializable'
+    content.vb: Public NotInheritable Class SchedulerContext Inherits SchedulerContext Implements IDictionary(Of String, Object), ICollection(Of KeyValuePair(Of String, Object)), IEnumerable(Of KeyValuePair(Of String, Object)), IDictionary, ICollection, IEnumerable, ISerializable
+  inheritance:
+  - System.Object
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  - Quartz.Util.StringKeyDirtyFlagMap
+  - Quartz.SchedulerContext
+  implements:
+  - System.Collections.Generic.IDictionary{System.String,System.Object}
+  - System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  - System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  - System.Collections.IDictionary
+  - System.Collections.ICollection
+  - System.Collections.IEnumerable
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - Quartz.Util.StringKeyDirtyFlagMap.Equals(System.Object)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetHashCode
+  - Quartz.Util.StringKeyDirtyFlagMap.GetKeys
+  - Quartz.Util.StringKeyDirtyFlagMap.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+  - Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int32)
+  - Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int64)
+  - Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Single)
+  - Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Double)
+  - Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Boolean)
+  - Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Char)
+  - Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Guid)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetInt(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetLong(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetFloat(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetDouble(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetBoolean(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetChar(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetString(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetDateTime(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetDateTimeOffset(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetTimeSpan(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetGuid(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.GetNullableGuid(System.String)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetInt(System.String,System.Int32@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetBoolean(System.String,System.Boolean@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetDouble(System.String,System.Double@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetFloat(System.String,System.Single@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetLong(System.String,System.Int64@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTime(System.String,System.DateTime@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTimeOffset(System.String,System.DateTimeOffset@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetTimeSpan(System.String,System.TimeSpan@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetGuid(System.String,System.Guid@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetNullableGuid(System.String,System.Nullable{System.Guid}@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetString(System.String,System.String@)
+  - Quartz.Util.StringKeyDirtyFlagMap.TryGetChar(System.String,System.Char@)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clone
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Get(System.String)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Object)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Object,System.Object)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clear
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Object)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsKey(System.String)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.String)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetEnumerator
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.String,System.Object)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Array,System.Int32)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.ClearDirtyFlag
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsValue(System.Object)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.EntrySet
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Equals(System.Object)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetHashCode
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.KeySet
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Put(System.String,System.Object)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Dirty
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.WrappedMap
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsEmpty
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Item(System.String)
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Count
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Values
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.Keys
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsReadOnly
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsFixedSize
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.SyncRoot
+  - Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsSynchronized
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QuartzRestApi.Wrappers.SchedulerContext.ToJsonString
+  commentId: M:QuartzRestApi.Wrappers.SchedulerContext.ToJsonString
+  id: ToJsonString
+  parent: QuartzRestApi.Wrappers.SchedulerContext
+  langs:
+  - csharp
+  - vb
+  name: ToJsonString()
+  nameWithType: SchedulerContext.ToJsonString()
+  fullName: QuartzRestApi.Wrappers.SchedulerContext.ToJsonString()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns this object as a json string
+  example: []
+  syntax:
+    content: public string ToJsonString()
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Function ToJsonString() As String
+  overload: QuartzRestApi.Wrappers.SchedulerContext.ToJsonString*
+- uid: QuartzRestApi.Wrappers.SchedulerContext.FromJsonString(System.String)
+  commentId: M:QuartzRestApi.Wrappers.SchedulerContext.FromJsonString(System.String)
+  id: FromJsonString(System.String)
+  parent: QuartzRestApi.Wrappers.SchedulerContext
+  langs:
+  - csharp
+  - vb
+  name: FromJsonString(string)
+  nameWithType: SchedulerContext.FromJsonString(string)
+  fullName: QuartzRestApi.Wrappers.SchedulerContext.FromJsonString(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers
+  summary: Returns the <xref href="QuartzRestApi.Wrappers.SchedulerContext" data-throw-if-not-resolved="false"></xref> object from the given <code class="paramref">json</code> string
+  example: []
+  syntax:
+    content: public static SchedulerContext FromJsonString(string json)
+    parameters:
+    - id: json
+      type: System.String
+      description: The json string
+    return:
+      type: QuartzRestApi.Wrappers.SchedulerContext
+      description: <xref href="QuartzRestApi.Wrappers.Trigger" data-throw-if-not-resolved="false"></xref>
+    content.vb: Public Shared Function FromJsonString(json As String) As SchedulerContext
+  overload: QuartzRestApi.Wrappers.SchedulerContext.FromJsonString*
+  nameWithType.vb: SchedulerContext.FromJsonString(String)
+  fullName.vb: QuartzRestApi.Wrappers.SchedulerContext.FromJsonString(String)
+  name.vb: FromJsonString(String)
+references:
+- uid: Quartz.SchedulerContext
+  commentId: T:Quartz.SchedulerContext
+  parent: Quartz
+  isExternal: true
+  name: SchedulerContext
+  nameWithType: SchedulerContext
+  fullName: Quartz.SchedulerContext
+- uid: QuartzRestApi.Wrappers
+  commentId: N:QuartzRestApi.Wrappers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers
+  nameWithType: QuartzRestApi.Wrappers
+  fullName: QuartzRestApi.Wrappers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  commentId: T:Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  parent: Quartz.Util
+  definition: Quartz.Util.DirtyFlagMap`2
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: DirtyFlagMap<string, object>
+  nameWithType: DirtyFlagMap<string, object>
+  fullName: Quartz.Util.DirtyFlagMap<string, object>
+  nameWithType.vb: DirtyFlagMap(Of String, Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object)
+  name.vb: DirtyFlagMap(Of String, Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2
+    name: DirtyFlagMap
+    isExternal: true
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2
+    name: DirtyFlagMap
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap
+  commentId: T:Quartz.Util.StringKeyDirtyFlagMap
+  parent: Quartz.Util
+  isExternal: true
+  name: StringKeyDirtyFlagMap
+  nameWithType: StringKeyDirtyFlagMap
+  fullName: Quartz.Util.StringKeyDirtyFlagMap
+- uid: System.Collections.Generic.IDictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.IDictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<string, object>
+  nameWithType: IDictionary<string, object>
+  fullName: System.Collections.Generic.IDictionary<string, object>
+  nameWithType.vb: IDictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.IDictionary(Of String, Object)
+  name.vb: IDictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  commentId: T:System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<KeyValuePair<string, object>>
+  nameWithType: ICollection<KeyValuePair<string, object>>
+  fullName: System.Collections.Generic.ICollection<System.Collections.Generic.KeyValuePair<string, object>>
+  nameWithType.vb: ICollection(Of KeyValuePair(Of String, Object))
+  fullName.vb: System.Collections.Generic.ICollection(Of System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: ICollection(Of KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Object}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<KeyValuePair<string, object>>
+  nameWithType: IEnumerable<KeyValuePair<string, object>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string, object>>
+  nameWithType.vb: IEnumerable(Of KeyValuePair(Of String, Object))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: IEnumerable(Of KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: System.Collections.IDictionary
+  commentId: T:System.Collections.IDictionary
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.idictionary
+  name: IDictionary
+  nameWithType: IDictionary
+  fullName: System.Collections.IDictionary
+- uid: System.Collections.ICollection
+  commentId: T:System.Collections.ICollection
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.icollection
+  name: ICollection
+  nameWithType: ICollection
+  fullName: System.Collections.ICollection
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: Quartz.Util.StringKeyDirtyFlagMap.Equals(System.Object)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.Equals(System.Object)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: Equals(object)
+  nameWithType: StringKeyDirtyFlagMap.Equals(object)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.Equals(object)
+  nameWithType.vb: StringKeyDirtyFlagMap.Equals(Object)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetHashCode
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetHashCode
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: StringKeyDirtyFlagMap.GetHashCode()
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetHashCode()
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetKeys
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetKeys
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  name: GetKeys()
+  nameWithType: StringKeyDirtyFlagMap.GetKeys()
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetKeys()
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetKeys
+    name: GetKeys
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetKeys
+    name: GetKeys
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: PutAll(IDictionary<string, object>)
+  nameWithType: StringKeyDirtyFlagMap.PutAll(IDictionary<string, object>)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.PutAll(System.Collections.Generic.IDictionary<string, object>)
+  nameWithType.vb: StringKeyDirtyFlagMap.PutAll(IDictionary(Of String, Object))
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.PutAll(System.Collections.Generic.IDictionary(Of String, Object))
+  name.vb: PutAll(IDictionary(Of String, Object))
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+    name: PutAll
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+    name: PutAll
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int32)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int32)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Put(string, int)
+  nameWithType: StringKeyDirtyFlagMap.Put(string, int)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.Put(string, int)
+  nameWithType.vb: StringKeyDirtyFlagMap.Put(String, Integer)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.Put(String, Integer)
+  name.vb: Put(String, Integer)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int32)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int32)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int64)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int64)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Put(string, long)
+  nameWithType: StringKeyDirtyFlagMap.Put(string, long)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.Put(string, long)
+  nameWithType.vb: StringKeyDirtyFlagMap.Put(String, Long)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.Put(String, Long)
+  name.vb: Put(String, Long)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int64)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Int64)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Single)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Single)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Put(string, float)
+  nameWithType: StringKeyDirtyFlagMap.Put(string, float)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.Put(string, float)
+  nameWithType.vb: StringKeyDirtyFlagMap.Put(String, Single)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.Put(String, Single)
+  name.vb: Put(String, Single)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Single)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Single)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Double)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Double)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Put(string, double)
+  nameWithType: StringKeyDirtyFlagMap.Put(string, double)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.Put(string, double)
+  nameWithType.vb: StringKeyDirtyFlagMap.Put(String, Double)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.Put(String, Double)
+  name.vb: Put(String, Double)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Double)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Double)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Boolean)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Boolean)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Put(string, bool)
+  nameWithType: StringKeyDirtyFlagMap.Put(string, bool)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.Put(string, bool)
+  nameWithType.vb: StringKeyDirtyFlagMap.Put(String, Boolean)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.Put(String, Boolean)
+  name.vb: Put(String, Boolean)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Boolean)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Boolean)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Char)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Char)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Put(string, char)
+  nameWithType: StringKeyDirtyFlagMap.Put(string, char)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.Put(string, char)
+  nameWithType.vb: StringKeyDirtyFlagMap.Put(String, Char)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.Put(String, Char)
+  name.vb: Put(String, Char)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Char)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Char)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Put(string, string)
+  nameWithType: StringKeyDirtyFlagMap.Put(string, string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.Put(string, string)
+  nameWithType.vb: StringKeyDirtyFlagMap.Put(String, String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.Put(String, String)
+  name.vb: Put(String, String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.String)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.String)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Guid)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Guid)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Put(string, Guid)
+  nameWithType: StringKeyDirtyFlagMap.Put(string, Guid)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.Put(string, System.Guid)
+  nameWithType.vb: StringKeyDirtyFlagMap.Put(String, Guid)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.Put(String, System.Guid)
+  name.vb: Put(String, Guid)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Guid)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.Put(System.String,System.Guid)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetInt(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetInt(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetInt(string)
+  nameWithType: StringKeyDirtyFlagMap.GetInt(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetInt(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetInt(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetInt(String)
+  name.vb: GetInt(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetInt(System.String)
+    name: GetInt
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetInt(System.String)
+    name: GetInt
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetLong(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetLong(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetLong(string)
+  nameWithType: StringKeyDirtyFlagMap.GetLong(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetLong(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetLong(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetLong(String)
+  name.vb: GetLong(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetLong(System.String)
+    name: GetLong
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetLong(System.String)
+    name: GetLong
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetFloat(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetFloat(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetFloat(string)
+  nameWithType: StringKeyDirtyFlagMap.GetFloat(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetFloat(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetFloat(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetFloat(String)
+  name.vb: GetFloat(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetFloat(System.String)
+    name: GetFloat
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetFloat(System.String)
+    name: GetFloat
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetDouble(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetDouble(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetDouble(string)
+  nameWithType: StringKeyDirtyFlagMap.GetDouble(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetDouble(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetDouble(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetDouble(String)
+  name.vb: GetDouble(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetDouble(System.String)
+    name: GetDouble
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetDouble(System.String)
+    name: GetDouble
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetBoolean(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetBoolean(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetBoolean(string)
+  nameWithType: StringKeyDirtyFlagMap.GetBoolean(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetBoolean(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetBoolean(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetBoolean(String)
+  name.vb: GetBoolean(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetBoolean(System.String)
+    name: GetBoolean
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetBoolean(System.String)
+    name: GetBoolean
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetChar(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetChar(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetChar(string)
+  nameWithType: StringKeyDirtyFlagMap.GetChar(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetChar(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetChar(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetChar(String)
+  name.vb: GetChar(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetChar(System.String)
+    name: GetChar
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetChar(System.String)
+    name: GetChar
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetString(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetString(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetString(string)
+  nameWithType: StringKeyDirtyFlagMap.GetString(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetString(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetString(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetString(String)
+  name.vb: GetString(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetString(System.String)
+    name: GetString
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetString(System.String)
+    name: GetString
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetDateTime(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetDateTime(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetDateTime(string)
+  nameWithType: StringKeyDirtyFlagMap.GetDateTime(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetDateTime(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetDateTime(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetDateTime(String)
+  name.vb: GetDateTime(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetDateTime(System.String)
+    name: GetDateTime
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetDateTime(System.String)
+    name: GetDateTime
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetDateTimeOffset(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetDateTimeOffset(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetDateTimeOffset(string)
+  nameWithType: StringKeyDirtyFlagMap.GetDateTimeOffset(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetDateTimeOffset(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetDateTimeOffset(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetDateTimeOffset(String)
+  name.vb: GetDateTimeOffset(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetDateTimeOffset(System.String)
+    name: GetDateTimeOffset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetDateTimeOffset(System.String)
+    name: GetDateTimeOffset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetTimeSpan(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetTimeSpan(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetTimeSpan(string)
+  nameWithType: StringKeyDirtyFlagMap.GetTimeSpan(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetTimeSpan(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetTimeSpan(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetTimeSpan(String)
+  name.vb: GetTimeSpan(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetTimeSpan(System.String)
+    name: GetTimeSpan
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetTimeSpan(System.String)
+    name: GetTimeSpan
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetGuid(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetGuid(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetGuid(string)
+  nameWithType: StringKeyDirtyFlagMap.GetGuid(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetGuid(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetGuid(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetGuid(String)
+  name.vb: GetGuid(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetGuid(System.String)
+    name: GetGuid
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetGuid(System.String)
+    name: GetGuid
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.GetNullableGuid(System.String)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.GetNullableGuid(System.String)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: GetNullableGuid(string)
+  nameWithType: StringKeyDirtyFlagMap.GetNullableGuid(string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.GetNullableGuid(string)
+  nameWithType.vb: StringKeyDirtyFlagMap.GetNullableGuid(String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.GetNullableGuid(String)
+  name.vb: GetNullableGuid(String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetNullableGuid(System.String)
+    name: GetNullableGuid
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.GetNullableGuid(System.String)
+    name: GetNullableGuid
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetInt(System.String,System.Int32@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetInt(System.String,System.Int32@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetInt(string, out int)
+  nameWithType: StringKeyDirtyFlagMap.TryGetInt(string, out int)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetInt(string, out int)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetInt(String, Integer)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetInt(String, Integer)
+  name.vb: TryGetInt(String, Integer)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetInt(System.String,System.Int32@)
+    name: TryGetInt
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetInt(System.String,System.Int32@)
+    name: TryGetInt
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetBoolean(System.String,System.Boolean@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetBoolean(System.String,System.Boolean@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetBoolean(string, out bool)
+  nameWithType: StringKeyDirtyFlagMap.TryGetBoolean(string, out bool)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetBoolean(string, out bool)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetBoolean(String, Boolean)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetBoolean(String, Boolean)
+  name.vb: TryGetBoolean(String, Boolean)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetBoolean(System.String,System.Boolean@)
+    name: TryGetBoolean
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetBoolean(System.String,System.Boolean@)
+    name: TryGetBoolean
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetDouble(System.String,System.Double@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetDouble(System.String,System.Double@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetDouble(string, out double)
+  nameWithType: StringKeyDirtyFlagMap.TryGetDouble(string, out double)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetDouble(string, out double)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetDouble(String, Double)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetDouble(String, Double)
+  name.vb: TryGetDouble(String, Double)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetDouble(System.String,System.Double@)
+    name: TryGetDouble
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetDouble(System.String,System.Double@)
+    name: TryGetDouble
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetFloat(System.String,System.Single@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetFloat(System.String,System.Single@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetFloat(string, out float)
+  nameWithType: StringKeyDirtyFlagMap.TryGetFloat(string, out float)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetFloat(string, out float)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetFloat(String, Single)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetFloat(String, Single)
+  name.vb: TryGetFloat(String, Single)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetFloat(System.String,System.Single@)
+    name: TryGetFloat
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetFloat(System.String,System.Single@)
+    name: TryGetFloat
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetLong(System.String,System.Int64@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetLong(System.String,System.Int64@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetLong(string, out long)
+  nameWithType: StringKeyDirtyFlagMap.TryGetLong(string, out long)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetLong(string, out long)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetLong(String, Long)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetLong(String, Long)
+  name.vb: TryGetLong(String, Long)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetLong(System.String,System.Int64@)
+    name: TryGetLong
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetLong(System.String,System.Int64@)
+    name: TryGetLong
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTime(System.String,System.DateTime@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTime(System.String,System.DateTime@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetDateTime(string, out DateTime)
+  nameWithType: StringKeyDirtyFlagMap.TryGetDateTime(string, out DateTime)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTime(string, out System.DateTime)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetDateTime(String, Date)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTime(String, Date)
+  name.vb: TryGetDateTime(String, Date)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTime(System.String,System.DateTime@)
+    name: TryGetDateTime
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.DateTime
+    name: DateTime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTime(System.String,System.DateTime@)
+    name: TryGetDateTime
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.DateTime
+    name: Date
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetime
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTimeOffset(System.String,System.DateTimeOffset@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTimeOffset(System.String,System.DateTimeOffset@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetDateTimeOffset(string, out DateTimeOffset)
+  nameWithType: StringKeyDirtyFlagMap.TryGetDateTimeOffset(string, out DateTimeOffset)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTimeOffset(string, out System.DateTimeOffset)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetDateTimeOffset(String, DateTimeOffset)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTimeOffset(String, System.DateTimeOffset)
+  name.vb: TryGetDateTimeOffset(String, DateTimeOffset)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTimeOffset(System.String,System.DateTimeOffset@)
+    name: TryGetDateTimeOffset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetDateTimeOffset(System.String,System.DateTimeOffset@)
+    name: TryGetDateTimeOffset
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.DateTimeOffset
+    name: DateTimeOffset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.datetimeoffset
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetTimeSpan(System.String,System.TimeSpan@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetTimeSpan(System.String,System.TimeSpan@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetTimeSpan(string, out TimeSpan)
+  nameWithType: StringKeyDirtyFlagMap.TryGetTimeSpan(string, out TimeSpan)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetTimeSpan(string, out System.TimeSpan)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetTimeSpan(String, TimeSpan)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetTimeSpan(String, System.TimeSpan)
+  name.vb: TryGetTimeSpan(String, TimeSpan)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetTimeSpan(System.String,System.TimeSpan@)
+    name: TryGetTimeSpan
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetTimeSpan(System.String,System.TimeSpan@)
+    name: TryGetTimeSpan
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.TimeSpan
+    name: TimeSpan
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.timespan
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetGuid(System.String,System.Guid@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetGuid(System.String,System.Guid@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetGuid(string, out Guid)
+  nameWithType: StringKeyDirtyFlagMap.TryGetGuid(string, out Guid)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetGuid(string, out System.Guid)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetGuid(String, Guid)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetGuid(String, System.Guid)
+  name.vb: TryGetGuid(String, Guid)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetGuid(System.String,System.Guid@)
+    name: TryGetGuid
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetGuid(System.String,System.Guid@)
+    name: TryGetGuid
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetNullableGuid(System.String,System.Nullable{System.Guid}@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetNullableGuid(System.String,System.Nullable{System.Guid}@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetNullableGuid(string, out Guid?)
+  nameWithType: StringKeyDirtyFlagMap.TryGetNullableGuid(string, out Guid?)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetNullableGuid(string, out System.Guid?)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetNullableGuid(String, Guid?)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetNullableGuid(String, System.Guid?)
+  name.vb: TryGetNullableGuid(String, Guid?)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetNullableGuid(System.String,System.Nullable{System.Guid}@)
+    name: TryGetNullableGuid
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetNullableGuid(System.String,System.Nullable{System.Guid}@)
+    name: TryGetNullableGuid
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Guid
+    name: Guid
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.guid
+  - name: '?'
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetString(System.String,System.String@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetString(System.String,System.String@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetString(string, out string)
+  nameWithType: StringKeyDirtyFlagMap.TryGetString(string, out string)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetString(string, out string)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetString(String, String)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetString(String, String)
+  name.vb: TryGetString(String, String)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetString(System.String,System.String@)
+    name: TryGetString
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetString(System.String,System.String@)
+    name: TryGetString
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetChar(System.String,System.Char@)
+  commentId: M:Quartz.Util.StringKeyDirtyFlagMap.TryGetChar(System.String,System.Char@)
+  parent: Quartz.Util.StringKeyDirtyFlagMap
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetChar(string, out char)
+  nameWithType: StringKeyDirtyFlagMap.TryGetChar(string, out char)
+  fullName: Quartz.Util.StringKeyDirtyFlagMap.TryGetChar(string, out char)
+  nameWithType.vb: StringKeyDirtyFlagMap.TryGetChar(String, Char)
+  fullName.vb: Quartz.Util.StringKeyDirtyFlagMap.TryGetChar(String, Char)
+  name.vb: TryGetChar(String, Char)
+  spec.csharp:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetChar(System.String,System.Char@)
+    name: TryGetChar
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.StringKeyDirtyFlagMap.TryGetChar(System.String,System.Char@)
+    name: TryGetChar
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType: DirtyFlagMap<string, object>.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).GetObjectData(SerializationInfo, StreamingContext)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clone
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clone
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Clone
+  name: Clone()
+  nameWithType: DirtyFlagMap<string, object>.Clone()
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Clone()
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Clone()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Clone()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clone
+    name: Clone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clone
+    name: Clone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.TryGetValue(`0,`1@)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: TryGetValue(string, out object)
+  nameWithType: DirtyFlagMap<string, object>.TryGetValue(string, out object)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.TryGetValue(string, out object)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).TryGetValue(String, Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).TryGetValue(String, Object)
+  name.vb: TryGetValue(String, Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+    name: TryGetValue
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.TryGetValue(System.String,System.Object@)
+    name: TryGetValue
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Get(System.String)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Get(System.String)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Get(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Get(string)
+  nameWithType: DirtyFlagMap<string, object>.Get(string)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Get(string)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Get(String)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Get(String)
+  name.vb: Get(String)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Get(System.String)
+    name: Get
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Get(System.String)
+    name: Get
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: Remove(KeyValuePair<string, object>)
+  nameWithType: DirtyFlagMap<string, object>.Remove(KeyValuePair<string, object>)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Remove(System.Collections.Generic.KeyValuePair<string, object>)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Remove(KeyValuePair(Of String, Object))
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Remove(System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: Remove(KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: Add(KeyValuePair<string, object>)
+  nameWithType: DirtyFlagMap<string, object>.Add(KeyValuePair<string, object>)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Add(System.Collections.Generic.KeyValuePair<string, object>)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Add(KeyValuePair(Of String, Object))
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Add(System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: Add(KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Object)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Contains(System.Object)
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: Contains(object)
+  nameWithType: DirtyFlagMap<string, object>.Contains(object)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Contains(object)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Contains(Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Contains(Object)
+  name.vb: Contains(Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Object)
+    name: Contains
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Object)
+    name: Contains
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Object,System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Object,System.Object)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Add(System.Object,System.Object)
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: Add(object, object)
+  nameWithType: DirtyFlagMap<string, object>.Add(object, object)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Add(object, object)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Add(Object, Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Add(Object, Object)
+  name.vb: Add(Object, Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Object,System.Object)
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.Object,System.Object)
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clear
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clear
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Clear
+  name: Clear()
+  nameWithType: DirtyFlagMap<string, object>.Clear()
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Clear()
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Clear()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Clear()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clear
+    name: Clear
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Clear
+    name: Clear
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Object)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Remove(System.Object)
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: Remove(object)
+  nameWithType: DirtyFlagMap<string, object>.Remove(object)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Remove(object)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Remove(Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Remove(Object)
+  name.vb: Remove(Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Object)
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.Object)
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: Contains(KeyValuePair<string, object>)
+  nameWithType: DirtyFlagMap<string, object>.Contains(KeyValuePair<string, object>)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Contains(System.Collections.Generic.KeyValuePair<string, object>)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Contains(KeyValuePair(Of String, Object))
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Contains(System.Collections.Generic.KeyValuePair(Of String, Object))
+  name.vb: Contains(KeyValuePair(Of String, Object))
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+    name: Contains
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Contains(System.Collections.Generic.KeyValuePair{System.String,System.Object})
+    name: Contains
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: CopyTo(KeyValuePair<string, object>[], int)
+  nameWithType: DirtyFlagMap<string, object>.CopyTo(KeyValuePair<string, object>[], int)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.CopyTo(System.Collections.Generic.KeyValuePair<string, object>[], int)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).CopyTo(KeyValuePair(Of String, Object)(), Integer)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).CopyTo(System.Collections.Generic.KeyValuePair(Of String, Object)(), Integer)
+  name.vb: CopyTo(KeyValuePair(Of String, Object)(), Integer)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)
+    name: CopyTo
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Collections.Generic.KeyValuePair{System.String,System.Object}[],System.Int32)
+    name: CopyTo
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsKey(System.String)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsKey(System.String)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.ContainsKey(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: ContainsKey(string)
+  nameWithType: DirtyFlagMap<string, object>.ContainsKey(string)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.ContainsKey(string)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).ContainsKey(String)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).ContainsKey(String)
+  name.vb: ContainsKey(String)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsKey(System.String)
+    name: ContainsKey
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsKey(System.String)
+    name: ContainsKey
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.String)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.String)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Remove(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Remove(string)
+  nameWithType: DirtyFlagMap<string, object>.Remove(string)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Remove(string)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Remove(String)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Remove(String)
+  name.vb: Remove(String)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.String)
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Remove(System.String)
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetEnumerator
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetEnumerator
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.GetEnumerator
+  name: GetEnumerator()
+  nameWithType: DirtyFlagMap<string, object>.GetEnumerator()
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.GetEnumerator()
+  nameWithType.vb: DirtyFlagMap(Of String, Object).GetEnumerator()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).GetEnumerator()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.String,System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.String,System.Object)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Add(`0,`1)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Add(string, object)
+  nameWithType: DirtyFlagMap<string, object>.Add(string, object)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Add(string, object)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Add(String, Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Add(String, Object)
+  name.vb: Add(String, Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.String,System.Object)
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Add(System.String,System.Object)
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Array,System.Int32)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Array,System.Int32)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.CopyTo(System.Array,System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.array
+  name: CopyTo(Array, int)
+  nameWithType: DirtyFlagMap<string, object>.CopyTo(Array, int)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.CopyTo(System.Array, int)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).CopyTo(Array, Integer)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).CopyTo(System.Array, Integer)
+  name.vb: CopyTo(Array, Integer)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Array,System.Int32)
+    name: CopyTo
+    isExternal: true
+  - name: (
+  - uid: System.Array
+    name: Array
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.array
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.CopyTo(System.Array,System.Int32)
+    name: CopyTo
+    isExternal: true
+  - name: (
+  - uid: System.Array
+    name: Array
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.array
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.ClearDirtyFlag
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.ClearDirtyFlag
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.ClearDirtyFlag
+  name: ClearDirtyFlag()
+  nameWithType: DirtyFlagMap<string, object>.ClearDirtyFlag()
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.ClearDirtyFlag()
+  nameWithType.vb: DirtyFlagMap(Of String, Object).ClearDirtyFlag()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).ClearDirtyFlag()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.ClearDirtyFlag
+    name: ClearDirtyFlag
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.ClearDirtyFlag
+    name: ClearDirtyFlag
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsValue(System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsValue(System.Object)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.ContainsValue(`1)
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: ContainsValue(object)
+  nameWithType: DirtyFlagMap<string, object>.ContainsValue(object)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.ContainsValue(object)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).ContainsValue(Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).ContainsValue(Object)
+  name.vb: ContainsValue(Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsValue(System.Object)
+    name: ContainsValue
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.ContainsValue(System.Object)
+    name: ContainsValue
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.EntrySet
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.EntrySet
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.EntrySet
+  name: EntrySet()
+  nameWithType: DirtyFlagMap<string, object>.EntrySet()
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.EntrySet()
+  nameWithType.vb: DirtyFlagMap(Of String, Object).EntrySet()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).EntrySet()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.EntrySet
+    name: EntrySet
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.EntrySet
+    name: EntrySet
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Equals(System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Equals(System.Object)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Equals(System.Object)
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: Equals(object)
+  nameWithType: DirtyFlagMap<string, object>.Equals(object)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Equals(object)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Equals(Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetHashCode
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetHashCode
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.GetHashCode
+  name: GetHashCode()
+  nameWithType: DirtyFlagMap<string, object>.GetHashCode()
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.GetHashCode()
+  nameWithType.vb: DirtyFlagMap(Of String, Object).GetHashCode()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).GetHashCode()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.KeySet
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.KeySet
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.KeySet
+  name: KeySet()
+  nameWithType: DirtyFlagMap<string, object>.KeySet()
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.KeySet()
+  nameWithType.vb: DirtyFlagMap(Of String, Object).KeySet()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).KeySet()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.KeySet
+    name: KeySet
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.KeySet
+    name: KeySet
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Put(System.String,System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Put(System.String,System.Object)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Put(`0,`1)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: Put(string, object)
+  nameWithType: DirtyFlagMap<string, object>.Put(string, object)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Put(string, object)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Put(String, Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Put(String, Object)
+  name.vb: Put(String, Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Put(System.String,System.Object)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Put(System.String,System.Object)
+    name: Put
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+  commentId: M:Quartz.Util.DirtyFlagMap{System.String,System.Object}.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.PutAll(System.Collections.Generic.IDictionary{`0,`1})
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: PutAll(IDictionary<string, object>)
+  nameWithType: DirtyFlagMap<string, object>.PutAll(IDictionary<string, object>)
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.PutAll(System.Collections.Generic.IDictionary<string, object>)
+  nameWithType.vb: DirtyFlagMap(Of String, Object).PutAll(IDictionary(Of String, Object))
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).PutAll(System.Collections.Generic.IDictionary(Of String, Object))
+  name.vb: PutAll(IDictionary(Of String, Object))
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+    name: PutAll
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.PutAll(System.Collections.Generic.IDictionary{System.String,System.Object})
+    name: PutAll
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Dirty
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Dirty
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Dirty
+  name: Dirty
+  nameWithType: DirtyFlagMap<string, object>.Dirty
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Dirty
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Dirty
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Dirty
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.WrappedMap
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.WrappedMap
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.WrappedMap
+  name: WrappedMap
+  nameWithType: DirtyFlagMap<string, object>.WrappedMap
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.WrappedMap
+  nameWithType.vb: DirtyFlagMap(Of String, Object).WrappedMap
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).WrappedMap
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsEmpty
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsEmpty
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.IsEmpty
+  name: IsEmpty
+  nameWithType: DirtyFlagMap<string, object>.IsEmpty
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.IsEmpty
+  nameWithType.vb: DirtyFlagMap(Of String, Object).IsEmpty
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).IsEmpty
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Item(System.String)
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Item(System.String)
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Item(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: this[string]
+  nameWithType: DirtyFlagMap<string, object>.this[string]
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.this[string]
+  nameWithType.vb: DirtyFlagMap(Of String, Object).this[](String)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).this[](String)
+  name.vb: this[](String)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ']'
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Item(System.String)
+    name: this[]
+    isExternal: true
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Count
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Count
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Count
+  name: Count
+  nameWithType: DirtyFlagMap<string, object>.Count
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Count
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Count
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Count
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Values
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Values
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Values
+  name: Values
+  nameWithType: DirtyFlagMap<string, object>.Values
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Values
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Values
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Values
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.Keys
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.Keys
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.Keys
+  name: Keys
+  nameWithType: DirtyFlagMap<string, object>.Keys
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.Keys
+  nameWithType.vb: DirtyFlagMap(Of String, Object).Keys
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).Keys
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsReadOnly
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsReadOnly
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.IsReadOnly
+  name: IsReadOnly
+  nameWithType: DirtyFlagMap<string, object>.IsReadOnly
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.IsReadOnly
+  nameWithType.vb: DirtyFlagMap(Of String, Object).IsReadOnly
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).IsReadOnly
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsFixedSize
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsFixedSize
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.IsFixedSize
+  name: IsFixedSize
+  nameWithType: DirtyFlagMap<string, object>.IsFixedSize
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.IsFixedSize
+  nameWithType.vb: DirtyFlagMap(Of String, Object).IsFixedSize
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).IsFixedSize
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.SyncRoot
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.SyncRoot
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.SyncRoot
+  name: SyncRoot
+  nameWithType: DirtyFlagMap<string, object>.SyncRoot
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.SyncRoot
+  nameWithType.vb: DirtyFlagMap(Of String, Object).SyncRoot
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).SyncRoot
+- uid: Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsSynchronized
+  commentId: P:Quartz.Util.DirtyFlagMap{System.String,System.Object}.IsSynchronized
+  parent: Quartz.Util.DirtyFlagMap{System.String,System.Object}
+  definition: Quartz.Util.DirtyFlagMap`2.IsSynchronized
+  name: IsSynchronized
+  nameWithType: DirtyFlagMap<string, object>.IsSynchronized
+  fullName: Quartz.Util.DirtyFlagMap<string, object>.IsSynchronized
+  nameWithType.vb: DirtyFlagMap(Of String, Object).IsSynchronized
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of String, Object).IsSynchronized
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: Quartz
+  commentId: N:Quartz
+  isExternal: true
+  name: Quartz
+  nameWithType: Quartz
+  fullName: Quartz
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Quartz.Util.DirtyFlagMap`2
+  commentId: T:Quartz.Util.DirtyFlagMap`2
+  isExternal: true
+  name: DirtyFlagMap<TKey, TValue>
+  nameWithType: DirtyFlagMap<TKey, TValue>
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue)
+  name.vb: DirtyFlagMap(Of TKey, TValue)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2
+    name: DirtyFlagMap
+    isExternal: true
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2
+    name: DirtyFlagMap
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Quartz.Util
+  commentId: N:Quartz.Util
+  isExternal: true
+  name: Quartz.Util
+  nameWithType: Quartz.Util
+  fullName: Quartz.Util
+  spec.csharp:
+  - uid: Quartz
+    name: Quartz
+    isExternal: true
+  - name: .
+  - uid: Quartz.Util
+    name: Util
+    isExternal: true
+  spec.vb:
+  - uid: Quartz
+    name: Quartz
+    isExternal: true
+  - name: .
+  - uid: Quartz.Util
+    name: Util
+    isExternal: true
+- uid: System.Collections.Generic.IDictionary`2
+  commentId: T:System.Collections.Generic.IDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: IDictionary<TKey, TValue>
+  nameWithType: IDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IDictionary<TKey, TValue>
+  nameWithType.vb: IDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IDictionary(Of TKey, TValue)
+  name.vb: IDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+- uid: Quartz.Util.DirtyFlagMap`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  name: GetObjectData(SerializationInfo, StreamingContext)
+  nameWithType: DirtyFlagMap<TKey, TValue>.GetObjectData(SerializationInfo, StreamingContext)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).GetObjectData(SerializationInfo, StreamingContext)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+    name: GetObjectData
+    isExternal: true
+  - name: (
+  - uid: System.Runtime.Serialization.SerializationInfo
+    name: SerializationInfo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.serializationinfo
+  - name: ','
+  - name: " "
+  - uid: System.Runtime.Serialization.StreamingContext
+    name: StreamingContext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.streamingcontext
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Clone
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Clone
+  isExternal: true
+  name: Clone()
+  nameWithType: DirtyFlagMap<TKey, TValue>.Clone()
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Clone()
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Clone()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Clone()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Clone
+    name: Clone
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Clone
+    name: Clone
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.TryGetValue(`0,`1@)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.TryGetValue(`0,`1@)
+  isExternal: true
+  name: TryGetValue(TKey, out TValue)
+  nameWithType: DirtyFlagMap<TKey, TValue>.TryGetValue(TKey, out TValue)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.TryGetValue(TKey, out TValue)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).TryGetValue(TKey, TValue)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).TryGetValue(TKey, TValue)
+  name.vb: TryGetValue(TKey, TValue)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.TryGetValue(`0,`1@)
+    name: TryGetValue
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.TryGetValue(`0,`1@)
+    name: TryGetValue
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Get(`0)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Get(`0)
+  isExternal: true
+  name: Get(TKey)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Get(TKey)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Get(TKey)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Get(TKey)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Get(TKey)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Get(`0)
+    name: Get
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Get(`0)
+    name: Get
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: Remove(KeyValuePair<TKey, TValue>)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Remove(KeyValuePair<TKey, TValue>)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Remove(System.Collections.Generic.KeyValuePair<TKey, TValue>)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Remove(KeyValuePair(Of TKey, TValue))
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Remove(System.Collections.Generic.KeyValuePair(Of TKey, TValue))
+  name.vb: Remove(KeyValuePair(Of TKey, TValue))
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: Add(KeyValuePair<TKey, TValue>)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Add(KeyValuePair<TKey, TValue>)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Add(System.Collections.Generic.KeyValuePair<TKey, TValue>)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Add(KeyValuePair(Of TKey, TValue))
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Add(System.Collections.Generic.KeyValuePair(Of TKey, TValue))
+  name.vb: Add(KeyValuePair(Of TKey, TValue))
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Contains(System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Contains(System.Object)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: Contains(object)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Contains(object)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Contains(object)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Contains(Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Contains(Object)
+  name.vb: Contains(Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Contains(System.Object)
+    name: Contains
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Contains(System.Object)
+    name: Contains
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Add(System.Object,System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Add(System.Object,System.Object)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: Add(object, object)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Add(object, object)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Add(object, object)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Add(Object, Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Add(Object, Object)
+  name.vb: Add(Object, Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Add(System.Object,System.Object)
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Add(System.Object,System.Object)
+    name: Add
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Clear
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Clear
+  isExternal: true
+  name: Clear()
+  nameWithType: DirtyFlagMap<TKey, TValue>.Clear()
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Clear()
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Clear()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Clear()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Clear
+    name: Clear
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Clear
+    name: Clear
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Remove(System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Remove(System.Object)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: Remove(object)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Remove(object)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Remove(object)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Remove(Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Remove(Object)
+  name.vb: Remove(Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Remove(System.Object)
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Remove(System.Object)
+    name: Remove
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: Contains(KeyValuePair<TKey, TValue>)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Contains(KeyValuePair<TKey, TValue>)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Contains(System.Collections.Generic.KeyValuePair<TKey, TValue>)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Contains(KeyValuePair(Of TKey, TValue))
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Contains(System.Collections.Generic.KeyValuePair(Of TKey, TValue))
+  name.vb: Contains(KeyValuePair(Of TKey, TValue))
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Contains
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})
+    name: Contains
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  name: CopyTo(KeyValuePair<TKey, TValue>[], int)
+  nameWithType: DirtyFlagMap<TKey, TValue>.CopyTo(KeyValuePair<TKey, TValue>[], int)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.CopyTo(System.Collections.Generic.KeyValuePair<TKey, TValue>[], int)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).CopyTo(KeyValuePair(Of TKey, TValue)(), Integer)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).CopyTo(System.Collections.Generic.KeyValuePair(Of TKey, TValue)(), Integer)
+  name.vb: CopyTo(KeyValuePair(Of TKey, TValue)(), Integer)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+    name: CopyTo
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)
+    name: CopyTo
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.KeyValuePair`2
+    name: KeyValuePair
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.keyvaluepair-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.ContainsKey(`0)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.ContainsKey(`0)
+  isExternal: true
+  name: ContainsKey(TKey)
+  nameWithType: DirtyFlagMap<TKey, TValue>.ContainsKey(TKey)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.ContainsKey(TKey)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).ContainsKey(TKey)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).ContainsKey(TKey)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.ContainsKey(`0)
+    name: ContainsKey
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.ContainsKey(`0)
+    name: ContainsKey
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Remove(`0)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Remove(`0)
+  isExternal: true
+  name: Remove(TKey)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Remove(TKey)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Remove(TKey)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Remove(TKey)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Remove(TKey)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Remove(`0)
+    name: Remove
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Remove(`0)
+    name: Remove
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.GetEnumerator
+  commentId: M:Quartz.Util.DirtyFlagMap`2.GetEnumerator
+  isExternal: true
+  name: GetEnumerator()
+  nameWithType: DirtyFlagMap<TKey, TValue>.GetEnumerator()
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.GetEnumerator()
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).GetEnumerator()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).GetEnumerator()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Add(`0,`1)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Add(`0,`1)
+  isExternal: true
+  name: Add(TKey, TValue)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Add(TKey, TValue)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Add(TKey, TValue)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Add(TKey, TValue)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Add(TKey, TValue)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Add(`0,`1)
+    name: Add
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Add(`0,`1)
+    name: Add
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.CopyTo(System.Array,System.Int32)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.CopyTo(System.Array,System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.array
+  name: CopyTo(Array, int)
+  nameWithType: DirtyFlagMap<TKey, TValue>.CopyTo(Array, int)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.CopyTo(System.Array, int)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).CopyTo(Array, Integer)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).CopyTo(System.Array, Integer)
+  name.vb: CopyTo(Array, Integer)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.CopyTo(System.Array,System.Int32)
+    name: CopyTo
+    isExternal: true
+  - name: (
+  - uid: System.Array
+    name: Array
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.array
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.CopyTo(System.Array,System.Int32)
+    name: CopyTo
+    isExternal: true
+  - name: (
+  - uid: System.Array
+    name: Array
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.array
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.ClearDirtyFlag
+  commentId: M:Quartz.Util.DirtyFlagMap`2.ClearDirtyFlag
+  isExternal: true
+  name: ClearDirtyFlag()
+  nameWithType: DirtyFlagMap<TKey, TValue>.ClearDirtyFlag()
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.ClearDirtyFlag()
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).ClearDirtyFlag()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).ClearDirtyFlag()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.ClearDirtyFlag
+    name: ClearDirtyFlag
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.ClearDirtyFlag
+    name: ClearDirtyFlag
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.ContainsValue(`1)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.ContainsValue(`1)
+  isExternal: true
+  name: ContainsValue(TValue)
+  nameWithType: DirtyFlagMap<TKey, TValue>.ContainsValue(TValue)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.ContainsValue(TValue)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).ContainsValue(TValue)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).ContainsValue(TValue)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.ContainsValue(`1)
+    name: ContainsValue
+    isExternal: true
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.ContainsValue(`1)
+    name: ContainsValue
+    isExternal: true
+  - name: (
+  - name: TValue
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.EntrySet
+  commentId: M:Quartz.Util.DirtyFlagMap`2.EntrySet
+  isExternal: true
+  name: EntrySet()
+  nameWithType: DirtyFlagMap<TKey, TValue>.EntrySet()
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.EntrySet()
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).EntrySet()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).EntrySet()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.EntrySet
+    name: EntrySet
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.EntrySet
+    name: EntrySet
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Equals(System.Object)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Equals(System.Object)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: Equals(object)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Equals(object)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Equals(object)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Equals(Object)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Equals(System.Object)
+    name: Equals
+    isExternal: true
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.GetHashCode
+  commentId: M:Quartz.Util.DirtyFlagMap`2.GetHashCode
+  isExternal: true
+  name: GetHashCode()
+  nameWithType: DirtyFlagMap<TKey, TValue>.GetHashCode()
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.GetHashCode()
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).GetHashCode()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).GetHashCode()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.GetHashCode
+    name: GetHashCode
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.KeySet
+  commentId: M:Quartz.Util.DirtyFlagMap`2.KeySet
+  isExternal: true
+  name: KeySet()
+  nameWithType: DirtyFlagMap<TKey, TValue>.KeySet()
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.KeySet()
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).KeySet()
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).KeySet()
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.KeySet
+    name: KeySet
+    isExternal: true
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.KeySet
+    name: KeySet
+    isExternal: true
+  - name: (
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Put(`0,`1)
+  commentId: M:Quartz.Util.DirtyFlagMap`2.Put(`0,`1)
+  isExternal: true
+  name: Put(TKey, TValue)
+  nameWithType: DirtyFlagMap<TKey, TValue>.Put(TKey, TValue)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Put(TKey, TValue)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Put(TKey, TValue)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Put(TKey, TValue)
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.Put(`0,`1)
+    name: Put
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Put(`0,`1)
+    name: Put
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.PutAll(System.Collections.Generic.IDictionary{`0,`1})
+  commentId: M:Quartz.Util.DirtyFlagMap`2.PutAll(System.Collections.Generic.IDictionary{`0,`1})
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  name: PutAll(IDictionary<TKey, TValue>)
+  nameWithType: DirtyFlagMap<TKey, TValue>.PutAll(IDictionary<TKey, TValue>)
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.PutAll(System.Collections.Generic.IDictionary<TKey, TValue>)
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).PutAll(IDictionary(Of TKey, TValue))
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).PutAll(System.Collections.Generic.IDictionary(Of TKey, TValue))
+  name.vb: PutAll(IDictionary(Of TKey, TValue))
+  spec.csharp:
+  - uid: Quartz.Util.DirtyFlagMap`2.PutAll(System.Collections.Generic.IDictionary{`0,`1})
+    name: PutAll
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.PutAll(System.Collections.Generic.IDictionary{`0,`1})
+    name: PutAll
+    isExternal: true
+  - name: (
+  - uid: System.Collections.Generic.IDictionary`2
+    name: IDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Dirty
+  commentId: P:Quartz.Util.DirtyFlagMap`2.Dirty
+  isExternal: true
+  name: Dirty
+  nameWithType: DirtyFlagMap<TKey, TValue>.Dirty
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Dirty
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Dirty
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Dirty
+- uid: Quartz.Util.DirtyFlagMap`2.WrappedMap
+  commentId: P:Quartz.Util.DirtyFlagMap`2.WrappedMap
+  isExternal: true
+  name: WrappedMap
+  nameWithType: DirtyFlagMap<TKey, TValue>.WrappedMap
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.WrappedMap
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).WrappedMap
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).WrappedMap
+- uid: Quartz.Util.DirtyFlagMap`2.IsEmpty
+  commentId: P:Quartz.Util.DirtyFlagMap`2.IsEmpty
+  isExternal: true
+  name: IsEmpty
+  nameWithType: DirtyFlagMap<TKey, TValue>.IsEmpty
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.IsEmpty
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).IsEmpty
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).IsEmpty
+- uid: Quartz.Util.DirtyFlagMap`2.Item(`0)
+  commentId: P:Quartz.Util.DirtyFlagMap`2.Item(`0)
+  isExternal: true
+  name: this[TKey]
+  nameWithType: DirtyFlagMap<TKey, TValue>.this[TKey]
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.this[TKey]
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).this[](TKey)
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).this[](TKey)
+  name.vb: this[](TKey)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - name: TKey
+  - name: ']'
+  spec.vb:
+  - uid: Quartz.Util.DirtyFlagMap`2.Item(`0)
+    name: this[]
+    isExternal: true
+  - name: (
+  - name: TKey
+  - name: )
+- uid: Quartz.Util.DirtyFlagMap`2.Count
+  commentId: P:Quartz.Util.DirtyFlagMap`2.Count
+  isExternal: true
+  name: Count
+  nameWithType: DirtyFlagMap<TKey, TValue>.Count
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Count
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Count
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Count
+- uid: Quartz.Util.DirtyFlagMap`2.Values
+  commentId: P:Quartz.Util.DirtyFlagMap`2.Values
+  isExternal: true
+  name: Values
+  nameWithType: DirtyFlagMap<TKey, TValue>.Values
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Values
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Values
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Values
+- uid: Quartz.Util.DirtyFlagMap`2.Keys
+  commentId: P:Quartz.Util.DirtyFlagMap`2.Keys
+  isExternal: true
+  name: Keys
+  nameWithType: DirtyFlagMap<TKey, TValue>.Keys
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.Keys
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).Keys
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).Keys
+- uid: Quartz.Util.DirtyFlagMap`2.IsReadOnly
+  commentId: P:Quartz.Util.DirtyFlagMap`2.IsReadOnly
+  isExternal: true
+  name: IsReadOnly
+  nameWithType: DirtyFlagMap<TKey, TValue>.IsReadOnly
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.IsReadOnly
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).IsReadOnly
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).IsReadOnly
+- uid: Quartz.Util.DirtyFlagMap`2.IsFixedSize
+  commentId: P:Quartz.Util.DirtyFlagMap`2.IsFixedSize
+  isExternal: true
+  name: IsFixedSize
+  nameWithType: DirtyFlagMap<TKey, TValue>.IsFixedSize
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.IsFixedSize
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).IsFixedSize
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).IsFixedSize
+- uid: Quartz.Util.DirtyFlagMap`2.SyncRoot
+  commentId: P:Quartz.Util.DirtyFlagMap`2.SyncRoot
+  isExternal: true
+  name: SyncRoot
+  nameWithType: DirtyFlagMap<TKey, TValue>.SyncRoot
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.SyncRoot
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).SyncRoot
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).SyncRoot
+- uid: Quartz.Util.DirtyFlagMap`2.IsSynchronized
+  commentId: P:Quartz.Util.DirtyFlagMap`2.IsSynchronized
+  isExternal: true
+  name: IsSynchronized
+  nameWithType: DirtyFlagMap<TKey, TValue>.IsSynchronized
+  fullName: Quartz.Util.DirtyFlagMap<TKey, TValue>.IsSynchronized
+  nameWithType.vb: DirtyFlagMap(Of TKey, TValue).IsSynchronized
+  fullName.vb: Quartz.Util.DirtyFlagMap(Of TKey, TValue).IsSynchronized
+- uid: QuartzRestApi.Wrappers.SchedulerContext.ToJsonString*
+  commentId: Overload:QuartzRestApi.Wrappers.SchedulerContext.ToJsonString
+  href: QuartzRestApi.Wrappers.SchedulerContext.html#QuartzRestApi_Wrappers_SchedulerContext_ToJsonString
+  name: ToJsonString
+  nameWithType: SchedulerContext.ToJsonString
+  fullName: QuartzRestApi.Wrappers.SchedulerContext.ToJsonString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QuartzRestApi.Wrappers.SchedulerContext
+  commentId: T:QuartzRestApi.Wrappers.SchedulerContext
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.SchedulerContext.html
+  name: SchedulerContext
+  nameWithType: SchedulerContext
+  fullName: QuartzRestApi.Wrappers.SchedulerContext
+- uid: QuartzRestApi.Wrappers.Trigger
+  commentId: T:QuartzRestApi.Wrappers.Trigger
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.Trigger.html
+  name: Trigger
+  nameWithType: Trigger
+  fullName: QuartzRestApi.Wrappers.Trigger
+- uid: QuartzRestApi.Wrappers.SchedulerContext.FromJsonString*
+  commentId: Overload:QuartzRestApi.Wrappers.SchedulerContext.FromJsonString
+  href: QuartzRestApi.Wrappers.SchedulerContext.html#QuartzRestApi_Wrappers_SchedulerContext_FromJsonString_System_String_
+  name: FromJsonString
+  nameWithType: SchedulerContext.FromJsonString
+  fullName: QuartzRestApi.Wrappers.SchedulerContext.FromJsonString

@@ -37,6 +37,13 @@ public class Triggers : List<Trigger>
 {
     #region Constructor
     /// <summary>
+    ///     Needed for JSON deserialization
+    /// </summary>
+    public Triggers()
+    {
+    }
+
+    /// <summary>
     ///     Makes this object and sets all it's needed properties
     /// </summary>
     /// <param name="triggers">A <see cref="ReadOnlyCollection{T}" /> of <see cref="Quartz.ITrigger" />s</param>

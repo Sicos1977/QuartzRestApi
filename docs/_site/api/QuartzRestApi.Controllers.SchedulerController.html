@@ -1,0 +1,3218 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SchedulerController | QuartzRestApi </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SchedulerController | QuartzRestApi ">
+      
+      <meta name="description" content="Provides endpoints for managing and monitoring a Quartz.NET IScheduler instance. This controller exposes various operations such as checking the status of job and trigger groups, retrieving scheduler metadata, and managing jobs and triggers.">
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://github.com/Sicos1977/QuartzRestApi">
+            <img id="logo" class="svg" src="../images/logo.png" alt="QuartzRestApi">
+            QuartzRestApi
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+          <a class="btn btn-sm ms-2" href="https://github.com/Sicos1977/QuartzRestApi" title="View on GitHub" target="_blank" rel="noopener noreferrer" style="color: inherit;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="QuartzRestApi.Controllers.SchedulerController">
+
+
+
+  <h1 id="QuartzRestApi_Controllers_SchedulerController" data-uid="QuartzRestApi.Controllers.SchedulerController" class="text-break">
+Class SchedulerController  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="QuartzRestApi.html">QuartzRestApi</a>.<a class="xref" href="QuartzRestApi.Controllers.html">Controllers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>QuartzRestApi.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Provides endpoints for managing and monitoring a Quartz.NET IScheduler instance. This controller exposes various
+operations such as checking the status of job and trigger groups, retrieving scheduler metadata, and managing jobs and triggers.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[ApiController]
+public class SchedulerController : ControllerBase</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase">ControllerBase</a></div>
+      <div><span class="xref">SchedulerController</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.statuscode#microsoft-aspnetcore-mvc-controllerbase-statuscode(system-int32)">ControllerBase.StatusCode(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.statuscode#microsoft-aspnetcore-mvc-controllerbase-statuscode(system-int32-system-object)">ControllerBase.StatusCode(int, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.content#microsoft-aspnetcore-mvc-controllerbase-content(system-string)">ControllerBase.Content(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.content#microsoft-aspnetcore-mvc-controllerbase-content(system-string-system-string)">ControllerBase.Content(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.content#microsoft-aspnetcore-mvc-controllerbase-content(system-string-system-string-system-text-encoding)">ControllerBase.Content(string, string, Encoding)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.content#microsoft-aspnetcore-mvc-controllerbase-content(system-string-microsoft-net-http-headers-mediatypeheadervalue)">ControllerBase.Content(string, MediaTypeHeaderValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.nocontent">ControllerBase.NoContent()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.ok#microsoft-aspnetcore-mvc-controllerbase-ok">ControllerBase.Ok()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.ok#microsoft-aspnetcore-mvc-controllerbase-ok(system-object)">ControllerBase.Ok(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirect">ControllerBase.Redirect(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirectpermanent">ControllerBase.RedirectPermanent(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirectpreservemethod">ControllerBase.RedirectPreserveMethod(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirectpermanentpreservemethod">ControllerBase.RedirectPermanentPreserveMethod(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.localredirect">ControllerBase.LocalRedirect(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.localredirectpermanent">ControllerBase.LocalRedirectPermanent(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.localredirectpreservemethod">ControllerBase.LocalRedirectPreserveMethod(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.localredirectpermanentpreservemethod">ControllerBase.LocalRedirectPermanentPreserveMethod(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoaction#microsoft-aspnetcore-mvc-controllerbase-redirecttoaction">ControllerBase.RedirectToAction()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoaction#microsoft-aspnetcore-mvc-controllerbase-redirecttoaction(system-string)">ControllerBase.RedirectToAction(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoaction#microsoft-aspnetcore-mvc-controllerbase-redirecttoaction(system-string-system-object)">ControllerBase.RedirectToAction(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoaction#microsoft-aspnetcore-mvc-controllerbase-redirecttoaction(system-string-system-string)">ControllerBase.RedirectToAction(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoaction#microsoft-aspnetcore-mvc-controllerbase-redirecttoaction(system-string-system-string-system-object)">ControllerBase.RedirectToAction(string, string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoaction#microsoft-aspnetcore-mvc-controllerbase-redirecttoaction(system-string-system-string-system-string)">ControllerBase.RedirectToAction(string, string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoaction#microsoft-aspnetcore-mvc-controllerbase-redirecttoaction(system-string-system-string-system-object-system-string)">ControllerBase.RedirectToAction(string, string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoactionpreservemethod">ControllerBase.RedirectToActionPreserveMethod(string, string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoactionpermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoactionpermanent(system-string)">ControllerBase.RedirectToActionPermanent(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoactionpermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoactionpermanent(system-string-system-object)">ControllerBase.RedirectToActionPermanent(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoactionpermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoactionpermanent(system-string-system-string)">ControllerBase.RedirectToActionPermanent(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoactionpermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoactionpermanent(system-string-system-string-system-string)">ControllerBase.RedirectToActionPermanent(string, string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoactionpermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoactionpermanent(system-string-system-string-system-object)">ControllerBase.RedirectToActionPermanent(string, string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoactionpermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoactionpermanent(system-string-system-string-system-object-system-string)">ControllerBase.RedirectToActionPermanent(string, string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoactionpermanentpreservemethod">ControllerBase.RedirectToActionPermanentPreserveMethod(string, string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroute#microsoft-aspnetcore-mvc-controllerbase-redirecttoroute(system-string)">ControllerBase.RedirectToRoute(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroute#microsoft-aspnetcore-mvc-controllerbase-redirecttoroute(system-object)">ControllerBase.RedirectToRoute(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroute#microsoft-aspnetcore-mvc-controllerbase-redirecttoroute(system-string-system-object)">ControllerBase.RedirectToRoute(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroute#microsoft-aspnetcore-mvc-controllerbase-redirecttoroute(system-string-system-string)">ControllerBase.RedirectToRoute(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroute#microsoft-aspnetcore-mvc-controllerbase-redirecttoroute(system-string-system-object-system-string)">ControllerBase.RedirectToRoute(string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroutepreservemethod">ControllerBase.RedirectToRoutePreserveMethod(string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroutepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoroutepermanent(system-string)">ControllerBase.RedirectToRoutePermanent(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroutepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoroutepermanent(system-object)">ControllerBase.RedirectToRoutePermanent(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroutepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoroutepermanent(system-string-system-object)">ControllerBase.RedirectToRoutePermanent(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroutepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoroutepermanent(system-string-system-string)">ControllerBase.RedirectToRoutePermanent(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroutepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttoroutepermanent(system-string-system-object-system-string)">ControllerBase.RedirectToRoutePermanent(string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttoroutepermanentpreservemethod">ControllerBase.RedirectToRoutePermanentPreserveMethod(string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopage#microsoft-aspnetcore-mvc-controllerbase-redirecttopage(system-string)">ControllerBase.RedirectToPage(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopage#microsoft-aspnetcore-mvc-controllerbase-redirecttopage(system-string-system-object)">ControllerBase.RedirectToPage(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopage#microsoft-aspnetcore-mvc-controllerbase-redirecttopage(system-string-system-string)">ControllerBase.RedirectToPage(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopage#microsoft-aspnetcore-mvc-controllerbase-redirecttopage(system-string-system-string-system-object)">ControllerBase.RedirectToPage(string, string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopage#microsoft-aspnetcore-mvc-controllerbase-redirecttopage(system-string-system-string-system-string)">ControllerBase.RedirectToPage(string, string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopage#microsoft-aspnetcore-mvc-controllerbase-redirecttopage(system-string-system-string-system-object-system-string)">ControllerBase.RedirectToPage(string, string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopagepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttopagepermanent(system-string)">ControllerBase.RedirectToPagePermanent(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopagepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttopagepermanent(system-string-system-object)">ControllerBase.RedirectToPagePermanent(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopagepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttopagepermanent(system-string-system-string)">ControllerBase.RedirectToPagePermanent(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopagepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttopagepermanent(system-string-system-string-system-string)">ControllerBase.RedirectToPagePermanent(string, string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopagepermanent#microsoft-aspnetcore-mvc-controllerbase-redirecttopagepermanent(system-string-system-string-system-object-system-string)">ControllerBase.RedirectToPagePermanent(string, string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopagepreservemethod">ControllerBase.RedirectToPagePreserveMethod(string, string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.redirecttopagepermanentpreservemethod">ControllerBase.RedirectToPagePermanentPreserveMethod(string, string, object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-byte()-system-string)">ControllerBase.File(byte[], string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-byte()-system-string-system-boolean)">ControllerBase.File(byte[], string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-byte()-system-string-system-string)">ControllerBase.File(byte[], string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-byte()-system-string-system-string-system-boolean)">ControllerBase.File(byte[], string, string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-byte()-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue)">ControllerBase.File(byte[], string, DateTimeOffset?, EntityTagHeaderValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-byte()-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue-system-boolean)">ControllerBase.File(byte[], string, DateTimeOffset?, EntityTagHeaderValue, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-byte()-system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue)">ControllerBase.File(byte[], string, string, DateTimeOffset?, EntityTagHeaderValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-byte()-system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue-system-boolean)">ControllerBase.File(byte[], string, string, DateTimeOffset?, EntityTagHeaderValue, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-io-stream-system-string)">ControllerBase.File(Stream, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-io-stream-system-string-system-boolean)">ControllerBase.File(Stream, string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-io-stream-system-string-system-string)">ControllerBase.File(Stream, string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-io-stream-system-string-system-string-system-boolean)">ControllerBase.File(Stream, string, string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-io-stream-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue)">ControllerBase.File(Stream, string, DateTimeOffset?, EntityTagHeaderValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-io-stream-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue-system-boolean)">ControllerBase.File(Stream, string, DateTimeOffset?, EntityTagHeaderValue, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-io-stream-system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue)">ControllerBase.File(Stream, string, string, DateTimeOffset?, EntityTagHeaderValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-io-stream-system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue-system-boolean)">ControllerBase.File(Stream, string, string, DateTimeOffset?, EntityTagHeaderValue, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-string-system-string)">ControllerBase.File(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-string-system-string-system-boolean)">ControllerBase.File(string, string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-string-system-string-system-string)">ControllerBase.File(string, string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-string-system-string-system-string-system-boolean)">ControllerBase.File(string, string, string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue)">ControllerBase.File(string, string, DateTimeOffset?, EntityTagHeaderValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue-system-boolean)">ControllerBase.File(string, string, DateTimeOffset?, EntityTagHeaderValue, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-string-system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue)">ControllerBase.File(string, string, string, DateTimeOffset?, EntityTagHeaderValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.file#microsoft-aspnetcore-mvc-controllerbase-file(system-string-system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue-system-boolean)">ControllerBase.File(string, string, string, DateTimeOffset?, EntityTagHeaderValue, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.physicalfile#microsoft-aspnetcore-mvc-controllerbase-physicalfile(system-string-system-string)">ControllerBase.PhysicalFile(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.physicalfile#microsoft-aspnetcore-mvc-controllerbase-physicalfile(system-string-system-string-system-boolean)">ControllerBase.PhysicalFile(string, string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.physicalfile#microsoft-aspnetcore-mvc-controllerbase-physicalfile(system-string-system-string-system-string)">ControllerBase.PhysicalFile(string, string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.physicalfile#microsoft-aspnetcore-mvc-controllerbase-physicalfile(system-string-system-string-system-string-system-boolean)">ControllerBase.PhysicalFile(string, string, string, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.physicalfile#microsoft-aspnetcore-mvc-controllerbase-physicalfile(system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue)">ControllerBase.PhysicalFile(string, string, DateTimeOffset?, EntityTagHeaderValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.physicalfile#microsoft-aspnetcore-mvc-controllerbase-physicalfile(system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue-system-boolean)">ControllerBase.PhysicalFile(string, string, DateTimeOffset?, EntityTagHeaderValue, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.physicalfile#microsoft-aspnetcore-mvc-controllerbase-physicalfile(system-string-system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue)">ControllerBase.PhysicalFile(string, string, string, DateTimeOffset?, EntityTagHeaderValue)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.physicalfile#microsoft-aspnetcore-mvc-controllerbase-physicalfile(system-string-system-string-system-string-system-nullable((system-datetimeoffset))-microsoft-net-http-headers-entitytagheadervalue-system-boolean)">ControllerBase.PhysicalFile(string, string, string, DateTimeOffset?, EntityTagHeaderValue, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.unauthorized#microsoft-aspnetcore-mvc-controllerbase-unauthorized">ControllerBase.Unauthorized()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.unauthorized#microsoft-aspnetcore-mvc-controllerbase-unauthorized(system-object)">ControllerBase.Unauthorized(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound#microsoft-aspnetcore-mvc-controllerbase-notfound">ControllerBase.NotFound()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.notfound#microsoft-aspnetcore-mvc-controllerbase-notfound(system-object)">ControllerBase.NotFound(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.badrequest#microsoft-aspnetcore-mvc-controllerbase-badrequest">ControllerBase.BadRequest()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.badrequest#microsoft-aspnetcore-mvc-controllerbase-badrequest(system-object)">ControllerBase.BadRequest(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.badrequest#microsoft-aspnetcore-mvc-controllerbase-badrequest(microsoft-aspnetcore-mvc-modelbinding-modelstatedictionary)">ControllerBase.BadRequest(ModelStateDictionary)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.unprocessableentity#microsoft-aspnetcore-mvc-controllerbase-unprocessableentity">ControllerBase.UnprocessableEntity()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.unprocessableentity#microsoft-aspnetcore-mvc-controllerbase-unprocessableentity(system-object)">ControllerBase.UnprocessableEntity(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.unprocessableentity#microsoft-aspnetcore-mvc-controllerbase-unprocessableentity(microsoft-aspnetcore-mvc-modelbinding-modelstatedictionary)">ControllerBase.UnprocessableEntity(ModelStateDictionary)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.conflict#microsoft-aspnetcore-mvc-controllerbase-conflict">ControllerBase.Conflict()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.conflict#microsoft-aspnetcore-mvc-controllerbase-conflict(system-object)">ControllerBase.Conflict(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.conflict#microsoft-aspnetcore-mvc-controllerbase-conflict(microsoft-aspnetcore-mvc-modelbinding-modelstatedictionary)">ControllerBase.Conflict(ModelStateDictionary)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.problem#microsoft-aspnetcore-mvc-controllerbase-problem(system-string-system-string-system-nullable((system-int32))-system-string-system-string)">ControllerBase.Problem(string, string, int?, string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.problem#microsoft-aspnetcore-mvc-controllerbase-problem(system-string-system-string-system-nullable((system-int32))-system-string-system-string-system-collections-generic-idictionary((system-string-system-object)))">ControllerBase.Problem(string, string, int?, string, string, IDictionary&lt;string, object&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.validationproblem#microsoft-aspnetcore-mvc-controllerbase-validationproblem(microsoft-aspnetcore-mvc-validationproblemdetails)">ControllerBase.ValidationProblem(ValidationProblemDetails)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.validationproblem#microsoft-aspnetcore-mvc-controllerbase-validationproblem(microsoft-aspnetcore-mvc-modelbinding-modelstatedictionary)">ControllerBase.ValidationProblem(ModelStateDictionary)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.validationproblem#microsoft-aspnetcore-mvc-controllerbase-validationproblem">ControllerBase.ValidationProblem()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.validationproblem#microsoft-aspnetcore-mvc-controllerbase-validationproblem(system-string-system-string-system-nullable((system-int32))-system-string-system-string-microsoft-aspnetcore-mvc-modelbinding-modelstatedictionary)">ControllerBase.ValidationProblem(string, string, int?, string, string, ModelStateDictionary)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.validationproblem#microsoft-aspnetcore-mvc-controllerbase-validationproblem(system-string-system-string-system-nullable((system-int32))-system-string-system-string-microsoft-aspnetcore-mvc-modelbinding-modelstatedictionary-system-collections-generic-idictionary((system-string-system-object)))">ControllerBase.ValidationProblem(string, string, int?, string, string, ModelStateDictionary, IDictionary&lt;string, object&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.created#microsoft-aspnetcore-mvc-controllerbase-created">ControllerBase.Created()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.created#microsoft-aspnetcore-mvc-controllerbase-created(system-string-system-object)">ControllerBase.Created(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.created#microsoft-aspnetcore-mvc-controllerbase-created(system-uri-system-object)">ControllerBase.Created(Uri, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdataction#microsoft-aspnetcore-mvc-controllerbase-createdataction(system-string-system-object)">ControllerBase.CreatedAtAction(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdataction#microsoft-aspnetcore-mvc-controllerbase-createdataction(system-string-system-object-system-object)">ControllerBase.CreatedAtAction(string, object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdataction#microsoft-aspnetcore-mvc-controllerbase-createdataction(system-string-system-string-system-object-system-object)">ControllerBase.CreatedAtAction(string, string, object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdatroute#microsoft-aspnetcore-mvc-controllerbase-createdatroute(system-string-system-object)">ControllerBase.CreatedAtRoute(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdatroute#microsoft-aspnetcore-mvc-controllerbase-createdatroute(system-object-system-object)">ControllerBase.CreatedAtRoute(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.createdatroute#microsoft-aspnetcore-mvc-controllerbase-createdatroute(system-string-system-object-system-object)">ControllerBase.CreatedAtRoute(string, object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.accepted#microsoft-aspnetcore-mvc-controllerbase-accepted">ControllerBase.Accepted()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.accepted#microsoft-aspnetcore-mvc-controllerbase-accepted(system-object)">ControllerBase.Accepted(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.accepted#microsoft-aspnetcore-mvc-controllerbase-accepted(system-uri)">ControllerBase.Accepted(Uri)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.accepted#microsoft-aspnetcore-mvc-controllerbase-accepted(system-string)">ControllerBase.Accepted(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.accepted#microsoft-aspnetcore-mvc-controllerbase-accepted(system-string-system-object)">ControllerBase.Accepted(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.accepted#microsoft-aspnetcore-mvc-controllerbase-accepted(system-uri-system-object)">ControllerBase.Accepted(Uri, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedataction#microsoft-aspnetcore-mvc-controllerbase-acceptedataction(system-string)">ControllerBase.AcceptedAtAction(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedataction#microsoft-aspnetcore-mvc-controllerbase-acceptedataction(system-string-system-string)">ControllerBase.AcceptedAtAction(string, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedataction#microsoft-aspnetcore-mvc-controllerbase-acceptedataction(system-string-system-object)">ControllerBase.AcceptedAtAction(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedataction#microsoft-aspnetcore-mvc-controllerbase-acceptedataction(system-string-system-string-system-object)">ControllerBase.AcceptedAtAction(string, string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedataction#microsoft-aspnetcore-mvc-controllerbase-acceptedataction(system-string-system-object-system-object)">ControllerBase.AcceptedAtAction(string, object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedataction#microsoft-aspnetcore-mvc-controllerbase-acceptedataction(system-string-system-string-system-object-system-object)">ControllerBase.AcceptedAtAction(string, string, object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedatroute#microsoft-aspnetcore-mvc-controllerbase-acceptedatroute(system-object)">ControllerBase.AcceptedAtRoute(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedatroute#microsoft-aspnetcore-mvc-controllerbase-acceptedatroute(system-string)">ControllerBase.AcceptedAtRoute(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedatroute#microsoft-aspnetcore-mvc-controllerbase-acceptedatroute(system-string-system-object)">ControllerBase.AcceptedAtRoute(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedatroute#microsoft-aspnetcore-mvc-controllerbase-acceptedatroute(system-object-system-object)">ControllerBase.AcceptedAtRoute(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.acceptedatroute#microsoft-aspnetcore-mvc-controllerbase-acceptedatroute(system-string-system-object-system-object)">ControllerBase.AcceptedAtRoute(string, object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.challenge#microsoft-aspnetcore-mvc-controllerbase-challenge">ControllerBase.Challenge()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.challenge#microsoft-aspnetcore-mvc-controllerbase-challenge(system-string())">ControllerBase.Challenge(params string[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.challenge#microsoft-aspnetcore-mvc-controllerbase-challenge(microsoft-aspnetcore-authentication-authenticationproperties)">ControllerBase.Challenge(AuthenticationProperties)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.challenge#microsoft-aspnetcore-mvc-controllerbase-challenge(microsoft-aspnetcore-authentication-authenticationproperties-system-string())">ControllerBase.Challenge(AuthenticationProperties, params string[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.forbid#microsoft-aspnetcore-mvc-controllerbase-forbid">ControllerBase.Forbid()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.forbid#microsoft-aspnetcore-mvc-controllerbase-forbid(system-string())">ControllerBase.Forbid(params string[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.forbid#microsoft-aspnetcore-mvc-controllerbase-forbid(microsoft-aspnetcore-authentication-authenticationproperties)">ControllerBase.Forbid(AuthenticationProperties)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.forbid#microsoft-aspnetcore-mvc-controllerbase-forbid(microsoft-aspnetcore-authentication-authenticationproperties-system-string())">ControllerBase.Forbid(AuthenticationProperties, params string[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.signin#microsoft-aspnetcore-mvc-controllerbase-signin(system-security-claims-claimsprincipal)">ControllerBase.SignIn(ClaimsPrincipal)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.signin#microsoft-aspnetcore-mvc-controllerbase-signin(system-security-claims-claimsprincipal-system-string)">ControllerBase.SignIn(ClaimsPrincipal, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.signin#microsoft-aspnetcore-mvc-controllerbase-signin(system-security-claims-claimsprincipal-microsoft-aspnetcore-authentication-authenticationproperties)">ControllerBase.SignIn(ClaimsPrincipal, AuthenticationProperties)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.signin#microsoft-aspnetcore-mvc-controllerbase-signin(system-security-claims-claimsprincipal-microsoft-aspnetcore-authentication-authenticationproperties-system-string)">ControllerBase.SignIn(ClaimsPrincipal, AuthenticationProperties, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.signout#microsoft-aspnetcore-mvc-controllerbase-signout">ControllerBase.SignOut()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.signout#microsoft-aspnetcore-mvc-controllerbase-signout(microsoft-aspnetcore-authentication-authenticationproperties)">ControllerBase.SignOut(AuthenticationProperties)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.signout#microsoft-aspnetcore-mvc-controllerbase-signout(system-string())">ControllerBase.SignOut(params string[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.signout#microsoft-aspnetcore-mvc-controllerbase-signout(microsoft-aspnetcore-authentication-authenticationproperties-system-string())">ControllerBase.SignOut(AuthenticationProperties, params string[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#microsoft-aspnetcore-mvc-controllerbase-tryupdatemodelasync-1(-0)">ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#microsoft-aspnetcore-mvc-controllerbase-tryupdatemodelasync-1(-0-system-string)">ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#microsoft-aspnetcore-mvc-controllerbase-tryupdatemodelasync-1(-0-system-string-microsoft-aspnetcore-mvc-modelbinding-ivalueprovider)">ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, IValueProvider)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#microsoft-aspnetcore-mvc-controllerbase-tryupdatemodelasync-1(-0-system-string-system-linq-expressions-expression((system-func((-0-system-object))))())">ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, params Expression&lt;Func&lt;TModel, object&gt;&gt;[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#microsoft-aspnetcore-mvc-controllerbase-tryupdatemodelasync-1(-0-system-string-system-func((microsoft-aspnetcore-mvc-modelbinding-modelmetadata-system-boolean)))">ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, Func&lt;ModelMetadata, bool&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#microsoft-aspnetcore-mvc-controllerbase-tryupdatemodelasync-1(-0-system-string-microsoft-aspnetcore-mvc-modelbinding-ivalueprovider-system-linq-expressions-expression((system-func((-0-system-object))))())">ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, IValueProvider, params Expression&lt;Func&lt;TModel, object&gt;&gt;[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#microsoft-aspnetcore-mvc-controllerbase-tryupdatemodelasync-1(-0-system-string-microsoft-aspnetcore-mvc-modelbinding-ivalueprovider-system-func((microsoft-aspnetcore-mvc-modelbinding-modelmetadata-system-boolean)))">ControllerBase.TryUpdateModelAsync&lt;TModel&gt;(TModel, string, IValueProvider, Func&lt;ModelMetadata, bool&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#microsoft-aspnetcore-mvc-controllerbase-tryupdatemodelasync(system-object-system-type-system-string)">ControllerBase.TryUpdateModelAsync(object, Type, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryupdatemodelasync#microsoft-aspnetcore-mvc-controllerbase-tryupdatemodelasync(system-object-system-type-system-string-microsoft-aspnetcore-mvc-modelbinding-ivalueprovider-system-func((microsoft-aspnetcore-mvc-modelbinding-modelmetadata-system-boolean)))">ControllerBase.TryUpdateModelAsync(object, Type, string, IValueProvider, Func&lt;ModelMetadata, bool&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryvalidatemodel#microsoft-aspnetcore-mvc-controllerbase-tryvalidatemodel(system-object)">ControllerBase.TryValidateModel(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.tryvalidatemodel#microsoft-aspnetcore-mvc-controllerbase-tryvalidatemodel(system-object-system-string)">ControllerBase.TryValidateModel(object, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.httpcontext">ControllerBase.HttpContext</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.request">ControllerBase.Request</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.response">ControllerBase.Response</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.routedata">ControllerBase.RouteData</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.modelstate">ControllerBase.ModelState</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.controllercontext">ControllerBase.ControllerContext</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.metadataprovider">ControllerBase.MetadataProvider</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.modelbinderfactory">ControllerBase.ModelBinderFactory</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.url">ControllerBase.Url</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.objectvalidator">ControllerBase.ObjectValidator</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.problemdetailsfactory">ControllerBase.ProblemDetailsFactory</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.user">ControllerBase.User</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.controllerbase.empty">ControllerBase.Empty</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController__ctor_" data-uid="QuartzRestApi.Controllers.SchedulerController.#ctor*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController__ctor_Quartz_IScheduler_Microsoft_Extensions_Logging_ILogger_" data-uid="QuartzRestApi.Controllers.SchedulerController.#ctor(Quartz.IScheduler,Microsoft.Extensions.Logging.ILogger)">
+  SchedulerController(IScheduler, ILogger)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Makes a new instance of the <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html">SchedulerController</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SchedulerController(IScheduler scheduler, ILogger logger = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scheduler</code> <span class="xref">IScheduler</span></dt>
+    <dd><p><span class="xref">Quartz.IScheduler</span></p>
+</dd>
+    <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger">ILogger</a></dt>
+    <dd><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger">ILogger</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_AddCalendar_" data-uid="QuartzRestApi.Controllers.SchedulerController.AddCalendar*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_AddCalendar_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.AddCalendar(System.String)">
+  AddCalendar(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add (register) the given <span class="xref">Quartz.ICalendar</span> to the Scheduler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/AddCalendar&quot;)]
+public Task AddCalendar(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The <span class="xref">Quartz.ICalendar</span> information</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_AddJob_" data-uid="QuartzRestApi.Controllers.SchedulerController.AddJob*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_AddJob_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.AddJob(System.String)">
+  AddJob(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add the given <span class="xref">Quartz.IJob</span> to the Scheduler - with no associated
+<span class="xref">Quartz.ITrigger</span>. The <span class="xref">Quartz.IJob</span> will be 'dormant' until
+it is scheduled with a <span class="xref">Quartz.ITrigger</span>, or TriggerJob /&gt; is called for it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/AddJob&quot;)]
+public Task AddJob(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_AddJob_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>With the <a class="xref" href="QuartzRestApi.Wrappers.JobDetail.html#QuartzRestApi_Wrappers_JobDetail_StoreNonDurableWhileAwaitingScheduling">StoreNonDurableWhileAwaitingScheduling</a> parameter
+set to <pre><code class="lang-csharp">true</code></pre>, a non-durable job can be stored.  Once it is
+scheduled, it will resume normal non-durable behavior (i.e. be deleted
+once there are no remaining associated triggers).
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_CheckExistsJobKey_" data-uid="QuartzRestApi.Controllers.SchedulerController.CheckExistsJobKey*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_CheckExistsJobKey_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.CheckExistsJobKey(System.String)">
+  CheckExistsJobKey(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determine whether a <span class="xref">Quartz.IJob</span> with the given identifier already
+exists within the scheduler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/checkexistsjobkey&quot;)]
+public bool CheckExistsJobKey(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the identifier to check for</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if a Job exists with the given identifier</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_CheckExistsTriggerKey_" data-uid="QuartzRestApi.Controllers.SchedulerController.CheckExistsTriggerKey*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_CheckExistsTriggerKey_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.CheckExistsTriggerKey(System.String)">
+  CheckExistsTriggerKey(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determine whether a <span class="xref">Quartz.ITrigger</span> with the given identifier already
+exists within the scheduler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/checkexiststriggerkey&quot;)]
+public bool CheckExistsTriggerKey(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the identifier to check for</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if a Trigger exists with the given identifier</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_Clear_" data-uid="QuartzRestApi.Controllers.SchedulerController.Clear*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_Clear" data-uid="QuartzRestApi.Controllers.SchedulerController.Clear">
+  Clear()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Clears (deletes!) all scheduling data - all <span class="xref">Quartz.IJob</span>s, <span class="xref">Quartz.ITrigger</span>s
+<span class="xref">Quartz.ICalendar</span>s.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/Clear&quot;)]
+public void Clear()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_Context_" data-uid="QuartzRestApi.Controllers.SchedulerController.Context*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_Context" data-uid="QuartzRestApi.Controllers.SchedulerController.Context">
+  Context()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the <span class="xref">Quartz.SchedulerContext</span> of the <span class="xref">Quartz.IScheduler</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/SchedulerContext&quot;)]
+public string Context()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_DeleteCalendar_" data-uid="QuartzRestApi.Controllers.SchedulerController.DeleteCalendar*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_DeleteCalendar_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.DeleteCalendar(System.String)">
+  DeleteCalendar(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delete the identified <span class="xref">Quartz.ICalendar</span> from the Scheduler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpDelete]
+[Route(&quot;Scheduler/DeleteCalendar/{calName}&quot;)]
+public bool DeleteCalendar(string calName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>calName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Name of the calendar.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if the Calendar was found and deleted.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_DeleteCalendar_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If removal of the <pre><code class="lang-csharp">Calendar</code></pre> would result in
+<span class="xref">Quartz.ITrigger</span>s pointing to non-existent calendars, then a
+<span class="xref">Quartz.SchedulerException</span> will be thrown.
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_DeleteJob_" data-uid="QuartzRestApi.Controllers.SchedulerController.DeleteJob*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_DeleteJob_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.DeleteJob(System.String)">
+  DeleteJob(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delete the identified <span class="xref">Quartz.IJob</span> from the Scheduler - and any
+associated <span class="xref">Quartz.ITrigger</span>s.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpDelete]
+[Route(&quot;Scheduler/DeleteJob&quot;)]
+public Task&lt;bool&gt; DeleteJob(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>true if the Job was found and deleted.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_DeleteJobs_" data-uid="QuartzRestApi.Controllers.SchedulerController.DeleteJobs*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_DeleteJobs_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.DeleteJobs(System.String)">
+  DeleteJobs(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Delete the identified jobs from the Scheduler - and any
+associated <span class="xref">Quartz.ITrigger</span>s.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpDelete]
+[Route(&quot;Scheduler/DeleteJobs&quot;)]
+public Task&lt;bool&gt; DeleteJobs(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd><p>true if all the Jobs were found and deleted, false if
+one or more were not deleted.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_DeleteJobs_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+    Note that while this bulk operation is likely more efficient than
+    invoking <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_DeleteJob_System_String_">DeleteJob(string)</a> several
+    times, it may have the adverse affect of holding data locks for a
+    single long duration of time (rather than lots of small durations
+    of time).
+</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetCalendar_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetCalendar*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetCalendar_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetCalendar(System.String)">
+  GetCalendar(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the <span class="xref">Quartz.ICalendar</span> instance with the given name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/Getcalendar/{calName}&quot;)]
+public string GetCalendar(string calName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>calName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetCalendarNames_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetCalendarNames*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetCalendarNames" data-uid="QuartzRestApi.Controllers.SchedulerController.GetCalendarNames">
+  GetCalendarNames()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the names of all registered <span class="xref">Quartz.ICalendar</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetCalendarNames&quot;)]
+public Task&lt;IReadOnlyCollection&lt;string&gt;&gt; GetCalendarNames()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetCurrentlyExecutingJobs_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetCurrentlyExecutingJobs*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetCurrentlyExecutingJobs" data-uid="QuartzRestApi.Controllers.SchedulerController.GetCurrentlyExecutingJobs">
+  GetCurrentlyExecutingJobs()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Return a list of <span class="xref">Quartz.IJobExecutionContext</span> objects that
+represent all currently executing Jobs in this Scheduler instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetCurrentlyExecutingJobs&quot;)]
+public string GetCurrentlyExecutingJobs()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_GetCurrentlyExecutingJobs_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+    This method is not cluster aware.  That is, it will only return Jobs
+    currently executing in this Scheduler instance, not across the entire
+    cluster.
+</p>
+<p>
+    Note that the list returned is an 'instantaneous' snapshot, and that as
+    soon as it's returned, the true list of executing jobs may be different.
+    Also, please read the doc associated with <span class="xref">Quartz.IJobExecutionContext</span>-
+    especially if you're using remoting.
+</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><span class="xref">IJobExecutionContext</span></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetJobDetail_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetJobDetail*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetJobDetail_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetJobDetail(System.String)">
+  GetJobDetail(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the <span class="xref">Quartz.IJobDetail</span> for the <span class="xref">Quartz.IJob</span> instance with the given key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetJobDetail&quot;)]
+public string GetJobDetail(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_GetJobDetail_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The returned JobDetail object will be a snapshot of the actual stored
+JobDetail.  If you wish to modify the JobDetail, you must re-store the
+JobDetail afterward (e.g. see <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_AddJob_System_String_">AddJob(string)</a>).</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetJobGroupNames_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetJobGroupNames*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetJobGroupNames" data-uid="QuartzRestApi.Controllers.SchedulerController.GetJobGroupNames">
+  GetJobGroupNames()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the names of all known <span class="xref">Quartz.IJobDetail</span> groups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetJobGroupNames&quot;)]
+public Task&lt;IReadOnlyCollection&lt;string&gt;&gt; GetJobGroupNames()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetJobKeys_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetJobKeys*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetJobKeys_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetJobKeys(System.String)">
+  GetJobKeys(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the keys of all the <span class="xref">Quartz.IJobDetail</span>s in the matching groups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetJobKeys&quot;)]
+public string GetJobKeys(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetMetaData_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetMetaData*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetMetaData" data-uid="QuartzRestApi.Controllers.SchedulerController.GetMetaData">
+  GetMetaData()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a <span class="xref">Quartz.SchedulerMetaData</span> object describing the settings
+and capabilities of the scheduler instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetMetaData&quot;)]
+public string GetMetaData()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_GetMetaData_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Note that the data returned is an 'instantaneous' snapshot, and that as
+soon as it's returned, the meta-data values may be different.</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetPausedTriggerGroups_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetPausedTriggerGroups*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetPausedTriggerGroups" data-uid="QuartzRestApi.Controllers.SchedulerController.GetPausedTriggerGroups">
+  GetPausedTriggerGroups()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the names of all <span class="xref">Quartz.ITrigger</span> groups that are paused.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetPausedTriggerGroups&quot;)]
+public Task&lt;IReadOnlyCollection&lt;string&gt;&gt; GetPausedTriggerGroups()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetTrigger_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetTrigger_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTrigger(System.String)">
+  GetTrigger(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the <span class="xref">Quartz.ITrigger</span> instance with the given key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetTrigger&quot;)]
+public string GetTrigger(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_GetTrigger_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The returned Trigger object will be a snapshot of the actual stored
+trigger. If you wish to modify the trigger, you must re-store the
+trigger afterward (e.g. see <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_RescheduleJob_System_String_">RescheduleJob(string)</a>).</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetTriggerGroupNames_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTriggerGroupNames*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetTriggerGroupNames" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTriggerGroupNames">
+  GetTriggerGroupNames()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the names of all known <span class="xref">Quartz.ITrigger</span> groups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetTriggerGroupNames&quot;)]
+public Task&lt;IReadOnlyCollection&lt;string&gt;&gt; GetTriggerGroupNames()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetTriggerKeys_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTriggerKeys*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetTriggerKeys_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTriggerKeys(System.String)">
+  GetTriggerKeys(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the names of all the <span class="xref">Quartz.ITrigger</span>s in the given
+groups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetTriggerKeys&quot;)]
+public string GetTriggerKeys(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetTriggerState_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTriggerState*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetTriggerState_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTriggerState(System.String)">
+  GetTriggerState(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the current state of the identified <span class="xref">Quartz.ITrigger</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetTriggerState&quot;)]
+public string GetTriggerState(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><span class="xref">Normal</span></div>
+    <div><span class="xref">Paused</span></div>
+    <div><span class="xref">Complete</span></div>
+    <div><span class="xref">Blocked</span></div>
+    <div><span class="xref">Error</span></div>
+    <div><span class="xref">None</span></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_GetTriggersOfJob_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTriggersOfJob*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_GetTriggersOfJob_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.GetTriggersOfJob(System.String)">
+  GetTriggersOfJob(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get all <span class="xref">Quartz.ITrigger</span> s that are associated with the
+identified <span class="xref">Quartz.IJobDetail</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/GetTriggersOfJob&quot;)]
+public string GetTriggersOfJob(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_GetTriggersOfJob_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The returned Trigger objects will be snapshots of the actual stored
+triggers. If you wish to modify a trigger, you must re-store the
+trigger afterward (e.g. see <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_RescheduleJob_System_String_">RescheduleJob(string)</a>).</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_InStandbyMode_" data-uid="QuartzRestApi.Controllers.SchedulerController.InStandbyMode*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_InStandbyMode" data-uid="QuartzRestApi.Controllers.SchedulerController.InStandbyMode">
+  InStandbyMode()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reports whether the <span class="xref">Quartz.IScheduler</span> is in stand-by mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/InStandbyMode&quot;)]
+public bool InStandbyMode()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Standby">Standby()</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Start">Start()</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_InterruptFireInstanceId_" data-uid="QuartzRestApi.Controllers.SchedulerController.InterruptFireInstanceId*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_InterruptFireInstanceId_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.InterruptFireInstanceId(System.String)">
+  InterruptFireInstanceId(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Request the cancellation, within this Scheduler instance, of the
+identified executing job instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/interruptfireinstanceid/{fireInstanceId}&quot;)]
+public bool InterruptFireInstanceId(string fireInstanceId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fireInstanceId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the unique identifier of the job instance to  be interrupted (see
+<span class="xref">Quartz.IJobExecutionContext.FireInstanceId</span>)</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if the identified job instance was found and interrupted.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_InterruptFireInstanceId_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This method is not cluster aware.  That is, it will only interrupt
+instances of the identified InterruptableJob currently executing in this
+Scheduler instance, not across the entire cluster.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_GetCurrentlyExecutingJobs">GetCurrentlyExecutingJobs()</a></div>
+    <div><span class="xref">FireInstanceId</span></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_InterruptJobKey_System_String_">InterruptJobKey(string)</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_InterruptJobKey_" data-uid="QuartzRestApi.Controllers.SchedulerController.InterruptJobKey*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_InterruptJobKey_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.InterruptJobKey(System.String)">
+  InterruptJobKey(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Request the cancellation, within this Scheduler instance, of all
+currently executing instances of the identified <span class="xref">Quartz.IJob</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/InterruptJobKey&quot;)]
+public bool InterruptJobKey(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true is at least one instance of the identified job was found and interrupted.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_InterruptJobKey_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+    If more than one instance of the identified job is currently executing,
+    the cancellation token will be set on each instance.  However, there is a limitation that in the case that
+    <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_InterruptJobKey_System_String_">InterruptJobKey(string)</a> on one instances throws an exception, all
+    remaining  instances (that have not yet been interrupted) will not have
+    their <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_InterruptJobKey_System_String_">InterruptJobKey(string)</a> method called.
+</p>
+<p>
+    If you wish to interrupt a specific instance of a job (when more than
+    one is executing) you can do so by calling
+    <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_GetCurrentlyExecutingJobs">GetCurrentlyExecutingJobs()</a> to obtain a handle
+    to the job instance, and then invoke <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_InterruptJobKey_System_String_">InterruptJobKey(string)</a> on it
+    yourself.
+</p>
+<p>
+    This method is not cluster aware.  That is, it will only interrupt
+    instances of the identified InterruptableJob currently executing in this
+    Scheduler instance, not across the entire cluster.
+</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_GetCurrentlyExecutingJobs">GetCurrentlyExecutingJobs()</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_IsJobGroupPaused_" data-uid="QuartzRestApi.Controllers.SchedulerController.IsJobGroupPaused*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_IsJobGroupPaused_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.IsJobGroupPaused(System.String)">
+  IsJobGroupPaused(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if the given JobGroup is paused</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/IsJobGroupPaused/{groupName}&quot;)]
+public Task&lt;bool&gt; IsJobGroupPaused(string groupName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The group name</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_IsShutdown_" data-uid="QuartzRestApi.Controllers.SchedulerController.IsShutdown*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_IsShutdown" data-uid="QuartzRestApi.Controllers.SchedulerController.IsShutdown">
+  IsShutdown()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reports whether the <span class="xref">Quartz.IScheduler</span> has been Shutdown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/Isshutdown&quot;)]
+public bool IsShutdown()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_IsStarted_" data-uid="QuartzRestApi.Controllers.SchedulerController.IsStarted*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_IsStarted" data-uid="QuartzRestApi.Controllers.SchedulerController.IsStarted">
+  IsStarted()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Whether the scheduler has been started.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/IsStarted&quot;)]
+public bool IsStarted()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_IsStarted_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Note: This only reflects whether <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Start">Start()</a> has ever
+been called on this Scheduler, so it will return <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> even
+if the <span class="xref">Quartz.IScheduler</span> is currently in standby mode or has been
+since shutdown.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Start">Start()</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_IsShutdown">IsShutdown()</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_InStandbyMode">InStandbyMode()</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_IsTriggerGroupPaused_" data-uid="QuartzRestApi.Controllers.SchedulerController.IsTriggerGroupPaused*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_IsTriggerGroupPaused_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.IsTriggerGroupPaused(System.String)">
+  IsTriggerGroupPaused(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> if the given TriggerGroup is paused</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/IsTriggerGroupPaused/{groupName}&quot;)]
+public Task&lt;bool&gt; IsTriggerGroupPaused(string groupName)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>groupName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The group name</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_PauseAll_" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseAll*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_PauseAll" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseAll">
+  PauseAll()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pause all triggers - similar to calling <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_PauseTriggers_System_String_">PauseTriggers(string)</a>
+on every group, however, after using this method <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_ResumeAll">ResumeAll()</a>
+must be called to clear the scheduler's state of 'remembering' that all
+new triggers will be paused as they are added.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/PauseAllTriggers&quot;)]
+public void PauseAll()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_PauseAll_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>When <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_ResumeAll">ResumeAll()</a> is called (to un-pause), trigger misfire
+instructions WILL be applied.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_ResumeAll">ResumeAll()</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_PauseTriggers_System_String_">PauseTriggers(string)</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Standby">Standby()</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_PauseJob_" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseJob*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_PauseJob_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseJob(System.String)">
+  PauseJob(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pause the <span class="xref">Quartz.IJobDetail</span> with the given
+key - by pausing all of its current <span class="xref">Quartz.ITrigger</span>s.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/PauseJob&quot;)]
+public Task PauseJob(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_PauseJobs_" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseJobs*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_PauseJobs_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseJobs(System.String)">
+  PauseJobs(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pause all the <span class="xref">Quartz.IJobDetail</span>s in the
+matching groups - by pausing all of their <span class="xref">Quartz.ITrigger</span>s.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/PauseJobs&quot;)]
+public Task PauseJobs(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_PauseJobs_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+    The Scheduler will "remember" that the groups are paused, and impose the
+    pause on any new jobs that are added to any of those groups until it is resumed.
+</p>
+<p>
+    NOTE: There is a limitation that only exactly matched groups
+    can be remembered as paused. For example, if there are pre-existing
+    job in groups "aaa" and "bbb" and a matcher is given to pause
+    groups that start with "a" then the group "aaa" will be remembered
+    as paused and any subsequently added jobs in group "aaa" will be paused,
+    however if a job is added to group "axx" it will not be paused,
+    as "axx" wasn't known at the time the "group starts with a" matcher
+    was applied.  HOWEVER, if there are pre-existing groups "aaa" and
+    "bbb" and a matcher is given to pause the group "axx" (with a
+    group equals matcher) then no jobs will be paused, but it will be
+    remembered that group "axx" is paused and later when a job is added
+    in that group, it will become paused.
+</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_ResumeJobs_System_String_">ResumeJobs(string)</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_PauseTrigger_" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_PauseTrigger_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseTrigger(System.String)">
+  PauseTrigger(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pause the <span class="xref">Quartz.ITrigger</span> with the given key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/PauseTrigger&quot;)]
+public Task PauseTrigger(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_PauseTriggers_" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseTriggers*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_PauseTriggers_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.PauseTriggers(System.String)">
+  PauseTriggers(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pause all the <span class="xref">Quartz.ITrigger</span>s in the groups matching.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/PauseTriggers&quot;)]
+public Task PauseTriggers(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_PauseTriggers_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+    The Scheduler will "remember" all the groups paused, and impose the
+    pause on any new triggers that are added to any of those groups until it is resumed.
+</p>
+<p>
+    NOTE: There is a limitation that only exactly matched groups
+    can be remembered as paused.  For example, if there are pre-existing
+    triggers in groups "aaa" and "bbb" and a matcher is given to pause
+    groups that start with "a" then the group "aaa" will be remembered as
+    paused and any subsequently added triggers in that group be paused,
+    however if a trigger is added to group "axx" it will not be paused,
+    as "axx" wasn't known at the time the "group starts with a" matcher
+    was applied.  HOWEVER, if there are pre-existing groups "aaa" and
+    "bbb" and a matcher is given to pause the group "axx" (with a
+    group equals matcher) then no triggers will be paused, but it will be
+    remembered that group "axx" is paused and later when a trigger is added
+    in that group, it will become paused.
+</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_ResumeTriggers_System_String_">ResumeTriggers(string)</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_RescheduleJob_" data-uid="QuartzRestApi.Controllers.SchedulerController.RescheduleJob*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_RescheduleJob_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.RescheduleJob(System.String)">
+  RescheduleJob(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove (delete) the <span class="xref">Quartz.ITrigger</span> with the given key, and store the
+new given one - which must be associated with the same job (the new trigger must
+have the job name &amp; group specified)  - however, the new trigger need not have
+the same name as the old trigger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/RescheduleJob&quot;)]
+public Task&lt;DateTimeOffset?&gt; RescheduleJob(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The json</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?&gt;</dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> if a <span class="xref">Quartz.ITrigger</span> with the given name and group
+was not found and removed from the store (and the  new trigger is therefore not stored),
+otherwise the first fire time of the newly scheduled trigger.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ResetTriggerFromErrorState_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResetTriggerFromErrorState*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ResetTriggerFromErrorState_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResetTriggerFromErrorState(System.String)">
+  ResetTriggerFromErrorState(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove the given <span class="xref">Quartz.ITrigger</span> from the error state and set it back to
+<span class="xref">Quartz.TriggerState.Normal</span> or <span class="xref">Quartz.TriggerState.Paused</span> as appropriate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ResetTriggerFromErrorState&quot;)]
+public Task ResetTriggerFromErrorState(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_ResetTriggerFromErrorState_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Only affects triggers that are in <span class="xref">Quartz.TriggerState.Error</span> state. If the trigger
+is not in that state, the call is a no-op.</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ResumeAll_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeAll*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ResumeAll" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeAll">
+  ResumeAll()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resume (un-pause) all triggers - similar to calling
+<a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_ResumeTriggers_System_String_">ResumeTriggers(string)</a> on every group.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ResumeAllTriggers&quot;)]
+public void ResumeAll()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_ResumeAll_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If any <span class="xref">Quartz.ITrigger</span> missed one or more fire-times, then the
+<span class="xref">Quartz.ITrigger</span>'s misfire instruction will be applied.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_PauseAll">PauseAll()</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ResumeJob_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeJob*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ResumeJob_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeJob(System.String)">
+  ResumeJob(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resume (un-pause) the <span class="xref">Quartz.IJobDetail</span> with
+the given key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ResumeJob&quot;)]
+public Task ResumeJob(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_ResumeJob_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If any of the <span class="xref">Quartz.IJob</span>'s<span class="xref">Quartz.ITrigger</span> s missed one
+or more fire-times, then the <span class="xref">Quartz.ITrigger</span>'s misfire
+instruction will be applied.</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ResumeJobs_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeJobs*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ResumeJobs_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeJobs(System.String)">
+  ResumeJobs(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resume (un-pause) all the <span class="xref">Quartz.IJobDetail</span>s
+in matching groups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ResumeJobs&quot;)]
+public Task ResumeJobs(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_ResumeJobs_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If any of the <span class="xref">Quartz.IJob</span> s had <span class="xref">Quartz.ITrigger</span> s that
+missed one or more fire-times, then the <span class="xref">Quartz.ITrigger</span>'s
+misfire instruction will be applied.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_PauseJobs_System_String_">PauseJobs(string)</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ResumeTrigger_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ResumeTrigger_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeTrigger(System.String)">
+  ResumeTrigger(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resume (un-pause) the <span class="xref">Quartz.ITrigger</span> with the given
+key.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ResumeTrigger&quot;)]
+public Task ResumeTrigger(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_ResumeTrigger_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If the <span class="xref">Quartz.ITrigger</span> missed one or more fire-times, then the
+<span class="xref">Quartz.ITrigger</span>'s misfire instruction will be applied.</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ResumeTriggers_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeTriggers*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ResumeTriggers_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.ResumeTriggers(System.String)">
+  ResumeTriggers(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resume (un-pause) all the <span class="xref">Quartz.ITrigger</span>s in matching groups.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ResumeTriggers&quot;)]
+public Task ResumeTriggers(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_ResumeTriggers_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If any <span class="xref">Quartz.ITrigger</span> missed one or more fire-times, then the
+<span class="xref">Quartz.ITrigger</span>'s misfire instruction will be applied.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_PauseTriggers_System_String_">PauseTriggers(string)</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ScheduleJob_" data-uid="QuartzRestApi.Controllers.SchedulerController.ScheduleJob*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ScheduleJob_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.ScheduleJob(System.String)">
+  ScheduleJob(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Add the given <span class="xref">Quartz.IJobDetail</span> to the
+Scheduler, and associate the given <span class="xref">Quartz.ITrigger</span> with
+it.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ScheduleJobWithJobDetailAndTrigger&quot;)]
+public Task&lt;DateTimeOffset&gt; ScheduleJob(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_ScheduleJob_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If the given Trigger does not reference any <span class="xref">Quartz.IJob</span>, then it
+will be set to reference the Job passed with it into this method.</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ScheduleJobIdentifiedWithTrigger_" data-uid="QuartzRestApi.Controllers.SchedulerController.ScheduleJobIdentifiedWithTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ScheduleJobIdentifiedWithTrigger_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.ScheduleJobIdentifiedWithTrigger(System.String)">
+  ScheduleJobIdentifiedWithTrigger(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schedule the given <span class="xref">Quartz.ITrigger</span> with the <span class="xref">Quartz.IJob</span> identified by the <span class="xref">Quartz.ITrigger</span>'s
+settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ScheduleJobIdentifiedWithTrigger&quot;)]
+public Task&lt;DateTimeOffset&gt; ScheduleJobIdentifiedWithTrigger(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ScheduleJobWithTriggers_" data-uid="QuartzRestApi.Controllers.SchedulerController.ScheduleJobWithTriggers*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ScheduleJobWithTriggers_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.ScheduleJobWithTriggers(System.String)">
+  ScheduleJobWithTriggers(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schedule the given job with the related set of triggers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ScheduleJobWithJobDetailAndTriggers&quot;)]
+public Task ScheduleJobWithTriggers(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_ScheduleJobWithTriggers_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>If any of the given job or triggers already exist (or more
+specifically, if the keys are not unique) and the replace
+parameter is not set to true then an exception will be thrown.</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_ScheduleJobs_" data-uid="QuartzRestApi.Controllers.SchedulerController.ScheduleJobs*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_ScheduleJobs_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.ScheduleJobs(System.String)">
+  ScheduleJobs(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schedule all the given jobs with the related set of triggers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/ScheduleJobs&quot;)]
+public Task ScheduleJobs(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_ScheduleJobs_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+    If any of the given jobs or triggers already exist (or more
+    specifically, if the keys are not unique) and the replace
+    parameter is not set to true then an exception will be thrown.
+</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_SchedulerInstanceId_" data-uid="QuartzRestApi.Controllers.SchedulerController.SchedulerInstanceId*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_SchedulerInstanceId" data-uid="QuartzRestApi.Controllers.SchedulerController.SchedulerInstanceId">
+  SchedulerInstanceId()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the instance id of the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/SchedulerInstanceId&quot;)]
+public string SchedulerInstanceId()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_SchedulerName_" data-uid="QuartzRestApi.Controllers.SchedulerController.SchedulerName*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_SchedulerName" data-uid="QuartzRestApi.Controllers.SchedulerController.SchedulerName">
+  SchedulerName()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the name of the scheduler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpGet]
+[Route(&quot;Scheduler/SchedulerName&quot;)]
+public string SchedulerName()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_Shutdown_" data-uid="QuartzRestApi.Controllers.SchedulerController.Shutdown*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_Shutdown" data-uid="QuartzRestApi.Controllers.SchedulerController.Shutdown">
+  Shutdown()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Halts the <span class="xref">Quartz.IScheduler</span>'s firing of <span class="xref">Quartz.ITrigger</span>s,
+and cleans up all resources associated with the Scheduler. Equivalent to <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Shutdown_System_Boolean_">Shutdown(bool)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/Shutdown&quot;)]
+public Task Shutdown()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_Shutdown_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The scheduler cannot be re-started.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Shutdown_System_Boolean_">Shutdown(bool)</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_Shutdown_" data-uid="QuartzRestApi.Controllers.SchedulerController.Shutdown*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_Shutdown_System_Boolean_" data-uid="QuartzRestApi.Controllers.SchedulerController.Shutdown(System.Boolean)">
+  Shutdown(bool)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Halts the <span class="xref">Quartz.IScheduler</span>'s firing of <span class="xref">Quartz.ITrigger</span>s,
+and cleans up all resources associated with the Scheduler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/Shutdown/{waitForJobsToComplete}&quot;)]
+public Task Shutdown(bool waitForJobsToComplete)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>waitForJobsToComplete</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> the scheduler will not allow this method
+to return until all currently executing jobs have completed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_Shutdown_System_Boolean__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The scheduler cannot be re-started.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Shutdown">Shutdown()</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_Standby_" data-uid="QuartzRestApi.Controllers.SchedulerController.Standby*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_Standby" data-uid="QuartzRestApi.Controllers.SchedulerController.Standby">
+  Standby()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Temporarily halts the <span class="xref">Quartz.IScheduler</span>'s firing of <span class="xref">Quartz.ITrigger</span>s.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/Standby&quot;)]
+public Task Standby()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_Standby_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+    When <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Start">Start()</a> is called (to bring the scheduler out of
+    stand-by mode), trigger misfire instructions will NOT be applied
+    during the execution of the <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Start">Start()</a> method - any misfires
+    will be detected immediately afterward (by the <span class="xref">Quartz.Spi.IJobStore</span>'s
+    normal process).
+</p>
+<p>
+    The scheduler is not destroyed, and can be re-started at any time.
+</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Start">Start()</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_PauseAll">PauseAll()</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_Start_" data-uid="QuartzRestApi.Controllers.SchedulerController.Start*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_Start" data-uid="QuartzRestApi.Controllers.SchedulerController.Start">
+  Start()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the <span class="xref">Quartz.IScheduler</span>'s threads that fire <span class="xref">Quartz.ITrigger</span>s.
+When a scheduler is first created it is in &quot;stand-by&quot; mode, and will not
+fire triggers.  The scheduler can also be put into stand-by mode by
+calling the <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Standby">Standby()</a> method.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/Start&quot;)]
+public Task Start()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_Start_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The misfire/recovery process will be started, if it is the initial call
+to this method on this scheduler instance.</p>
+</div>
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_StartDelayed_System_Int32_">StartDelayed(int)</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Standby">Standby()</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Shutdown_System_Boolean_">Shutdown(bool)</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_StartDelayed_" data-uid="QuartzRestApi.Controllers.SchedulerController.StartDelayed*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_StartDelayed_System_Int32_" data-uid="QuartzRestApi.Controllers.SchedulerController.StartDelayed(System.Int32)">
+  StartDelayed(int)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Calls <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Start">Start()</a> after the indicated delay.
+(This call does not block). This can be useful within applications that
+have initializers that create the scheduler immediately, before the
+resources needed by the executing jobs have been fully initialized.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/StartDelayed/{delay}&quot;)]
+public Task StartDelayed(int delay)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>delay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Start">Start()</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Standby">Standby()</a></div>
+    <div><a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_Shutdown_System_Boolean_">Shutdown(bool)</a></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_TriggerJobWithDataMap_" data-uid="QuartzRestApi.Controllers.SchedulerController.TriggerJobWithDataMap*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_TriggerJobWithDataMap_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.TriggerJobWithDataMap(System.String)">
+  TriggerJobWithDataMap(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trigger the identified <span class="xref">Quartz.IJobDetail</span> (Execute it now).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/TriggerJobWithDataMap&quot;)]
+public Task TriggerJobWithDataMap(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a> with associated <span class="xref">Quartz.JobDataMap</span> of the <span class="xref">Quartz.IJob</span> to be
+executed.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_TriggerJobWithJobKey_" data-uid="QuartzRestApi.Controllers.SchedulerController.TriggerJobWithJobKey*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_TriggerJobWithJobKey_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.TriggerJobWithJobKey(System.String)">
+  TriggerJobWithJobKey(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Trigger the identified <span class="xref">Quartz.IJobDetail</span> (Execute it now).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/TriggerJobWithJobkey&quot;)]
+public Task TriggerJobWithJobKey(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_UnscheduleJob_" data-uid="QuartzRestApi.Controllers.SchedulerController.UnscheduleJob*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_UnscheduleJob_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.UnscheduleJob(System.String)">
+  UnscheduleJob(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove the indicated <span class="xref">Quartz.ITrigger</span> from the scheduler.</p>
+<p>
+    If the related job does not have any other triggers, and the job is
+    not durable, then the job will also be deleted.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/UnscheduleJob&quot;)]
+public Task&lt;bool&gt; UnscheduleJob(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Controllers_SchedulerController_UnscheduleJobs_" data-uid="QuartzRestApi.Controllers.SchedulerController.UnscheduleJobs*"></a>
+
+  <h3 id="QuartzRestApi_Controllers_SchedulerController_UnscheduleJobs_System_String_" data-uid="QuartzRestApi.Controllers.SchedulerController.UnscheduleJobs(System.String)">
+  UnscheduleJobs(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove all the indicated <span class="xref">Quartz.ITrigger</span>s from the scheduler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[HttpPost]
+[Route(&quot;Scheduler/UnscheduleJobs&quot;)]
+public Task&lt;bool&gt; UnscheduleJobs(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Controllers_SchedulerController_UnscheduleJobs_System_String__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+    If the related job does not have any other triggers, and the job is
+    not durable, then the job will also be deleted.
+</p>
+Note that while this bulk operation is likely more efficient than
+invoking <a class="xref" href="QuartzRestApi.Controllers.SchedulerController.html#QuartzRestApi_Controllers_SchedulerController_UnscheduleJob_System_String_">UnscheduleJob(string)</a> several times, it may have the
+adverse affect of holding data locks for a single long duration of time
+(rather than lots of small durations of time).
+</div>
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; 2022 - 2026 Magic-Sessions. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

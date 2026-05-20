@@ -144,12 +144,12 @@ public class SchedulerController : ControllerBase
     /// </summary>
     [HttpGet]
     [Route("Scheduler/SchedulerContext")]
-    public string Context()
+    public ContentResult Context()
     {
         _logger?.LogInformation("Received request to return the scheduler context");
         var result = new Wrappers.SchedulerContext(_scheduler.Context).ToJsonString();
         _logger?.LogDebug("Returning '{Result}'", result);
-        return result;
+        return Content(result, "application/json");
     }
     #endregion
 
@@ -196,12 +196,13 @@ public class SchedulerController : ControllerBase
     /// </remarks>
     [HttpGet]
     [Route("Scheduler/GetMetaData")]
-    public string GetMetaData()
+    public ContentResult GetMetaData()
     {
         _logger?.LogInformation("Received request to return the meta-data");
         var result = new SchedulerMetaData(_scheduler.GetMetaData().Result).ToJsonString();
-        _logger?.LogInformation("Returning '{Result}'", result);
-        return result;
+        _logger?.LogInformation("Returning meta-data");
+        _logger?.LogDebug("JSON '{Result}'", result);
+        return Content(result, "application/json");
     }
     #endregion
 
@@ -226,7 +227,7 @@ public class SchedulerController : ControllerBase
     /// <seealso cref="IJobExecutionContext" />
     [HttpGet]
     [Route("Scheduler/GetCurrentlyExecutingJobs")]
-    public string GetCurrentlyExecutingJobs()
+    public ContentResult GetCurrentlyExecutingJobs()
     {
         _logger?.LogInformation("Received request to return the currently executing jobs");
 
@@ -235,7 +236,7 @@ public class SchedulerController : ControllerBase
 
         _logger?.LogInformation("Returning currently executing jobs");
         _logger?.LogDebug("JSON '{Result}'", result);
-        return result;
+        return Content(result, "application/json");
     }
     #endregion
 
@@ -1023,25 +1024,25 @@ public class SchedulerController : ControllerBase
     /// </summary>
     [HttpGet]
     [Route("Scheduler/GetJobKeys")]
-    public string GetJobKeys([FromBody] string json)
+    public ContentResult GetJobKeys([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get all the job keys that are matching the given group matcher");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var groupMatcher = GroupMatcher<Quartz.JobKey>.FromJsonString(json);
         var jobKeys = _scheduler.GetJobKeys(groupMatcher.ToGroupMatcher()).GetAwaiter().GetResult();
-        
+
         if (jobKeys == null)
         {
             _logger?.LogInformation("No job keys found");
-            return string.Empty;
+            return Content("[]", "application/json");
         }
-        
+
         var result = new JobKeys(jobKeys).ToJsonString();
 
         _logger?.LogInformation("Returning all job keys that are matching the given group matcher");
         _logger?.LogDebug("JSON '{Result}'", result);
-        return result;
+        return Content(result, "application/json");
     }
     #endregion
 
@@ -1057,25 +1058,25 @@ public class SchedulerController : ControllerBase
     /// </remarks>
     [HttpGet]
     [Route("Scheduler/GetTriggersOfJob")]
-    public string GetTriggersOfJob([FromBody] string json)
+    public ContentResult GetTriggersOfJob([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get all the triggers for the given job key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
         var triggers = _scheduler.GetTriggersOfJob(jobKey.ToJobKey()).GetAwaiter().GetResult();
-        
+
         if (triggers == null)
         {
             _logger?.LogInformation("No triggers found");
-            return string.Empty;
+            return Content("[]", "application/json");
         }
 
         var result = new Triggers(triggers).ToJsonString();
 
         _logger?.LogInformation("Returning triggers for the given job key");
         _logger?.LogDebug("JSON '{Result}'", result);
-        return result;
+        return Content(result, "application/json");
     }
     #endregion
 
@@ -1086,7 +1087,7 @@ public class SchedulerController : ControllerBase
     /// </summary>
     [HttpGet]
     [Route("Scheduler/GetTriggerKeys")]
-    public string GetTriggerKeys([FromBody] string json)
+    public ContentResult GetTriggerKeys([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get all the trigger keys that are matching the given group matcher");
         _logger?.LogDebug("Received JSON '{Json}'", json);
@@ -1097,14 +1098,14 @@ public class SchedulerController : ControllerBase
         if (triggerKeys == null)
         {
             _logger?.LogInformation("No trigger keys found");
-            return string.Empty;
+            return Content("[]", "application/json");
         }
 
         var result = new TriggerKeys(triggerKeys).ToJsonString();
 
         _logger?.LogInformation("Returning all trigger keys that are matching the given group matcher");
         _logger?.LogDebug("JSON '{Result}'", result);
-        return result;
+        return Content(result, "application/json");
     }
     #endregion
 
@@ -1119,7 +1120,7 @@ public class SchedulerController : ControllerBase
     /// </remarks>
     [HttpGet]
     [Route("Scheduler/GetJobDetail")]
-    public string GetJobDetail([FromBody] string json)
+    public ContentResult GetJobDetail([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get the job detail for the given job key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
@@ -1130,14 +1131,14 @@ public class SchedulerController : ControllerBase
         if (jobDetail == null)
         {
             _logger?.LogInformation("No job detail found");
-            return string.Empty;
+            return Content("null", "application/json");
         }
 
         var result = new JobDetail(jobDetail).ToJsonString();
 
         _logger?.LogInformation("Returning job detail for the give job key");
         _logger?.LogDebug("JSON '{Result}'", result);
-        return result;
+        return Content(result, "application/json");
     }
     #endregion
 
@@ -1152,7 +1153,7 @@ public class SchedulerController : ControllerBase
     /// </remarks>
     [HttpGet]
     [Route("Scheduler/GetTrigger")]
-    public string GetTrigger([FromBody] string json)
+    public ContentResult GetTrigger([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get the trigger for the given trigger key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
@@ -1162,14 +1163,14 @@ public class SchedulerController : ControllerBase
         if (trigger == null)
         {
             _logger?.LogInformation("No trigger found");
-            return string.Empty;
+            return Content("null", "application/json");
         }
 
         var result = new Trigger(trigger).ToJsonString();
 
         _logger?.LogInformation("Returning trigger for the given trigger key");
         _logger?.LogDebug("JSON '{Result}'", result);
-        return result;
+        return Content(result, "application/json");
     }
     #endregion
 
@@ -1185,7 +1186,7 @@ public class SchedulerController : ControllerBase
     /// <seealso cref="TriggerState.None" />
     [HttpGet]
     [Route("Scheduler/GetTriggerState")]
-    public string GetTriggerState([FromBody] string json)
+    public ContentResult GetTriggerState([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get the trigger state for the given trigger key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
@@ -1195,7 +1196,7 @@ public class SchedulerController : ControllerBase
         var result = triggerState.ToString();
 
         _logger?.LogInformation("Returning '{Result}'", result);
-        return result;
+        return Content(result, "text/plain");
     }
     #endregion
 
@@ -1251,7 +1252,7 @@ public class SchedulerController : ControllerBase
     /// </summary>
     [HttpGet]
     [Route("Scheduler/Getcalendar/{calName}")]
-    public string GetCalendar(string calName)
+    public ContentResult GetCalendar(string calName)
     {
         _logger?.LogInformation("Received request to get the calendar with the name '{CalName}' from the scheduler", calName);
 
@@ -1259,7 +1260,7 @@ public class SchedulerController : ControllerBase
         if (calendar == null)
         {
             _logger?.LogInformation("Calendar with the name '{CalName}' not found", calName);
-            return string.Empty;
+            return Content("null", "application/json");
         }
 
         string result;
@@ -1294,9 +1295,10 @@ public class SchedulerController : ControllerBase
                 throw new ArgumentOutOfRangeException();
         }
 
-        _logger?.LogInformation("Returning '{Result}'", result);
+        _logger?.LogInformation("Returning calendar");
+        _logger?.LogDebug("JSON '{Result}'", result);
 
-        return result;
+        return Content(result, "application/json");
     }
     #endregion
 

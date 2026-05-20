@@ -1,0 +1,274 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Wrappers.Calendars.CalendarType
+  commentId: T:QuartzRestApi.Wrappers.Calendars.CalendarType
+  id: CalendarType
+  parent: QuartzRestApi.Wrappers.Calendars
+  children:
+  - QuartzRestApi.Wrappers.Calendars.CalendarType.Annual
+  - QuartzRestApi.Wrappers.Calendars.CalendarType.Cron
+  - QuartzRestApi.Wrappers.Calendars.CalendarType.Daily
+  - QuartzRestApi.Wrappers.Calendars.CalendarType.Holiday
+  - QuartzRestApi.Wrappers.Calendars.CalendarType.Monthly
+  - QuartzRestApi.Wrappers.Calendars.CalendarType.Weekly
+  langs:
+  - csharp
+  - vb
+  name: CalendarType
+  nameWithType: CalendarType
+  fullName: QuartzRestApi.Wrappers.Calendars.CalendarType
+  type: Enum
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers.Calendars
+  syntax:
+    content: public enum CalendarType
+    content.vb: Public Enum CalendarType
+- uid: QuartzRestApi.Wrappers.Calendars.CalendarType.Cron
+  commentId: F:QuartzRestApi.Wrappers.Calendars.CalendarType.Cron
+  id: Cron
+  parent: QuartzRestApi.Wrappers.Calendars.CalendarType
+  langs:
+  - csharp
+  - vb
+  name: Cron
+  nameWithType: CalendarType.Cron
+  fullName: QuartzRestApi.Wrappers.Calendars.CalendarType.Cron
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers.Calendars
+  summary: It is a cron calendar
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "Cron")]
+
+      Cron = 0
+    return:
+      type: QuartzRestApi.Wrappers.Calendars.CalendarType
+    content.vb: >-
+      <DataMember(Name:="Cron")>
+
+      Cron = 0
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Cron
+- uid: QuartzRestApi.Wrappers.Calendars.CalendarType.Daily
+  commentId: F:QuartzRestApi.Wrappers.Calendars.CalendarType.Daily
+  id: Daily
+  parent: QuartzRestApi.Wrappers.Calendars.CalendarType
+  langs:
+  - csharp
+  - vb
+  name: Daily
+  nameWithType: CalendarType.Daily
+  fullName: QuartzRestApi.Wrappers.Calendars.CalendarType.Daily
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers.Calendars
+  summary: It is a daily calendar
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "Daily")]
+
+      Daily = 1
+    return:
+      type: QuartzRestApi.Wrappers.Calendars.CalendarType
+    content.vb: >-
+      <DataMember(Name:="Daily")>
+
+      Daily = 1
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Daily
+- uid: QuartzRestApi.Wrappers.Calendars.CalendarType.Weekly
+  commentId: F:QuartzRestApi.Wrappers.Calendars.CalendarType.Weekly
+  id: Weekly
+  parent: QuartzRestApi.Wrappers.Calendars.CalendarType
+  langs:
+  - csharp
+  - vb
+  name: Weekly
+  nameWithType: CalendarType.Weekly
+  fullName: QuartzRestApi.Wrappers.Calendars.CalendarType.Weekly
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers.Calendars
+  summary: It is a week calendar
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "Weekly")]
+
+      Weekly = 2
+    return:
+      type: QuartzRestApi.Wrappers.Calendars.CalendarType
+    content.vb: >-
+      <DataMember(Name:="Weekly")>
+
+      Weekly = 2
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Weekly
+- uid: QuartzRestApi.Wrappers.Calendars.CalendarType.Monthly
+  commentId: F:QuartzRestApi.Wrappers.Calendars.CalendarType.Monthly
+  id: Monthly
+  parent: QuartzRestApi.Wrappers.Calendars.CalendarType
+  langs:
+  - csharp
+  - vb
+  name: Monthly
+  nameWithType: CalendarType.Monthly
+  fullName: QuartzRestApi.Wrappers.Calendars.CalendarType.Monthly
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers.Calendars
+  summary: It is a monthly calendar
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "Monthly")]
+
+      Monthly = 3
+    return:
+      type: QuartzRestApi.Wrappers.Calendars.CalendarType
+    content.vb: >-
+      <DataMember(Name:="Monthly")>
+
+      Monthly = 3
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Monthly
+- uid: QuartzRestApi.Wrappers.Calendars.CalendarType.Annual
+  commentId: F:QuartzRestApi.Wrappers.Calendars.CalendarType.Annual
+  id: Annual
+  parent: QuartzRestApi.Wrappers.Calendars.CalendarType
+  langs:
+  - csharp
+  - vb
+  name: Annual
+  nameWithType: CalendarType.Annual
+  fullName: QuartzRestApi.Wrappers.Calendars.CalendarType.Annual
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers.Calendars
+  summary: It is an annual calendar
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "Annual")]
+
+      Annual = 4
+    return:
+      type: QuartzRestApi.Wrappers.Calendars.CalendarType
+    content.vb: >-
+      <DataMember(Name:="Annual")>
+
+      Annual = 4
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Annual
+- uid: QuartzRestApi.Wrappers.Calendars.CalendarType.Holiday
+  commentId: F:QuartzRestApi.Wrappers.Calendars.CalendarType.Holiday
+  id: Holiday
+  parent: QuartzRestApi.Wrappers.Calendars.CalendarType
+  langs:
+  - csharp
+  - vb
+  name: Holiday
+  nameWithType: CalendarType.Holiday
+  fullName: QuartzRestApi.Wrappers.Calendars.CalendarType.Holiday
+  type: Field
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Wrappers.Calendars
+  summary: It is a holiday calendar
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "Holiday")]
+
+      Holiday = 5
+    return:
+      type: QuartzRestApi.Wrappers.Calendars.CalendarType
+    content.vb: >-
+      <DataMember(Name:="Holiday")>
+
+      Holiday = 5
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: Holiday
+references:
+- uid: QuartzRestApi.Wrappers.Calendars
+  commentId: N:QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers.Calendars
+  nameWithType: QuartzRestApi.Wrappers.Calendars
+  fullName: QuartzRestApi.Wrappers.Calendars
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers.Calendars
+    name: Calendars
+    href: QuartzRestApi.Wrappers.Calendars.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers.Calendars
+    name: Calendars
+    href: QuartzRestApi.Wrappers.Calendars.html
+- uid: QuartzRestApi.Wrappers.Calendars.CalendarType
+  commentId: T:QuartzRestApi.Wrappers.Calendars.CalendarType
+  parent: QuartzRestApi.Wrappers.Calendars
+  href: QuartzRestApi.Wrappers.Calendars.CalendarType.html
+  name: CalendarType
+  nameWithType: CalendarType
+  fullName: QuartzRestApi.Wrappers.Calendars.CalendarType

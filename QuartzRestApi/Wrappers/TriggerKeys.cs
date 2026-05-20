@@ -34,6 +34,13 @@ public class TriggerKeys : List<TriggerKey>
 {
     #region Constructor
     /// <summary>
+    ///     Needed for JSON deserialization
+    /// </summary>
+    public TriggerKeys()
+    {
+    }
+
+    /// <summary>
     ///     Makes this object and sets all it's needed properties
     /// </summary>
     /// <param name="triggerKeys">A <see cref="ReadOnlyCollection{T}" /> of <see cref="Quartz.TriggerKey" />s</param>

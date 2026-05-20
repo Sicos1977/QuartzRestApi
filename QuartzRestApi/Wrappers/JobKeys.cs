@@ -37,6 +37,13 @@ public class JobKeys : List<JobKey>
 {
     #region Constructor
     /// <summary>
+    ///     Needed for JSON deserialization
+    /// </summary>
+    public JobKeys()
+    {
+    }
+
+    /// <summary>
     ///     Makes this object and sets all it's needed properties
     /// </summary>
     /// <param name="jobKeys">A <see cref="ReadOnlyCollection{T}" /> of <see cref="Quartz.JobKey" />s</param>

@@ -1,0 +1,215 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Wrappers
+  commentId: N:QuartzRestApi.Wrappers
+  id: QuartzRestApi.Wrappers
+  children:
+  - QuartzRestApi.Wrappers.GroupMatcherType
+  - QuartzRestApi.Wrappers.GroupMatcher`1
+  - QuartzRestApi.Wrappers.JobDetail
+  - QuartzRestApi.Wrappers.JobDetailWithTrigger
+  - QuartzRestApi.Wrappers.JobDetailWithTriggers
+  - QuartzRestApi.Wrappers.JobExecutionContext
+  - QuartzRestApi.Wrappers.JobExecutionContexts
+  - QuartzRestApi.Wrappers.JobKey
+  - QuartzRestApi.Wrappers.JobKeyWithDataMap
+  - QuartzRestApi.Wrappers.JobKeys
+  - QuartzRestApi.Wrappers.Key
+  - QuartzRestApi.Wrappers.RescheduleJob
+  - QuartzRestApi.Wrappers.RunningJobs
+  - QuartzRestApi.Wrappers.ScheduleJobs
+  - QuartzRestApi.Wrappers.SchedulerContext
+  - QuartzRestApi.Wrappers.SchedulerMetaData
+  - QuartzRestApi.Wrappers.Trigger
+  - QuartzRestApi.Wrappers.TriggerKey
+  - QuartzRestApi.Wrappers.TriggerKeys
+  - QuartzRestApi.Wrappers.Triggers
+  langs:
+  - csharp
+  - vb
+  name: QuartzRestApi.Wrappers
+  nameWithType: QuartzRestApi.Wrappers
+  fullName: QuartzRestApi.Wrappers
+  type: Namespace
+  assemblies:
+  - QuartzRestApi
+references:
+- uid: QuartzRestApi.Wrappers.GroupMatcher`1
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcher`1
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  name: GroupMatcher<T>
+  nameWithType: GroupMatcher<T>
+  fullName: QuartzRestApi.Wrappers.GroupMatcher<T>
+  nameWithType.vb: GroupMatcher(Of T)
+  fullName.vb: QuartzRestApi.Wrappers.GroupMatcher(Of T)
+  name.vb: GroupMatcher(Of T)
+  spec.csharp:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: QuartzRestApi.Wrappers.GroupMatcherType
+  commentId: T:QuartzRestApi.Wrappers.GroupMatcherType
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.GroupMatcherType.html
+  name: GroupMatcherType
+  nameWithType: GroupMatcherType
+  fullName: QuartzRestApi.Wrappers.GroupMatcherType
+- uid: QuartzRestApi.Wrappers.JobDetail
+  commentId: T:QuartzRestApi.Wrappers.JobDetail
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetail.html
+  name: JobDetail
+  nameWithType: JobDetail
+  fullName: QuartzRestApi.Wrappers.JobDetail
+- uid: QuartzRestApi.Wrappers.JobDetailWithTrigger
+  commentId: T:QuartzRestApi.Wrappers.JobDetailWithTrigger
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetailWithTrigger.html
+  name: JobDetailWithTrigger
+  nameWithType: JobDetailWithTrigger
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTrigger
+- uid: QuartzRestApi.Wrappers.JobDetailWithTriggers
+  commentId: T:QuartzRestApi.Wrappers.JobDetailWithTriggers
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html
+  name: JobDetailWithTriggers
+  nameWithType: JobDetailWithTriggers
+  fullName: QuartzRestApi.Wrappers.JobDetailWithTriggers
+- uid: QuartzRestApi.Wrappers.JobExecutionContext
+  commentId: T:QuartzRestApi.Wrappers.JobExecutionContext
+  href: QuartzRestApi.Wrappers.JobExecutionContext.html
+  name: JobExecutionContext
+  nameWithType: JobExecutionContext
+  fullName: QuartzRestApi.Wrappers.JobExecutionContext
+- uid: QuartzRestApi.Wrappers.JobExecutionContexts
+  commentId: T:QuartzRestApi.Wrappers.JobExecutionContexts
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobExecutionContexts.html
+  name: JobExecutionContexts
+  nameWithType: JobExecutionContexts
+  fullName: QuartzRestApi.Wrappers.JobExecutionContexts
+- uid: QuartzRestApi.Wrappers.JobKey
+  commentId: T:QuartzRestApi.Wrappers.JobKey
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobKey.html
+  name: JobKey
+  nameWithType: JobKey
+  fullName: QuartzRestApi.Wrappers.JobKey
+- uid: QuartzRestApi.Wrappers.JobKeys
+  commentId: T:QuartzRestApi.Wrappers.JobKeys
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobKeys.html
+  name: JobKeys
+  nameWithType: JobKeys
+  fullName: QuartzRestApi.Wrappers.JobKeys
+- uid: QuartzRestApi.Wrappers.JobKeyWithDataMap
+  commentId: T:QuartzRestApi.Wrappers.JobKeyWithDataMap
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.JobKeyWithDataMap.html
+  name: JobKeyWithDataMap
+  nameWithType: JobKeyWithDataMap
+  fullName: QuartzRestApi.Wrappers.JobKeyWithDataMap
+- uid: QuartzRestApi.Wrappers.Key
+  commentId: T:QuartzRestApi.Wrappers.Key
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.Key.html
+  name: Key
+  nameWithType: Key
+  fullName: QuartzRestApi.Wrappers.Key
+- uid: QuartzRestApi.Wrappers.RescheduleJob
+  commentId: T:QuartzRestApi.Wrappers.RescheduleJob
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.RescheduleJob.html
+  name: RescheduleJob
+  nameWithType: RescheduleJob
+  fullName: QuartzRestApi.Wrappers.RescheduleJob
+- uid: QuartzRestApi.Wrappers.RunningJobs
+  commentId: T:QuartzRestApi.Wrappers.RunningJobs
+  href: QuartzRestApi.Wrappers.RunningJobs.html
+  name: RunningJobs
+  nameWithType: RunningJobs
+  fullName: QuartzRestApi.Wrappers.RunningJobs
+- uid: QuartzRestApi.Wrappers.ScheduleJobs
+  commentId: T:QuartzRestApi.Wrappers.ScheduleJobs
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.ScheduleJobs.html
+  name: ScheduleJobs
+  nameWithType: ScheduleJobs
+  fullName: QuartzRestApi.Wrappers.ScheduleJobs
+- uid: QuartzRestApi.Wrappers.SchedulerContext
+  commentId: T:QuartzRestApi.Wrappers.SchedulerContext
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.SchedulerContext.html
+  name: SchedulerContext
+  nameWithType: SchedulerContext
+  fullName: QuartzRestApi.Wrappers.SchedulerContext
+- uid: QuartzRestApi.Wrappers.SchedulerMetaData
+  commentId: T:QuartzRestApi.Wrappers.SchedulerMetaData
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.SchedulerMetaData.html
+  name: SchedulerMetaData
+  nameWithType: SchedulerMetaData
+  fullName: QuartzRestApi.Wrappers.SchedulerMetaData
+- uid: QuartzRestApi.Wrappers.Trigger
+  commentId: T:QuartzRestApi.Wrappers.Trigger
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.Trigger.html
+  name: Trigger
+  nameWithType: Trigger
+  fullName: QuartzRestApi.Wrappers.Trigger
+- uid: QuartzRestApi.Wrappers.TriggerKey
+  commentId: T:QuartzRestApi.Wrappers.TriggerKey
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.TriggerKey.html
+  name: TriggerKey
+  nameWithType: TriggerKey
+  fullName: QuartzRestApi.Wrappers.TriggerKey
+- uid: QuartzRestApi.Wrappers.TriggerKeys
+  commentId: T:QuartzRestApi.Wrappers.TriggerKeys
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.TriggerKeys.html
+  name: TriggerKeys
+  nameWithType: TriggerKeys
+  fullName: QuartzRestApi.Wrappers.TriggerKeys
+- uid: QuartzRestApi.Wrappers.Triggers
+  commentId: T:QuartzRestApi.Wrappers.Triggers
+  parent: QuartzRestApi.Wrappers
+  href: QuartzRestApi.Wrappers.Triggers.html
+  name: Triggers
+  nameWithType: Triggers
+  fullName: QuartzRestApi.Wrappers.Triggers
+- uid: QuartzRestApi.Wrappers
+  commentId: N:QuartzRestApi.Wrappers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Wrappers
+  nameWithType: QuartzRestApi.Wrappers
+  fullName: QuartzRestApi.Wrappers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Wrappers
+    name: Wrappers
+    href: QuartzRestApi.Wrappers.html

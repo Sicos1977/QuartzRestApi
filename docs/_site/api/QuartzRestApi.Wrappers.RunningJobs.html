@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class RunningJobs | QuartzRestApi </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class RunningJobs | QuartzRestApi ">
+      
+      
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://github.com/Sicos1977/QuartzRestApi">
+            <img id="logo" class="svg" src="../images/logo.png" alt="QuartzRestApi">
+            QuartzRestApi
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+          <a class="btn btn-sm ms-2" href="https://github.com/Sicos1977/QuartzRestApi" title="View on GitHub" target="_blank" rel="noopener noreferrer" style="color: inherit;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="QuartzRestApi.Wrappers.RunningJobs">
+
+
+
+  <h1 id="QuartzRestApi_Wrappers_RunningJobs" data-uid="QuartzRestApi.Wrappers.RunningJobs" class="text-break">
+Class RunningJobs  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="QuartzRestApi.html">QuartzRestApi</a>.<a class="xref" href="QuartzRestApi.Wrappers.html">Wrappers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>QuartzRestApi.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RunningJobs : IJobExecutionContext</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">RunningJobs</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><span class="xref">IJobExecutionContext</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_Calendar_" data-uid="QuartzRestApi.Wrappers.RunningJobs.Calendar*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_Calendar" data-uid="QuartzRestApi.Wrappers.RunningJobs.Calendar">
+  Calendar
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a handle to the <span class="xref">Quartz.ICalendar</span> referenced by the <span class="xref">Quartz.ITrigger</span>
+instance that fired the <span class="xref">Quartz.IJob</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICalendar Calendar { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ICalendar</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_CancellationToken_" data-uid="QuartzRestApi.Wrappers.RunningJobs.CancellationToken*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_CancellationToken" data-uid="QuartzRestApi.Wrappers.RunningJobs.CancellationToken">
+  CancellationToken
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the cancellation token which will be cancelled when the job cancellation has been requested via
+<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Interrupt(JobKey, CancellationToken)</a>
+or <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Interrupt(string, CancellationToken)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CancellationToken CancellationToken { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_FireInstanceId_" data-uid="QuartzRestApi.Wrappers.RunningJobs.FireInstanceId*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_FireInstanceId" data-uid="QuartzRestApi.Wrappers.RunningJobs.FireInstanceId">
+  FireInstanceId
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the unique Id that identifies this particular firing instance of the
+trigger that triggered this job execution.  It is unique to this
+JobExecutionContext instance as well.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FireInstanceId { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>the unique fire instance id</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Interrupt</a>(<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a>)</div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_FireTimeUtc_" data-uid="QuartzRestApi.Wrappers.RunningJobs.FireTimeUtc*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_FireTimeUtc" data-uid="QuartzRestApi.Wrappers.RunningJobs.FireTimeUtc">
+  FireTimeUtc
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The actual time the trigger fired. For instance the scheduled time may
+have been 10:00:00 but the actual fire time may have been 10:00:03 if
+the scheduler was too busy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset FireTimeUtc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd><p>Returns the fireTimeUtc.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><span class="xref">ScheduledFireTimeUtc</span></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_JobDetail_" data-uid="QuartzRestApi.Wrappers.RunningJobs.JobDetail*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_JobDetail" data-uid="QuartzRestApi.Wrappers.RunningJobs.JobDetail">
+  JobDetail
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the <span class="xref">Quartz.IJobExecutionContext.JobDetail</span> associated with the <span class="xref">Quartz.IJob</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IJobDetail JobDetail { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IJobDetail</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_JobInstance_" data-uid="QuartzRestApi.Wrappers.RunningJobs.JobInstance*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_JobInstance" data-uid="QuartzRestApi.Wrappers.RunningJobs.JobInstance">
+  JobInstance
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the instance of the <span class="xref">Quartz.IJob</span> that was created for this
+execution.</p>
+<p>
+Note: The Job instance is not available through remote scheduler
+interfaces.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IJob JobInstance { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IJob</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_JobRunTime_" data-uid="QuartzRestApi.Wrappers.RunningJobs.JobRunTime*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_JobRunTime" data-uid="QuartzRestApi.Wrappers.RunningJobs.JobRunTime">
+  JobRunTime
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The amount of time the job ran for.  The returned
+value will be <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan.minvalue">MinValue</a> until the job has actually completed (or thrown an
+exception), and is therefore generally only useful to
+<span class="xref">Quartz.IJobListener</span>s and <span class="xref">Quartz.ITriggerListener</span>s.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan JobRunTime { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_MergedJobDataMap_" data-uid="QuartzRestApi.Wrappers.RunningJobs.MergedJobDataMap*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_MergedJobDataMap" data-uid="QuartzRestApi.Wrappers.RunningJobs.MergedJobDataMap">
+  MergedJobDataMap
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the convenience <span class="xref">Quartz.JobDataMap</span> of this execution context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JobDataMap MergedJobDataMap { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">JobDataMap</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Wrappers_RunningJobs_MergedJobDataMap_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+The <span class="xref">Quartz.JobDataMap</span> found on this object serves as a convenience -
+it is a merge of the <span class="xref">Quartz.JobDataMap</span> found on the
+<span class="xref">Quartz.IJobExecutionContext.JobDetail</span> and the one found on the <span class="xref">Quartz.ITrigger</span>, with
+the value in the latter overriding any same-named values in the former.
+<i>It is thus considered a 'best practice' that the Execute code of a Job
+retrieve data from the JobDataMap found on this object.</i>
+</p>
+<p>
+NOTE: Do not expect value 'set' into this JobDataMap to somehow be
+set back onto a job's own JobDataMap.
+</p>
+<p>
+Attempts to change the contents of this map typically result in an
+illegal state.
+</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_NextFireTimeUtc_" data-uid="QuartzRestApi.Wrappers.RunningJobs.NextFireTimeUtc*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_NextFireTimeUtc" data-uid="QuartzRestApi.Wrappers.RunningJobs.NextFireTimeUtc">
+  NextFireTimeUtc
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the next fire time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset? NextFireTimeUtc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>The next fire time.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_PreviousFireTimeUtc_" data-uid="QuartzRestApi.Wrappers.RunningJobs.PreviousFireTimeUtc*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_PreviousFireTimeUtc" data-uid="QuartzRestApi.Wrappers.RunningJobs.PreviousFireTimeUtc">
+  PreviousFireTimeUtc
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the previous fire time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset? PreviousFireTimeUtc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>The previous fire time.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_Recovering_" data-uid="QuartzRestApi.Wrappers.RunningJobs.Recovering*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_Recovering" data-uid="QuartzRestApi.Wrappers.RunningJobs.Recovering">
+  Recovering
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>If the <span class="xref">Quartz.IJob</span> is being re-executed because of a 'recovery'
+situation, this method will return <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Recovering { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_RecoveringTriggerKey_" data-uid="QuartzRestApi.Wrappers.RunningJobs.RecoveringTriggerKey*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_RecoveringTriggerKey" data-uid="QuartzRestApi.Wrappers.RunningJobs.RecoveringTriggerKey">
+  RecoveringTriggerKey
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the <span class="xref">Quartz.TriggerKey</span> of the originally scheduled and now recovering job.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TriggerKey RecoveringTriggerKey { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">TriggerKey</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Wrappers_RunningJobs_RecoveringTriggerKey_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>When recovering a previously failed job execution this property returns the identity
+of the originally firing trigger. This recovering job will have been scheduled for
+the same firing time as the original job, and so is available via the
+<span class="xref">Quartz.IJobExecutionContext.ScheduledFireTimeUtc</span> property. The original firing time of the job can be
+accessed via the <span class="xref">Quartz.SchedulerConstants.FailedJobOriginalTriggerFiretime</span>
+element of this job's <span class="xref">Quartz.JobDataMap</span>.</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_RefireCount_" data-uid="QuartzRestApi.Wrappers.RunningJobs.RefireCount*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_RefireCount" data-uid="QuartzRestApi.Wrappers.RunningJobs.RefireCount">
+  RefireCount
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the refire count.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int RefireCount { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The refire count.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_Result_" data-uid="QuartzRestApi.Wrappers.RunningJobs.Result*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_Result" data-uid="QuartzRestApi.Wrappers.RunningJobs.Result">
+  Result
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the result (if any) that the <span class="xref">Quartz.IJob</span> set before its
+execution completed (the type of object set as the result is entirely up
+to the particular job).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Result { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="QuartzRestApi_Wrappers_RunningJobs_Result_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>
+The result itself is meaningless to Quartz, but may be informative
+to <span class="xref">Quartz.IJobListener</span>s or
+<span class="xref">Quartz.ITriggerListener</span>s that are watching the job's
+execution.
+</p>
+Set the result (if any) of the <span class="xref">Quartz.IJob</span>'s execution (the type of
+object set as the result is entirely up to the particular job).
+<p>
+The result itself is meaningless to Quartz, but may be informative
+to <span class="xref">Quartz.IJobListener</span>s or
+<span class="xref">Quartz.ITriggerListener</span>s that are watching the job's
+execution.
+</p>
+</div>
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_ScheduledFireTimeUtc_" data-uid="QuartzRestApi.Wrappers.RunningJobs.ScheduledFireTimeUtc*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_ScheduledFireTimeUtc" data-uid="QuartzRestApi.Wrappers.RunningJobs.ScheduledFireTimeUtc">
+  ScheduledFireTimeUtc
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The scheduled time the trigger fired for. For instance the scheduled
+time may have been 10:00:00 but the actual fire time may have been
+10:00:03 if the scheduler was too busy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTimeOffset? ScheduledFireTimeUtc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>Returns the scheduledFireTimeUtc.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+  <dl class="typelist seealso">
+    <dt>See Also</dt>
+    <dd>
+    <div><span class="xref">FireTimeUtc</span></div>
+    </dd>
+  </dl>
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_Scheduler_" data-uid="QuartzRestApi.Wrappers.RunningJobs.Scheduler*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_Scheduler" data-uid="QuartzRestApi.Wrappers.RunningJobs.Scheduler">
+  Scheduler
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a handle to the <span class="xref">Quartz.IScheduler</span> instance that fired the
+<span class="xref">Quartz.IJob</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IScheduler Scheduler { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">IScheduler</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_Trigger_" data-uid="QuartzRestApi.Wrappers.RunningJobs.Trigger*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_Trigger" data-uid="QuartzRestApi.Wrappers.RunningJobs.Trigger">
+  Trigger
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get a handle to the <span class="xref">Quartz.ITrigger</span> instance that fired the
+<span class="xref">Quartz.IJob</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITrigger Trigger { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ITrigger</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_Get_" data-uid="QuartzRestApi.Wrappers.RunningJobs.Get*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_Get_System_Object_" data-uid="QuartzRestApi.Wrappers.RunningJobs.Get(System.Object)">
+  Get(object)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Get the value with the given key from the context's data map.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public object Get(object key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_RunningJobs_Put_" data-uid="QuartzRestApi.Wrappers.RunningJobs.Put*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_RunningJobs_Put_System_Object_System_Object_" data-uid="QuartzRestApi.Wrappers.RunningJobs.Put(System.Object,System.Object)">
+  Put(object, object)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Put the specified value into the context's data map with the given key.
+Possibly useful for sharing data between listeners and jobs.</p>
+<p>
+NOTE: this data is volatile - it is lost after the job execution
+completes, and all TriggerListeners and JobListeners have been
+notified.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Put(object key, object objectValue)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+    <dt><code>objectValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; 2022 - 2026 Magic-Sessions. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

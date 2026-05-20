@@ -1,0 +1,60 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Loggers
+  commentId: N:QuartzRestApi.Loggers
+  id: QuartzRestApi.Loggers
+  children:
+  - QuartzRestApi.Loggers.Console
+  - QuartzRestApi.Loggers.File
+  - QuartzRestApi.Loggers.Stream
+  langs:
+  - csharp
+  - vb
+  name: QuartzRestApi.Loggers
+  nameWithType: QuartzRestApi.Loggers
+  fullName: QuartzRestApi.Loggers
+  type: Namespace
+  assemblies:
+  - QuartzRestApi
+references:
+- uid: QuartzRestApi.Loggers.Console
+  commentId: T:QuartzRestApi.Loggers.Console
+  href: QuartzRestApi.Loggers.Console.html
+  name: Console
+  nameWithType: Console
+  fullName: QuartzRestApi.Loggers.Console
+- uid: QuartzRestApi.Loggers.File
+  commentId: T:QuartzRestApi.Loggers.File
+  href: QuartzRestApi.Loggers.File.html
+  name: File
+  nameWithType: File
+  fullName: QuartzRestApi.Loggers.File
+- uid: QuartzRestApi.Loggers.Stream
+  commentId: T:QuartzRestApi.Loggers.Stream
+  parent: QuartzRestApi.Loggers
+  href: QuartzRestApi.Loggers.Stream.html
+  name: Stream
+  nameWithType: Stream
+  fullName: QuartzRestApi.Loggers.Stream
+- uid: QuartzRestApi.Loggers
+  commentId: N:QuartzRestApi.Loggers
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Loggers
+  nameWithType: QuartzRestApi.Loggers
+  fullName: QuartzRestApi.Loggers
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Loggers
+    name: Loggers
+    href: QuartzRestApi.Loggers.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Loggers
+    name: Loggers
+    href: QuartzRestApi.Loggers.html

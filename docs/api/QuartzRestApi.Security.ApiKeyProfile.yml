@@ -1,0 +1,3890 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Security.ApiKeyProfile
+  commentId: T:QuartzRestApi.Security.ApiKeyProfile
+  id: ApiKeyProfile
+  parent: QuartzRestApi.Security
+  children:
+  - QuartzRestApi.Security.ApiKeyProfile.#ctor
+  - QuartzRestApi.Security.ApiKeyProfile.AddCalendar
+  - QuartzRestApi.Security.ApiKeyProfile.AddJob
+  - QuartzRestApi.Security.ApiKeyProfile.AllowAll(System.String,System.String)
+  - QuartzRestApi.Security.ApiKeyProfile.ApiKey
+  - QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey
+  - QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey
+  - QuartzRestApi.Security.ApiKeyProfile.Clear
+  - QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar
+  - QuartzRestApi.Security.ApiKeyProfile.DeleteJob
+  - QuartzRestApi.Security.ApiKeyProfile.DeleteJobs
+  - QuartzRestApi.Security.ApiKeyProfile.DenyAll(System.String,System.String)
+  - QuartzRestApi.Security.ApiKeyProfile.FromJson(System.String)
+  - QuartzRestApi.Security.ApiKeyProfile.GetCalendar
+  - QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames
+  - QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs
+  - QuartzRestApi.Security.ApiKeyProfile.GetJobDetail
+  - QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames
+  - QuartzRestApi.Security.ApiKeyProfile.GetJobKeys
+  - QuartzRestApi.Security.ApiKeyProfile.GetMetaData
+  - QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups
+  - QuartzRestApi.Security.ApiKeyProfile.GetTrigger
+  - QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames
+  - QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys
+  - QuartzRestApi.Security.ApiKeyProfile.GetTriggerState
+  - QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob
+  - QuartzRestApi.Security.ApiKeyProfile.InStandbyMode
+  - QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId
+  - QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey
+  - QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused
+  - QuartzRestApi.Security.ApiKeyProfile.IsShutdown
+  - QuartzRestApi.Security.ApiKeyProfile.IsStarted
+  - QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused
+  - QuartzRestApi.Security.ApiKeyProfile.Name
+  - QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers
+  - QuartzRestApi.Security.ApiKeyProfile.PauseJob
+  - QuartzRestApi.Security.ApiKeyProfile.PauseJobs
+  - QuartzRestApi.Security.ApiKeyProfile.PauseTrigger
+  - QuartzRestApi.Security.ApiKeyProfile.PauseTriggers
+  - QuartzRestApi.Security.ApiKeyProfile.RescheduleJob
+  - QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState
+  - QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers
+  - QuartzRestApi.Security.ApiKeyProfile.ResumeJob
+  - QuartzRestApi.Security.ApiKeyProfile.ResumeJobs
+  - QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger
+  - QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers
+  - QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger
+  - QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger
+  - QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers
+  - QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs
+  - QuartzRestApi.Security.ApiKeyProfile.SchedulerContext
+  - QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId
+  - QuartzRestApi.Security.ApiKeyProfile.SchedulerName
+  - QuartzRestApi.Security.ApiKeyProfile.Shutdown
+  - QuartzRestApi.Security.ApiKeyProfile.Standby
+  - QuartzRestApi.Security.ApiKeyProfile.Start
+  - QuartzRestApi.Security.ApiKeyProfile.StartDelayed
+  - QuartzRestApi.Security.ApiKeyProfile.ToJson
+  - QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap
+  - QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey
+  - QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob
+  - QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs
+  langs:
+  - csharp
+  - vb
+  name: ApiKeyProfile
+  nameWithType: ApiKeyProfile
+  fullName: QuartzRestApi.Security.ApiKeyProfile
+  type: Class
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Represents a named API key profile that controls which Scheduler endpoints
+
+    the bearer of <xref href="QuartzRestApi.Security.ApiKeyProfile.ApiKey" data-throw-if-not-resolved="false"></xref> is allowed to call.
+  remarks: >-
+    <p>
+        Every endpoint has a corresponding <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">bool</a> property on this
+        class. All properties default to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> (full access).
+        Set a property to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> to block that endpoint for this profile.
+    </p>
+
+    <p>
+        The profile can be persisted to JSON with <xref href="QuartzRestApi.Security.ApiKeyProfile.ToJson" data-throw-if-not-resolved="false"></xref> and restored
+        with <xref href="QuartzRestApi.Security.ApiKeyProfile.FromJson(System.String)" data-throw-if-not-resolved="false"></xref>, making it easy to store profiles in a configuration
+        file or database.
+    </p>
+  example:
+  - >-
+    <pre><code class="lang-csharp">// Admin profile — full access to all endpoints.
+
+    var admin = ApiKeyProfile.AllowAll("Admin", "key-admin-xyz789");
+
+
+    // Read-only profile — start with no access, then selectively enable query endpoints.
+
+    var readOnly = ApiKeyProfile.DenyAll("ReadOnly", "key-readonly-abc123");
+
+    readOnly.SchedulerName          = true;
+
+    readOnly.SchedulerInstanceId    = true;
+
+    readOnly.GetMetaData            = true;
+
+    readOnly.GetJobGroupNames       = true;
+
+    readOnly.GetTriggerGroupNames   = true;
+
+    readOnly.GetJobKeys             = true;
+
+    readOnly.GetJobDetail           = true;
+
+    readOnly.GetTrigger             = true;
+
+    readOnly.GetTriggerState        = true;
+
+    readOnly.GetCurrentlyExecutingJobs = true;
+
+
+    var host = new SchedulerHost("http://localhost:45000", scheduler, logger,
+        profiles: [admin, readOnly]);
+
+    // Persist a profile to disk and reload it:
+
+    File.WriteAllText("readOnly.json", readOnly.ToJson());
+
+    var loaded = ApiKeyProfile.FromJson(File.ReadAllText("readOnly.json"));</code></pre>
+  syntax:
+    content: public sealed class ApiKeyProfile
+    content.vb: Public NotInheritable Class ApiKeyProfile
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QuartzRestApi.Security.ApiKeyProfile.Name
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.Name
+  id: Name
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: ApiKeyProfile.Name
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Name
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: A human-readable name for this profile, used in log messages.
+  example: []
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: QuartzRestApi.Security.ApiKeyProfile.Name*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ApiKey
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ApiKey
+  id: ApiKey
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ApiKey
+  nameWithType: ApiKeyProfile.ApiKey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ApiKey
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    The secret API key that identifies this profile.
+
+    Sent by the client in the <code>X-Api-Key</code> HTTP header.
+  example: []
+  syntax:
+    content: public string ApiKey { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ApiKey As String
+  overload: QuartzRestApi.Security.ApiKeyProfile.ApiKey*
+- uid: QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused
+  id: IsJobGroupPaused
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: IsJobGroupPaused
+  nameWithType: ApiKeyProfile.IsJobGroupPaused
+  fullName: QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/IsJobGroupPaused/{groupName}</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.IsJobGroupPaused(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool IsJobGroupPaused { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsJobGroupPaused As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused*
+- uid: QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused
+  id: IsTriggerGroupPaused
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: IsTriggerGroupPaused
+  nameWithType: ApiKeyProfile.IsTriggerGroupPaused
+  fullName: QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/IsTriggerGroupPaused/{groupName}</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool IsTriggerGroupPaused { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsTriggerGroupPaused As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused*
+- uid: QuartzRestApi.Security.ApiKeyProfile.SchedulerName
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.SchedulerName
+  id: SchedulerName
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: SchedulerName
+  nameWithType: ApiKeyProfile.SchedulerName
+  fullName: QuartzRestApi.Security.ApiKeyProfile.SchedulerName
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/SchedulerName</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.SchedulerName" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool SchedulerName { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SchedulerName As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.SchedulerName*
+- uid: QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId
+  id: SchedulerInstanceId
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: SchedulerInstanceId
+  nameWithType: ApiKeyProfile.SchedulerInstanceId
+  fullName: QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/SchedulerInstanceId</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.SchedulerInstanceId" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool SchedulerInstanceId { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SchedulerInstanceId As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId*
+- uid: QuartzRestApi.Security.ApiKeyProfile.SchedulerContext
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.SchedulerContext
+  id: SchedulerContext
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: SchedulerContext
+  nameWithType: ApiKeyProfile.SchedulerContext
+  fullName: QuartzRestApi.Security.ApiKeyProfile.SchedulerContext
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/SchedulerContext</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.Context" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool SchedulerContext { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SchedulerContext As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.SchedulerContext*
+- uid: QuartzRestApi.Security.ApiKeyProfile.InStandbyMode
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.InStandbyMode
+  id: InStandbyMode
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: InStandbyMode
+  nameWithType: ApiKeyProfile.InStandbyMode
+  fullName: QuartzRestApi.Security.ApiKeyProfile.InStandbyMode
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/InStandbyMode</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.InStandbyMode" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool InStandbyMode { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property InStandbyMode As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.InStandbyMode*
+- uid: QuartzRestApi.Security.ApiKeyProfile.IsShutdown
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.IsShutdown
+  id: IsShutdown
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: IsShutdown
+  nameWithType: ApiKeyProfile.IsShutdown
+  fullName: QuartzRestApi.Security.ApiKeyProfile.IsShutdown
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/IsShutdown</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.IsShutdown" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool IsShutdown { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsShutdown As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.IsShutdown*
+- uid: QuartzRestApi.Security.ApiKeyProfile.IsStarted
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.IsStarted
+  id: IsStarted
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: IsStarted
+  nameWithType: ApiKeyProfile.IsStarted
+  fullName: QuartzRestApi.Security.ApiKeyProfile.IsStarted
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/IsStarted</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.IsStarted" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool IsStarted { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsStarted As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.IsStarted*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetMetaData
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetMetaData
+  id: GetMetaData
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetMetaData
+  nameWithType: ApiKeyProfile.GetMetaData
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetMetaData
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetMetaData</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetMetaData" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetMetaData { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetMetaData As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetMetaData*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs
+  id: GetCurrentlyExecutingJobs
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetCurrentlyExecutingJobs
+  nameWithType: ApiKeyProfile.GetCurrentlyExecutingJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetCurrentlyExecutingJobs</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetCurrentlyExecutingJobs { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetCurrentlyExecutingJobs As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames
+  id: GetJobGroupNames
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetJobGroupNames
+  nameWithType: ApiKeyProfile.GetJobGroupNames
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetJobGroupNames</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetJobGroupNames" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetJobGroupNames { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetJobGroupNames As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames
+  id: GetTriggerGroupNames
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetTriggerGroupNames
+  nameWithType: ApiKeyProfile.GetTriggerGroupNames
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetTriggerGroupNames</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetTriggerGroupNames" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetTriggerGroupNames { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetTriggerGroupNames As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups
+  id: GetPausedTriggerGroups
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetPausedTriggerGroups
+  nameWithType: ApiKeyProfile.GetPausedTriggerGroups
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetPausedTriggerGroups</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetPausedTriggerGroups { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetPausedTriggerGroups As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups*
+- uid: QuartzRestApi.Security.ApiKeyProfile.Start
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.Start
+  id: Start
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: Start
+  nameWithType: ApiKeyProfile.Start
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Start
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/Start</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.Start" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool Start { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Start As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.Start*
+- uid: QuartzRestApi.Security.ApiKeyProfile.StartDelayed
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.StartDelayed
+  id: StartDelayed
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: StartDelayed
+  nameWithType: ApiKeyProfile.StartDelayed
+  fullName: QuartzRestApi.Security.ApiKeyProfile.StartDelayed
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/StartDelayed/{delay}</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.StartDelayed(System.Int32)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool StartDelayed { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property StartDelayed As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.StartDelayed*
+- uid: QuartzRestApi.Security.ApiKeyProfile.Standby
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.Standby
+  id: Standby
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: Standby
+  nameWithType: ApiKeyProfile.Standby
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Standby
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/Standby</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.Standby" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool Standby { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Standby As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.Standby*
+- uid: QuartzRestApi.Security.ApiKeyProfile.Shutdown
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.Shutdown
+  id: Shutdown
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: Shutdown
+  nameWithType: ApiKeyProfile.Shutdown
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Shutdown
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/Shutdown</code> and
+
+    <code>POST Scheduler/Shutdown/{waitForJobsToComplete}</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.Shutdown" data-throw-if-not-resolved="false"></xref> and
+
+    <xref href="QuartzRestApi.SchedulerConnector.Shutdown(System.Boolean)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool Shutdown { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Shutdown As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.Shutdown*
+- uid: QuartzRestApi.Security.ApiKeyProfile.Clear
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.Clear
+  id: Clear
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: Clear
+  nameWithType: ApiKeyProfile.Clear
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Clear
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/Clear</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.Clear" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool Clear { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property Clear As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.Clear*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger
+  id: ScheduleJobWithJobDetailAndTrigger
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ScheduleJobWithJobDetailAndTrigger
+  nameWithType: ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ScheduleJobWithJobDetailAndTrigger</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ScheduleJobWithJobDetailAndTrigger { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ScheduleJobWithJobDetailAndTrigger As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger
+  id: ScheduleJobIdentifiedWithTrigger
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ScheduleJobIdentifiedWithTrigger
+  nameWithType: ApiKeyProfile.ScheduleJobIdentifiedWithTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ScheduleJobIdentifiedWithTrigger</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ScheduleJobIdentifiedWithTrigger { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ScheduleJobIdentifiedWithTrigger As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers
+  id: ScheduleJobWithJobDetailAndTriggers
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ScheduleJobWithJobDetailAndTriggers
+  nameWithType: ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ScheduleJobWithJobDetailAndTriggers</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ScheduleJobWithJobDetailAndTriggers { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ScheduleJobWithJobDetailAndTriggers As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs
+  id: ScheduleJobs
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ScheduleJobs
+  nameWithType: ApiKeyProfile.ScheduleJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ScheduleJobs</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ScheduleJobs { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ScheduleJobs As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs*
+- uid: QuartzRestApi.Security.ApiKeyProfile.RescheduleJob
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.RescheduleJob
+  id: RescheduleJob
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: RescheduleJob
+  nameWithType: ApiKeyProfile.RescheduleJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.RescheduleJob
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/RescheduleJob</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool RescheduleJob { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property RescheduleJob As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.RescheduleJob*
+- uid: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob
+  id: UnscheduleJob
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: UnscheduleJob
+  nameWithType: ApiKeyProfile.UnscheduleJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/UnscheduleJob</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool UnscheduleJob { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UnscheduleJob As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob*
+- uid: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs
+  id: UnscheduleJobs
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: UnscheduleJobs
+  nameWithType: ApiKeyProfile.UnscheduleJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/UnscheduleJobs</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool UnscheduleJobs { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UnscheduleJobs As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs*
+- uid: QuartzRestApi.Security.ApiKeyProfile.AddJob
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.AddJob
+  id: AddJob
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: AddJob
+  nameWithType: ApiKeyProfile.AddJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.AddJob
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/AddJob</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool AddJob { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AddJob As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.AddJob*
+- uid: QuartzRestApi.Security.ApiKeyProfile.DeleteJob
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.DeleteJob
+  id: DeleteJob
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: DeleteJob
+  nameWithType: ApiKeyProfile.DeleteJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.DeleteJob
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>DELETE Scheduler/DeleteJob</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool DeleteJob { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property DeleteJob As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.DeleteJob*
+- uid: QuartzRestApi.Security.ApiKeyProfile.DeleteJobs
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.DeleteJobs
+  id: DeleteJobs
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: DeleteJobs
+  nameWithType: ApiKeyProfile.DeleteJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.DeleteJobs
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>DELETE Scheduler/DeleteJobs</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool DeleteJobs { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property DeleteJobs As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.DeleteJobs*
+- uid: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey
+  id: TriggerJobWithJobkey
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: TriggerJobWithJobkey
+  nameWithType: ApiKeyProfile.TriggerJobWithJobkey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/TriggerJobWithJobkey</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool TriggerJobWithJobkey { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property TriggerJobWithJobkey As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey*
+- uid: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap
+  id: TriggerJobWithDataMap
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: TriggerJobWithDataMap
+  nameWithType: ApiKeyProfile.TriggerJobWithDataMap
+  fullName: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/TriggerJobWithDataMap</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool TriggerJobWithDataMap { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property TriggerJobWithDataMap As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap*
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseJob
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.PauseJob
+  id: PauseJob
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: PauseJob
+  nameWithType: ApiKeyProfile.PauseJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseJob
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/PauseJob</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool PauseJob { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property PauseJob As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.PauseJob*
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseJobs
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.PauseJobs
+  id: PauseJobs
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: PauseJobs
+  nameWithType: ApiKeyProfile.PauseJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseJobs
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/PauseJobs</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher%7bQuartz.JobKey%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool PauseJobs { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property PauseJobs As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.PauseJobs*
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseTrigger
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.PauseTrigger
+  id: PauseTrigger
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: PauseTrigger
+  nameWithType: ApiKeyProfile.PauseTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseTrigger
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/PauseTrigger</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool PauseTrigger { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property PauseTrigger As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.PauseTrigger*
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseTriggers
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.PauseTriggers
+  id: PauseTriggers
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: PauseTriggers
+  nameWithType: ApiKeyProfile.PauseTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseTriggers
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/PauseTriggers</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher%7bQuartz.TriggerKey%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool PauseTriggers { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property PauseTriggers As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.PauseTriggers*
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers
+  id: PauseAllTriggers
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: PauseAllTriggers
+  nameWithType: ApiKeyProfile.PauseAllTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/PauseAllTriggers</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.PauseAllTriggers" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool PauseAllTriggers { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property PauseAllTriggers As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeJob
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ResumeJob
+  id: ResumeJob
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ResumeJob
+  nameWithType: ApiKeyProfile.ResumeJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeJob
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ResumeJob</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ResumeJob { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ResumeJob As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ResumeJob*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeJobs
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ResumeJobs
+  id: ResumeJobs
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ResumeJobs
+  nameWithType: ApiKeyProfile.ResumeJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeJobs
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ResumeJobs</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher%7bQuartz.JobKey%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ResumeJobs { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ResumeJobs As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ResumeJobs*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger
+  id: ResumeTrigger
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ResumeTrigger
+  nameWithType: ApiKeyProfile.ResumeTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ResumeTrigger</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ResumeTrigger { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ResumeTrigger As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers
+  id: ResumeTriggers
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ResumeTriggers
+  nameWithType: ApiKeyProfile.ResumeTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ResumeTriggers</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher%7bQuartz.TriggerKey%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ResumeTriggers { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ResumeTriggers As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers
+  id: ResumeAllTriggers
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ResumeAllTriggers
+  nameWithType: ApiKeyProfile.ResumeAllTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ResumeAllTriggers</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ResumeAllTriggers" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ResumeAllTriggers { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ResumeAllTriggers As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetJobKeys
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetJobKeys
+  id: GetJobKeys
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetJobKeys
+  nameWithType: ApiKeyProfile.GetJobKeys
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetJobKeys
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetJobKeys</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher%7bQuartz.JobKey%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetJobKeys { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetJobKeys As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetJobKeys*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys
+  id: GetTriggerKeys
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetTriggerKeys
+  nameWithType: ApiKeyProfile.GetTriggerKeys
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetTriggerKeys</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher%7bQuartz.TriggerKey%7d)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetTriggerKeys { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetTriggerKeys As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob
+  id: GetTriggersOfJob
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetTriggersOfJob
+  nameWithType: ApiKeyProfile.GetTriggersOfJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetTriggersOfJob</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetTriggersOfJob { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetTriggersOfJob As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetJobDetail
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetJobDetail
+  id: GetJobDetail
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetJobDetail
+  nameWithType: ApiKeyProfile.GetJobDetail
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetJobDetail
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetJobDetail</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetJobDetail { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetJobDetail As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetJobDetail*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTrigger
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetTrigger
+  id: GetTrigger
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetTrigger
+  nameWithType: ApiKeyProfile.GetTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTrigger
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetTrigger</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetTrigger { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetTrigger As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetTrigger*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTriggerState
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetTriggerState
+  id: GetTriggerState
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetTriggerState
+  nameWithType: ApiKeyProfile.GetTriggerState
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTriggerState
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetTriggerState</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetTriggerState { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetTriggerState As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetTriggerState*
+- uid: QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey
+  id: CheckExistsJobKey
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: CheckExistsJobKey
+  nameWithType: ApiKeyProfile.CheckExistsJobKey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/CheckExistsJobKey</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool CheckExistsJobKey { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property CheckExistsJobKey As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey*
+- uid: QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey
+  id: CheckExistsTriggerKey
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: CheckExistsTriggerKey
+  nameWithType: ApiKeyProfile.CheckExistsTriggerKey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/CheckExistsTriggerKey</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool CheckExistsTriggerKey { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property CheckExistsTriggerKey As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey*
+- uid: QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey
+  id: InterruptJobKey
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: InterruptJobKey
+  nameWithType: ApiKeyProfile.InterruptJobKey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/InterruptJobKey</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool InterruptJobKey { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property InterruptJobKey As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey*
+- uid: QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId
+  id: InterruptFireInstanceId
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: InterruptFireInstanceId
+  nameWithType: ApiKeyProfile.InterruptFireInstanceId
+  fullName: QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/InterruptFireInstanceId/{fireInstanceId}</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.InterruptJob(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool InterruptFireInstanceId { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property InterruptFireInstanceId As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId*
+- uid: QuartzRestApi.Security.ApiKeyProfile.AddCalendar
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.AddCalendar
+  id: AddCalendar
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: AddCalendar
+  nameWithType: ApiKeyProfile.AddCalendar
+  fullName: QuartzRestApi.Security.ApiKeyProfile.AddCalendar
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/AddCalendar</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool AddCalendar { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property AddCalendar As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.AddCalendar*
+- uid: QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar
+  id: DeleteCalendar
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: DeleteCalendar
+  nameWithType: ApiKeyProfile.DeleteCalendar
+  fullName: QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>DELETE Scheduler/DeleteCalendar/{calName}</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.DeleteCalendar(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool DeleteCalendar { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property DeleteCalendar As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetCalendar
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetCalendar
+  id: GetCalendar
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetCalendar
+  nameWithType: ApiKeyProfile.GetCalendar
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetCalendar
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetCalendar/{calName}</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetCalendar(System.String)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetCalendar { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetCalendar As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetCalendar*
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames
+  id: GetCalendarNames
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: GetCalendarNames
+  nameWithType: ApiKeyProfile.GetCalendarNames
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>GET Scheduler/GetCalendarNames</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.GetCalendarNames" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool GetCalendarNames { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property GetCalendarNames As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames*
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState
+  id: ResetTriggerFromErrorState
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ResetTriggerFromErrorState
+  nameWithType: ApiKeyProfile.ResetTriggerFromErrorState
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState
+  type: Property
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Allows access to <code>POST Scheduler/ResetTriggerFromErrorState</code>.
+
+    <br />Corresponds to <xref href="QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public bool ResetTriggerFromErrorState { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property ResetTriggerFromErrorState As Boolean
+  overload: QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState*
+- uid: QuartzRestApi.Security.ApiKeyProfile.#ctor
+  commentId: M:QuartzRestApi.Security.ApiKeyProfile.#ctor
+  id: '#ctor'
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ApiKeyProfile()
+  nameWithType: ApiKeyProfile.ApiKeyProfile()
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ApiKeyProfile()
+  type: Constructor
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: Parameterless constructor used during JSON deserialization.
+  example: []
+  syntax:
+    content: >-
+      [JsonConstructor]
+
+      public ApiKeyProfile()
+    content.vb: >-
+      <JsonConstructor>
+
+      Public Sub New()
+  overload: QuartzRestApi.Security.ApiKeyProfile.#ctor*
+  attributes:
+  - type: System.Text.Json.Serialization.JsonConstructorAttribute
+    ctor: System.Text.Json.Serialization.JsonConstructorAttribute.#ctor
+    arguments: []
+  nameWithType.vb: ApiKeyProfile.New()
+  fullName.vb: QuartzRestApi.Security.ApiKeyProfile.New()
+  name.vb: New()
+- uid: QuartzRestApi.Security.ApiKeyProfile.AllowAll(System.String,System.String)
+  commentId: M:QuartzRestApi.Security.ApiKeyProfile.AllowAll(System.String,System.String)
+  id: AllowAll(System.String,System.String)
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: AllowAll(string, string)
+  nameWithType: ApiKeyProfile.AllowAll(string, string)
+  fullName: QuartzRestApi.Security.ApiKeyProfile.AllowAll(string, string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Creates a new <xref href="QuartzRestApi.Security.ApiKeyProfile" data-throw-if-not-resolved="false"></xref> with access to <b>all</b> endpoints enabled.
+
+    Use this as a starting point for an admin profile, or selectively set properties
+
+    to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> to restrict access.
+  example: []
+  syntax:
+    content: public static ApiKeyProfile AllowAll(string name, string apiKey)
+    parameters:
+    - id: name
+      type: System.String
+      description: A human-readable name for this profile, used in log messages.
+    - id: apiKey
+      type: System.String
+      description: The secret API key for this profile, sent in the <code>X-Api-Key</code> header.
+    return:
+      type: QuartzRestApi.Security.ApiKeyProfile
+    content.vb: Public Shared Function AllowAll(name As String, apiKey As String) As ApiKeyProfile
+  overload: QuartzRestApi.Security.ApiKeyProfile.AllowAll*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when <code class="paramref">name</code> or <code class="paramref">apiKey</code> is null or empty.
+  nameWithType.vb: ApiKeyProfile.AllowAll(String, String)
+  fullName.vb: QuartzRestApi.Security.ApiKeyProfile.AllowAll(String, String)
+  name.vb: AllowAll(String, String)
+- uid: QuartzRestApi.Security.ApiKeyProfile.DenyAll(System.String,System.String)
+  commentId: M:QuartzRestApi.Security.ApiKeyProfile.DenyAll(System.String,System.String)
+  id: DenyAll(System.String,System.String)
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: DenyAll(string, string)
+  nameWithType: ApiKeyProfile.DenyAll(string, string)
+  fullName: QuartzRestApi.Security.ApiKeyProfile.DenyAll(string, string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Creates a new <xref href="QuartzRestApi.Security.ApiKeyProfile" data-throw-if-not-resolved="false"></xref> with access to <b>all</b> endpoints denied.
+
+    Use this as a starting point for a restricted profile, then selectively set properties
+
+    to <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> to grant access to specific endpoints.
+  example: []
+  syntax:
+    content: public static ApiKeyProfile DenyAll(string name, string apiKey)
+    parameters:
+    - id: name
+      type: System.String
+      description: A human-readable name for this profile, used in log messages.
+    - id: apiKey
+      type: System.String
+      description: The secret API key for this profile, sent in the <code>X-Api-Key</code> header.
+    return:
+      type: QuartzRestApi.Security.ApiKeyProfile
+    content.vb: Public Shared Function DenyAll(name As String, apiKey As String) As ApiKeyProfile
+  overload: QuartzRestApi.Security.ApiKeyProfile.DenyAll*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when <code class="paramref">name</code> or <code class="paramref">apiKey</code> is null or empty.
+  nameWithType.vb: ApiKeyProfile.DenyAll(String, String)
+  fullName.vb: QuartzRestApi.Security.ApiKeyProfile.DenyAll(String, String)
+  name.vb: DenyAll(String, String)
+- uid: QuartzRestApi.Security.ApiKeyProfile.ToJson
+  commentId: M:QuartzRestApi.Security.ApiKeyProfile.ToJson
+  id: ToJson
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: ToJson()
+  nameWithType: ApiKeyProfile.ToJson()
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ToJson()
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: Serializes this profile to an indented JSON string.
+  example: []
+  syntax:
+    content: public string ToJson()
+    return:
+      type: System.String
+      description: A JSON representation of this profile.
+    content.vb: Public Function ToJson() As String
+  overload: QuartzRestApi.Security.ApiKeyProfile.ToJson*
+- uid: QuartzRestApi.Security.ApiKeyProfile.FromJson(System.String)
+  commentId: M:QuartzRestApi.Security.ApiKeyProfile.FromJson(System.String)
+  id: FromJson(System.String)
+  parent: QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: FromJson(string)
+  nameWithType: ApiKeyProfile.FromJson(string)
+  fullName: QuartzRestApi.Security.ApiKeyProfile.FromJson(string)
+  type: Method
+  assemblies:
+  - QuartzRestApi
+  namespace: QuartzRestApi.Security
+  summary: >-
+    Deserializes an <xref href="QuartzRestApi.Security.ApiKeyProfile" data-throw-if-not-resolved="false"></xref> from a JSON string
+
+    produced by <xref href="QuartzRestApi.Security.ApiKeyProfile.ToJson" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static ApiKeyProfile FromJson(string json)
+    parameters:
+    - id: json
+      type: System.String
+      description: The JSON string to deserialize.
+    return:
+      type: QuartzRestApi.Security.ApiKeyProfile
+      description: The deserialized <xref href="QuartzRestApi.Security.ApiKeyProfile" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function FromJson(json As String) As ApiKeyProfile
+  overload: QuartzRestApi.Security.ApiKeyProfile.FromJson*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when <code class="paramref">json</code> is null or whitespace.
+  - type: System.Text.Json.JsonException
+    commentId: T:System.Text.Json.JsonException
+    description: Thrown when <code class="paramref">json</code> is not valid JSON.
+  nameWithType.vb: ApiKeyProfile.FromJson(String)
+  fullName.vb: QuartzRestApi.Security.ApiKeyProfile.FromJson(String)
+  name.vb: FromJson(String)
+references:
+- uid: QuartzRestApi.Security.ApiKeyProfile.ApiKey
+  commentId: P:QuartzRestApi.Security.ApiKeyProfile.ApiKey
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ApiKey
+  name: ApiKey
+  nameWithType: ApiKeyProfile.ApiKey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ApiKey
+- uid: QuartzRestApi.Security.ApiKeyProfile.ToJson
+  commentId: M:QuartzRestApi.Security.ApiKeyProfile.ToJson
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ToJson
+  name: ToJson()
+  nameWithType: ApiKeyProfile.ToJson()
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ToJson()
+  spec.csharp:
+  - uid: QuartzRestApi.Security.ApiKeyProfile.ToJson
+    name: ToJson
+    href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ToJson
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.Security.ApiKeyProfile.ToJson
+    name: ToJson
+    href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ToJson
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.FromJson(System.String)
+  commentId: M:QuartzRestApi.Security.ApiKeyProfile.FromJson(System.String)
+  isExternal: true
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_FromJson_System_String_
+  name: FromJson(string)
+  nameWithType: ApiKeyProfile.FromJson(string)
+  fullName: QuartzRestApi.Security.ApiKeyProfile.FromJson(string)
+  nameWithType.vb: ApiKeyProfile.FromJson(String)
+  fullName.vb: QuartzRestApi.Security.ApiKeyProfile.FromJson(String)
+  name.vb: FromJson(String)
+  spec.csharp:
+  - uid: QuartzRestApi.Security.ApiKeyProfile.FromJson(System.String)
+    name: FromJson
+    href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_FromJson_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.Security.ApiKeyProfile.FromJson(System.String)
+    name: FromJson
+    href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_FromJson_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: QuartzRestApi.Security
+  commentId: N:QuartzRestApi.Security
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Security
+  nameWithType: QuartzRestApi.Security
+  fullName: QuartzRestApi.Security
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Security
+    name: Security
+    href: QuartzRestApi.Security.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Security
+    name: Security
+    href: QuartzRestApi.Security.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QuartzRestApi.Security.ApiKeyProfile.Name*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.Name
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_Name
+  name: Name
+  nameWithType: ApiKeyProfile.Name
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QuartzRestApi.Security.ApiKeyProfile.ApiKey*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ApiKey
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ApiKey
+  name: ApiKey
+  nameWithType: ApiKeyProfile.ApiKey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ApiKey
+- uid: QuartzRestApi.SchedulerConnector.IsJobGroupPaused(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.IsJobGroupPaused(System.String)
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsJobGroupPaused_System_String_
+  name: IsJobGroupPaused(string)
+  nameWithType: SchedulerConnector.IsJobGroupPaused(string)
+  fullName: QuartzRestApi.SchedulerConnector.IsJobGroupPaused(string)
+  nameWithType.vb: SchedulerConnector.IsJobGroupPaused(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.IsJobGroupPaused(String)
+  name.vb: IsJobGroupPaused(String)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.IsJobGroupPaused(System.String)
+    name: IsJobGroupPaused
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsJobGroupPaused_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.IsJobGroupPaused(System.String)
+    name: IsJobGroupPaused
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsJobGroupPaused_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_IsJobGroupPaused
+  name: IsJobGroupPaused
+  nameWithType: ApiKeyProfile.IsJobGroupPaused
+  fullName: QuartzRestApi.Security.ApiKeyProfile.IsJobGroupPaused
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(System.String)
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsTriggerGroupPaused_System_String_
+  name: IsTriggerGroupPaused(string)
+  nameWithType: SchedulerConnector.IsTriggerGroupPaused(string)
+  fullName: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(string)
+  nameWithType.vb: SchedulerConnector.IsTriggerGroupPaused(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(String)
+  name.vb: IsTriggerGroupPaused(String)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(System.String)
+    name: IsTriggerGroupPaused
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsTriggerGroupPaused_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.IsTriggerGroupPaused(System.String)
+    name: IsTriggerGroupPaused
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsTriggerGroupPaused_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_IsTriggerGroupPaused
+  name: IsTriggerGroupPaused
+  nameWithType: ApiKeyProfile.IsTriggerGroupPaused
+  fullName: QuartzRestApi.Security.ApiKeyProfile.IsTriggerGroupPaused
+- uid: QuartzRestApi.SchedulerConnector.SchedulerName
+  commentId: M:QuartzRestApi.SchedulerConnector.SchedulerName
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerName
+  name: SchedulerName()
+  nameWithType: SchedulerConnector.SchedulerName()
+  fullName: QuartzRestApi.SchedulerConnector.SchedulerName()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.SchedulerName
+    name: SchedulerName
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerName
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.SchedulerName
+    name: SchedulerName
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerName
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.SchedulerName*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.SchedulerName
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_SchedulerName
+  name: SchedulerName
+  nameWithType: ApiKeyProfile.SchedulerName
+  fullName: QuartzRestApi.Security.ApiKeyProfile.SchedulerName
+- uid: QuartzRestApi.SchedulerConnector.SchedulerInstanceId
+  commentId: M:QuartzRestApi.SchedulerConnector.SchedulerInstanceId
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerInstanceId
+  name: SchedulerInstanceId()
+  nameWithType: SchedulerConnector.SchedulerInstanceId()
+  fullName: QuartzRestApi.SchedulerConnector.SchedulerInstanceId()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.SchedulerInstanceId
+    name: SchedulerInstanceId
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerInstanceId
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.SchedulerInstanceId
+    name: SchedulerInstanceId
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_SchedulerInstanceId
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_SchedulerInstanceId
+  name: SchedulerInstanceId
+  nameWithType: ApiKeyProfile.SchedulerInstanceId
+  fullName: QuartzRestApi.Security.ApiKeyProfile.SchedulerInstanceId
+- uid: QuartzRestApi.SchedulerConnector.Context
+  commentId: M:QuartzRestApi.SchedulerConnector.Context
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Context
+  name: Context()
+  nameWithType: SchedulerConnector.Context()
+  fullName: QuartzRestApi.SchedulerConnector.Context()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.Context
+    name: Context
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Context
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.Context
+    name: Context
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Context
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.SchedulerContext*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.SchedulerContext
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_SchedulerContext
+  name: SchedulerContext
+  nameWithType: ApiKeyProfile.SchedulerContext
+  fullName: QuartzRestApi.Security.ApiKeyProfile.SchedulerContext
+- uid: QuartzRestApi.SchedulerConnector.InStandbyMode
+  commentId: M:QuartzRestApi.SchedulerConnector.InStandbyMode
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InStandbyMode
+  name: InStandbyMode()
+  nameWithType: SchedulerConnector.InStandbyMode()
+  fullName: QuartzRestApi.SchedulerConnector.InStandbyMode()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.InStandbyMode
+    name: InStandbyMode
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InStandbyMode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.InStandbyMode
+    name: InStandbyMode
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InStandbyMode
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.InStandbyMode*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.InStandbyMode
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_InStandbyMode
+  name: InStandbyMode
+  nameWithType: ApiKeyProfile.InStandbyMode
+  fullName: QuartzRestApi.Security.ApiKeyProfile.InStandbyMode
+- uid: QuartzRestApi.SchedulerConnector.IsShutdown
+  commentId: M:QuartzRestApi.SchedulerConnector.IsShutdown
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsShutdown
+  name: IsShutdown()
+  nameWithType: SchedulerConnector.IsShutdown()
+  fullName: QuartzRestApi.SchedulerConnector.IsShutdown()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.IsShutdown
+    name: IsShutdown
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsShutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.IsShutdown
+    name: IsShutdown
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsShutdown
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.IsShutdown*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.IsShutdown
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_IsShutdown
+  name: IsShutdown
+  nameWithType: ApiKeyProfile.IsShutdown
+  fullName: QuartzRestApi.Security.ApiKeyProfile.IsShutdown
+- uid: QuartzRestApi.SchedulerConnector.IsStarted
+  commentId: M:QuartzRestApi.SchedulerConnector.IsStarted
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsStarted
+  name: IsStarted()
+  nameWithType: SchedulerConnector.IsStarted()
+  fullName: QuartzRestApi.SchedulerConnector.IsStarted()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.IsStarted
+    name: IsStarted
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsStarted
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.IsStarted
+    name: IsStarted
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_IsStarted
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.IsStarted*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.IsStarted
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_IsStarted
+  name: IsStarted
+  nameWithType: ApiKeyProfile.IsStarted
+  fullName: QuartzRestApi.Security.ApiKeyProfile.IsStarted
+- uid: QuartzRestApi.SchedulerConnector.GetMetaData
+  commentId: M:QuartzRestApi.SchedulerConnector.GetMetaData
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetMetaData
+  name: GetMetaData()
+  nameWithType: SchedulerConnector.GetMetaData()
+  fullName: QuartzRestApi.SchedulerConnector.GetMetaData()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetMetaData
+    name: GetMetaData
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetMetaData
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetMetaData
+    name: GetMetaData
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetMetaData
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetMetaData*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetMetaData
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetMetaData
+  name: GetMetaData
+  nameWithType: ApiKeyProfile.GetMetaData
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetMetaData
+- uid: QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs
+  commentId: M:QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCurrentlyExecutingJobs
+  name: GetCurrentlyExecutingJobs()
+  nameWithType: SchedulerConnector.GetCurrentlyExecutingJobs()
+  fullName: QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs
+    name: GetCurrentlyExecutingJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCurrentlyExecutingJobs
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetCurrentlyExecutingJobs
+    name: GetCurrentlyExecutingJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCurrentlyExecutingJobs
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetCurrentlyExecutingJobs
+  name: GetCurrentlyExecutingJobs
+  nameWithType: ApiKeyProfile.GetCurrentlyExecutingJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetCurrentlyExecutingJobs
+- uid: QuartzRestApi.SchedulerConnector.GetJobGroupNames
+  commentId: M:QuartzRestApi.SchedulerConnector.GetJobGroupNames
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobGroupNames
+  name: GetJobGroupNames()
+  nameWithType: SchedulerConnector.GetJobGroupNames()
+  fullName: QuartzRestApi.SchedulerConnector.GetJobGroupNames()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetJobGroupNames
+    name: GetJobGroupNames
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobGroupNames
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetJobGroupNames
+    name: GetJobGroupNames
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobGroupNames
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetJobGroupNames
+  name: GetJobGroupNames
+  nameWithType: ApiKeyProfile.GetJobGroupNames
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetJobGroupNames
+- uid: QuartzRestApi.SchedulerConnector.GetTriggerGroupNames
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTriggerGroupNames
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerGroupNames
+  name: GetTriggerGroupNames()
+  nameWithType: SchedulerConnector.GetTriggerGroupNames()
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggerGroupNames()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetTriggerGroupNames
+    name: GetTriggerGroupNames
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerGroupNames
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetTriggerGroupNames
+    name: GetTriggerGroupNames
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerGroupNames
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetTriggerGroupNames
+  name: GetTriggerGroupNames
+  nameWithType: ApiKeyProfile.GetTriggerGroupNames
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTriggerGroupNames
+- uid: QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups
+  commentId: M:QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetPausedTriggerGroups
+  name: GetPausedTriggerGroups()
+  nameWithType: SchedulerConnector.GetPausedTriggerGroups()
+  fullName: QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups
+    name: GetPausedTriggerGroups
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetPausedTriggerGroups
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetPausedTriggerGroups
+    name: GetPausedTriggerGroups
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetPausedTriggerGroups
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetPausedTriggerGroups
+  name: GetPausedTriggerGroups
+  nameWithType: ApiKeyProfile.GetPausedTriggerGroups
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetPausedTriggerGroups
+- uid: QuartzRestApi.SchedulerConnector.Start
+  commentId: M:QuartzRestApi.SchedulerConnector.Start
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Start
+  name: Start()
+  nameWithType: SchedulerConnector.Start()
+  fullName: QuartzRestApi.SchedulerConnector.Start()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.Start
+    name: Start
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Start
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.Start
+    name: Start
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Start
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.Start*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.Start
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_Start
+  name: Start
+  nameWithType: ApiKeyProfile.Start
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Start
+- uid: QuartzRestApi.SchedulerConnector.StartDelayed(System.Int32)
+  commentId: M:QuartzRestApi.SchedulerConnector.StartDelayed(System.Int32)
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_StartDelayed_System_Int32_
+  name: StartDelayed(int)
+  nameWithType: SchedulerConnector.StartDelayed(int)
+  fullName: QuartzRestApi.SchedulerConnector.StartDelayed(int)
+  nameWithType.vb: SchedulerConnector.StartDelayed(Integer)
+  fullName.vb: QuartzRestApi.SchedulerConnector.StartDelayed(Integer)
+  name.vb: StartDelayed(Integer)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.StartDelayed(System.Int32)
+    name: StartDelayed
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_StartDelayed_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.StartDelayed(System.Int32)
+    name: StartDelayed
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_StartDelayed_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.StartDelayed*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.StartDelayed
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_StartDelayed
+  name: StartDelayed
+  nameWithType: ApiKeyProfile.StartDelayed
+  fullName: QuartzRestApi.Security.ApiKeyProfile.StartDelayed
+- uid: QuartzRestApi.SchedulerConnector.Standby
+  commentId: M:QuartzRestApi.SchedulerConnector.Standby
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Standby
+  name: Standby()
+  nameWithType: SchedulerConnector.Standby()
+  fullName: QuartzRestApi.SchedulerConnector.Standby()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.Standby
+    name: Standby
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Standby
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.Standby
+    name: Standby
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Standby
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.Standby*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.Standby
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_Standby
+  name: Standby
+  nameWithType: ApiKeyProfile.Standby
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Standby
+- uid: QuartzRestApi.SchedulerConnector.Shutdown
+  commentId: M:QuartzRestApi.SchedulerConnector.Shutdown
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Shutdown
+  name: Shutdown()
+  nameWithType: SchedulerConnector.Shutdown()
+  fullName: QuartzRestApi.SchedulerConnector.Shutdown()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.Shutdown
+    name: Shutdown
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Shutdown
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.Shutdown
+    name: Shutdown
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Shutdown
+  - name: (
+  - name: )
+- uid: QuartzRestApi.SchedulerConnector.Shutdown(System.Boolean)
+  commentId: M:QuartzRestApi.SchedulerConnector.Shutdown(System.Boolean)
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Shutdown_System_Boolean_
+  name: Shutdown(bool)
+  nameWithType: SchedulerConnector.Shutdown(bool)
+  fullName: QuartzRestApi.SchedulerConnector.Shutdown(bool)
+  nameWithType.vb: SchedulerConnector.Shutdown(Boolean)
+  fullName.vb: QuartzRestApi.SchedulerConnector.Shutdown(Boolean)
+  name.vb: Shutdown(Boolean)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.Shutdown(System.Boolean)
+    name: Shutdown
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Shutdown_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.Shutdown(System.Boolean)
+    name: Shutdown
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Shutdown_System_Boolean_
+  - name: (
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.Shutdown*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.Shutdown
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_Shutdown
+  name: Shutdown
+  nameWithType: ApiKeyProfile.Shutdown
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Shutdown
+- uid: QuartzRestApi.SchedulerConnector.Clear
+  commentId: M:QuartzRestApi.SchedulerConnector.Clear
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Clear
+  name: Clear()
+  nameWithType: SchedulerConnector.Clear()
+  fullName: QuartzRestApi.SchedulerConnector.Clear()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.Clear
+    name: Clear
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.Clear
+    name: Clear
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_Clear
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.Clear*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.Clear
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_Clear
+  name: Clear
+  nameWithType: ApiKeyProfile.Clear
+  fullName: QuartzRestApi.Security.ApiKeyProfile.Clear
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+  commentId: M:QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_JobDetailWithTrigger_
+  name: ScheduleJob(JobDetailWithTrigger)
+  nameWithType: SchedulerConnector.ScheduleJob(JobDetailWithTrigger)
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+    name: ScheduleJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_JobDetailWithTrigger_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobDetailWithTrigger
+    name: JobDetailWithTrigger
+    href: QuartzRestApi.Wrappers.JobDetailWithTrigger.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.JobDetailWithTrigger)
+    name: ScheduleJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_JobDetailWithTrigger_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobDetailWithTrigger
+    name: JobDetailWithTrigger
+    href: QuartzRestApi.Wrappers.JobDetailWithTrigger.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ScheduleJobWithJobDetailAndTrigger
+  name: ScheduleJobWithJobDetailAndTrigger
+  nameWithType: ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTrigger
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+  commentId: M:QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_Trigger_
+  name: ScheduleJob(Trigger)
+  nameWithType: SchedulerConnector.ScheduleJob(Trigger)
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+    name: ScheduleJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_Trigger_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.Trigger
+    name: Trigger
+    href: QuartzRestApi.Wrappers.Trigger.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ScheduleJob(QuartzRestApi.Wrappers.Trigger)
+    name: ScheduleJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJob_QuartzRestApi_Wrappers_Trigger_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.Trigger
+    name: Trigger
+    href: QuartzRestApi.Wrappers.Trigger.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ScheduleJobIdentifiedWithTrigger
+  name: ScheduleJobIdentifiedWithTrigger
+  nameWithType: ApiKeyProfile.ScheduleJobIdentifiedWithTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobIdentifiedWithTrigger
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+  commentId: M:QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobWithTriggers_QuartzRestApi_Wrappers_JobDetailWithTriggers_
+  name: ScheduleJobWithTriggers(JobDetailWithTriggers)
+  nameWithType: SchedulerConnector.ScheduleJobWithTriggers(JobDetailWithTriggers)
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+    name: ScheduleJobWithTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobWithTriggers_QuartzRestApi_Wrappers_JobDetailWithTriggers_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobDetailWithTriggers
+    name: JobDetailWithTriggers
+    href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ScheduleJobWithTriggers(QuartzRestApi.Wrappers.JobDetailWithTriggers)
+    name: ScheduleJobWithTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobWithTriggers_QuartzRestApi_Wrappers_JobDetailWithTriggers_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobDetailWithTriggers
+    name: JobDetailWithTriggers
+    href: QuartzRestApi.Wrappers.JobDetailWithTriggers.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ScheduleJobWithJobDetailAndTriggers
+  name: ScheduleJobWithJobDetailAndTriggers
+  nameWithType: ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobWithJobDetailAndTriggers
+- uid: QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+  commentId: M:QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobs_QuartzRestApi_Wrappers_ScheduleJobs_
+  name: ScheduleJobs(ScheduleJobs)
+  nameWithType: SchedulerConnector.ScheduleJobs(ScheduleJobs)
+  fullName: QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+    name: ScheduleJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobs_QuartzRestApi_Wrappers_ScheduleJobs_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.ScheduleJobs
+    name: ScheduleJobs
+    href: QuartzRestApi.Wrappers.ScheduleJobs.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ScheduleJobs(QuartzRestApi.Wrappers.ScheduleJobs)
+    name: ScheduleJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ScheduleJobs_QuartzRestApi_Wrappers_ScheduleJobs_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.ScheduleJobs
+    name: ScheduleJobs
+    href: QuartzRestApi.Wrappers.ScheduleJobs.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ScheduleJobs
+  name: ScheduleJobs
+  nameWithType: ApiKeyProfile.ScheduleJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ScheduleJobs
+- uid: QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+  commentId: M:QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_RescheduleJob_QuartzRestApi_Wrappers_RescheduleJob_
+  name: RescheduleJob(RescheduleJob)
+  nameWithType: SchedulerConnector.RescheduleJob(RescheduleJob)
+  fullName: QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+    name: RescheduleJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_RescheduleJob_QuartzRestApi_Wrappers_RescheduleJob_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.RescheduleJob
+    name: RescheduleJob
+    href: QuartzRestApi.Wrappers.RescheduleJob.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.RescheduleJob(QuartzRestApi.Wrappers.RescheduleJob)
+    name: RescheduleJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_RescheduleJob_QuartzRestApi_Wrappers_RescheduleJob_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.RescheduleJob
+    name: RescheduleJob
+    href: QuartzRestApi.Wrappers.RescheduleJob.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.RescheduleJob*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.RescheduleJob
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_RescheduleJob
+  name: RescheduleJob
+  nameWithType: ApiKeyProfile.RescheduleJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.RescheduleJob
+- uid: QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJob_QuartzRestApi_Wrappers_TriggerKey_
+  name: UnscheduleJob(TriggerKey)
+  nameWithType: SchedulerConnector.UnscheduleJob(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+    name: UnscheduleJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJob_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.UnscheduleJob(QuartzRestApi.Wrappers.TriggerKey)
+    name: UnscheduleJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJob_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_UnscheduleJob
+  name: UnscheduleJob
+  nameWithType: ApiKeyProfile.UnscheduleJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJob
+- uid: QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+  commentId: M:QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJobs_QuartzRestApi_Wrappers_TriggerKeys_
+  name: UnscheduleJobs(TriggerKeys)
+  nameWithType: SchedulerConnector.UnscheduleJobs(TriggerKeys)
+  fullName: QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+    name: UnscheduleJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJobs_QuartzRestApi_Wrappers_TriggerKeys_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKeys
+    name: TriggerKeys
+    href: QuartzRestApi.Wrappers.TriggerKeys.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.UnscheduleJobs(QuartzRestApi.Wrappers.TriggerKeys)
+    name: UnscheduleJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_UnscheduleJobs_QuartzRestApi_Wrappers_TriggerKeys_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKeys
+    name: TriggerKeys
+    href: QuartzRestApi.Wrappers.TriggerKeys.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_UnscheduleJobs
+  name: UnscheduleJobs
+  nameWithType: ApiKeyProfile.UnscheduleJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.UnscheduleJobs
+- uid: QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)
+  commentId: M:QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddJob_QuartzRestApi_Wrappers_JobDetail_
+  name: AddJob(JobDetail)
+  nameWithType: SchedulerConnector.AddJob(JobDetail)
+  fullName: QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)
+    name: AddJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddJob_QuartzRestApi_Wrappers_JobDetail_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobDetail
+    name: JobDetail
+    href: QuartzRestApi.Wrappers.JobDetail.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.AddJob(QuartzRestApi.Wrappers.JobDetail)
+    name: AddJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddJob_QuartzRestApi_Wrappers_JobDetail_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobDetail
+    name: JobDetail
+    href: QuartzRestApi.Wrappers.JobDetail.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.AddJob*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.AddJob
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_AddJob
+  name: AddJob
+  nameWithType: ApiKeyProfile.AddJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.AddJob
+- uid: QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJob_QuartzRestApi_Wrappers_JobKey_
+  name: DeleteJob(JobKey)
+  nameWithType: SchedulerConnector.DeleteJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)
+    name: DeleteJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.DeleteJob(QuartzRestApi.Wrappers.JobKey)
+    name: DeleteJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.DeleteJob*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.DeleteJob
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_DeleteJob
+  name: DeleteJob
+  nameWithType: ApiKeyProfile.DeleteJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.DeleteJob
+- uid: QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+  commentId: M:QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJobs_QuartzRestApi_Wrappers_JobKeys_
+  name: DeleteJobs(JobKeys)
+  nameWithType: SchedulerConnector.DeleteJobs(JobKeys)
+  fullName: QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+    name: DeleteJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJobs_QuartzRestApi_Wrappers_JobKeys_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKeys
+    name: JobKeys
+    href: QuartzRestApi.Wrappers.JobKeys.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.DeleteJobs(QuartzRestApi.Wrappers.JobKeys)
+    name: DeleteJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteJobs_QuartzRestApi_Wrappers_JobKeys_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKeys
+    name: JobKeys
+    href: QuartzRestApi.Wrappers.JobKeys.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.DeleteJobs*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.DeleteJobs
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_DeleteJobs
+  name: DeleteJobs
+  nameWithType: ApiKeyProfile.DeleteJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.DeleteJobs
+- uid: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKey_
+  name: TriggerJob(JobKey)
+  nameWithType: SchedulerConnector.TriggerJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)
+    name: TriggerJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKey)
+    name: TriggerJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_TriggerJobWithJobkey
+  name: TriggerJobWithJobkey
+  nameWithType: ApiKeyProfile.TriggerJobWithJobkey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithJobkey
+- uid: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+  commentId: M:QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKeyWithDataMap_
+  name: TriggerJob(JobKeyWithDataMap)
+  nameWithType: SchedulerConnector.TriggerJob(JobKeyWithDataMap)
+  fullName: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+    name: TriggerJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKeyWithDataMap_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKeyWithDataMap
+    name: JobKeyWithDataMap
+    href: QuartzRestApi.Wrappers.JobKeyWithDataMap.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.TriggerJob(QuartzRestApi.Wrappers.JobKeyWithDataMap)
+    name: TriggerJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_TriggerJob_QuartzRestApi_Wrappers_JobKeyWithDataMap_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKeyWithDataMap
+    name: JobKeyWithDataMap
+    href: QuartzRestApi.Wrappers.JobKeyWithDataMap.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_TriggerJobWithDataMap
+  name: TriggerJobWithDataMap
+  nameWithType: ApiKeyProfile.TriggerJobWithDataMap
+  fullName: QuartzRestApi.Security.ApiKeyProfile.TriggerJobWithDataMap
+- uid: QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJob_QuartzRestApi_Wrappers_JobKey_
+  name: PauseJob(JobKey)
+  nameWithType: SchedulerConnector.PauseJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)
+    name: PauseJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.PauseJob(QuartzRestApi.Wrappers.JobKey)
+    name: PauseJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseJob*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.PauseJob
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_PauseJob
+  name: PauseJob
+  nameWithType: ApiKeyProfile.PauseJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseJob
+- uid: QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  name: PauseJobs(GroupMatcher<JobKey>)
+  nameWithType: SchedulerConnector.PauseJobs(GroupMatcher<JobKey>)
+  fullName: QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher<Quartz.JobKey>)
+  nameWithType.vb: SchedulerConnector.PauseJobs(GroupMatcher(Of JobKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.JobKey))
+  name.vb: PauseJobs(GroupMatcher(Of JobKey))
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+    name: PauseJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - uid: Quartz.JobKey
+    name: JobKey
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.PauseJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+    name: PauseJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Quartz.JobKey
+    name: JobKey
+    isExternal: true
+  - name: )
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseJobs*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.PauseJobs
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_PauseJobs
+  name: PauseJobs
+  nameWithType: ApiKeyProfile.PauseJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseJobs
+- uid: QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  name: PauseTrigger(TriggerKey)
+  nameWithType: SchedulerConnector.PauseTrigger(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+    name: PauseTrigger
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.PauseTrigger(QuartzRestApi.Wrappers.TriggerKey)
+    name: PauseTrigger
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseTrigger*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.PauseTrigger
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_PauseTrigger
+  name: PauseTrigger
+  nameWithType: ApiKeyProfile.PauseTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseTrigger
+- uid: QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  name: PauseTriggers(GroupMatcher<TriggerKey>)
+  nameWithType: SchedulerConnector.PauseTriggers(GroupMatcher<TriggerKey>)
+  fullName: QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher<Quartz.TriggerKey>)
+  nameWithType.vb: SchedulerConnector.PauseTriggers(GroupMatcher(Of TriggerKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.TriggerKey))
+  name.vb: PauseTriggers(GroupMatcher(Of TriggerKey))
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+    name: PauseTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - uid: Quartz.TriggerKey
+    name: TriggerKey
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.PauseTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+    name: PauseTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Quartz.TriggerKey
+    name: TriggerKey
+    isExternal: true
+  - name: )
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseTriggers*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.PauseTriggers
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_PauseTriggers
+  name: PauseTriggers
+  nameWithType: ApiKeyProfile.PauseTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseTriggers
+- uid: QuartzRestApi.SchedulerConnector.PauseAllTriggers
+  commentId: M:QuartzRestApi.SchedulerConnector.PauseAllTriggers
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseAllTriggers
+  name: PauseAllTriggers()
+  nameWithType: SchedulerConnector.PauseAllTriggers()
+  fullName: QuartzRestApi.SchedulerConnector.PauseAllTriggers()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.PauseAllTriggers
+    name: PauseAllTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseAllTriggers
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.PauseAllTriggers
+    name: PauseAllTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_PauseAllTriggers
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_PauseAllTriggers
+  name: PauseAllTriggers
+  nameWithType: ApiKeyProfile.PauseAllTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.PauseAllTriggers
+- uid: QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJob_QuartzRestApi_Wrappers_JobKey_
+  name: ResumeJob(JobKey)
+  nameWithType: SchedulerConnector.ResumeJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)
+    name: ResumeJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeJob(QuartzRestApi.Wrappers.JobKey)
+    name: ResumeJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeJob*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ResumeJob
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ResumeJob
+  name: ResumeJob
+  nameWithType: ApiKeyProfile.ResumeJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeJob
+- uid: QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  name: ResumeJobs(GroupMatcher<JobKey>)
+  nameWithType: SchedulerConnector.ResumeJobs(GroupMatcher<JobKey>)
+  fullName: QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher<Quartz.JobKey>)
+  nameWithType.vb: SchedulerConnector.ResumeJobs(GroupMatcher(Of JobKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.JobKey))
+  name.vb: ResumeJobs(GroupMatcher(Of JobKey))
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+    name: ResumeJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - uid: Quartz.JobKey
+    name: JobKey
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeJobs(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+    name: ResumeJobs
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeJobs_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Quartz.JobKey
+    name: JobKey
+    isExternal: true
+  - name: )
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeJobs*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ResumeJobs
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ResumeJobs
+  name: ResumeJobs
+  nameWithType: ApiKeyProfile.ResumeJobs
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeJobs
+- uid: QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  name: ResumeTrigger(TriggerKey)
+  nameWithType: SchedulerConnector.ResumeTrigger(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+    name: ResumeTrigger
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeTrigger(QuartzRestApi.Wrappers.TriggerKey)
+    name: ResumeTrigger
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ResumeTrigger
+  name: ResumeTrigger
+  nameWithType: ApiKeyProfile.ResumeTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeTrigger
+- uid: QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  name: ResumeTriggers(GroupMatcher<TriggerKey>)
+  nameWithType: SchedulerConnector.ResumeTriggers(GroupMatcher<TriggerKey>)
+  fullName: QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher<Quartz.TriggerKey>)
+  nameWithType.vb: SchedulerConnector.ResumeTriggers(GroupMatcher(Of TriggerKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.TriggerKey))
+  name.vb: ResumeTriggers(GroupMatcher(Of TriggerKey))
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+    name: ResumeTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - uid: Quartz.TriggerKey
+    name: TriggerKey
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeTriggers(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+    name: ResumeTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeTriggers_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Quartz.TriggerKey
+    name: TriggerKey
+    isExternal: true
+  - name: )
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ResumeTriggers
+  name: ResumeTriggers
+  nameWithType: ApiKeyProfile.ResumeTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeTriggers
+- uid: QuartzRestApi.SchedulerConnector.ResumeAllTriggers
+  commentId: M:QuartzRestApi.SchedulerConnector.ResumeAllTriggers
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeAllTriggers
+  name: ResumeAllTriggers()
+  nameWithType: SchedulerConnector.ResumeAllTriggers()
+  fullName: QuartzRestApi.SchedulerConnector.ResumeAllTriggers()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeAllTriggers
+    name: ResumeAllTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeAllTriggers
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ResumeAllTriggers
+    name: ResumeAllTriggers
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResumeAllTriggers
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ResumeAllTriggers
+  name: ResumeAllTriggers
+  nameWithType: ApiKeyProfile.ResumeAllTriggers
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResumeAllTriggers
+- uid: QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  name: GetJobKeys(GroupMatcher<JobKey>)
+  nameWithType: SchedulerConnector.GetJobKeys(GroupMatcher<JobKey>)
+  fullName: QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher<Quartz.JobKey>)
+  nameWithType.vb: SchedulerConnector.GetJobKeys(GroupMatcher(Of JobKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.JobKey))
+  name.vb: GetJobKeys(GroupMatcher(Of JobKey))
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+    name: GetJobKeys
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - uid: Quartz.JobKey
+    name: JobKey
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetJobKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.JobKey})
+    name: GetJobKeys
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_JobKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Quartz.JobKey
+    name: JobKey
+    isExternal: true
+  - name: )
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetJobKeys*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetJobKeys
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetJobKeys
+  name: GetJobKeys
+  nameWithType: ApiKeyProfile.GetJobKeys
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetJobKeys
+- uid: QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  name: GetTriggerKeys(GroupMatcher<TriggerKey>)
+  nameWithType: SchedulerConnector.GetTriggerKeys(GroupMatcher<TriggerKey>)
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher<Quartz.TriggerKey>)
+  nameWithType.vb: SchedulerConnector.GetTriggerKeys(GroupMatcher(Of TriggerKey))
+  fullName.vb: QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher(Of Quartz.TriggerKey))
+  name.vb: GetTriggerKeys(GroupMatcher(Of TriggerKey))
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+    name: GetTriggerKeys
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: <
+  - uid: Quartz.TriggerKey
+    name: TriggerKey
+    isExternal: true
+  - name: '>'
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetTriggerKeys(QuartzRestApi.Wrappers.GroupMatcher{Quartz.TriggerKey})
+    name: GetTriggerKeys
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerKeys_QuartzRestApi_Wrappers_GroupMatcher_Quartz_TriggerKey__
+  - name: (
+  - uid: QuartzRestApi.Wrappers.GroupMatcher`1
+    name: GroupMatcher
+    href: QuartzRestApi.Wrappers.GroupMatcher-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Quartz.TriggerKey
+    name: TriggerKey
+    isExternal: true
+  - name: )
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetTriggerKeys
+  name: GetTriggerKeys
+  nameWithType: ApiKeyProfile.GetTriggerKeys
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTriggerKeys
+- uid: QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggersOfJob_QuartzRestApi_Wrappers_JobKey_
+  name: GetTriggersOfJob(JobKey)
+  nameWithType: SchedulerConnector.GetTriggersOfJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+    name: GetTriggersOfJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggersOfJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetTriggersOfJob(QuartzRestApi.Wrappers.JobKey)
+    name: GetTriggersOfJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggersOfJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetTriggersOfJob
+  name: GetTriggersOfJob
+  nameWithType: ApiKeyProfile.GetTriggersOfJob
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTriggersOfJob
+- uid: QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobDetail_QuartzRestApi_Wrappers_JobKey_
+  name: GetJobDetail(JobKey)
+  nameWithType: SchedulerConnector.GetJobDetail(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+    name: GetJobDetail
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobDetail_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetJobDetail(QuartzRestApi.Wrappers.JobKey)
+    name: GetJobDetail
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetJobDetail_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetJobDetail*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetJobDetail
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetJobDetail
+  name: GetJobDetail
+  nameWithType: ApiKeyProfile.GetJobDetail
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetJobDetail
+- uid: QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  name: GetTrigger(TriggerKey)
+  nameWithType: SchedulerConnector.GetTrigger(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+    name: GetTrigger
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetTrigger(QuartzRestApi.Wrappers.TriggerKey)
+    name: GetTrigger
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTrigger_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTrigger*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetTrigger
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetTrigger
+  name: GetTrigger
+  nameWithType: ApiKeyProfile.GetTrigger
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTrigger
+- uid: QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerState_QuartzRestApi_Wrappers_TriggerKey_
+  name: GetTriggerState(TriggerKey)
+  nameWithType: SchedulerConnector.GetTriggerState(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+    name: GetTriggerState
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerState_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetTriggerState(QuartzRestApi.Wrappers.TriggerKey)
+    name: GetTriggerState
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetTriggerState_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetTriggerState*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetTriggerState
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetTriggerState
+  name: GetTriggerState
+  nameWithType: ApiKeyProfile.GetTriggerState
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetTriggerState
+- uid: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_JobKey_
+  name: CheckExists(JobKey)
+  nameWithType: SchedulerConnector.CheckExists(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)
+    name: CheckExists
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.JobKey)
+    name: CheckExists
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_CheckExistsJobKey
+  name: CheckExistsJobKey
+  nameWithType: ApiKeyProfile.CheckExistsJobKey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.CheckExistsJobKey
+- uid: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_TriggerKey_
+  name: CheckExists(TriggerKey)
+  nameWithType: SchedulerConnector.CheckExists(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+    name: CheckExists
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.CheckExists(QuartzRestApi.Wrappers.TriggerKey)
+    name: CheckExists
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_CheckExists_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_CheckExistsTriggerKey
+  name: CheckExistsTriggerKey
+  nameWithType: ApiKeyProfile.CheckExistsTriggerKey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.CheckExistsTriggerKey
+- uid: QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InterruptJob_QuartzRestApi_Wrappers_JobKey_
+  name: InterruptJob(JobKey)
+  nameWithType: SchedulerConnector.InterruptJob(JobKey)
+  fullName: QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)
+    name: InterruptJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InterruptJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.InterruptJob(QuartzRestApi.Wrappers.JobKey)
+    name: InterruptJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InterruptJob_QuartzRestApi_Wrappers_JobKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.JobKey
+    name: JobKey
+    href: QuartzRestApi.Wrappers.JobKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_InterruptJobKey
+  name: InterruptJobKey
+  nameWithType: ApiKeyProfile.InterruptJobKey
+  fullName: QuartzRestApi.Security.ApiKeyProfile.InterruptJobKey
+- uid: QuartzRestApi.SchedulerConnector.InterruptJob(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.InterruptJob(System.String)
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InterruptJob_System_String_
+  name: InterruptJob(string)
+  nameWithType: SchedulerConnector.InterruptJob(string)
+  fullName: QuartzRestApi.SchedulerConnector.InterruptJob(string)
+  nameWithType.vb: SchedulerConnector.InterruptJob(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.InterruptJob(String)
+  name.vb: InterruptJob(String)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.InterruptJob(System.String)
+    name: InterruptJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InterruptJob_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.InterruptJob(System.String)
+    name: InterruptJob
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_InterruptJob_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_InterruptFireInstanceId
+  name: InterruptFireInstanceId
+  nameWithType: ApiKeyProfile.InterruptFireInstanceId
+  fullName: QuartzRestApi.Security.ApiKeyProfile.InterruptFireInstanceId
+- uid: QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+  commentId: M:QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddCalendar_QuartzRestApi_Wrappers_Calendars_BaseCalendar_
+  name: AddCalendar(BaseCalendar)
+  nameWithType: SchedulerConnector.AddCalendar(BaseCalendar)
+  fullName: QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+    name: AddCalendar
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddCalendar_QuartzRestApi_Wrappers_Calendars_BaseCalendar_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.Calendars.BaseCalendar
+    name: BaseCalendar
+    href: QuartzRestApi.Wrappers.Calendars.BaseCalendar.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.AddCalendar(QuartzRestApi.Wrappers.Calendars.BaseCalendar)
+    name: AddCalendar
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_AddCalendar_QuartzRestApi_Wrappers_Calendars_BaseCalendar_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.Calendars.BaseCalendar
+    name: BaseCalendar
+    href: QuartzRestApi.Wrappers.Calendars.BaseCalendar.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.AddCalendar*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.AddCalendar
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_AddCalendar
+  name: AddCalendar
+  nameWithType: ApiKeyProfile.AddCalendar
+  fullName: QuartzRestApi.Security.ApiKeyProfile.AddCalendar
+- uid: QuartzRestApi.SchedulerConnector.DeleteCalendar(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.DeleteCalendar(System.String)
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteCalendar_System_String_
+  name: DeleteCalendar(string)
+  nameWithType: SchedulerConnector.DeleteCalendar(string)
+  fullName: QuartzRestApi.SchedulerConnector.DeleteCalendar(string)
+  nameWithType.vb: SchedulerConnector.DeleteCalendar(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.DeleteCalendar(String)
+  name.vb: DeleteCalendar(String)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.DeleteCalendar(System.String)
+    name: DeleteCalendar
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteCalendar_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.DeleteCalendar(System.String)
+    name: DeleteCalendar
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_DeleteCalendar_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_DeleteCalendar
+  name: DeleteCalendar
+  nameWithType: ApiKeyProfile.DeleteCalendar
+  fullName: QuartzRestApi.Security.ApiKeyProfile.DeleteCalendar
+- uid: QuartzRestApi.SchedulerConnector.GetCalendar(System.String)
+  commentId: M:QuartzRestApi.SchedulerConnector.GetCalendar(System.String)
+  isExternal: true
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendar_System_String_
+  name: GetCalendar(string)
+  nameWithType: SchedulerConnector.GetCalendar(string)
+  fullName: QuartzRestApi.SchedulerConnector.GetCalendar(string)
+  nameWithType.vb: SchedulerConnector.GetCalendar(String)
+  fullName.vb: QuartzRestApi.SchedulerConnector.GetCalendar(String)
+  name.vb: GetCalendar(String)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetCalendar(System.String)
+    name: GetCalendar
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendar_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetCalendar(System.String)
+    name: GetCalendar
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendar_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetCalendar*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetCalendar
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetCalendar
+  name: GetCalendar
+  nameWithType: ApiKeyProfile.GetCalendar
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetCalendar
+- uid: QuartzRestApi.SchedulerConnector.GetCalendarNames
+  commentId: M:QuartzRestApi.SchedulerConnector.GetCalendarNames
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendarNames
+  name: GetCalendarNames()
+  nameWithType: SchedulerConnector.GetCalendarNames()
+  fullName: QuartzRestApi.SchedulerConnector.GetCalendarNames()
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.GetCalendarNames
+    name: GetCalendarNames
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendarNames
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.GetCalendarNames
+    name: GetCalendarNames
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_GetCalendarNames
+  - name: (
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_GetCalendarNames
+  name: GetCalendarNames
+  nameWithType: ApiKeyProfile.GetCalendarNames
+  fullName: QuartzRestApi.Security.ApiKeyProfile.GetCalendarNames
+- uid: QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+  commentId: M:QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+  href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResetTriggerFromErrorState_QuartzRestApi_Wrappers_TriggerKey_
+  name: ResetTriggerFromErrorState(TriggerKey)
+  nameWithType: SchedulerConnector.ResetTriggerFromErrorState(TriggerKey)
+  fullName: QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+  spec.csharp:
+  - uid: QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+    name: ResetTriggerFromErrorState
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResetTriggerFromErrorState_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+  spec.vb:
+  - uid: QuartzRestApi.SchedulerConnector.ResetTriggerFromErrorState(QuartzRestApi.Wrappers.TriggerKey)
+    name: ResetTriggerFromErrorState
+    href: QuartzRestApi.SchedulerConnector.html#QuartzRestApi_SchedulerConnector_ResetTriggerFromErrorState_QuartzRestApi_Wrappers_TriggerKey_
+  - name: (
+  - uid: QuartzRestApi.Wrappers.TriggerKey
+    name: TriggerKey
+    href: QuartzRestApi.Wrappers.TriggerKey.html
+  - name: )
+- uid: QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ResetTriggerFromErrorState
+  name: ResetTriggerFromErrorState
+  nameWithType: ApiKeyProfile.ResetTriggerFromErrorState
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ResetTriggerFromErrorState
+- uid: QuartzRestApi.Security.ApiKeyProfile.#ctor*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.#ctor
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile__ctor
+  name: ApiKeyProfile
+  nameWithType: ApiKeyProfile.ApiKeyProfile
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ApiKeyProfile
+  nameWithType.vb: ApiKeyProfile.New
+  fullName.vb: QuartzRestApi.Security.ApiKeyProfile.New
+  name.vb: New
+- uid: QuartzRestApi.Security.ApiKeyProfile
+  commentId: T:QuartzRestApi.Security.ApiKeyProfile
+  parent: QuartzRestApi.Security
+  href: QuartzRestApi.Security.ApiKeyProfile.html
+  name: ApiKeyProfile
+  nameWithType: ApiKeyProfile
+  fullName: QuartzRestApi.Security.ApiKeyProfile
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: QuartzRestApi.Security.ApiKeyProfile.AllowAll*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.AllowAll
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_AllowAll_System_String_System_String_
+  name: AllowAll
+  nameWithType: ApiKeyProfile.AllowAll
+  fullName: QuartzRestApi.Security.ApiKeyProfile.AllowAll
+- uid: QuartzRestApi.Security.ApiKeyProfile.DenyAll*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.DenyAll
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_DenyAll_System_String_System_String_
+  name: DenyAll
+  nameWithType: ApiKeyProfile.DenyAll
+  fullName: QuartzRestApi.Security.ApiKeyProfile.DenyAll
+- uid: QuartzRestApi.Security.ApiKeyProfile.ToJson*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.ToJson
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_ToJson
+  name: ToJson
+  nameWithType: ApiKeyProfile.ToJson
+  fullName: QuartzRestApi.Security.ApiKeyProfile.ToJson
+- uid: System.Text.Json.JsonException
+  commentId: T:System.Text.Json.JsonException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.text.json.jsonexception
+  name: JsonException
+  nameWithType: JsonException
+  fullName: System.Text.Json.JsonException
+- uid: QuartzRestApi.Security.ApiKeyProfile.FromJson*
+  commentId: Overload:QuartzRestApi.Security.ApiKeyProfile.FromJson
+  href: QuartzRestApi.Security.ApiKeyProfile.html#QuartzRestApi_Security_ApiKeyProfile_FromJson_System_String_
+  name: FromJson
+  nameWithType: ApiKeyProfile.FromJson
+  fullName: QuartzRestApi.Security.ApiKeyProfile.FromJson

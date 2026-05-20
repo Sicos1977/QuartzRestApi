@@ -1,0 +1,692 @@
+{
+  "sitemap": {
+    "baseUrl": "https://sicos1977.github.io/QuartzRestApi/"
+  },
+  "source_base_path": "C:/Kees/QuartzRestApi/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "api-reference.html",
+      "output": {
+        "resource": {
+          "relative_path": "api-reference.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Controllers.SchedulerController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Controllers.SchedulerController.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Controllers.SchedulerController",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Controllers.SchedulerController.yml\" sourcestartlinenumber=\"1\">Provides endpoints for managing and monitoring a Quartz.NET IScheduler instance. This controller exposes various\noperations such as checking the status of job and trigger groups, retrieving scheduler metadata, and managing jobs and triggers.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Controllers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Controllers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Controllers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Loggers.Console.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Loggers.Console.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Loggers.Console",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Loggers.Console.yml\" sourcestartlinenumber=\"1\">Writes log information to the console</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Loggers.File.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Loggers.File.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Loggers.File",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Loggers.File.yml\" sourcestartlinenumber=\"1\">Writes log information to a file</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Loggers.Stream.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Loggers.Stream.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Loggers.Stream",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Loggers.Stream.yml\" sourcestartlinenumber=\"1\">Writes log information to a stream</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Loggers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Loggers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Loggers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.SchedulerConnector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.SchedulerConnector.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.SchedulerConnector",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.SchedulerConnector.yml\" sourcestartlinenumber=\"1\">Connects to the <xref href=\"QuartzRestApi.SchedulerHost\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.SchedulerHost.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.SchedulerHost.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.SchedulerHost",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.SchedulerHost.yml\" sourcestartlinenumber=\"1\">Hosts a self-contained REST API for managing and monitoring a Quartz.NET scheduler, providing endpoints for\nscheduling operations and status queries. Supports optional API key authentication and structured logging\nintegration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Security.ApiKeyProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Security.ApiKeyProfile.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Security.ApiKeyProfile",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Security.ApiKeyProfile.yml\" sourcestartlinenumber=\"1\">Represents a named API key profile that controls which Scheduler endpoints\nthe bearer of <xref href=\"QuartzRestApi.Security.ApiKeyProfile.ApiKey\" data-throw-if-not-resolved=\"false\"></xref> is allowed to call.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Security.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Security.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Security",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Calendars.AnnualCalendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Calendars.AnnualCalendar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Calendars.AnnualCalendar",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Calendars.AnnualCalendar.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.Impl.Calendar.AnnualCalendar\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Calendars.BaseCalendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Calendars.BaseCalendar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Calendars.BaseCalendar",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Calendars.BaseCalendar.yml\" sourcestartlinenumber=\"1\">The base calendar for all calendars</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Calendars.CalendarType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Calendars.CalendarType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Calendars.CalendarType",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Calendars.CronCalendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Calendars.CronCalendar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Calendars.CronCalendar",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Calendars.CronCalendar.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.Impl.Calendar.CronCalendar\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Calendars.DailyCalendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Calendars.DailyCalendar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Calendars.DailyCalendar",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Calendars.DailyCalendar.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.Impl.Calendar.DailyCalendar\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Calendars.HolidayCalendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Calendars.HolidayCalendar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Calendars.HolidayCalendar",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Calendars.HolidayCalendar.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.Impl.Calendar.HolidayCalendar\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Calendars.MonthlyCalendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Calendars.MonthlyCalendar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Calendars.MonthlyCalendar",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Calendars.MonthlyCalendar.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.Impl.Calendar.MonthlyCalendar\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Calendars.WeeklyCalendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Calendars.WeeklyCalendar.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Calendars.WeeklyCalendar",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Calendars.WeeklyCalendar.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.ICalendar\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Calendars.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Calendars.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Calendars",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.GroupMatcher-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.GroupMatcher-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.GroupMatcher<T>",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.GroupMatcher-1.yml\" sourcestartlinenumber=\"1\">Json wrapper for the Quartz <xref href=\"Quartz.Impl.Matchers.GroupMatcher%601\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.GroupMatcherType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.GroupMatcherType.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.GroupMatcherType",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.GroupMatcherType.yml\" sourcestartlinenumber=\"1\">The matching type</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.JobDetail.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.JobDetail.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.JobDetail",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.JobDetail.yml\" sourcestartlinenumber=\"1\">Json wrapper for the Quartz <xref href=\"Quartz.IJobDetail\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.JobDetailWithTrigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.JobDetailWithTrigger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.JobDetailWithTrigger",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.JobDetailWithTrigger.yml\" sourcestartlinenumber=\"1\">Json wrapper to create a <xref href=\"Quartz.IJob\" data-throw-if-not-resolved=\"false\"></xref> with a <xref href=\"Quartz.ITrigger\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.JobDetailWithTriggers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.JobDetailWithTriggers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.JobDetailWithTriggers",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.JobDetailWithTriggers.yml\" sourcestartlinenumber=\"1\">Json wrapper to create a <xref href=\"Quartz.IJob\" data-throw-if-not-resolved=\"false\"></xref> with a list of <xref href=\"Quartz.ITrigger\" data-throw-if-not-resolved=\"false\"></xref>s</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.JobExecutionContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.JobExecutionContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.JobExecutionContext",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.JobExecutionContext.yml\" sourcestartlinenumber=\"1\">Json wrapper for the Quartz <xref href=\"Quartz.IJobExecutionContext\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.JobExecutionContexts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.JobExecutionContexts.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.JobExecutionContexts",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.JobExecutionContexts.yml\" sourcestartlinenumber=\"1\">Json wrapper for a list of Quartz <xref href=\"Quartz.IJobExecutionContext\" data-throw-if-not-resolved=\"false\"></xref>s</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.JobKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.JobKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.JobKey",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.JobKey.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.JobKey\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.JobKeyWithDataMap.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.JobKeyWithDataMap.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.JobKeyWithDataMap",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.JobKeyWithDataMap.yml\" sourcestartlinenumber=\"1\">Json wrapper to create a <xref href=\"Quartz.JobKey\" data-throw-if-not-resolved=\"false\"></xref> with a <xref href=\"Quartz.JobDataMap\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.JobKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.JobKeys.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.JobKeys",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.JobKeys.yml\" sourcestartlinenumber=\"1\">A list of <xref href=\"Quartz.JobKey\" data-throw-if-not-resolved=\"false\"></xref>s</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Key.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Key.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Key",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Key.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.TriggerKey\" data-throw-if-not-resolved=\"false\"></xref> or <xref href=\"Quartz.JobKey\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.RescheduleJob.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.RescheduleJob.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.RescheduleJob",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.RescheduleJob.yml\" sourcestartlinenumber=\"1\">Class used to read or create json to reschedule a job</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.RunningJobs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.RunningJobs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.RunningJobs",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.ScheduleJobs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.ScheduleJobs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.ScheduleJobs",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.ScheduleJobs.yml\" sourcestartlinenumber=\"1\">Json wrapper to schedule multiple <xref href=\"Quartz.IJob\" data-throw-if-not-resolved=\"false\"></xref>s each with their own set of <xref href=\"Quartz.ITrigger\" data-throw-if-not-resolved=\"false\"></xref>s.\nMaps to <xref href=\"Quartz.IScheduler.ScheduleJobs(System.Collections.Generic.IReadOnlyDictionary%7bQuartz.IJobDetail%2cSystem.Collections.Generic.IReadOnlyCollection%7bQuartz.ITrigger%7d%7d%2cSystem.Boolean%2cSystem.Threading.CancellationToken)\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.SchedulerContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.SchedulerContext.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.SchedulerContext",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.SchedulerContext.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.SchedulerContext\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.SchedulerMetaData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.SchedulerMetaData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.SchedulerMetaData",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.SchedulerMetaData.yml\" sourcestartlinenumber=\"1\">Class used to read or create json to get the schedulers meta-data</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Trigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Trigger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Trigger",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Trigger.yml\" sourcestartlinenumber=\"1\">Class used to create or read json to get a trigger with a job key and data map</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.TriggerKey.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.TriggerKey.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.TriggerKey",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.TriggerKey.yml\" sourcestartlinenumber=\"1\">A json wrapper for the <xref href=\"Quartz.TriggerKey\" data-throw-if-not-resolved=\"false\"></xref></p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.TriggerKeys.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.TriggerKeys.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.TriggerKeys",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.Triggers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.Triggers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers.Triggers",
+      "Summary": "<p sourcefile=\"api/QuartzRestApi.Wrappers.Triggers.yml\" sourcestartlinenumber=\"1\">A list of <xref href=\"Quartz.ITrigger\" data-throw-if-not-resolved=\"false\"></xref>s</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.Wrappers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.Wrappers.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi.Wrappers",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/QuartzRestApi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/QuartzRestApi.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "QuartzRestApi",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "docfx.json",
+      "output": {
+        "resource": {
+          "relative_path": "docfx.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "openapi.json",
+      "output": {
+        "resource": {
+          "relative_path": "openapi.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

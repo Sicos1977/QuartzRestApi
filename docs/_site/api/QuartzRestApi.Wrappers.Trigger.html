@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Trigger | QuartzRestApi </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Trigger | QuartzRestApi ">
+      
+      <meta name="description" content="Class used to create or read json to get a trigger with a job key and data map">
+      <link rel="icon" href="../images/favicon.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="https://github.com/Sicos1977/QuartzRestApi">
+            <img id="logo" class="svg" src="../images/logo.png" alt="QuartzRestApi">
+            QuartzRestApi
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+          <a class="btn btn-sm ms-2" href="https://github.com/Sicos1977/QuartzRestApi" title="View on GitHub" target="_blank" rel="noopener noreferrer" style="color: inherit;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewbox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="QuartzRestApi.Wrappers.Trigger">
+
+
+
+  <h1 id="QuartzRestApi_Wrappers_Trigger" data-uid="QuartzRestApi.Wrappers.Trigger" class="text-break">
+Class Trigger  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="QuartzRestApi.html">QuartzRestApi</a>.<a class="xref" href="QuartzRestApi.Wrappers.html">Wrappers</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>QuartzRestApi.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Class used to create or read json to get a trigger with a job key and data map</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Trigger : JobKeyWithDataMap</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="QuartzRestApi.Wrappers.JobKeyWithDataMap.html">JobKeyWithDataMap</a></div>
+      <div><span class="xref">Trigger</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="QuartzRestApi.Wrappers.JobKeyWithDataMap.html#QuartzRestApi_Wrappers_JobKeyWithDataMap_JobKey">JobKeyWithDataMap.JobKey</a>
+    </div>
+    <div>
+      <a class="xref" href="QuartzRestApi.Wrappers.JobKeyWithDataMap.html#QuartzRestApi_Wrappers_JobKeyWithDataMap_JobDataMap">JobKeyWithDataMap.JobDataMap</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger__ctor_" data-uid="QuartzRestApi.Wrappers.Trigger.#ctor*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger__ctor_Quartz_ITrigger_" data-uid="QuartzRestApi.Wrappers.Trigger.#ctor(Quartz.ITrigger)">
+  Trigger(ITrigger)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Makes this object and sets all it's needed properties</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Trigger(ITrigger trigger)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>trigger</code> <span class="xref">ITrigger</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger__ctor_" data-uid="QuartzRestApi.Wrappers.Trigger.#ctor*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger__ctor_QuartzRestApi_Wrappers_TriggerKey_System_String_System_String_System_String_System_Nullable_System_DateTimeOffset__System_Nullable_System_DateTimeOffset__System_DateTimeOffset_System_Nullable_System_DateTimeOffset__System_Nullable_System_DateTimeOffset__System_Int32_QuartzRestApi_Wrappers_JobKey_Quartz_JobDataMap_" data-uid="QuartzRestApi.Wrappers.Trigger.#ctor(QuartzRestApi.Wrappers.TriggerKey,System.String,System.String,System.String,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.DateTimeOffset,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset},System.Int32,QuartzRestApi.Wrappers.JobKey,Quartz.JobDataMap)">
+  Trigger(TriggerKey, string, string, string, DateTimeOffset?, DateTimeOffset?, DateTimeOffset, DateTimeOffset?, DateTimeOffset?, int, JobKey, JobDataMap)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Makes this object and sets all it's needed properties</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Trigger(TriggerKey triggerKey, string description, string calendarName, string cronSchedule, DateTimeOffset? nextFireTimeUtc, DateTimeOffset? previousFireTimeUtc, DateTimeOffset startTimeUtc, DateTimeOffset? endTimeUtc, DateTimeOffset? finalFireTimeUtc, int priority, JobKey jobKey, JobDataMap jobDataMap)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>triggerKey</code> <a class="xref" href="QuartzRestApi.Wrappers.TriggerKey.html">TriggerKey</a></dt>
+    <dd><p>The <a class="xref" href="QuartzRestApi.Wrappers.Trigger.html#QuartzRestApi_Wrappers_Trigger_TriggerKey">TriggerKey</a></p>
+</dd>
+    <dt><code>description</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A description for the <a class="xref" href="QuartzRestApi.Wrappers.Trigger.html">Trigger</a></p>
+</dd>
+    <dt><code>calendarName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The name of the calendar to use or <code>null</code> when not</p>
+</dd>
+    <dt><code>cronSchedule</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The cron schedule</p>
+</dd>
+    <dt><code>nextFireTimeUtc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>The next fire time in UTC format</p>
+</dd>
+    <dt><code>previousFireTimeUtc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>The previous fire time in UTC format</p>
+</dd>
+    <dt><code>startTimeUtc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd><p>The start time in UTC format</p>
+</dd>
+    <dt><code>endTimeUtc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>The end time in UTC format</p>
+</dd>
+    <dt><code>finalFireTimeUtc</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd><p>The final fire time in UTC format</p>
+</dd>
+    <dt><code>priority</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The priority</p>
+</dd>
+    <dt><code>jobKey</code> <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></dt>
+    <dd><p>The <a class="xref" href="QuartzRestApi.Wrappers.JobKey.html">JobKey</a></p>
+</dd>
+    <dt><code>jobDataMap</code> <span class="xref">JobDataMap</span></dt>
+    <dd><p>The <span class="xref">Quartz.JobDataMap</span></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_CalendarName_" data-uid="QuartzRestApi.Wrappers.Trigger.CalendarName*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_CalendarName" data-uid="QuartzRestApi.Wrappers.Trigger.CalendarName">
+  CalendarName
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The name of the calendar to use or <code>null</code> when not</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;CalendarName&quot;)]
+public string CalendarName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_CronSchedule_" data-uid="QuartzRestApi.Wrappers.Trigger.CronSchedule*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_CronSchedule" data-uid="QuartzRestApi.Wrappers.Trigger.CronSchedule">
+  CronSchedule
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The cron schedule</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;CronSchedule&quot;)]
+public string CronSchedule { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_Description_" data-uid="QuartzRestApi.Wrappers.Trigger.Description*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_Description" data-uid="QuartzRestApi.Wrappers.Trigger.Description">
+  Description
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>A description for the <a class="xref" href="QuartzRestApi.Wrappers.Trigger.html">Trigger</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;Description&quot;)]
+public string Description { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_EndTimeUtc_" data-uid="QuartzRestApi.Wrappers.Trigger.EndTimeUtc*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_EndTimeUtc" data-uid="QuartzRestApi.Wrappers.Trigger.EndTimeUtc">
+  EndTimeUtc
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The end time in UTC format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;EndTimeUtc&quot;)]
+public DateTimeOffset? EndTimeUtc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_FinalFireTimeUtc_" data-uid="QuartzRestApi.Wrappers.Trigger.FinalFireTimeUtc*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_FinalFireTimeUtc" data-uid="QuartzRestApi.Wrappers.Trigger.FinalFireTimeUtc">
+  FinalFireTimeUtc
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The final fire time in UTC format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;FinalFireTimeUtc&quot;)]
+public DateTimeOffset? FinalFireTimeUtc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_HasMillisecondPrecision_" data-uid="QuartzRestApi.Wrappers.Trigger.HasMillisecondPrecision*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_HasMillisecondPrecision" data-uid="QuartzRestApi.Wrappers.Trigger.HasMillisecondPrecision">
+  HasMillisecondPrecision
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns <code>true</code> when it has millisecond precision</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;HasMillisecondPrecision&quot;)]
+public bool HasMillisecondPrecision { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_NextFireTimeUtc_" data-uid="QuartzRestApi.Wrappers.Trigger.NextFireTimeUtc*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_NextFireTimeUtc" data-uid="QuartzRestApi.Wrappers.Trigger.NextFireTimeUtc">
+  NextFireTimeUtc
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The next fire time in UTC format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;NextFireTimeUtc&quot;)]
+public DateTimeOffset? NextFireTimeUtc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_PreviousFireTimeUtc_" data-uid="QuartzRestApi.Wrappers.Trigger.PreviousFireTimeUtc*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_PreviousFireTimeUtc" data-uid="QuartzRestApi.Wrappers.Trigger.PreviousFireTimeUtc">
+  PreviousFireTimeUtc
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The previous fire time in UTC format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;PreviousFireTimeUtc&quot;)]
+public DateTimeOffset? PreviousFireTimeUtc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_Priority_" data-uid="QuartzRestApi.Wrappers.Trigger.Priority*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_Priority" data-uid="QuartzRestApi.Wrappers.Trigger.Priority">
+  Priority
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The priority</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;Priority&quot;)]
+public int Priority { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_StartTimeUtc_" data-uid="QuartzRestApi.Wrappers.Trigger.StartTimeUtc*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_StartTimeUtc" data-uid="QuartzRestApi.Wrappers.Trigger.StartTimeUtc">
+  StartTimeUtc
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The start time in UTC format</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;StartTimeUtc&quot;)]
+public DateTimeOffset StartTimeUtc { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_TriggerKey_" data-uid="QuartzRestApi.Wrappers.Trigger.TriggerKey*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_TriggerKey" data-uid="QuartzRestApi.Wrappers.Trigger.TriggerKey">
+  TriggerKey
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>The <a class="xref" href="QuartzRestApi.Wrappers.Trigger.html#QuartzRestApi_Wrappers_Trigger_TriggerKey">TriggerKey</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonPropertyName(&quot;TriggerKey&quot;)]
+public TriggerKey TriggerKey { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QuartzRestApi.Wrappers.TriggerKey.html">TriggerKey</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_FromJsonString_" data-uid="QuartzRestApi.Wrappers.Trigger.FromJsonString*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_FromJsonString_System_String_" data-uid="QuartzRestApi.Wrappers.Trigger.FromJsonString(System.String)">
+  FromJsonString(string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the <a class="xref" href="QuartzRestApi.Wrappers.Trigger.html">Trigger</a> object from the given <code class="paramref">json</code> string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Trigger FromJsonString(string json)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>json</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The json string</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QuartzRestApi.Wrappers.Trigger.html">Trigger</a></dt>
+    <dd><p><a class="xref" href="QuartzRestApi.Wrappers.Trigger.html">Trigger</a></p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_ToJsonString_" data-uid="QuartzRestApi.Wrappers.Trigger.ToJsonString*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_ToJsonString" data-uid="QuartzRestApi.Wrappers.Trigger.ToJsonString">
+  ToJsonString()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns this object as a json string</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ToJsonString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QuartzRestApi_Wrappers_Trigger_ToTrigger_" data-uid="QuartzRestApi.Wrappers.Trigger.ToTrigger*"></a>
+
+  <h3 id="QuartzRestApi_Wrappers_Trigger_ToTrigger" data-uid="QuartzRestApi.Wrappers.Trigger.ToTrigger">
+  ToTrigger()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns this object as a Quartz <span class="xref">Quartz.ITrigger</span></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ITrigger ToTrigger()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ITrigger</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright &copy; 2022 - 2026 Magic-Sessions. All rights reserved.
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

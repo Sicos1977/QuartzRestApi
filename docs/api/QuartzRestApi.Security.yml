@@ -1,0 +1,46 @@
+### YamlMime:ManagedReference
+items:
+- uid: QuartzRestApi.Security
+  commentId: N:QuartzRestApi.Security
+  id: QuartzRestApi.Security
+  children:
+  - QuartzRestApi.Security.ApiKeyProfile
+  langs:
+  - csharp
+  - vb
+  name: QuartzRestApi.Security
+  nameWithType: QuartzRestApi.Security
+  fullName: QuartzRestApi.Security
+  type: Namespace
+  assemblies:
+  - QuartzRestApi
+references:
+- uid: QuartzRestApi.Security.ApiKeyProfile
+  commentId: T:QuartzRestApi.Security.ApiKeyProfile
+  parent: QuartzRestApi.Security
+  href: QuartzRestApi.Security.ApiKeyProfile.html
+  name: ApiKeyProfile
+  nameWithType: ApiKeyProfile
+  fullName: QuartzRestApi.Security.ApiKeyProfile
+- uid: QuartzRestApi.Security
+  commentId: N:QuartzRestApi.Security
+  href: QuartzRestApi.html
+  name: QuartzRestApi.Security
+  nameWithType: QuartzRestApi.Security
+  fullName: QuartzRestApi.Security
+  spec.csharp:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Security
+    name: Security
+    href: QuartzRestApi.Security.html
+  spec.vb:
+  - uid: QuartzRestApi
+    name: QuartzRestApi
+    href: QuartzRestApi.html
+  - name: .
+  - uid: QuartzRestApi.Security
+    name: Security
+    href: QuartzRestApi.Security.html
