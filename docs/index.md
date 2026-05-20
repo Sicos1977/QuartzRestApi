@@ -61,16 +61,18 @@ graph TD
 ```csharp
 // No authentication -- all endpoints publicly accessible
 var host = new SchedulerHost("http://localhost:44344", scheduler, logger);
-host.Start();
+await host.Start();
 ```
 
 - `scheduler` -- your `IScheduler` instance from Quartz.NET
 - `logger` -- any `Microsoft.Extensions.Logging.ILogger` (or `null` to disable logging)
 
+Both `Start` and `Stop` return a `Task` and should be awaited. An optional `CancellationToken` can be passed to either method.
+
 To stop the host:
 
 ```csharp
-host.Stop();
+await host.Stop();
 ```
 
 ---
