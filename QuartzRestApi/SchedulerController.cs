@@ -1032,7 +1032,7 @@ public class SchedulerController : ControllerBase
         var groupMatcher = GroupMatcher<Quartz.JobKey>.FromJsonString(json);
         var jobKeys = await _scheduler.GetJobKeys(groupMatcher.ToGroupMatcher());
 
-        if (jobKeys == null)
+        if (jobKeys.Count == 0)
         {
             _logger?.LogInformation("No job keys found");
             return Content("[]", "application/json");
@@ -1095,7 +1095,7 @@ public class SchedulerController : ControllerBase
         var groupMatcher = GroupMatcher<Quartz.TriggerKey>.FromJsonString(json);
         var triggerKeys = await _scheduler.GetTriggerKeys(groupMatcher.ToGroupMatcher());
 
-        if (triggerKeys == null)
+        if (triggerKeys.Count == 0)
         {
             _logger?.LogInformation("No trigger keys found");
             return Content("[]", "application/json");
