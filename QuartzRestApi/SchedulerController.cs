@@ -99,10 +99,10 @@ public class SchedulerController : ControllerBase
     /// <returns></returns>
     [HttpGet]
     [Route("Scheduler/IsTriggerGroupPaused/{groupName}")]
-    public Task<bool> IsTriggerGroupPaused(string groupName)
+    public async Task<bool> IsTriggerGroupPaused(string groupName)
     {
         _logger?.LogInformation("Received request to check if the trigger group '{GroupName}' is paused", groupName);
-        var result = _scheduler.IsTriggerGroupPaused(groupName);
+        var result = await _scheduler.IsTriggerGroupPaused(groupName);
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
     }

@@ -43,13 +43,13 @@ public class GroupMatcher<T> where T : Key<T>
     /// </summary>
     [JsonConverter(typeof(JsonStringEnumConverter))]
     [JsonPropertyName("Type")]
-    public GroupMatcherType Type { get; private set; }
+    public GroupMatcherType Type { get; init; }
 
     /// <summary>
     ///     The value to match
     /// </summary>
     [JsonPropertyName("Value")]
-    public string Value { get; private set; }
+    public string Value { get; init; }
     #endregion
 
     #region Constructor

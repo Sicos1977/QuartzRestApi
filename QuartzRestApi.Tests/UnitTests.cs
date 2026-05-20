@@ -23,6 +23,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
+using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -75,8 +76,8 @@ public class UnitTests
     ///     monthly calendar with excluded days. The method also starts a local scheduler host and connector for integration
     ///     testing. This setup is required for tests that depend on a running scheduler instance.
     /// </remarks>
-    [TestInitialize]
-    public void Initialize()
+    [ClassInitialize]
+    public async Task Initialize()
     {
         var properties = new NameValueCollection
         {
@@ -85,7 +86,7 @@ public class UnitTests
             ["quartz.threadPool.type"] = "Quartz.Simpl.SimpleThreadPool, Quartz"
         };
 
-        var scheduler = new StdSchedulerFactory(properties).GetScheduler().Result;
+        var scheduler = await new StdSchedulerFactory(properties).GetScheduler();
 
         if (scheduler.Context.TryAdd("key1", "value1"))
         {
@@ -93,7 +94,7 @@ public class UnitTests
             scheduler.Context.TryAdd("key3", "value3");
         }
 
-        scheduler.Start();
+        await scheduler.Start();
 
         var schedulerJob = JobBuilder.Create<TestJob>()
             .WithIdentity(new Quartz.JobKey("JobKeyName", "JobKeyGroup"))
@@ -110,8 +111,8 @@ public class UnitTests
         var mc = new Quartz.Impl.Calendar.MonthlyCalendar();
         mc.SetDayExcluded(1, true);
         mc.SetDayExcluded(12, true);
-        scheduler.AddCalendar("monthlyCalendar", mc, true, true);
-        scheduler.ScheduleJob(schedulerJob, schedulerTrigger);
+        await scheduler.AddCalendar("monthlyCalendar", mc, true, true);
+        await scheduler.ScheduleJob(schedulerJob, schedulerTrigger);
 
         _host = new SchedulerHost("http://localhost:44344", scheduler, null);
         _host.Start();
@@ -128,7 +129,7 @@ public class UnitTests
     ///     This method is called automatically by the test framework after each test method in the class
     ///     completes. It is used to release resources or stop services that were initialized for the test.
     /// </remarks>
-    [TestCleanup]
+    [ClassCleanup]
     public void Cleanup()
     {
         _host.Stop();
@@ -187,9 +188,9 @@ public class UnitTests
     ///     Verifies that <c>IsJobGroupPaused</c> returns <c>false</c> for an active job group.
     /// </summary>
     [TestMethod]
-    public void IsJobGroupPaused()
+    public async Task IsJobGroupPaused()
     {
-        var paused = _connector.IsJobGroupPaused("JobKeyGroup").Result;
+        var paused = await _connector.IsJobGroupPaused("JobKeyGroup");
         Assert.IsFalse(paused);
     }
 
@@ -197,9 +198,9 @@ public class UnitTests
     ///     Verifies that <c>IsTriggerGroupPaused</c> returns <c>false</c> for an active trigger group.
     /// </summary>
     [TestMethod]
-    public void IsTriggerGroupPaused()
+    public async Task IsTriggerGroupPaused()
     {
-        var paused = _connector.IsTriggerGroupPaused("JobKeyGroup").Result;
+        var paused = await _connector.IsTriggerGroupPaused("JobKeyGroup");
         Assert.IsFalse(paused);
     }
 
@@ -207,9 +208,9 @@ public class UnitTests
     ///     Verifies that <c>SchedulerName</c> returns the configured instance name.
     /// </summary>
     [TestMethod]
-    public void SchedulerName()
+    public async Task SchedulerName()
     {
-        var name = _connector.SchedulerName().Result;
+        var name = await _connector.SchedulerName();
         Assert.AreEqual("SchedulerInstance", name);
     }
 
@@ -217,9 +218,9 @@ public class UnitTests
     ///     Verifies that <c>SchedulerInstanceId</c> returns the expected non-clustered identifier.
     /// </summary>
     [TestMethod]
-    public void SchedulerInstanceId()
+    public async Task SchedulerInstanceId()
     {
-        var id = _connector.SchedulerInstanceId().Result;
+        var id = await _connector.SchedulerInstanceId();
         Assert.AreEqual("NON_CLUSTERED", id);
     }
 
@@ -227,21 +228,21 @@ public class UnitTests
     ///     Verifies that <c>Context</c> returns all key/value pairs that were added during setup.
     /// </summary>
     [TestMethod]
-    public void Context()
+    public async Task Context()
     {
-        var result = _connector.Context().Result;
-        Assert.AreEqual("value1", result["key1"]);
-        Assert.AreEqual("value2", result["key2"]);
-        Assert.AreEqual("value3", result["key3"]);
+        var result = await _connector.Context();
+        Assert.AreEqual("value1", result["key1"].ToString());
+        Assert.AreEqual("value2", result["key2"].ToString());
+        Assert.AreEqual("value3", result["key3"].ToString());
     }
 
     /// <summary>
     ///     Verifies that <c>InStandbyMode</c> returns <c>false</c> when the scheduler is running.
     /// </summary>
     [TestMethod]
-    public void InStandbyMode()
+    public async Task InStandbyMode()
     {
-        var result = _connector.InStandbyMode().Result;
+        var result = await _connector.InStandbyMode();
         Assert.IsFalse(result);
     }
 
@@ -249,9 +250,9 @@ public class UnitTests
     ///     Verifies that <c>IsShutdown</c> returns <c>false</c> when the scheduler is running.
     /// </summary>
     [TestMethod]
-    public void IsShutdown()
+    public async Task IsShutdown()
     {
-        var result = _connector.IsShutdown().Result;
+        var result = await _connector.IsShutdown();
         Assert.IsFalse(result);
     }
 
@@ -259,9 +260,9 @@ public class UnitTests
     ///     Verifies that <c>IsStarted</c> returns <c>true</c> when the scheduler is running.
     /// </summary>
     [TestMethod]
-    public void IsStarted()
+    public async Task IsStarted()
     {
-        var result = _connector.IsStarted().Result;
+        var result = await _connector.IsStarted();
         Assert.IsTrue(result);
     }
 
@@ -269,9 +270,9 @@ public class UnitTests
     ///     Verifies that <c>GetMetaData</c> returns a summary containing the word "Quartz".
     /// </summary>
     [TestMethod]
-    public void GetMetaData()
+    public async Task GetMetaData()
     {
-        var result = _connector.GetMetaData().Result;
+        var result = await _connector.GetMetaData();
         Assert.IsTrue(result.Summary.Contains("Quartz"));
     }
 
@@ -279,18 +280,18 @@ public class UnitTests
     ///     Verifies that <c>Start</c> completes without error when the scheduler is already running.
     /// </summary>
     [TestMethod]
-    public void Start()
+    public async Task Start()
     {
-        _connector.Start().GetAwaiter().GetResult();
+        await _connector.Start();
     }
 
     /// <summary>
     /// Verifies that <c>StartDelayed</c> completes without error.
     /// </summary>
     [TestMethod]
-    public void StartDelayed()
+    public async Task StartDelayed()
     {
-        _connector.StartDelayed(1).GetAwaiter().GetResult();
+        await _connector.StartDelayed(1);
     }
 
     /// <summary>
@@ -298,14 +299,14 @@ public class UnitTests
     ///     and that <c>Start</c> brings it back to running.
     /// </summary>
     [TestMethod]
-    public void Standby_Then_Start()
+    public async Task Standby_Then_Start()
     {
-        _connector.Standby().GetAwaiter().GetResult();
-        var standby = _connector.InStandbyMode().Result;
+        await _connector.Standby();
+        var standby = await _connector.InStandbyMode();
         Assert.IsTrue(standby);
 
-        _connector.Start().GetAwaiter().GetResult();
-        var active = _connector.InStandbyMode().Result;
+        await _connector.Start();
+        var active = await _connector.InStandbyMode();
         Assert.IsFalse(active);
     }
 
@@ -314,7 +315,7 @@ public class UnitTests
     ///     the shared test scheduler.
     /// </summary>
     [TestMethod]
-    public void Shutdown_WithWaitForJobsToComplete()
+    public async Task Shutdown_WithWaitForJobsToComplete()
     {
         var properties = new NameValueCollection
         {
@@ -323,17 +324,17 @@ public class UnitTests
             ["quartz.threadPool.type"]        = "Quartz.Simpl.SimpleThreadPool, Quartz"
         };
 
-        var scheduler = new StdSchedulerFactory(properties).GetScheduler().Result;
-        scheduler.Start();
+        var scheduler = await new StdSchedulerFactory(properties).GetScheduler();
+        await scheduler.Start();
 
         var isolatedHost = new SchedulerHost("http://localhost:44346", scheduler, null);
         isolatedHost.Start();
         try
         {
             var isolatedConnector = new SchedulerConnector("http://localhost:44346");
-            isolatedConnector.Shutdown(waitForJobsToComplete: false).GetAwaiter().GetResult();
+            await isolatedConnector.Shutdown(waitForJobsToComplete: false);
 
-            var isShutdown = isolatedConnector.IsShutdown().Result;
+            var isShutdown = await isolatedConnector.IsShutdown();
             Assert.IsTrue(isShutdown);
         }
         finally
@@ -348,9 +349,9 @@ public class UnitTests
     ///     Verifies that <c>GetJobGroupNames</c> returns the group that was created during setup.
     /// </summary>
     [TestMethod]
-    public void GetJobGroupNames()
+    public async Task GetJobGroupNames()
     {
-        var groups = _connector.GetJobGroupNames().Result;
+        var groups = await _connector.GetJobGroupNames();
         Assert.IsTrue(groups.Contains("JobKeyGroup"));
     }
 
@@ -358,9 +359,9 @@ public class UnitTests
     ///     Verifies that <c>GetTriggerGroupNames</c> returns the group that was created during setup.
     /// </summary>
     [TestMethod]
-    public void GetTriggerGroupNames()
+    public async Task GetTriggerGroupNames()
     {
-        var groups = _connector.GetTriggerGroupNames().Result;
+        var groups = await _connector.GetTriggerGroupNames();
         Assert.IsTrue(groups.Contains("JobKeyGroup"));
     }
 
@@ -368,9 +369,9 @@ public class UnitTests
     ///     Verifies that <c>GetPausedTriggerGroups</c> returns a non-null result.
     /// </summary>
     [TestMethod]
-    public void GetPausedTriggerGroups()
+    public async Task GetPausedTriggerGroups()
     {
-        var groups = _connector.GetPausedTriggerGroups().Result;
+        var groups = await _connector.GetPausedTriggerGroups();
         Assert.IsNotNull(groups);
     }
     #endregion
@@ -381,10 +382,10 @@ public class UnitTests
     ///     when filtering by its group with an Equals matcher.
     /// </summary>
     [TestMethod]
-    public void GetJobKeys()
+    public async Task GetJobKeys()
     {
         var matcher = new GroupMatcher<Quartz.JobKey>(GroupMatcherType.Equals, "JobKeyGroup");
-        var keys = _connector.GetJobKeys(matcher).Result;
+        var keys = await _connector.GetJobKeys(matcher);
         Assert.IsTrue(keys.Any(k => k.Name == "JobKeyName"));
     }
 
@@ -393,10 +394,10 @@ public class UnitTests
     /// when filtering by its group with an Equals matcher.
     /// </summary>
     [TestMethod]
-    public void GetTriggerKeys()
+    public async Task GetTriggerKeys()
     {
         var matcher = new GroupMatcher<Quartz.TriggerKey>(GroupMatcherType.Equals, "JobKeyGroup");
-        var keys = _connector.GetTriggerKeys(matcher).Result;
+        var keys = await _connector.GetTriggerKeys(matcher);
         Assert.IsTrue(keys.Any(k => k.Name == "triggerKey"));
     }
     #endregion
@@ -406,10 +407,10 @@ public class UnitTests
     ///     Verifies that <c>GetJobDetail</c> returns the correct detail for an existing job.
     /// </summary>
     [TestMethod]
-    public void GetJobDetail()
+    public async Task GetJobDetail()
     {
         var jobKey = new JobKey("JobKeyName", "JobKeyGroup");
-        var detail = _connector.GetJobDetail(jobKey).Result;
+        var detail = await _connector.GetJobDetail(jobKey);
         Assert.IsNotNull(detail);
         Assert.AreEqual("JobKeyName", detail.JobKey.Name);
     }
@@ -419,10 +420,10 @@ public class UnitTests
     ///     the job during setup.
     /// </summary>
     [TestMethod]
-    public void GetTriggersOfJob()
+    public async Task GetTriggersOfJob()
     {
         var jobKey = new JobKey("JobKeyName", "JobKeyGroup");
-        var triggers = _connector.GetTriggersOfJob(jobKey).Result;
+        var triggers = await _connector.GetTriggersOfJob(jobKey);
         Assert.IsTrue(triggers.Any(t => t.TriggerKey.Name == "triggerKey"));
     }
 
@@ -430,10 +431,10 @@ public class UnitTests
     ///     Verifies that <c>GetTrigger</c> returns the correct trigger for an existing trigger key.
     /// </summary>
     [TestMethod]
-    public void GetTrigger()
+    public async Task GetTrigger()
     {
         var triggerKey = new TriggerKey("TriggerKey", "JobKeyGroup");
-        var trigger = _connector.GetTrigger(triggerKey).Result;
+        var trigger = await _connector.GetTrigger(triggerKey);
         Assert.IsNotNull(trigger);
         Assert.AreEqual("TriggerKey", trigger.TriggerKey.Name);
     }
@@ -442,10 +443,10 @@ public class UnitTests
     ///     Verifies that <c>GetTriggerState</c> returns a non-empty state string for an existing trigger.
     /// </summary>
     [TestMethod]
-    public void GetTriggerState()
+    public async Task GetTriggerState()
     {
         var triggerKey = new TriggerKey("triggerKey", "JobKeyGroup");
-        var state = _connector.GetTriggerState(triggerKey).Result;
+        var state = await _connector.GetTriggerState(triggerKey);
         Assert.IsFalse(string.IsNullOrWhiteSpace(state));
     }
 
@@ -453,9 +454,9 @@ public class UnitTests
     ///     Verifies that <c>GetCurrentlyExecutingJobs</c> returns a non-null result.
     /// </summary>
     [TestMethod]
-    public void GetCurrentlyExecutingJobs()
+    public async Task GetCurrentlyExecutingJobs()
     {
-        var result = _connector.GetCurrentlyExecutingJobs().Result;
+        var result = await _connector.GetCurrentlyExecutingJobs();
         Assert.IsNotNull(result);
     }
     #endregion
@@ -465,10 +466,10 @@ public class UnitTests
     ///     Verifies that <c>CheckExists</c> returns <c>true</c> for a job key that is present in the scheduler.
     /// </summary>
     [TestMethod]
-    public void CheckExistsJobKey_Existing()
+    public async Task CheckExistsJobKey_Existing()
     {
         var jobKey = new JobKey("JobKeyName", "JobKeyGroup");
-        var exists = _connector.CheckExists(jobKey).Result;
+        var exists = await _connector.CheckExists(jobKey);
         Assert.IsTrue(exists);
     }
 
@@ -476,10 +477,10 @@ public class UnitTests
     ///     Verifies that <c>CheckExists</c> returns <c>false</c> for a job key that is not in the scheduler.
     /// </summary>
     [TestMethod]
-    public void CheckExistsJobKey_NotExisting()
+    public async Task CheckExistsJobKey_NotExisting()
     {
         var jobKey = new JobKey("DoesNotExist", "JobKeyGroup");
-        var exists = _connector.CheckExists(jobKey).Result;
+        var exists = await _connector.CheckExists(jobKey);
         Assert.IsFalse(exists);
     }
 
@@ -487,10 +488,10 @@ public class UnitTests
     ///     Verifies that <c>CheckExists</c> returns <c>true</c> for a trigger key that is present in the scheduler.
     /// </summary>
     [TestMethod]
-    public void CheckExistsTriggerKey_Existing()
+    public async Task CheckExistsTriggerKey_Existing()
     {
         var triggerKey = new TriggerKey("triggerKey", "JobKeyGroup");
-        var exists = _connector.CheckExists(triggerKey).Result;
+        var exists = await _connector.CheckExists(triggerKey);
         Assert.IsTrue(exists);
     }
 
@@ -498,10 +499,10 @@ public class UnitTests
     ///     Verifies that <c>CheckExists</c> returns <c>false</c> for a trigger key that is not in the scheduler.
     /// </summary>
     [TestMethod]
-    public void CheckExistsTriggerKey_NotExisting()
+    public async Task CheckExistsTriggerKey_NotExisting()
     {
         var triggerKey = new TriggerKey("DoesNotExist", "JobKeyGroup");
-        var exists = _connector.CheckExists(triggerKey).Result;
+        var exists = await _connector.CheckExists(triggerKey);
         Assert.IsFalse(exists);
     }
     #endregion
@@ -511,45 +512,45 @@ public class UnitTests
     ///     Verifies that <c>PauseJob</c> pauses the job group and that <c>ResumeJob</c> restores it.
     /// </summary>
     [TestMethod]
-    public void PauseJob_And_ResumeJob()
+    public async Task PauseJob_And_ResumeJob()
     {
         var jobKey = new JobKey("JobKeyName", "JobKeyGroup");
 
-        _connector.PauseJob(jobKey).GetAwaiter().GetResult();
-        var paused = _connector.IsJobGroupPaused("JobKeyGroup").Result;
+        await _connector.PauseJob(jobKey);
+        var paused = await _connector.IsJobGroupPaused("JobKeyGroup");
         Assert.IsTrue(paused);
 
-        _connector.ResumeJob(jobKey).GetAwaiter().GetResult();
+        await _connector.ResumeJob(jobKey);
     }
 
     /// <summary>
     ///     Verifies that <c>PauseJobs</c> pauses the matching job group and that <c>ResumeJobs</c> restores it.
     /// </summary>
     [TestMethod]
-    public void PauseJobs_And_ResumeJobs()
+    public async Task PauseJobs_And_ResumeJobs()
     {
         var matcher = new GroupMatcher<Quartz.JobKey>(GroupMatcherType.Equals, "JobKeyGroup");
 
-        _connector.PauseJobs(matcher).GetAwaiter().GetResult();
-        var paused = _connector.IsJobGroupPaused("JobKeyGroup").Result;
+        await _connector.PauseJobs(matcher);
+        var paused = await _connector.IsJobGroupPaused("JobKeyGroup");
         Assert.IsTrue(paused);
 
-        _connector.ResumeJobs(matcher).GetAwaiter().GetResult();
+        await _connector.ResumeJobs(matcher);
     }
 
     /// <summary>
     ///     Verifies that <c>PauseTrigger</c> pauses the trigger group and that <c>ResumeTrigger</c> restores it.
     /// </summary>
     [TestMethod]
-    public void PauseTrigger_And_ResumeTrigger()
+    public async Task PauseTrigger_And_ResumeTrigger()
     {
         var triggerKey = new TriggerKey("triggerKey", "JobKeyGroup");
 
-        _connector.PauseTrigger(triggerKey).GetAwaiter().GetResult();
-        var paused = _connector.IsTriggerGroupPaused("JobKeyGroup").Result;
+        await _connector.PauseTrigger(triggerKey);
+        var paused = await _connector.IsTriggerGroupPaused("JobKeyGroup");
         Assert.IsTrue(paused);
 
-        _connector.ResumeTrigger(triggerKey).GetAwaiter().GetResult();
+        await _connector.ResumeTrigger(triggerKey);
     }
 
     /// <summary>
@@ -557,15 +558,15 @@ public class UnitTests
     ///     <c>ResumeTriggers</c> restores it.
     /// </summary>
     [TestMethod]
-    public void PauseTriggers_And_ResumeTriggers()
+    public async Task PauseTriggers_And_ResumeTriggers()
     {
         var matcher = new GroupMatcher<Quartz.TriggerKey>(GroupMatcherType.Equals, "JobKeyGroup");
 
-        _connector.PauseTriggers(matcher).GetAwaiter().GetResult();
-        var paused = _connector.IsTriggerGroupPaused("JobKeyGroup").Result;
+        await _connector.PauseTriggers(matcher);
+        var paused = await _connector.IsTriggerGroupPaused("JobKeyGroup");
         Assert.IsTrue(paused);
 
-        _connector.ResumeTriggers(matcher).GetAwaiter().GetResult();
+        await _connector.ResumeTriggers(matcher);
     }
 
     /// <summary>
@@ -573,13 +574,13 @@ public class UnitTests
     ///     <c>ResumeAllTriggers</c> restores them.
     /// </summary>
     [TestMethod]
-    public void PauseAllTriggers_And_ResumeAllTriggers()
+    public async Task PauseAllTriggers_And_ResumeAllTriggers()
     {
-        _connector.PauseAllTriggers().GetAwaiter().GetResult();
-        var paused = _connector.IsTriggerGroupPaused("JobKeyGroup").Result;
+        await _connector.PauseAllTriggers();
+        var paused = await _connector.IsTriggerGroupPaused("JobKeyGroup");
         Assert.IsTrue(paused);
 
-        _connector.ResumeAllTriggers().GetAwaiter().GetResult();
+        await _connector.ResumeAllTriggers();
     }
     #endregion
 
@@ -588,16 +589,16 @@ public class UnitTests
     ///     Verifies that <c>ScheduleJob</c> with a combined job detail and trigger returns a valid first fire time.
     /// </summary>
     [TestMethod]
-    public void ScheduleJob_WithJobDetailAndTrigger()
+    public async Task ScheduleJob_WithJobDetailAndTrigger()
     {
         var request = new JobDetailWithTrigger(
             MakeJobDetail("ScheduledJob1", "TestGroup"),
             MakeTrigger("ScheduledTrigger1", "TestGroup", "ScheduledJob1", "TestGroup", "0 * * ? * *"));
 
-        var fireTime = _connector.ScheduleJob(request).Result;
+        var fireTime = await _connector.ScheduleJob(request);
         Assert.AreNotEqual(DateTimeOffset.MinValue, fireTime);
 
-        _connector.DeleteJob(new JobKey("ScheduledJob1", "TestGroup")).GetAwaiter().GetResult();
+        await _connector.DeleteJob(new JobKey("ScheduledJob1", "TestGroup"));
     }
 
     /// <summary>
@@ -605,24 +606,24 @@ public class UnitTests
     ///     against an already existing job.
     /// </summary>
     [TestMethod]
-    public void ScheduleJob_WithTriggerOnly()
+    public async Task ScheduleJob_WithTriggerOnly()
     {
-        _connector.AddJob(MakeJobDetail("JobForTriggerOnly", "TestGroup")).GetAwaiter().GetResult();
+        await _connector.AddJob(MakeJobDetail("JobForTriggerOnly", "TestGroup"));
 
         var trigger = MakeTrigger("TriggerOnly1", "TestGroup", "JobForTriggerOnly", "TestGroup", "0 * * ? * *");
-        _connector.ScheduleJob(trigger).GetAwaiter().GetResult();
+        await _connector.ScheduleJob(trigger);
 
-        var exists = _connector.CheckExists(new TriggerKey("TriggerOnly1", "TestGroup")).Result;
+        var exists = await _connector.CheckExists(new TriggerKey("TriggerOnly1", "TestGroup"));
         Assert.IsTrue(exists);
 
-        _connector.DeleteJob(new JobKey("JobForTriggerOnly", "TestGroup")).GetAwaiter().GetResult();
+        await _connector.DeleteJob(new JobKey("JobForTriggerOnly", "TestGroup"));
     }
 
     /// <summary>
     ///     Verifies that <c>ScheduleJobWithTriggers</c> schedules a job with multiple triggers.
     /// </summary>
     [TestMethod]
-    public void ScheduleJobWithTriggers()
+    public async Task ScheduleJobWithTriggers()
     {
         var request = new JobDetailWithTriggers(
             MakeJobDetail("MultiTriggerJob", "TestGroup"),
@@ -631,19 +632,19 @@ public class UnitTests
                 MakeTrigger("MultiTrigger2", "TestGroup", "MultiTriggerJob", "TestGroup", "0 30 * ? * *")
             ]);
 
-        _connector.ScheduleJobWithTriggers(request).GetAwaiter().GetResult();
+        await _connector.ScheduleJobWithTriggers(request);
 
-        var exists = _connector.CheckExists(new JobKey("MultiTriggerJob", "TestGroup")).Result;
+        var exists = await _connector.CheckExists(new JobKey("MultiTriggerJob", "TestGroup"));
         Assert.IsTrue(exists);
 
-        _connector.DeleteJob(new JobKey("MultiTriggerJob", "TestGroup")).GetAwaiter().GetResult();
+        await _connector.DeleteJob(new JobKey("MultiTriggerJob", "TestGroup"));
     }
 
     /// <summary>
     ///     Verifies that <c>ScheduleJobs</c> schedules a batch of jobs in a single call.
     /// </summary>
     [TestMethod]
-    public void ScheduleJobs_Multiple()
+    public async Task ScheduleJobs_Multiple()
     {
         var jobs = new List<JobDetailWithTriggers>
         {
@@ -652,12 +653,12 @@ public class UnitTests
                 [MakeTrigger("BatchTrigger1", "BatchGroup", "BatchJob1", "BatchGroup", "0 * * ? * *")])
         };
 
-        _connector.ScheduleJobs(new ScheduleJobs(jobs, replace: true)).GetAwaiter().GetResult();
+        await _connector.ScheduleJobs(new ScheduleJobs(jobs, replace: true));
 
-        var exists = _connector.CheckExists(new JobKey("BatchJob1", "BatchGroup")).Result;
+        var exists = await _connector.CheckExists(new JobKey("BatchJob1", "BatchGroup"));
         Assert.IsTrue(exists);
 
-        _connector.DeleteJob(new JobKey("BatchJob1", "BatchGroup")).GetAwaiter().GetResult();
+        await _connector.DeleteJob(new JobKey("BatchJob1", "BatchGroup"));
     }
 
     /// <summary>
@@ -665,19 +666,19 @@ public class UnitTests
     ///  and returns a valid next fire time.
     /// </summary>
     [TestMethod]
-    public void RescheduleJob_Test()
+    public async Task RescheduleJob_Test()
     {
         var reschedule = new RescheduleJob(
             new TriggerKey("triggerKey", "JobKeyGroup"),
             MakeTrigger("triggerKeyRescheduled", "JobKeyGroup", "JobKeyName", "JobKeyGroup", "0 30 * ? * *"));
 
-        var fireTime = _connector.RescheduleJob(reschedule).Result;
+        var fireTime = await _connector.RescheduleJob(reschedule);
         Assert.IsNotNull(fireTime);
 
-        _connector.RescheduleJob(new RescheduleJob(
+        await _connector.RescheduleJob(new RescheduleJob(
             new TriggerKey("triggerKeyRescheduled", "JobKeyGroup"),
             MakeTrigger("triggerKey", "JobKeyGroup", "JobKeyName", "JobKeyGroup", "0 * * ? * *")
-        )).GetAwaiter().GetResult();
+        ));
     }
 
     /// <summary>
@@ -685,11 +686,11 @@ public class UnitTests
     ///     rescheduled afterwards.
     /// </summary>
     [TestMethod]
-    public void UnscheduleJob_And_Reschedule()
+    public async Task UnscheduleJob_And_Reschedule()
     {
         var triggerKey = new TriggerKey("triggerKey", "JobKeyGroup");
 
-        var unscheduled = _connector.UnscheduleJob(triggerKey).Result;
+        var unscheduled = await _connector.UnscheduleJob(triggerKey);
         Assert.IsTrue(unscheduled);
 
         var quartzTrigger = TriggerBuilder.Create()
@@ -697,28 +698,28 @@ public class UnitTests
             .ForJob(new Quartz.JobKey("JobKeyName", "JobKeyGroup"))
             .WithCronSchedule("0 * * ? * *")
             .Build();
-        _connector.ScheduleJob(new Trigger(quartzTrigger)).GetAwaiter().GetResult();
+        await _connector.ScheduleJob(new Trigger(quartzTrigger));
     }
 
     /// <summary>
     ///     Verifies that <c>UnscheduleJobs</c> removes multiple triggers in a single call.
     /// </summary>
     [TestMethod]
-    public void UnscheduleJobs_Multiple()
+    public async Task UnscheduleJobs_Multiple()
     {
-        _connector.AddJob(MakeJobDetail("UnscheduleJobA", "TestGroup")).GetAwaiter().GetResult();
-        _connector.ScheduleJob(MakeTrigger("UnscheduleTriggerA", "TestGroup", "UnscheduleJobA", "TestGroup", "0 * * ? * *")).GetAwaiter().GetResult();
-        _connector.ScheduleJob(MakeTrigger("UnscheduleTriggerB", "TestGroup", "UnscheduleJobA", "TestGroup", "0 30 * ? * *")).GetAwaiter().GetResult();
+        await _connector.AddJob(MakeJobDetail("UnscheduleJobA", "TestGroup"));
+        await _connector.ScheduleJob(MakeTrigger("UnscheduleTriggerA", "TestGroup", "UnscheduleJobA", "TestGroup", "0 * * ? * *"));
+        await _connector.ScheduleJob(MakeTrigger("UnscheduleTriggerB", "TestGroup", "UnscheduleJobA", "TestGroup", "0 30 * ? * *"));
 
         var keys = new TriggerKeys([
             new Quartz.TriggerKey("UnscheduleTriggerA", "TestGroup"),
             new Quartz.TriggerKey("UnscheduleTriggerB", "TestGroup")
         ]);
 
-        var result = _connector.UnscheduleJobs(keys).Result;
+        var result = await _connector.UnscheduleJobs(keys);
         Assert.IsTrue(result);
 
-        _connector.DeleteJob(new JobKey("UnscheduleJobA", "TestGroup")).GetAwaiter().GetResult();
+        await _connector.DeleteJob(new JobKey("UnscheduleJobA", "TestGroup"));
     }
     #endregion
 
@@ -727,17 +728,17 @@ public class UnitTests
     ///     Verifies that <c>AddJob</c> persists a durable job and that <c>DeleteJob</c> removes it.
     /// </summary>
     [TestMethod]
-    public void AddJob_And_DeleteJob()
+    public async Task AddJob_And_DeleteJob()
     {
-        _connector.AddJob(MakeJobDetail("AddedJob", "TestGroup")).GetAwaiter().GetResult();
+        await _connector.AddJob(MakeJobDetail("AddedJob", "TestGroup"));
 
-        var exists = _connector.CheckExists(new JobKey("AddedJob", "TestGroup")).Result;
+        var exists = await _connector.CheckExists(new JobKey("AddedJob", "TestGroup"));
         Assert.IsTrue(exists);
 
-        var deleted = _connector.DeleteJob(new JobKey("AddedJob", "TestGroup")).Result;
+        var deleted = await _connector.DeleteJob(new JobKey("AddedJob", "TestGroup"));
         Assert.IsTrue(deleted);
 
-        var existsAfter = _connector.CheckExists(new JobKey("AddedJob", "TestGroup")).Result;
+        var existsAfter = await _connector.CheckExists(new JobKey("AddedJob", "TestGroup"));
         Assert.IsFalse(existsAfter);
     }
 
@@ -745,51 +746,51 @@ public class UnitTests
     ///     Verifies that <c>DeleteJobs</c> removes multiple jobs in a single call.
     /// </summary>
     [TestMethod]
-    public void DeleteJobs_Multiple()
+    public async Task DeleteJobs_Multiple()
     {
-        _connector.AddJob(MakeJobDetail("DeleteJobA", "TestGroup")).GetAwaiter().GetResult();
-        _connector.AddJob(MakeJobDetail("DeleteJobB", "TestGroup")).GetAwaiter().GetResult();
+        await _connector.AddJob(MakeJobDetail("DeleteJobA", "TestGroup"));
+        await _connector.AddJob(MakeJobDetail("DeleteJobB", "TestGroup"));
 
         var keys = new JobKeys([
             new Quartz.JobKey("DeleteJobA", "TestGroup"),
             new Quartz.JobKey("DeleteJobB", "TestGroup")
         ]);
 
-        var result = _connector.DeleteJobs(keys).Result;
+        var result = await _connector.DeleteJobs(keys);
         Assert.IsTrue(result);
 
-        Assert.IsFalse(_connector.CheckExists(new JobKey("DeleteJobA", "TestGroup")).Result);
-        Assert.IsFalse(_connector.CheckExists(new JobKey("DeleteJobB", "TestGroup")).Result);
+        Assert.IsFalse(await _connector.CheckExists(new JobKey("DeleteJobA", "TestGroup")));
+        Assert.IsFalse(await _connector.CheckExists(new JobKey("DeleteJobB", "TestGroup")));
     }
 
     /// <summary>
     ///     Verifies that <c>TriggerJob</c> fires a job immediately without error.
     /// </summary>
     [TestMethod]
-    public void TriggerJob_ByJobKey()
+    public async Task TriggerJob_ByJobKey()
     {
         var jobKey = new JobKey("JobKeyName", "JobKeyGroup");
-        _connector.TriggerJob(jobKey).GetAwaiter().GetResult();
+        await _connector.TriggerJob(jobKey);
     }
 
     /// <summary>
     ///     Verifies that <c>TriggerJob</c> fires a job immediately with an additional data map.
     /// </summary>
     [TestMethod]
-    public void TriggerJob_WithDataMap()
+    public async Task TriggerJob_WithDataMap()
     {
         var jobKeyWithMap = new JobKeyWithDataMap(
             new JobKey("JobKeyName", "JobKeyGroup"),
             new JobDataMap { { "param1", "value1" } });
 
-        _connector.TriggerJob(jobKeyWithMap).GetAwaiter().GetResult();
+        await _connector.TriggerJob(jobKeyWithMap);
     }
 
     /// <summary>
     ///     Verifies that <c>Clear</c> removes all jobs and triggers from an isolated scheduler.
     /// </summary>
     [TestMethod]
-    public void Clear()
+    public async Task Clear()
     {
         var properties = new NameValueCollection
         {
@@ -798,8 +799,8 @@ public class UnitTests
             ["quartz.threadPool.type"]        = "Quartz.Simpl.SimpleThreadPool, Quartz"
         };
 
-        var scheduler = new StdSchedulerFactory(properties).GetScheduler().Result;
-        scheduler.Start();
+        var scheduler = await new StdSchedulerFactory(properties).GetScheduler();
+        await scheduler.Start();
 
         var job = JobBuilder.Create<TestJob>()
             .WithIdentity("ClearJob", "ClearGroup")
@@ -808,16 +809,16 @@ public class UnitTests
             .WithIdentity("ClearTrigger", "ClearGroup")
             .WithCronSchedule("0 * * ? * *")
             .Build();
-        scheduler.ScheduleJob(job, trigger);
+        await scheduler.ScheduleJob(job, trigger);
 
         var isolatedHost = new SchedulerHost("http://localhost:44345", scheduler, null);
         isolatedHost.Start();
         try
         {
             var isolatedConnector = new SchedulerConnector("http://localhost:44345");
-            isolatedConnector.Clear().GetAwaiter().GetResult();
+            await isolatedConnector.Clear();
 
-            var groups = isolatedConnector.GetJobGroupNames().Result;
+            var groups = await isolatedConnector.GetJobGroupNames();
             Assert.IsFalse(groups.Any());
         }
         finally
@@ -832,9 +833,9 @@ public class UnitTests
     ///    Verifies that <c>GetCalendarNames</c> returns the calendar that was added during setup.
     /// </summary>
     [TestMethod]
-    public void GetCalendarNames()
+    public async Task GetCalendarNames()
     {
-        var names = _connector.GetCalendarNames().Result;
+        var names = await _connector.GetCalendarNames();
         Assert.IsTrue(names.Contains("monthlyCalendar"));
     }
 
@@ -842,9 +843,9 @@ public class UnitTests
     /// Verifies that <c>GetCalendar</c> returns a non-empty JSON representation of the calendar.
     /// </summary>
     [TestMethod]
-    public void GetCalendar()
+    public async Task GetCalendar()
     {
-        var json = _connector.GetCalendar("monthlyCalendar").Result;
+        var json = await _connector.GetCalendar("monthlyCalendar");
         Assert.IsFalse(string.IsNullOrWhiteSpace(json));
     }
 
@@ -853,7 +854,7 @@ public class UnitTests
     ///     removes it afterwards.
     /// </summary>
     [TestMethod]
-    public void AddCalendar_And_DeleteCalendar()
+    public async Task AddCalendar_And_DeleteCalendar()
     {
         var quartzCalendar = new Quartz.Impl.Calendar.MonthlyCalendar();
         var calendar = new Wrappers.Calendars.MonthlyCalendar(quartzCalendar)
@@ -863,11 +864,11 @@ public class UnitTests
             UpdateTriggers = false
         };
 
-        _connector.AddCalendar(calendar).GetAwaiter().GetResult();
-        var names = _connector.GetCalendarNames().Result;
+        await _connector.AddCalendar(calendar);
+        var names = await _connector.GetCalendarNames();
         Assert.IsTrue(names.Contains("testCalendar"));
 
-        var deleted = _connector.DeleteCalendar("testCalendar").Result;
+        var deleted = await _connector.DeleteCalendar("testCalendar");
         Assert.IsTrue(deleted);
     }
     #endregion
@@ -878,19 +879,19 @@ public class UnitTests
     ///     whether the job is currently executing.
     /// </summary>
     [TestMethod]
-    public void InterruptJob_ByJobKey()
+    public async Task InterruptJob_ByJobKey()
     {
         var jobKey = new JobKey("JobKeyName", "JobKeyGroup");
-        _connector.InterruptJob(jobKey).GetAwaiter().GetResult();
+        await _connector.InterruptJob(jobKey);
     }
 
     /// <summary>
     ///     Verifies that <c>InterruptJob</c> by a non-existent fire instance ID returns <c>false</c>.
     /// </summary>
     [TestMethod]
-    public void InterruptJob_ByFireInstanceId_NotFound()
+    public async Task InterruptJob_ByFireInstanceId_NotFound()
     {
-        var result = _connector.InterruptJob("nonexistent-fire-id").Result;
+        var result = await _connector.InterruptJob("nonexistent-fire-id");
         Assert.IsFalse(result);
     }
     #endregion
@@ -901,10 +902,10 @@ public class UnitTests
     ///     trigger is not in an error state.
     /// </summary>
     [TestMethod]
-    public void ResetTriggerFromErrorState()
+    public async Task ResetTriggerFromErrorState()
     {
         var triggerKey = new TriggerKey("triggerKey", "JobKeyGroup");
-        _connector.ResetTriggerFromErrorState(triggerKey).GetAwaiter().GetResult();
+        await _connector.ResetTriggerFromErrorState(triggerKey);
     }
     #endregion
 }
