@@ -20,7 +20,7 @@
         "files": [ "api/**.yml", "api/index.md" ]
       },
       {
-        "files": [ "*.md", "toc.yml" ],
+        "files": [ "*.md", "*.html", "*.json", "toc.yml" ],
         "src": ".",
         "dest": "."
       }

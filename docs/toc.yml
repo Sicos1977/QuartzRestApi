@@ -1,4 +1,6 @@
 - name: Home
   href: index.md
+- name: REST API Reference
+  href: api-reference.html
 - name: API Reference
   href: api/
