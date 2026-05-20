@@ -1,4 +1,4 @@
----
+﻿---
 _layout: landing
 ---
 
@@ -8,53 +8,212 @@ A self-hosted REST API library for [Quartz.NET](https://www.quartz-scheduler.net
 
 QuartzRestApi wraps your existing `IScheduler` instance behind an HTTP endpoint so other processes — on the same machine or across a network — can manage jobs and triggers without needing a direct Quartz.NET reference.
 
-## Features
+[![NuGet](https://img.shields.io/nuget/v/QuartzRestApi.svg?style=flat-square)](https://www.nuget.org/packages/QuartzRestApi)
 
-- **Zero-config hosting** — one line to expose your scheduler over HTTP
-- **Typed C# client** — `SchedulerConnector` covers the full endpoint surface
-- **Optional API key authentication** — opt-in, with named profiles and per-route whitelisting
-- **Interactive docs** — built-in Scalar / OpenAPI reference at `/scalar/v1`
-- **Full Quartz.NET parity** — jobs, triggers, calendars, pause/resume, interrupt, error reset and more
+---
 
-## Quick start
+## Architecture
 
-```csharp
-// Start the API host
-var host = new SchedulerHost("http://localhost:44344", scheduler, logger);
-host.Start();
+```mermaid
+graph TD
+    subgraph App["Your Application"]
+        HOST["SchedulerHost\nWraps ASP.NET Core\nKestrel web server"]
+        CLIENT["SchedulerConnector\nHttpClient-based C# client\nfor the REST API"]
+    end
 
-// Connect from another process
-var connector = new SchedulerConnector("http://localhost:44344");
-var name = await connector.GetSchedulerName();
+    subgraph API["REST API - Kestrel"]
+        AUTH["ApiKeyMiddleware\nOptional API key\n+ profile-based access control"]
+        CTRL["SchedulerController\n/Scheduler/..."]
+    end
+
+    subgraph Quartz["Quartz.NET"]
+        SCHED["IScheduler\n- Jobs\n- Triggers\n- Calendars"]
+    end
+
+    HOST -- hosts --> AUTH
+    AUTH -- authorized --> CTRL
+    CLIENT -- "HTTP - GET / POST / DELETE\nX-Api-Key header" --> AUTH
+    CTRL -- delegates to --> SCHED
 ```
 
-## Secured quick start
+**Key components:**
+
+| Component | Description |
+|---|---|
+| `SchedulerHost` | Starts an ASP.NET Core / Kestrel HTTP server that exposes the Quartz.NET scheduler as a REST API |
+| `ApiKeyMiddleware` | Optional middleware that validates the `X-Api-Key` header and enforces per-profile route restrictions |
+| `ApiKeyProfile` | A named profile that pairs an API key with an optional whitelist of allowed endpoints |
+| `SchedulerController` | ASP.NET Core controller with all scheduler endpoints under the `/Scheduler/` route prefix |
+| `SchedulerConnector` | A typed C# HTTP client that wraps all REST calls so you do not need to craft HTTP requests manually |
+| Wrappers | DTO classes (de)serialised to/from JSON for jobs, triggers, calendars, etc. |
+
+---
+
+## Requirements
+
+- .NET 10 or higher
+- A configured [Quartz.NET](https://www.quartz-scheduler.net/) `IScheduler`
+
+---
+
+## How to host Quartz.NET via the REST API
 
 ```csharp
-// Host with a single API key — grants full access
+// No authentication -- all endpoints publicly accessible
+var host = new SchedulerHost("http://localhost:44344", scheduler, logger);
+host.Start();
+```
+
+- `scheduler` -- your `IScheduler` instance from Quartz.NET
+- `logger` -- any `Microsoft.Extensions.Logging.ILogger` (or `null` to disable logging)
+
+To stop the host:
+
+```csharp
+host.Stop();
+```
+
+---
+
+## How to connect to the host
+
+```csharp
+var connector = new SchedulerConnector("http://localhost:44344");
+```
+
+Use the `SchedulerConnector` methods to call the API from C# without dealing with raw HTTP.
+
+---
+
+## Security (API key authentication)
+
+Authentication is **opt-in**. When no key or profiles are configured every request passes through without any check.
+
+### Single API key (full access)
+
+```csharp
+// Host
 var host = new SchedulerHost("http://localhost:44344", scheduler, logger,
     apiKey: "my-secret-key");
 
-// Client that sends the key automatically
+// Client
 var connector = new SchedulerConnector("http://localhost:44344",
     apiKey: "my-secret-key");
-
-// Or use named profiles with factory methods
-var admin    = ApiKeyProfile.AllowAll("Admin", "key-admin");
-
-var readOnly = ApiKeyProfile.DenyAll("ReadOnly", "key-readonly");
-readOnly.GetMetaData   = true;
-readOnly.GetJobKeys    = true;
-readOnly.GetJobDetail  = true;
-// ...enable any other read endpoints as needed
-
-var hostWithProfiles = new SchedulerHost("http://localhost:44344", scheduler, logger,
-    profiles: [admin, readOnly]);
 ```
 
-## Links
+The key is sent and validated via the `X-Api-Key` HTTP header.
 
-- [NuGet package](https://www.nuget.org/packages/QuartzRestApi)
-- [GitHub repository](https://github.com/Sicos1977/QuartzRestApi)
-- [Full README](https://github.com/Sicos1977/QuartzRestApi/blob/main/README.md)
-- [API Reference](api/)
+### Multiple API keys with profiles
+
+Each `ApiKeyProfile` pairs an API key with a set of strongly-typed boolean properties -- one per endpoint.
+
+Use `ApiKeyProfile.AllowAll` to start with full access and selectively disable endpoints, or use `ApiKeyProfile.DenyAll` to start with no access and selectively enable only what is needed.
+
+```csharp
+// Admin profile -- full access to all endpoints
+var admin = ApiKeyProfile.AllowAll("Admin", "key-admin-abc123");
+
+// Read-only profile -- start with nothing allowed, then enable only query endpoints
+var readOnly = ApiKeyProfile.DenyAll("ReadOnly", "key-readonly-xyz");
+readOnly.SchedulerName             = true;
+readOnly.SchedulerInstanceId       = true;
+readOnly.GetMetaData               = true;
+readOnly.GetJobGroupNames          = true;
+readOnly.GetTriggerGroupNames      = true;
+readOnly.GetJobKeys                = true;
+readOnly.GetJobDetail              = true;
+readOnly.GetTrigger                = true;
+readOnly.GetTriggerState           = true;
+readOnly.GetCurrentlyExecutingJobs = true;
+
+// Monitoring profile -- start with full access, then remove mutating endpoints
+var monitoring = ApiKeyProfile.AllowAll("Monitoring", "key-mon-def456");
+monitoring.Start                               = false;
+monitoring.StartDelayed                        = false;
+monitoring.Standby                             = false;
+monitoring.Shutdown                            = false;
+monitoring.Clear                               = false;
+monitoring.ScheduleJobWithJobDetailAndTrigger  = false;
+monitoring.ScheduleJobIdentifiedWithTrigger    = false;
+monitoring.ScheduleJobWithJobDetailAndTriggers = false;
+monitoring.ScheduleJobs                        = false;
+monitoring.RescheduleJob                       = false;
+monitoring.UnscheduleJob                       = false;
+monitoring.UnscheduleJobs                      = false;
+monitoring.AddJob                              = false;
+monitoring.DeleteJob                           = false;
+monitoring.DeleteJobs                          = false;
+monitoring.TriggerJobWithJobkey                = false;
+monitoring.TriggerJobWithDataMap               = false;
+monitoring.PauseJob                            = false;
+monitoring.PauseJobs                           = false;
+monitoring.PauseTrigger                        = false;
+monitoring.PauseTriggers                       = false;
+monitoring.PauseAllTriggers                    = false;
+monitoring.ResumeJob                           = false;
+monitoring.ResumeJobs                          = false;
+monitoring.ResumeTrigger                       = false;
+monitoring.ResumeTriggers                      = false;
+monitoring.ResumeAllTriggers                   = false;
+monitoring.AddCalendar                         = false;
+monitoring.DeleteCalendar                      = false;
+monitoring.ResetTriggerFromErrorState          = false;
+
+var host = new SchedulerHost("http://localhost:44344", scheduler, logger,
+    profiles: [admin, readOnly, monitoring]);
+```
+
+### Persisting profiles
+
+Profiles can be saved to and loaded from JSON:
+
+```csharp
+// Save
+File.WriteAllText("readOnly.json", readOnly.ToJson());
+
+// Load
+var loaded = ApiKeyProfile.FromJson(File.ReadAllText("readOnly.json"));
+```
+
+### HTTP responses
+
+| Situation | Status |
+|---|---|
+| No profiles configured | Request passes through (no auth) |
+| `X-Api-Key` header missing | `401 Unauthorized` |
+| Key not recognised | `401 Unauthorized` |
+| Key valid, route allowed | Request passes through |
+| Key valid, route not in whitelist | `403 Forbidden` |
+
+---
+
+## Interactive API documentation (Scalar / OpenAPI)
+
+When the host is running, interactive API documentation is available at:
+
+| URL | Description |
+|---|---|
+| `/openapi/v1.json` | Raw OpenAPI 3 document |
+| `/scalar/v1` | [Scalar](https://scalar.com/) interactive API reference |
+
+Open `http://localhost:44344/scalar/v1` in a browser to explore and test all endpoints without writing any code.
+
+The full hosted API reference is also available on this documentation site: [REST API Reference](api-reference.html)
+
+---
+
+## Logging
+
+QuartzRestApi uses the `Microsoft.Extensions.Logging.ILogger` interface. Any compatible logging library works (Serilog, NLog, etc.).
+
+Log levels used:
+
+- `Information` -- standard results (booleans, names, DateTimeOffsets)
+- `Debug` -- full JSON request/response bodies
+- `Warning` -- rejected requests (missing or invalid API key, forbidden route)
+
+---
+
+## License
+
+QuartzRestApi is Copyright (C) 2022 - 2026 Magic-Sessions and is licensed under the [MIT license](https://opensource.org/licenses/MIT).
