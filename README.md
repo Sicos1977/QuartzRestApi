@@ -1,3 +1,5 @@
+<img src="icon.png" width="80" align="right" alt="QuartzRestApi logo" />
+
 # QuartzRestApi
 
 A self-hosted REST API library for [Quartz.NET](https://www.quartz-scheduler.net/), built on **.NET 10** with **ASP.NET Core / Kestrel**.

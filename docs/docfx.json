@@ -39,7 +39,8 @@
     "globalMetadata": {
       "_appName": "QuartzRestApi",
       "_appTitle": "QuartzRestApi",
-      "_appFaviconPath": "images/favicon.ico",
+      "_appLogoPath": "images/logo.png",
+      "_appFaviconPath": "images/favicon.png",
       "_enableSearch": true,
       "_appFooter": "Copyright &copy; 2022 - 2026 Magic-Sessions. All rights reserved.",
       "_gitContribute": {
