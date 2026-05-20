@@ -20,6 +20,7 @@
 		<RepositoryType>git</RepositoryType>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>icon.png</PackageIcon>
 		<Copyright>Copyright (C) 2022 - 2026 Magic-Sessions</Copyright>
 
 		<!-- Only produce a NuGet package in Release builds -->
@@ -37,6 +38,7 @@
 
 	<ItemGroup>
 		<None Include="..\README.md" Pack="true" PackagePath="\" />
+		<None Include="..\icon.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 </Project>
