@@ -40,6 +40,7 @@
       "_appName": "QuartzRestApi",
       "_appTitle": "QuartzRestApi",
       "_appLogoPath": "images/logo.png",
+      "_appLogoUrl": "https://github.com/Sicos1977/QuartzRestApi",
       "_appFaviconPath": "images/favicon.png",
       "_enableSearch": true,
       "_appFooter": "Copyright &copy; 2022 - 2026 Magic-Sessions. All rights reserved.",
@@ -48,7 +49,7 @@
         "branch": "main"
       }
     },
-    "template": [ "default", "modern" ],
+    "template": [ "default", "modern", "templates/custom" ],
     "sitemap": {
       "baseUrl": "https://sicos1977.github.io/QuartzRestApi"
     }
