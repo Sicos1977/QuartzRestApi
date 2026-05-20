@@ -40,7 +40,10 @@ using ScheduleJobsRequest = QuartzRestApi.Wrappers.ScheduleJobs;
 
 namespace QuartzRestApi.Controllers;
 
-//[Authorize]
+/// <summary>
+///    Provides endpoints for managing and monitoring a Quartz.NET IScheduler instance. This controller exposes various
+///    operations such as checking the status of job and trigger groups, retrieving scheduler metadata, and managing jobs and triggers.
+/// </summary>
 [ApiController]
 public class SchedulerController : ControllerBase
 {

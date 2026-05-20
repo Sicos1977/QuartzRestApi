@@ -47,11 +47,14 @@ namespace QuartzRestApi.Security;
 /// </remarks>
 internal sealed class ApiKeyMiddleware(RequestDelegate next, ApiKeyOptions options, ILogger logger = null)
 {
+    #region Consts
     /// <summary>
     ///     The HTTP header name that must carry the API key.
     /// </summary>
     public const string HeaderName = "X-Api-Key";
+    #endregion
 
+    #region InvokeAsync
     /// <summary>
     ///    Processes incoming HTTP requests, enforcing API key authentication and
     ///    optional per-profile route restrictions.
@@ -95,4 +98,5 @@ internal sealed class ApiKeyMiddleware(RequestDelegate next, ApiKeyOptions optio
         logger?.LogDebug("Profile '{Profile}' granted access to '{Path}'", profile.Name, context.Request.Path);
         await next(context).ConfigureAwait(false);
     }
+    #endregion
 }

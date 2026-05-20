@@ -437,6 +437,13 @@ public sealed class ApiKeyProfile
     #endregion
 
     #region Constructor
+    /// <summary>
+    ///     Initializes a new instance of the ApiKeyProfile class with the specified name, API key, and access permission.
+    /// </summary>
+    /// <param name="name">The name that identifies the API key profile. Cannot be null or empty.</param>
+    /// <param name="apiKey">The API key associated with this profile. Cannot be null or empty.</param>
+    /// <param name="allow">A value indicating whether access is allowed for this profile. Set to <see langword="true"/> to allow access;
+    /// otherwise, <see langword="false"/>.</param>
     private ApiKeyProfile(string name, string apiKey, bool allow)
     {
         Name = name;
@@ -485,7 +492,14 @@ public sealed class ApiKeyProfile
     }
     #endregion
 
-    #region Helpers
+    #region ValidateArguments
+    /// <summary>
+    ///    Validates the arguments for the factory methods, throwing an exception if either
+    ///    <paramref name="name"/> or <paramref name="apiKey"/> is null or empty.
+    /// </summary>
+    /// <param name="name">The name of the profile.</param>
+    /// <param name="apiKey">The API key for the profile.</param>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="name"/> or <paramref name="apiKey"/> is null or empty.</exception>
     private static void ValidateArguments(string name, string apiKey)
     {
         if (string.IsNullOrWhiteSpace(name))
@@ -494,7 +508,17 @@ public sealed class ApiKeyProfile
         if (string.IsNullOrWhiteSpace(apiKey))
             throw new ArgumentException("API key must not be empty.", nameof(apiKey));
     }
+    #endregion
 
+    #region SetAll
+    /// <summary>
+    ///     Sets the specified value for all related scheduler state and operation flags.
+    /// </summary>
+    /// <remarks>
+    ///     This method is typically used to quickly initialize or reset all scheduler-related flags to a
+    ///     consistent state. Use with caution, as it affects a wide range of scheduler properties and operations.
+    /// </remarks>
+    /// <param name="value">true to enable all scheduler states and operations; false to disable them.</param>
     private void SetAll(bool value)
     {
         IsJobGroupPaused = value;
