@@ -38,7 +38,7 @@ using TriggerKey = QuartzRestApi.Wrappers.TriggerKey;
 using ScheduleJobsRequest = QuartzRestApi.Wrappers.ScheduleJobs;
 // ReSharper disable RouteTemplates.ActionRoutePrefixCanBeExtractedToControllerRoute
 
-namespace QuartzRestApi.Controllers;
+namespace QuartzRestApi;
 
 /// <summary>
 ///    Provides endpoints for managing and monitoring a Quartz.NET IScheduler instance. This controller exposes various
@@ -196,10 +196,10 @@ public class SchedulerController : ControllerBase
     /// </remarks>
     [HttpGet]
     [Route("Scheduler/GetMetaData")]
-    public ContentResult GetMetaData()
+    public async Task<ContentResult> GetMetaData()
     {
         _logger?.LogInformation("Received request to return the meta-data");
-        var result = new SchedulerMetaData(_scheduler.GetMetaData().Result).ToJsonString();
+        var result = new SchedulerMetaData(await _scheduler.GetMetaData()).ToJsonString();
         _logger?.LogInformation("Returning meta-data");
         _logger?.LogDebug("JSON '{Result}'", result);
         return Content(result, "application/json");
@@ -227,11 +227,11 @@ public class SchedulerController : ControllerBase
     /// <seealso cref="IJobExecutionContext" />
     [HttpGet]
     [Route("Scheduler/GetCurrentlyExecutingJobs")]
-    public ContentResult GetCurrentlyExecutingJobs()
+    public async Task<ContentResult> GetCurrentlyExecutingJobs()
     {
         _logger?.LogInformation("Received request to return the currently executing jobs");
 
-        var jobExecutionContext = _scheduler.GetCurrentlyExecutingJobs().GetAwaiter().GetResult();
+        var jobExecutionContext = await _scheduler.GetCurrentlyExecutingJobs();
         var result = new JobExecutionContexts(jobExecutionContext).ToJsonString();
 
         _logger?.LogInformation("Returning currently executing jobs");
@@ -990,10 +990,10 @@ public class SchedulerController : ControllerBase
     /// <seealso cref="Standby" />
     [HttpPost]
     [Route("Scheduler/PauseAllTriggers")]
-    public void PauseAll()
+    public async Task PauseAll()
     {
         _logger?.LogInformation("Received request to pause all trigger");
-        _scheduler.PauseAll();
+        await _scheduler.PauseAll();
         _logger?.LogInformation("All triggers paused");
     }
     #endregion
@@ -1010,10 +1010,10 @@ public class SchedulerController : ControllerBase
     /// <seealso cref="PauseAll" />
     [HttpPost]
     [Route("Scheduler/ResumeAllTriggers")]
-    public void ResumeAll()
+    public async Task ResumeAll()
     {
         _logger?.LogInformation("Received request to resume all trigger");
-        _scheduler.ResumeAll();
+        await _scheduler.ResumeAll();
         _logger?.LogInformation("All triggers resumed");
     }
     #endregion
@@ -1024,13 +1024,13 @@ public class SchedulerController : ControllerBase
     /// </summary>
     [HttpGet]
     [Route("Scheduler/GetJobKeys")]
-    public ContentResult GetJobKeys([FromBody] string json)
+    public async Task<ContentResult> GetJobKeys([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get all the job keys that are matching the given group matcher");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var groupMatcher = GroupMatcher<Quartz.JobKey>.FromJsonString(json);
-        var jobKeys = _scheduler.GetJobKeys(groupMatcher.ToGroupMatcher()).GetAwaiter().GetResult();
+        var jobKeys = await _scheduler.GetJobKeys(groupMatcher.ToGroupMatcher());
 
         if (jobKeys == null)
         {
@@ -1058,15 +1058,15 @@ public class SchedulerController : ControllerBase
     /// </remarks>
     [HttpGet]
     [Route("Scheduler/GetTriggersOfJob")]
-    public ContentResult GetTriggersOfJob([FromBody] string json)
+    public async Task<ContentResult> GetTriggersOfJob([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get all the triggers for the given job key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var triggers = _scheduler.GetTriggersOfJob(jobKey.ToJobKey()).GetAwaiter().GetResult();
+        var triggers = await _scheduler.GetTriggersOfJob(jobKey.ToJobKey());
 
-        if (triggers == null)
+        if (triggers.Count == 0)
         {
             _logger?.LogInformation("No triggers found");
             return Content("[]", "application/json");
@@ -1087,13 +1087,13 @@ public class SchedulerController : ControllerBase
     /// </summary>
     [HttpGet]
     [Route("Scheduler/GetTriggerKeys")]
-    public ContentResult GetTriggerKeys([FromBody] string json)
+    public async Task<ContentResult> GetTriggerKeys([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get all the trigger keys that are matching the given group matcher");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var groupMatcher = GroupMatcher<Quartz.TriggerKey>.FromJsonString(json);
-        var triggerKeys = _scheduler.GetTriggerKeys(groupMatcher.ToGroupMatcher()).GetAwaiter().GetResult();
+        var triggerKeys = await _scheduler.GetTriggerKeys(groupMatcher.ToGroupMatcher());
 
         if (triggerKeys == null)
         {
@@ -1120,13 +1120,13 @@ public class SchedulerController : ControllerBase
     /// </remarks>
     [HttpGet]
     [Route("Scheduler/GetJobDetail")]
-    public ContentResult GetJobDetail([FromBody] string json)
+    public async Task<ContentResult> GetJobDetail([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get the job detail for the given job key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var jobDetail = _scheduler.GetJobDetail(jobKey.ToJobKey()).GetAwaiter().GetResult();
+        var jobDetail = await _scheduler.GetJobDetail(jobKey.ToJobKey());
 
         if (jobDetail == null)
         {
@@ -1153,13 +1153,13 @@ public class SchedulerController : ControllerBase
     /// </remarks>
     [HttpGet]
     [Route("Scheduler/GetTrigger")]
-    public ContentResult GetTrigger([FromBody] string json)
+    public async Task<ContentResult> GetTrigger([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get the trigger for the given trigger key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var trigger = _scheduler.GetTrigger(triggerKey.ToTriggerKey()).GetAwaiter().GetResult();
+        var trigger = await _scheduler.GetTrigger(triggerKey.ToTriggerKey());
         if (trigger == null)
         {
             _logger?.LogInformation("No trigger found");
@@ -1186,13 +1186,13 @@ public class SchedulerController : ControllerBase
     /// <seealso cref="TriggerState.None" />
     [HttpGet]
     [Route("Scheduler/GetTriggerState")]
-    public ContentResult GetTriggerState([FromBody] string json)
+    public async Task<ContentResult> GetTriggerState([FromBody] string json)
     {
         _logger?.LogInformation("Received request to get the trigger state for the given trigger key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var triggerState = _scheduler.GetTriggerState(triggerKey.ToTriggerKey()).GetAwaiter().GetResult();
+        var triggerState = await _scheduler.GetTriggerState(triggerKey.ToTriggerKey());
         var result = triggerState.ToString();
 
         _logger?.LogInformation("Returning '{Result}'", result);
@@ -1207,18 +1207,18 @@ public class SchedulerController : ControllerBase
     /// <param name="json">The <see cref="ICalendar" /> information</param>
     [HttpPost]
     [Route("Scheduler/AddCalendar")]
-    public Task AddCalendar([FromBody] string json)
+    public async Task AddCalendar([FromBody] string json)
     {
         _logger?.LogInformation("Received request to add a calendar to the scheduler");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var baseCalendar = BaseCalendar.FromJsonString(json);
         var calendar = baseCalendar.ToCalendar();
-        
-        if (!string.IsNullOrEmpty(baseCalendar.CalendarBase))
-            calendar.CalendarBase = _scheduler.GetCalendar(baseCalendar.CalendarBase).GetAwaiter().GetResult();
 
-        return _scheduler.AddCalendar(baseCalendar.Name, calendar, baseCalendar.Replace, baseCalendar.UpdateTriggers);
+        if (!string.IsNullOrEmpty(baseCalendar.CalendarBase))
+            calendar.CalendarBase = await _scheduler.GetCalendar(baseCalendar.CalendarBase);
+
+        await _scheduler.AddCalendar(baseCalendar.Name, calendar, baseCalendar.Replace, baseCalendar.UpdateTriggers);
     }
     #endregion
 
@@ -1235,11 +1235,11 @@ public class SchedulerController : ControllerBase
     /// <returns>true if the Calendar was found and deleted.</returns>
     [HttpDelete]
     [Route("Scheduler/DeleteCalendar/{calName}")]
-    public bool DeleteCalendar(string calName)
+    public async Task<bool> DeleteCalendar(string calName)
     {
         _logger?.LogInformation("Received request to delete the calendar '{CalName}' from the scheduler", calName);
 
-        var result = _scheduler.DeleteCalendar(calName).GetAwaiter().GetResult();
+        var result = await _scheduler.DeleteCalendar(calName);
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1252,11 +1252,11 @@ public class SchedulerController : ControllerBase
     /// </summary>
     [HttpGet]
     [Route("Scheduler/Getcalendar/{calName}")]
-    public ContentResult GetCalendar(string calName)
+    public async Task<ContentResult> GetCalendar(string calName)
     {
         _logger?.LogInformation("Received request to get the calendar with the name '{CalName}' from the scheduler", calName);
 
-        var calendar = _scheduler.GetCalendar(calName).GetAwaiter().GetResult();
+        var calendar = await _scheduler.GetCalendar(calName);
         if (calendar == null)
         {
             _logger?.LogInformation("Calendar with the name '{CalName}' not found", calName);
@@ -1346,13 +1346,13 @@ public class SchedulerController : ControllerBase
     /// <seealso cref="GetCurrentlyExecutingJobs" />
     [HttpGet]
     [Route("Scheduler/InterruptJobKey")]
-    public bool InterruptJobKey([FromBody] string json)
+    public async Task<bool> InterruptJobKey([FromBody] string json)
     {
         _logger?.LogInformation("Received request for cancellation, within this Scheduler instance, of all currently executing instances of the identified job");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var result = _scheduler.Interrupt(jobKey.ToJobKey()).GetAwaiter().GetResult();
+        var result = await _scheduler.Interrupt(jobKey.ToJobKey());
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1379,12 +1379,12 @@ public class SchedulerController : ControllerBase
     /// <returns>true if the identified job instance was found and interrupted.</returns>
     [HttpGet]
     [Route("Scheduler/interruptfireinstanceid/{fireInstanceId}")]
-    public bool InterruptFireInstanceId(string fireInstanceId)
+    public async Task<bool> InterruptFireInstanceId(string fireInstanceId)
     {
         _logger?.LogInformation(
             "Received request for cancellation, within this Scheduler instance, of the identified executing job instance");
 
-        var result = _scheduler.Interrupt(fireInstanceId).GetAwaiter().GetResult();
+        var result = await _scheduler.Interrupt(fireInstanceId);
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1400,13 +1400,13 @@ public class SchedulerController : ControllerBase
     /// <returns>true if a Job exists with the given identifier</returns>
     [HttpGet]
     [Route("Scheduler/checkexistsjobkey")]
-    public bool CheckExistsJobKey([FromBody] string json)
+    public async Task<bool> CheckExistsJobKey([FromBody] string json)
     {
         _logger?.LogInformation("Received request to check if the given job key exists");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var result = _scheduler.CheckExists(jobKey.ToJobKey()).GetAwaiter().GetResult();
+        var result = await _scheduler.CheckExists(jobKey.ToJobKey());
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1422,13 +1422,13 @@ public class SchedulerController : ControllerBase
     /// <returns>true if a Trigger exists with the given identifier</returns>
     [HttpGet]
     [Route("Scheduler/checkexiststriggerkey")]
-    public bool CheckExistsTriggerKey([FromBody] string json)
+    public async Task<bool> CheckExistsTriggerKey([FromBody] string json)
     {
         _logger?.LogInformation("Received request to check if the given job key exists");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var result = _scheduler.CheckExists(triggerKey.ToTriggerKey()).GetAwaiter().GetResult();
+        var result = await _scheduler.CheckExists(triggerKey.ToTriggerKey());
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1442,10 +1442,10 @@ public class SchedulerController : ControllerBase
     /// </summary>
     [HttpPost]
     [Route("Scheduler/Clear")]
-    public void Clear()
+    public async Task Clear()
     {
         _logger?.LogInformation("Received request to clear the whole scheduler");
-        _scheduler.Clear();
+        await _scheduler.Clear();
         _logger?.LogInformation("Scheduler cleared");
     }
     #endregion

@@ -33,135 +33,105 @@ namespace QuartzRestApi.Wrappers;
 /// <summary>
 ///     Class used to read or create json to get the schedulers meta-data
 /// </summary>
-public class SchedulerMetaData
+/// <param name="metaData">The Quartz scheduler meta-data</param>
+public class SchedulerMetaData(Quartz.SchedulerMetaData metaData)
 {
     #region Properties
     /// <summary>
     ///     Returns <c>true</c> when in standby mode
     /// </summary>
     [JsonPropertyName("InStandbyMode")]
-    public bool InStandbyMode { get; private set; }
+    public bool InStandbyMode { get; private init; } = metaData.InStandbyMode;
 
     /// <summary>
     ///     Returns the job store type
     /// </summary>
     [JsonPropertyName("JobStoreType")]
-    public Type JobStoreType { get; private set; }
+    public Type JobStoreType { get; private init; } = metaData.JobStoreType;
 
     /// <summary>
     ///     Returns <c>true</c> when the job store is clustered
     /// </summary>
     [JsonPropertyName("JobStoreClustered")]
-    public bool JobStoreClustered { get; private set; }
+    public bool JobStoreClustered { get; private init; } = metaData.JobStoreClustered;
 
     /// <summary>
     ///     Returns <c>true</c> when the job store supports persistence
     /// </summary>
     [JsonPropertyName("JobsStoreSupportsPersistence")]
-    public bool JobStoreSupportsPersistence { get; private set; }
+    public bool JobStoreSupportsPersistence { get; private init; } = metaData.JobStoreSupportsPersistence;
 
     /// <summary>
     ///     Returns the numbers of jobs executed
     /// </summary>
     [JsonPropertyName("NumbersOfJobsExecuted")]
-    public int NumbersOfJobsExecuted { get; private set; }
+    public int NumbersOfJobsExecuted { get; private init; } = metaData.NumberOfJobsExecuted;
 
     /// <summary>
     ///     Returns the date time since the scheduler is running
     /// </summary>
     [JsonPropertyName("RunningSince")]
-    public DateTimeOffset? RunningSince { get; private set; }
+    public DateTimeOffset? RunningSince { get; private init; } = metaData.RunningSince;
 
     /// <summary>
     ///     Returns the scheduler instance id
     /// </summary>
     [JsonPropertyName("SchedulerInstanceId")]
-    public string SchedulerInstanceId { get; private set; }
+    public string SchedulerInstanceId { get; private init; } = metaData.SchedulerInstanceId;
 
     /// <summary>
     ///     Returns the scheduler name
     /// </summary>
     [JsonPropertyName("SchedulerName")]
-    public string SchedulerName { get; private set; }
+    public string SchedulerName { get; private init; } = metaData.SchedulerName;
 
     /// <summary>
     ///     Returns <c>true</c> when the scheduler is remote
     /// </summary>
     [JsonPropertyName("SchedulerRemote")]
-    public bool SchedulerRemote { get; private set; }
+    public bool SchedulerRemote { get; private init; } = metaData.SchedulerRemote;
 
     /// <summary>
     ///     Returns the scheduler type
     /// </summary>
     [JsonPropertyName("SchedulerType")]
-    public Type SchedulerType { get; private set; }
+    public Type SchedulerType { get; private init; } = metaData.SchedulerType;
 
     /// <summary>
     ///     Returns <c>true</c> when the scheduler is shutdown
     /// </summary>
     [JsonPropertyName("Shutdown")]
-    public bool Shutdown { get; private set; }
+    public bool Shutdown { get; private init; } = metaData.Shutdown;
 
     /// <summary>
     ///     Returns <c>true</c> when the scheduler is started
     /// </summary>
     [JsonPropertyName("Started")]
-    public bool Started { get; private set; }
+    public bool Started { get; private init; } = metaData.Started;
 
     /// <summary>
     ///     Returns the thread pool size
     /// </summary>
     [JsonPropertyName("ThreadPoolSize")]
-    public int ThreadPoolSize { get; private set; }
+    public int ThreadPoolSize { get; private init; } = metaData.ThreadPoolSize;
 
     /// <summary>
     ///     Returns the thread pool type
     /// </summary>
     [JsonPropertyName("ThreadPoolType")]
-    public Type ThreadPoolType { get; private set; }
+    public Type ThreadPoolType { get; private init; } = metaData.ThreadPoolType;
 
     /// <summary>
     ///     Returns the scheduler version
     /// </summary>
     [JsonPropertyName("Version")]
-    public string Version { get; private set; }
+    public string Version { get; private init; } = metaData.Version;
 
+    /// <summary>
+    ///     Returns the scheduler summary
+    /// </summary>
     [JsonPropertyName("Summary")]
-    public string Summary { get; private set; }
-    #endregion
-
-    #region Constructor
-    /// <summary>
-    ///     Needed for json de-serialization
-    /// </summary>
-    [JsonConstructor]
-    internal SchedulerMetaData()
-    {
-    }
-
-    /// <summary>
-    ///     Creates this object and sets all it's needed properties
-    /// </summary>
-    /// <param name="metaData"></param>
-    public SchedulerMetaData(Quartz.SchedulerMetaData metaData)
-    {
-        InStandbyMode = metaData.InStandbyMode;
-        JobStoreType = metaData.JobStoreType;
-        JobStoreClustered = metaData.JobStoreClustered;
-        JobStoreSupportsPersistence = metaData.JobStoreSupportsPersistence;
-        NumbersOfJobsExecuted = metaData.NumberOfJobsExecuted;
-        RunningSince = metaData.RunningSince;
-        SchedulerInstanceId = metaData.SchedulerInstanceId;
-        SchedulerName = metaData.SchedulerName;
-        SchedulerRemote = metaData.SchedulerRemote;
-        SchedulerType = metaData.SchedulerType;
-        Shutdown = metaData.Shutdown;
-        Started = metaData.Started;
-        ThreadPoolSize = metaData.ThreadPoolSize;
-        ThreadPoolType = metaData.ThreadPoolType;
-        Version = metaData.Version;
-        Summary = metaData.GetSummary();
-    }
+    public string Summary { get; private init; } = metaData.GetSummary();
     #endregion
 
     #region ToJsonString

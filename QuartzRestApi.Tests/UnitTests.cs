@@ -102,7 +102,7 @@ public class UnitTests
             .Build();
 
         var schedulerTrigger = (ISimpleTrigger)TriggerBuilder.Create()
-            .WithIdentity("triggerKey", "JobKeyGroup")
+            .WithIdentity("TriggerKey", "JobKeyGroup")
             .WithDescription("TestTrigger")
             .StartAt(DateTime.Now)
             .Build();
@@ -432,10 +432,10 @@ public class UnitTests
     [TestMethod]
     public void GetTrigger()
     {
-        var triggerKey = new TriggerKey("triggerKey", "JobKeyGroup");
+        var triggerKey = new TriggerKey("TriggerKey", "JobKeyGroup");
         var trigger = _connector.GetTrigger(triggerKey).Result;
         Assert.IsNotNull(trigger);
-        Assert.AreEqual("triggerKey", trigger.TriggerKey.Name);
+        Assert.AreEqual("TriggerKey", trigger.TriggerKey.Name);
     }
 
     /// <summary>

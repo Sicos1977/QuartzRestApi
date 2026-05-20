@@ -66,10 +66,29 @@ public class SchedulerConnector
     #endregion
 
     #region Helpers
+    /// <summary>
+    ///     Helper method to create a StringContent with the given JSON string and the correct encoding and media type
+    /// </summary>
+    /// <param name="json">The JSON string to include in the request body.</param>
+    /// <returns>A <see cref="StringContent"/> instance with the specified JSON string.</returns>
     private static StringContent JsonBody(string json) => new(JsonSerializer.Serialize(json), Encoding.UTF8, "application/json");
 
+    /// <summary>
+    ///     Reads the HTTP response content as a string and removes any leading and trailing double-quote characters.
+    /// </summary>
+    /// <remarks>
+    ///     This method is useful when the response content is expected to be a JSON string value, which
+    ///     may be enclosed in double quotes.
+    /// </remarks>
+    /// <param name="response">The HTTP response message containing the content to read. Cannot be null.</param>
+    /// <returns>A string containing the response content with surrounding double quotes removed.</returns>
     private static async Task<string> ReadString(HttpResponseMessage response) => (await response.Content.ReadAsStringAsync().ConfigureAwait(false)).Trim('"');
 
+    /// <summary>
+    ///     Reads the HTTP response content as a string and parses it as a boolean value.
+    /// </summary>
+    /// <param name="response">The HTTP response message containing the content to read. Cannot be null.</param>
+    /// <returns>A boolean value parsed from the response content.</returns>
     private static async Task<bool> ReadBool(HttpResponseMessage response) => bool.Parse(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
     #endregion
 

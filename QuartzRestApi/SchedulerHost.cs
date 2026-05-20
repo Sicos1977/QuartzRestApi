@@ -118,8 +118,7 @@ public class SchedulerHost
     ///     One or more <see cref="ApiKeyProfile"/> instances.
     ///     Pass <see langword="null"/> or an empty collection to disable authentication.
     /// </param>
-    public SchedulerHost(string baseAddress, IScheduler scheduler, ILogger logger,
-        IEnumerable<ApiKeyProfile> profiles)
+    public SchedulerHost(string baseAddress, IScheduler scheduler, ILogger logger, IEnumerable<ApiKeyProfile> profiles)
     {
         _baseAddress = baseAddress;
         _scheduler = scheduler;
@@ -145,8 +144,7 @@ public class SchedulerHost
         builder.Services.AddSingleton(_scheduler);
         builder.Services.AddSingleton(_apiKeyOptions);
         builder.Services.AddRouting();
-        builder.Services.AddControllers()
-            .AddApplicationPart(typeof(SchedulerHost).Assembly);
+        builder.Services.AddControllers().AddApplicationPart(typeof(SchedulerHost).Assembly);
         builder.Services.AddOpenApi(options =>
         {
             options.AddDocumentTransformer((document, _, _) =>
