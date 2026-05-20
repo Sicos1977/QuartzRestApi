@@ -33,6 +33,9 @@ jobs:
       - name: Install DocFX
         run: dotnet tool install --global docfx
 
+      - name: Restore and build (required for DocFX metadata)
+        run: dotnet build QuartzRestApi/QuartzRestApi.csproj -c Release
+
       - name: Build documentation
         run: docfx docs/docfx.json
 
