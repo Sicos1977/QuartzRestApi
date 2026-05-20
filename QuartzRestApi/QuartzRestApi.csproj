@@ -3,10 +3,29 @@
 	<PropertyGroup>
 		<TargetFramework>net10.0</TargetFramework>
 		<LangVersion>latest</LangVersion>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<OutputType>Library</OutputType>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591</NoWarn>
+
+		<!-- NuGet package metadata -->
+		<PackageId>QuartzRestApi</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Kees van Spelde</Authors>
+		<Company>Magic-Sessions</Company>
+		<Product>QuartzRestApi</Product>
+		<Description>A self-hosted REST API library for Quartz.NET, built on .NET 10 with ASP.NET Core / Kestrel. Exposes a Quartz IScheduler over HTTP with optional API-key authentication and an interactive Scalar/OpenAPI browser.</Description>
+		<PackageTags>quartz;scheduler;rest;api;kestrel;aspnetcore</PackageTags>
+		<PackageProjectUrl>https://github.com/Sicos1977/QuartzRestApi</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Sicos1977/QuartzRestApi</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Copyright>Copyright (C) 2022 - 2026 Magic-Sessions</Copyright>
+
+		<!-- Only produce a NuGet package in Release builds -->
+		<IsPackable>true</IsPackable>
+		<GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild Condition="'$(Configuration)' != 'Release'">false</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -14,6 +33,10 @@
 		<PackageReference Include="Quartz" Version="3.8.1" />
 		<PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.0" />
 		<PackageReference Include="Scalar.AspNetCore" Version="2.14.14" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 </Project>
