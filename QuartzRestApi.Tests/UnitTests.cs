@@ -1,4 +1,4 @@
-﻿//
+//
 // UnitTest1.cs
 //
 // Author: Kees van Spelde <sicos2002@hotmail.com>
@@ -57,12 +57,12 @@ public class UnitTests
     /// <summary>
     ///     The SchedulerHost instance used to expose the Quartz scheduler for testing. This host is started before each test and stopped afterward to ensure a clean state.
     /// </summary>
-    private SchedulerHost _host;
+    private static SchedulerHost _host;
 
     /// <summary>
     ///     The SchedulerConnector instance used to interact with the SchedulerHost's API during tests. This connector is initialized in the test setup and provides methods for querying and manipulating the scheduler state.
     /// </summary>
-    private SchedulerConnector _connector;
+    private static SchedulerConnector _connector;
     #endregion
 
     #region Initialize
@@ -77,7 +77,7 @@ public class UnitTests
     ///     testing. This setup is required for tests that depend on a running scheduler instance.
     /// </remarks>
     [ClassInitialize]
-    public async Task Initialize()
+    public static async Task InitializeClass(TestContext context)
     {
         var properties = new NameValueCollection
         {
@@ -86,13 +86,11 @@ public class UnitTests
             ["quartz.threadPool.type"] = "Quartz.Simpl.SimpleThreadPool, Quartz"
         };
 
-        var scheduler = await new StdSchedulerFactory(properties).GetScheduler();
+        var scheduler = new StdSchedulerFactory(properties).GetScheduler().GetAwaiter().GetResult();
 
-        if (scheduler.Context.TryAdd("key1", "value1"))
-        {
-            scheduler.Context.TryAdd("key2", "value2");
-            scheduler.Context.TryAdd("key3", "value3");
-        }
+        scheduler.Context.Add("key1", "value1");
+        scheduler.Context.Add("key2", "value2");
+        scheduler.Context.Add("key3", "value3");
 
         await scheduler.Start();
 
@@ -115,7 +113,7 @@ public class UnitTests
         await scheduler.ScheduleJob(schedulerJob, schedulerTrigger);
 
         _host = new SchedulerHost("http://localhost:44344", scheduler, null);
-        _host.Start();
+        await _host.Start();
 
         _connector = new SchedulerConnector("http://localhost:44344");
     }
@@ -130,9 +128,9 @@ public class UnitTests
     ///     completes. It is used to release resources or stop services that were initialized for the test.
     /// </remarks>
     [ClassCleanup]
-    public void Cleanup()
+    public static async Task CleanupClass()
     {
-        _host.Stop();
+        await _host.Stop();
     }
     #endregion
 
@@ -325,10 +323,10 @@ public class UnitTests
         };
 
         var scheduler = await new StdSchedulerFactory(properties).GetScheduler();
-        await scheduler.Start();
+        scheduler.Start().GetAwaiter().GetResult();
 
         var isolatedHost = new SchedulerHost("http://localhost:44346", scheduler, null);
-        isolatedHost.Start();
+        await isolatedHost.Start();
         try
         {
             var isolatedConnector = new SchedulerConnector("http://localhost:44346");
@@ -339,7 +337,7 @@ public class UnitTests
         }
         finally
         {
-            isolatedHost.Stop();
+            await isolatedHost.Stop();
         }
     }
     #endregion
@@ -648,9 +646,7 @@ public class UnitTests
     {
         var jobs = new List<JobDetailWithTriggers>
         {
-            new JobDetailWithTriggers(
-                MakeJobDetail("BatchJob1", "BatchGroup"),
-                [MakeTrigger("BatchTrigger1", "BatchGroup", "BatchJob1", "BatchGroup", "0 * * ? * *")])
+            new(MakeJobDetail("BatchJob1", "BatchGroup"), [MakeTrigger("BatchTrigger1", "BatchGroup", "BatchJob1", "BatchGroup", "0 * * ? * *")])
         };
 
         await _connector.ScheduleJobs(new ScheduleJobs(jobs, replace: true));
@@ -800,7 +796,7 @@ public class UnitTests
         };
 
         var scheduler = await new StdSchedulerFactory(properties).GetScheduler();
-        await scheduler.Start();
+        scheduler.Start().GetAwaiter().GetResult();
 
         var job = JobBuilder.Create<TestJob>()
             .WithIdentity("ClearJob", "ClearGroup")
@@ -812,7 +808,7 @@ public class UnitTests
         await scheduler.ScheduleJob(job, trigger);
 
         var isolatedHost = new SchedulerHost("http://localhost:44345", scheduler, null);
-        isolatedHost.Start();
+        await isolatedHost.Start();
         try
         {
             var isolatedConnector = new SchedulerConnector("http://localhost:44345");
@@ -823,7 +819,7 @@ public class UnitTests
         }
         finally
         {
-            isolatedHost.Stop();
+            await isolatedHost.Stop();
         }
     }
     #endregion

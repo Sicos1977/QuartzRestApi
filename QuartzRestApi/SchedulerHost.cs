@@ -25,6 +25,8 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -131,7 +133,8 @@ public class SchedulerHost
     /// <summary>
     ///     Starts the Web API.
     /// </summary>
-    public void Start()
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task Start(CancellationToken cancellationToken = default)
     {
         var builder = WebApplication.CreateBuilder();
 
@@ -157,7 +160,7 @@ public class SchedulerHost
                     Contact = new OpenApiContact { Name = "Kees van Spelde", Email = "sicos2002@hotmail.com" },
                     License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
                 };
-                return System.Threading.Tasks.Task.CompletedTask;
+                return Task.CompletedTask;
             });
         });
 
@@ -172,7 +175,7 @@ public class SchedulerHost
         _app.MapOpenApi();
         _app.MapScalarApiReference();
 
-        _app.StartAsync().GetAwaiter().GetResult();
+        await _app.StartAsync(cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -180,9 +183,11 @@ public class SchedulerHost
     /// <summary>
     ///     Stops the Web API.
     /// </summary>
-    public void Stop()
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task Stop(CancellationToken cancellationToken = default)
     {
-        _app?.StopAsync();
+        if (_app != null)
+            await _app.StopAsync(cancellationToken).ConfigureAwait(false);
     }
     #endregion
 }
