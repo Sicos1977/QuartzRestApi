@@ -1,4 +1,4 @@
-<img src="icon.png" width="80" align="right" alt="QuartzRestApi logo" />
+<img src="https://raw.githubusercontent.com/Sicos1977/QuartzRestApi/7eea953ad28ccf9e7176b9435c8da0c98a8a6155/icon.png" width="80" align="right" alt="QuartzRestApi logo" />
 
 # QuartzRestApi
 
@@ -65,13 +65,13 @@ graph TD
 ## How to host Quartz.NET via the REST API
 
 ```csharp
-// No authentication — all endpoints publicly accessible
+// No authentication â€” all endpoints publicly accessible
 var host = new SchedulerHost("http://localhost:44344", scheduler, logger);
 await host.Start();
 ```
 
-- `scheduler` — your `IScheduler` instance from Quartz.NET
-- `logger` — any `Microsoft.Extensions.Logging.ILogger` (or `null` to disable logging)
+- `scheduler` â€” your `IScheduler` instance from Quartz.NET
+- `logger` â€” any `Microsoft.Extensions.Logging.ILogger` (or `null` to disable logging)
 
 Both `Start` and `Stop` return a `Task` and should be awaited. An optional `CancellationToken` can be passed to either method.
 
@@ -99,7 +99,7 @@ Authentication is **opt-in**. When no key or profiles are configured every reque
 
 ### Single API key (full access)
 
-The simplest option — one key that grants access to all endpoints:
+The simplest option â€” one key that grants access to all endpoints:
 
 ```csharp
 // Host
@@ -214,9 +214,9 @@ Open `http://localhost:44344/scalar/v1` in a browser to explore and test all end
 QuartzRestApi uses the `Microsoft.Extensions.Logging.ILogger` interface. Any compatible logging library works (Serilog, NLog, etc.).
 
 Log levels used:
-- `Information` — standard results (booleans, names, DateTimeOffsets)
-- `Debug` — full JSON request/response bodies
-- `Warning` — rejected requests (missing or invalid API key, forbidden route)
+- `Information` â€” standard results (booleans, names, DateTimeOffsets)
+- `Debug` â€” full JSON request/response bodies
+- `Warning` â€” rejected requests (missing or invalid API key, forbidden route)
 
 ---
 
