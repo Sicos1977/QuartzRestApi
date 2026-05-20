@@ -1,8 +1,2126 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.1.1",
   "info": {
     "title": "QuartzRestApi",
-    "version": "1.0"
+    "description": "A self-hosted REST API for Quartz.NET schedulers, built on .NET 10 with ASP.NET Core / Kestrel.",
+    "contact": {
+      "name": "Kees van Spelde",
+      "email": "sicos2002@hotmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "v1"
   },
-  "paths": {}
+  "servers": [
+    {
+      "url": "http://localhost:44399/"
+    }
+  ],
+  "paths": {
+    "/Scheduler/IsJobGroupPaused/{groupName}": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Returns `true` if the given JobGroup is paused",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "path",
+            "description": "The group name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/IsTriggerGroupPaused/{groupName}": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Returns `true` if the given TriggerGroup is paused",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "path",
+            "description": "The group name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/SchedulerName": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Returns the name of the scheduler",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/SchedulerInstanceId": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Returns the instance id of the scheduler",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/SchedulerContext": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Returns the SchedulerContext of the IScheduler.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/InStandbyMode": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Reports whether the IScheduler is in stand-by mode.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/Isshutdown": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Reports whether the IScheduler has been Shutdown.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetMetaData": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get a SchedulerMetaData object describing the settings\r\nand capabilities of the scheduler instance.",
+        "description": "Note that the data returned is an 'instantaneous' snapshot, and that as\r\nsoon as it's returned, the meta-data values may be different.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetCurrentlyExecutingJobs": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Return a list of IJobExecutionContext objects that\r\nrepresent all currently executing Jobs in this Scheduler instance.",
+        "description": "        This method is not cluster aware.  That is, it will only return Jobs\r\ncurrently executing in this Scheduler instance, not across the entire\r\ncluster.\r\n        Note that the list returned is an 'instantaneous' snapshot, and that as\r\nsoon as it's returned, the true list of executing jobs may be different.\r\nAlso, please read the doc associated with IJobExecutionContext-\r\nespecially if you're using remoting.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetJobGroupNames": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the names of all known IJobDetail groups.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetTriggerGroupNames": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the names of all known ITrigger groups.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetPausedTriggerGroups": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the names of all ITrigger groups that are paused.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/Start": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Starts the IScheduler's threads that fire ITriggers.\r\nWhen a scheduler is first created it is in \"stand-by\" mode, and will not\r\nfire triggers.  The scheduler can also be put into stand-by mode by\r\ncalling the Task SchedulerController.Standby() method.",
+        "description": "The misfire/recovery process will be started, if it is the initial call\r\nto this method on this scheduler instance.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/StartDelayed/{delay}": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Calls Task SchedulerController.Start() after the indicated delay.\r\n(This call does not block). This can be useful within applications that\r\nhave initializers that create the scheduler immediately, before the\r\nresources needed by the executing jobs have been fully initialized.",
+        "parameters": [
+          {
+            "name": "delay",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "pattern": "^-?(?:0|[1-9]\\d*)$",
+              "type": [
+                "integer",
+                "string"
+              ],
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/IsStarted": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Whether the scheduler has been started.",
+        "description": "Note: This only reflects whether Task SchedulerController.Start() has ever\r\nbeen called on this Scheduler, so it will return `true` even\r\nif the IScheduler is currently in standby mode or has been\r\nsince shutdown.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/Standby": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Temporarily halts the IScheduler's firing of ITriggers.",
+        "description": "        When Task SchedulerController.Start() is called (to bring the scheduler out of\r\nstand-by mode), trigger misfire instructions will NOT be applied\r\nduring the execution of the Task SchedulerController.Start() method - any misfires\r\nwill be detected immediately afterward (by the IJobStore's\r\nnormal process).\r\n        The scheduler is not destroyed, and can be re-started at any time.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/Shutdown": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Halts the IScheduler's firing of ITriggers,\r\nand cleans up all resources associated with the Scheduler. Equivalent to Task SchedulerController.Shutdown(bool waitForJobsToComplete).",
+        "description": "The scheduler cannot be re-started.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/Shutdown/{waitForJobsToComplete}": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Halts the IScheduler's firing of ITriggers,\r\nand cleans up all resources associated with the Scheduler.",
+        "description": "The scheduler cannot be re-started.",
+        "parameters": [
+          {
+            "name": "waitForJobsToComplete",
+            "in": "path",
+            "description": "if `true` the scheduler will not allow this method\r\nto return until all currently executing jobs have completed.",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/ScheduleJobWithJobDetailAndTrigger": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Add the given IJobDetail to the\r\nScheduler, and associate the given ITrigger with\r\nit.",
+        "description": "If the given Trigger does not reference any IJob, then it\r\nwill be set to reference the Job passed with it into this method.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/ScheduleJobIdentifiedWithTrigger": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Schedule the given ITrigger with the IJob identified by the ITrigger's\r\nsettings.",
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "date-time"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/ScheduleJobs": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Schedule all the given jobs with the related set of triggers.",
+        "description": "    If any of the given jobs or triggers already exist (or more\r\nspecifically, if the keys are not unique) and the replace\r\nparameter is not set to true then an exception will be thrown.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/ScheduleJobWithJobDetailAndTriggers": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Schedule the given job with the related set of triggers.",
+        "description": "If any of the given job or triggers already exist (or more\r\nspecifically, if the keys are not unique) and the replace\r\nparameter is not set to true then an exception will be thrown.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/UnscheduleJob": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "        Remove the indicated ITrigger from the scheduler.\r\n        If the related job does not have any other triggers, and the job is\r\nnot durable, then the job will also be deleted.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/UnscheduleJobs": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Remove all the indicated ITriggers from the scheduler.",
+        "description": "        If the related job does not have any other triggers, and the job is\r\nnot durable, then the job will also be deleted.\r\n        Note that while this bulk operation is likely more efficient than\r\n        invoking Task&lt;bool&gt; SchedulerController.UnscheduleJob(string json) several times, it may have the\r\n        adverse affect of holding data locks for a single long duration of time\r\n        (rather than lots of small durations of time).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/RescheduleJob": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Remove (delete) the ITrigger with the given key, and store the\r\nnew given one - which must be associated with the same job (the new trigger must\r\nhave the job name &amp; group specified)  - however, the new trigger need not have\r\nthe same name as the old trigger.",
+        "requestBody": {
+          "description": "The json",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "`null` if a ITrigger with the given name and group\r\nwas not found and removed from the store (and the  new trigger is therefore not stored),\r\notherwise the first fire time of the newly scheduled trigger.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": [
+                        "null",
+                        "string"
+                      ],
+                      "format": "date-time"
+                    }
+                  ]
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": [
+                        "null",
+                        "string"
+                      ],
+                      "format": "date-time"
+                    }
+                  ]
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "type": "null"
+                    },
+                    {
+                      "type": [
+                        "null",
+                        "string"
+                      ],
+                      "format": "date-time"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/AddJob": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Add the given IJob to the Scheduler - with no associated\r\nITrigger. The IJob will be 'dormant' until\r\nit is scheduled with a ITrigger, or TriggerJob /&gt; is called for it.",
+        "description": "With the bool JobDetail.StoreNonDurableWhileAwaitingScheduling parameter\r\nset to ```true```, a non-durable job can be stored.  Once it is\r\nscheduled, it will resume normal non-durable behavior (i.e. be deleted\r\nonce there are no remaining associated triggers).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/DeleteJob": {
+      "delete": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Delete the identified IJob from the Scheduler - and any\r\nassociated ITriggers.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "true if the Job was found and deleted.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/DeleteJobs": {
+      "delete": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Delete the identified jobs from the Scheduler - and any\r\nassociated ITriggers.",
+        "description": "        Note that while this bulk operation is likely more efficient than\r\ninvoking Task&lt;bool&gt; SchedulerController.DeleteJob(string json) several\r\ntimes, it may have the adverse affect of holding data locks for a\r\nsingle long duration of time (rather than lots of small durations\r\nof time).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "true if all the Jobs were found and deleted, false if\r\none or more were not deleted.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/TriggerJobWithJobkey": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Trigger the identified IJobDetail (Execute it now).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/TriggerJobWithDataMap": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Trigger the identified IJobDetail (Execute it now).",
+        "requestBody": {
+          "description": "The JobKey with associated JobDataMap of the IJob to be\r\nexecuted.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/PauseJob": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Pause the IJobDetail with the given\r\nkey - by pausing all of its current ITriggers.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/PauseJobs": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Pause all the IJobDetails in the\r\nmatching groups - by pausing all of their ITriggers.",
+        "description": "        The Scheduler will \"remember\" that the groups are paused, and impose the\r\npause on any new jobs that are added to any of those groups until it is resumed.\r\n        NOTE: There is a limitation that only exactly matched groups\r\ncan be remembered as paused. For example, if there are pre-existing\r\njob in groups \"aaa\" and \"bbb\" and a matcher is given to pause\r\ngroups that start with \"a\" then the group \"aaa\" will be remembered\r\nas paused and any subsequently added jobs in group \"aaa\" will be paused,\r\nhowever if a job is added to group \"axx\" it will not be paused,\r\nas \"axx\" wasn't known at the time the \"group starts with a\" matcher\r\nwas applied.  HOWEVER, if there are pre-existing groups \"aaa\" and\r\n\"bbb\" and a matcher is given to pause the group \"axx\" (with a\r\ngroup equals matcher) then no jobs will be paused, but it will be\r\nremembered that group \"axx\" is paused and later when a job is added\r\nin that group, it will become paused.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/PauseTrigger": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Pause the ITrigger with the given key.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/PauseTriggers": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Pause all the ITriggers in the groups matching.",
+        "description": "        The Scheduler will \"remember\" all the groups paused, and impose the\r\npause on any new triggers that are added to any of those groups until it is resumed.\r\n        NOTE: There is a limitation that only exactly matched groups\r\ncan be remembered as paused.  For example, if there are pre-existing\r\ntriggers in groups \"aaa\" and \"bbb\" and a matcher is given to pause\r\ngroups that start with \"a\" then the group \"aaa\" will be remembered as\r\npaused and any subsequently added triggers in that group be paused,\r\nhowever if a trigger is added to group \"axx\" it will not be paused,\r\nas \"axx\" wasn't known at the time the \"group starts with a\" matcher\r\nwas applied.  HOWEVER, if there are pre-existing groups \"aaa\" and\r\n\"bbb\" and a matcher is given to pause the group \"axx\" (with a\r\ngroup equals matcher) then no triggers will be paused, but it will be\r\nremembered that group \"axx\" is paused and later when a trigger is added\r\nin that group, it will become paused.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/ResumeJob": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Resume (un-pause) the IJobDetail with\r\nthe given key.",
+        "description": "If any of the IJob'sITrigger s missed one\r\nor more fire-times, then the ITrigger's misfire\r\ninstruction will be applied.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/ResumeJobs": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Resume (un-pause) all the IJobDetails\r\nin matching groups.",
+        "description": "If any of the IJob s had ITrigger s that\r\nmissed one or more fire-times, then the ITrigger's\r\nmisfire instruction will be applied.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/ResumeTrigger": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Resume (un-pause) the ITrigger with the given\r\nkey.",
+        "description": "If the ITrigger missed one or more fire-times, then the\r\nITrigger's misfire instruction will be applied.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/ResumeTriggers": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Resume (un-pause) all the ITriggers in matching groups.",
+        "description": "If any ITrigger missed one or more fire-times, then the\r\nITrigger's misfire instruction will be applied.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/PauseAllTriggers": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Pause all triggers - similar to calling Task SchedulerController.PauseTriggers(string json)\r\non every group, however, after using this method void SchedulerController.ResumeAll()\r\nmust be called to clear the scheduler's state of 'remembering' that all\r\nnew triggers will be paused as they are added.",
+        "description": "When void SchedulerController.ResumeAll() is called (to un-pause), trigger misfire\r\ninstructions WILL be applied.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/ResumeAllTriggers": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Resume (un-pause) all triggers - similar to calling\r\nTask SchedulerController.ResumeTriggers(string json) on every group.",
+        "description": "If any ITrigger missed one or more fire-times, then the\r\nITrigger's misfire instruction will be applied.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/GetJobKeys": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the keys of all the IJobDetails in the matching groups.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetTriggersOfJob": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get all ITrigger s that are associated with the\r\nidentified IJobDetail.",
+        "description": "The returned Trigger objects will be snapshots of the actual stored\r\ntriggers. If you wish to modify a trigger, you must re-store the\r\ntrigger afterward (e.g. see Task&lt;DateTimeOffset?&gt; SchedulerController.RescheduleJob(string json)).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetTriggerKeys": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the names of all the ITriggers in the given\r\ngroups.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetJobDetail": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the IJobDetail for the IJob instance with the given key.",
+        "description": "The returned JobDetail object will be a snapshot of the actual stored\r\nJobDetail.  If you wish to modify the JobDetail, you must re-store the\r\nJobDetail afterward (e.g. see Task SchedulerController.AddJob(string json)).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetTrigger": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the ITrigger instance with the given key.",
+        "description": "The returned Trigger object will be a snapshot of the actual stored\r\ntrigger. If you wish to modify the trigger, you must re-store the\r\ntrigger afterward (e.g. see Task&lt;DateTimeOffset?&gt; SchedulerController.RescheduleJob(string json)).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetTriggerState": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the current state of the identified ITrigger.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/AddCalendar": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Add (register) the given ICalendar to the Scheduler.",
+        "requestBody": {
+          "description": "The ICalendar information",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/DeleteCalendar/{calName}": {
+      "delete": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Delete the identified ICalendar from the Scheduler.",
+        "description": "If removal of the ```Calendar``` would result in\r\nITriggers pointing to non-existent calendars, then a\r\nSchedulerException will be thrown.",
+        "parameters": [
+          {
+            "name": "calName",
+            "in": "path",
+            "description": "Name of the calendar.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "true if the Calendar was found and deleted.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/Getcalendar/{calName}": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the ICalendar instance with the given name.",
+        "parameters": [
+          {
+            "name": "calName",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/GetCalendarNames": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Get the names of all registered ICalendar.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/InterruptJobKey": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Request the cancellation, within this Scheduler instance, of all\r\ncurrently executing instances of the identified IJob.",
+        "description": "        If more than one instance of the identified job is currently executing,\r\nthe cancellation token will be set on each instance.  However, there is a limitation that in the case that\r\nbool SchedulerController.InterruptJobKey(string json) on one instances throws an exception, all\r\nremaining  instances (that have not yet been interrupted) will not have\r\ntheir bool SchedulerController.InterruptJobKey(string json) method called.\r\n        If you wish to interrupt a specific instance of a job (when more than\r\none is executing) you can do so by calling\r\nstring SchedulerController.GetCurrentlyExecutingJobs() to obtain a handle\r\nto the job instance, and then invoke bool SchedulerController.InterruptJobKey(string json) on it\r\nyourself.\r\n        This method is not cluster aware.  That is, it will only interrupt\r\ninstances of the identified InterruptableJob currently executing in this\r\nScheduler instance, not across the entire cluster.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "true is at least one instance of the identified job was found and interrupted.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/interruptfireinstanceid/{fireInstanceId}": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Request the cancellation, within this Scheduler instance, of the\r\nidentified executing job instance.",
+        "description": "This method is not cluster aware.  That is, it will only interrupt\r\ninstances of the identified InterruptableJob currently executing in this\r\nScheduler instance, not across the entire cluster.",
+        "parameters": [
+          {
+            "name": "fireInstanceId",
+            "in": "path",
+            "description": "the unique identifier of the job instance to  be interrupted (see\r\nstring IJobExecutionContext.FireInstanceId)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "true if the identified job instance was found and interrupted.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/checkexistsjobkey": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Determine whether a IJob with the given identifier already\r\nexists within the scheduler.",
+        "requestBody": {
+          "description": "the identifier to check for",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "true if a Job exists with the given identifier",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/checkexiststriggerkey": {
+      "get": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Determine whether a ITrigger with the given identifier already\r\nexists within the scheduler.",
+        "requestBody": {
+          "description": "the identifier to check for",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "true if a Trigger exists with the given identifier",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Scheduler/Clear": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Clears (deletes!) all scheduling data - all IJobs, ITriggers\r\nICalendars.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Scheduler/ResetTriggerFromErrorState": {
+      "post": {
+        "tags": [
+          "Scheduler"
+        ],
+        "summary": "Remove the given ITrigger from the error state and set it back to\r\nTriggerState.Normal or TriggerState.Paused as appropriate.",
+        "description": "Only affects triggers that are in TriggerState.Error state. If the trigger\r\nis not in that state, the call is a no-op.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Scheduler"
+    }
+  ]
 }

@@ -145,7 +145,8 @@ public class SchedulerHost
         builder.Services.AddSingleton(_scheduler);
         builder.Services.AddSingleton(_apiKeyOptions);
         builder.Services.AddRouting();
-        builder.Services.AddControllers();
+        builder.Services.AddControllers()
+            .AddApplicationPart(typeof(SchedulerHost).Assembly);
         builder.Services.AddOpenApi(options =>
         {
             options.AddDocumentTransformer((document, _, _) =>

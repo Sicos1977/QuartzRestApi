@@ -36,6 +36,9 @@ jobs:
       - name: Restore and build (required for DocFX metadata)
         run: dotnet build QuartzRestApi/QuartzRestApi.csproj -c Release
 
+      - name: Export OpenAPI specification
+        run: dotnet run --project tools/ExportOpenApi/ExportOpenApi.csproj -- docs/openapi.json
+
       - name: Build documentation
         run: docfx docs/docfx.json
 
