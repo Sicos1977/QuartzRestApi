@@ -17,8 +17,8 @@
     <Product>QuartzRestApi</Product>
     <Description>A self-hosted REST API library for Quartz.NET, built on .NET 10 with ASP.NET Core / Kestrel. Exposes a Quartz IScheduler over HTTP with optional API-key authentication and an interactive Scalar/OpenAPI browser.</Description>
     <PackageTags>quartz;scheduler;rest;api;kestrel;aspnetcore</PackageTags>
-    <PackageProjectUrl>https://github.com</PackageProjectUrl>
-    <RepositoryUrl>https://github.com</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Sicos1977/QuartzRestApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Sicos1977/QuartzRestApi</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
