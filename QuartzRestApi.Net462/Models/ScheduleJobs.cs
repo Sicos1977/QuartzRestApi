@@ -30,33 +30,32 @@ using System.Linq;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for scheduling multiple jobs each with their own triggers.</summary>
+public class ScheduleJobs
 {
-    /// <summary>JSON wrapper for scheduling multiple jobs each with their own triggers.</summary>
-    public class ScheduleJobs
+    [JsonProperty("Jobs")]
+    public List<JobDetailWithTriggers> Jobs { get; set; }
+
+    [JsonProperty("Replace")]
+    public bool Replace { get; set; }
+
+    public ScheduleJobs() { }
+
+    public ScheduleJobs(List<JobDetailWithTriggers> jobs, bool replace)
     {
-        [JsonProperty("Jobs")]
-        public List<JobDetailWithTriggers> Jobs { get; set; }
-
-        [JsonProperty("Replace")]
-        public bool Replace { get; set; }
-
-        public ScheduleJobs() { }
-
-        public ScheduleJobs(List<JobDetailWithTriggers> jobs, bool replace)
-        {
-            Jobs = jobs;
-            Replace = replace;
-        }
-
-        public IReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>> ToSchedulerDictionary()
-            => new ReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>>(
-                Jobs.ToDictionary(
-                    j => j.JobDetail.ToJobDetail(),
-                    j => j.ToReadOnlyTriggerCollection()));
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static ScheduleJobs FromJsonString(string json) => JsonConvert.DeserializeObject<ScheduleJobs>(json);
+        Jobs = jobs;
+        Replace = replace;
     }
+
+    public IReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>> ToSchedulerDictionary()
+        => new ReadOnlyDictionary<IJobDetail, IReadOnlyCollection<ITrigger>>(
+            Jobs.ToDictionary(
+                j => j.JobDetail.ToJobDetail(),
+                j => j.ToReadOnlyTriggerCollection()));
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static ScheduleJobs FromJsonString(string json) => JsonConvert.DeserializeObject<ScheduleJobs>(json);
 }
+

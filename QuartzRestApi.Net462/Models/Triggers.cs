@@ -29,24 +29,23 @@ using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>A list of <see cref="Trigger"/>s.</summary>
+public class Triggers : List<Trigger>
 {
-    /// <summary>A list of <see cref="Trigger"/>s.</summary>
-    public class Triggers : List<Trigger>
+    public Triggers() { }
+
+    public Triggers(IEnumerable<ITrigger> triggers)
     {
-        public Triggers() { }
-
-        public Triggers(IEnumerable<ITrigger> triggers)
-        {
-            foreach (var t in triggers)
-                Add(new Trigger(t));
-        }
-
-        public IReadOnlyCollection<ITrigger> ToReadOnlyTriggerCollection()
-            => new ReadOnlyCollection<ITrigger>(ConvertAll(t => t.ToTrigger()));
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static Triggers FromJsonString(string json) => JsonConvert.DeserializeObject<Triggers>(json);
+        foreach (var t in triggers)
+            Add(new Trigger(t));
     }
+
+    public IReadOnlyCollection<ITrigger> ToReadOnlyTriggerCollection()
+        => new ReadOnlyCollection<ITrigger>(ConvertAll(t => t.ToTrigger()));
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static Triggers FromJsonString(string json) => JsonConvert.DeserializeObject<Triggers>(json);
 }
+

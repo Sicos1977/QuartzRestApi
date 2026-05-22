@@ -30,48 +30,47 @@ using Newtonsoft.Json.Linq;
 using Quartz.Impl.Calendar;
 using BaseCalendar = Quartz.Impl.Calendar.BaseCalendar;
 
-namespace QuartzRestApi.Models.Calendars
+namespace QuartzRestApi.Models.Calendars;
+/// <summary>Newtonsoft.Json converter that dispatches to the correct concrete calendar subtype.</summary>
+internal class BaseCalendarConverter : JsonConverter
 {
-    /// <summary>Newtonsoft.Json converter that dispatches to the correct concrete calendar subtype.</summary>
-    internal class BaseCalendarConverter : JsonConverter
+    public override bool CanConvert(Type objectType) => objectType == typeof(BaseCalendar);
+
+    public override bool CanWrite => false;
+
+    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
     {
-        public override bool CanConvert(Type objectType) => objectType == typeof(BaseCalendar);
+        var obj = JObject.Load(reader);
+        var typeToken = obj["Type"] ?? throw new JsonSerializationException("Missing 'Type' property on calendar JSON.");
+        var calendarType = (CalendarType)Enum.Parse(typeof(CalendarType), typeToken.Value<string>(), true);
 
-        public override bool CanWrite => false;
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        BaseCalendar result;
+        switch (calendarType)
         {
-            var obj = JObject.Load(reader);
-            var typeToken = obj["Type"] ?? throw new JsonSerializationException("Missing 'Type' property on calendar JSON.");
-            var calendarType = (CalendarType)Enum.Parse(typeof(CalendarType), typeToken.Value<string>(), true);
-
-            BaseCalendar result;
-            switch (calendarType)
-            {
-                case CalendarType.Cron:    result = new CronCalendar();    break;
-                case CalendarType.Daily:   result = new DailyCalendar();   break;
-                case CalendarType.Weekly:  result = new WeeklyCalendar();  break;
-                case CalendarType.Monthly: result = new MonthlyCalendar(); break;
-                case CalendarType.Annual:  result = new AnnualCalendar();  break;
-                case CalendarType.Holiday: result = new HolidayCalendar(); break;
-                default: throw new NotSupportedException($"Unknown CalendarType: {calendarType}");
-            }
-
-            // Populate all properties (bypasses the converter for the concrete type)
-            using (var subReader = obj.CreateReader())
-            {
-                var innerSerializer = new JsonSerializer();
-                foreach (var converter in serializer.Converters)
-                    if (!(converter is BaseCalendarConverter))
-                        innerSerializer.Converters.Add(converter);
-
-                innerSerializer.Populate(subReader, result);
-            }
-
-            return result;
+            case CalendarType.Cron:    result = new CronCalendar();    break;
+            case CalendarType.Daily:   result = new DailyCalendar();   break;
+            case CalendarType.Weekly:  result = new WeeklyCalendar();  break;
+            case CalendarType.Monthly: result = new MonthlyCalendar(); break;
+            case CalendarType.Annual:  result = new AnnualCalendar();  break;
+            case CalendarType.Holiday: result = new HolidayCalendar(); break;
+            default: throw new NotSupportedException($"Unknown CalendarType: {calendarType}");
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-            => throw new NotSupportedException("Use default serialization for writing.");
+        // Populate all properties (bypasses the converter for the concrete type)
+        using (var subReader = obj.CreateReader())
+        {
+            var innerSerializer = new JsonSerializer();
+            foreach (var converter in serializer.Converters)
+                if (!(converter is BaseCalendarConverter))
+                    innerSerializer.Converters.Add(converter);
+
+            innerSerializer.Populate(subReader, result);
+        }
+
+        return result;
     }
+
+    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        => throw new NotSupportedException("Use default serialization for writing.");
 }
+

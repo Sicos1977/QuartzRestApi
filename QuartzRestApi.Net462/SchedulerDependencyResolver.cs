@@ -29,58 +29,57 @@ using System.Collections.Generic;
 using System.Web.Http.Dependencies;
 using Quartz;
 
-namespace QuartzRestApi
+namespace QuartzRestApi;
+/// <summary>
+///     Minimal Web API 2 dependency resolver that supplies the <see cref="IScheduler"/>
+///     to <see cref="SchedulerController"/>.
+/// </summary>
+internal sealed class SchedulerDependencyResolver : IDependencyResolver
 {
+    #region Fields
+    private readonly IScheduler _scheduler;
+    #endregion
+
+    #region Constructor
     /// <summary>
-    ///     Minimal Web API 2 dependency resolver that supplies the <see cref="IScheduler"/>
-    ///     to <see cref="SchedulerController"/>.
+    ///     Initializes a new instance of the <see cref="SchedulerDependencyResolver"/> class
     /// </summary>
-    internal sealed class SchedulerDependencyResolver : IDependencyResolver
+    /// <param name="scheduler">The Quartz.NET scheduler instance.</param>
+    internal SchedulerDependencyResolver(IScheduler scheduler)
     {
-        #region Fields
-        private readonly IScheduler _scheduler;
-        #endregion
-
-        #region Constructor
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SchedulerDependencyResolver"/> class
-        /// </summary>
-        /// <param name="scheduler">The Quartz.NET scheduler instance.</param>
-        internal SchedulerDependencyResolver(IScheduler scheduler)
-        {
-            _scheduler = scheduler;
-        }
-        #endregion
-
-        #region GetService
-        public object GetService(Type serviceType)
-        {
-            return serviceType == typeof(SchedulerController) ? new SchedulerController(_scheduler) : null;
-        }
-        #endregion
-
-        #region GetServices
-        /// <summary>
-        ///     Retrieves all services of the specified type.
-        /// </summary>
-        /// <param name="serviceType">The type of service objects to retrieve.</param>
-        /// <returns>An empty collection of objects.</returns>
-        public IEnumerable<object> GetServices(Type serviceType) => Array.Empty<object>();
-        #endregion
-
-        #region BeginScope
-        /// <summary>
-        ///     Begins a new dependency resolution scope.
-        /// </summary>
-        /// <returns>The current scope instance.</returns>
-        public IDependencyScope BeginScope() => this;
-        #endregion
-
-        #region Dispose
-        /// <summary>
-        ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose() { }
-        #endregion
+        _scheduler = scheduler;
     }
+    #endregion
+
+    #region GetService
+    public object GetService(Type serviceType)
+    {
+        return serviceType == typeof(SchedulerController) ? new SchedulerController(_scheduler) : null;
+    }
+    #endregion
+
+    #region GetServices
+    /// <summary>
+    ///     Retrieves all services of the specified type.
+    /// </summary>
+    /// <param name="serviceType">The type of service objects to retrieve.</param>
+    /// <returns>An empty collection of objects.</returns>
+    public IEnumerable<object> GetServices(Type serviceType) => Array.Empty<object>();
+    #endregion
+
+    #region BeginScope
+    /// <summary>
+    ///     Begins a new dependency resolution scope.
+    /// </summary>
+    /// <returns>The current scope instance.</returns>
+    public IDependencyScope BeginScope() => this;
+    #endregion
+
+    #region Dispose
+    /// <summary>
+    ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+    /// </summary>
+    public void Dispose() { }
+    #endregion
 }
+

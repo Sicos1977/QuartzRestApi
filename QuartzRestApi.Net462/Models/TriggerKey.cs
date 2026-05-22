@@ -26,20 +26,19 @@
 
 using Newtonsoft.Json;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for <see cref="Quartz.TriggerKey"/>.</summary>
+public class TriggerKey : Key
 {
-    /// <summary>JSON wrapper for <see cref="Quartz.TriggerKey"/>.</summary>
-    public class TriggerKey : Key
-    {
-        [JsonConstructor]
-        public TriggerKey(string name) : base(name) { }
-        public TriggerKey(string name, string group) : base(name, group) { }
-        public TriggerKey(Quartz.TriggerKey key) : base(key.Name, key.Group) { }
+    [JsonConstructor]
+    public TriggerKey(string name) : base(name) { }
+    public TriggerKey(string name, string group) : base(name, group) { }
+    public TriggerKey(Quartz.TriggerKey key) : base(key.Name, key.Group) { }
 
-        public Quartz.TriggerKey ToTriggerKey() => new Quartz.TriggerKey(Name, Group);
+    public Quartz.TriggerKey ToTriggerKey() => new Quartz.TriggerKey(Name, Group);
 
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
 
-        public static TriggerKey FromJsonString(string json) => JsonConvert.DeserializeObject<TriggerKey>(json);
-    }
+    public static TriggerKey FromJsonString(string json) => JsonConvert.DeserializeObject<TriggerKey>(json);
 }
+

@@ -27,43 +27,42 @@
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models.Calendars
+namespace QuartzRestApi.Models.Calendars;
+/// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.DailyCalendar"/>.</summary>
+public class DailyCalendar : BaseCalendar
 {
-    /// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.DailyCalendar"/>.</summary>
-    public class DailyCalendar : BaseCalendar
+    [JsonProperty("RangeStartingTime")]
+    public string RangeStartingTime { get; set; }
+
+    [JsonProperty("RangeEndingTime")]
+    public string RangeEndingTime { get; set; }
+
+    [JsonProperty("InvertTimeRange")]
+    public bool InvertTimeRange { get; set; }
+
+    public DailyCalendar() { Type = CalendarType.Daily; }
+
+    public DailyCalendar(Quartz.Impl.Calendar.DailyCalendar cal) : base(cal)
     {
-        [JsonProperty("RangeStartingTime")]
-        public string RangeStartingTime { get; set; }
-
-        [JsonProperty("RangeEndingTime")]
-        public string RangeEndingTime { get; set; }
-
-        [JsonProperty("InvertTimeRange")]
-        public bool InvertTimeRange { get; set; }
-
-        public DailyCalendar() { Type = CalendarType.Daily; }
-
-        public DailyCalendar(Quartz.Impl.Calendar.DailyCalendar cal) : base(cal)
-        {
-            Type = CalendarType.Daily;
-            TimeZone = cal.TimeZone;
-            RangeStartingTime = cal.RangeStartingTime;
-            RangeEndingTime = cal.RangeEndingTime;
-            InvertTimeRange = cal.InvertTimeRange;
-        }
-
-        public override ICalendar ToCalendar()
-        {
-            var result = new Quartz.Impl.Calendar.DailyCalendar(RangeStartingTime, RangeEndingTime)
-            {
-                Description = Description,
-                TimeZone = TimeZone,
-                InvertTimeRange = InvertTimeRange
-            };
-            return result;
-        }
-
-        public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-        public static DailyCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<DailyCalendar>(json);
+        Type = CalendarType.Daily;
+        TimeZone = cal.TimeZone;
+        RangeStartingTime = cal.RangeStartingTime;
+        RangeEndingTime = cal.RangeEndingTime;
+        InvertTimeRange = cal.InvertTimeRange;
     }
+
+    public override ICalendar ToCalendar()
+    {
+        var result = new Quartz.Impl.Calendar.DailyCalendar(RangeStartingTime, RangeEndingTime)
+        {
+            Description = Description,
+            TimeZone = TimeZone,
+            InvertTimeRange = InvertTimeRange
+        };
+        return result;
+    }
+
+    public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+    public static DailyCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<DailyCalendar>(json);
 }
+

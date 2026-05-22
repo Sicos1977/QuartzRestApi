@@ -29,24 +29,23 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>A list of <see cref="TriggerKey"/>s.</summary>
+public class TriggerKeys : List<TriggerKey>
 {
-    /// <summary>A list of <see cref="TriggerKey"/>s.</summary>
-    public class TriggerKeys : List<TriggerKey>
+    public TriggerKeys() { }
+
+    public TriggerKeys(IEnumerable<Quartz.TriggerKey> triggerKeys)
     {
-        public TriggerKeys() { }
-
-        public TriggerKeys(IEnumerable<Quartz.TriggerKey> triggerKeys)
-        {
-            foreach (var k in triggerKeys)
-                Add(new TriggerKey(k.Name, k.Group));
-        }
-
-        public IReadOnlyCollection<Quartz.TriggerKey> ToTriggerKeys()
-            => new ReadOnlyCollection<Quartz.TriggerKey>(this.Select(m => m.ToTriggerKey()).ToList());
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static TriggerKeys FromJsonString(string json) => JsonConvert.DeserializeObject<TriggerKeys>(json);
+        foreach (var k in triggerKeys)
+            Add(new TriggerKey(k.Name, k.Group));
     }
+
+    public IReadOnlyCollection<Quartz.TriggerKey> ToTriggerKeys()
+        => new ReadOnlyCollection<Quartz.TriggerKey>(this.Select(m => m.ToTriggerKey()).ToList());
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static TriggerKeys FromJsonString(string json) => JsonConvert.DeserializeObject<TriggerKeys>(json);
 }
+

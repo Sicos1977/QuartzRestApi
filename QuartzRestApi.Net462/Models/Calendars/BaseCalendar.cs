@@ -29,45 +29,44 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Quartz;
 
-namespace QuartzRestApi.Models.Calendars
+namespace QuartzRestApi.Models.Calendars;
+/// <summary>Abstract base wrapper for all calendar types.</summary>
+[JsonConverter(typeof(BaseCalendarConverter))]
+public abstract class BaseCalendar
 {
-    /// <summary>Abstract base wrapper for all calendar types.</summary>
-    [JsonConverter(typeof(BaseCalendarConverter))]
-    public abstract class BaseCalendar
+    [JsonProperty("Name")]
+    public string Name { get; set; }
+
+    [JsonProperty("Type")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public CalendarType Type { get; protected set; }
+
+    [JsonProperty("Description", NullValueHandling = NullValueHandling.Ignore)]
+    public string Description { get; set; }
+
+    [JsonProperty("TimeZone", NullValueHandling = NullValueHandling.Ignore)]
+    public TimeZoneInfo TimeZone { get; set; }
+
+    [JsonProperty("CalendarBase", NullValueHandling = NullValueHandling.Ignore)]
+    public string CalendarBase { get; set; }
+
+    [JsonProperty("Replace", DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool Replace { get; set; }
+
+    [JsonProperty("UpdateTriggers", DefaultValueHandling = DefaultValueHandling.Ignore)]
+    public bool UpdateTriggers { get; set; }
+
+    protected BaseCalendar() { }
+
+    protected BaseCalendar(ICalendar calendar)
     {
-        [JsonProperty("Name")]
-        public string Name { get; set; }
-
-        [JsonProperty("Type")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public CalendarType Type { get; protected set; }
-
-        [JsonProperty("Description", NullValueHandling = NullValueHandling.Ignore)]
-        public string Description { get; set; }
-
-        [JsonProperty("TimeZone", NullValueHandling = NullValueHandling.Ignore)]
-        public TimeZoneInfo TimeZone { get; set; }
-
-        [JsonProperty("CalendarBase", NullValueHandling = NullValueHandling.Ignore)]
-        public string CalendarBase { get; set; }
-
-        [JsonProperty("Replace", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool Replace { get; set; }
-
-        [JsonProperty("UpdateTriggers", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public bool UpdateTriggers { get; set; }
-
-        protected BaseCalendar() { }
-
-        protected BaseCalendar(ICalendar calendar)
-        {
-            Description = calendar?.Description;
-        }
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static BaseCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<BaseCalendar>(json);
-
-        public abstract ICalendar ToCalendar();
+        Description = calendar?.Description;
     }
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static BaseCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<BaseCalendar>(json);
+
+    public abstract ICalendar ToCalendar();
 }
+

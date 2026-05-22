@@ -27,83 +27,82 @@
 using System;
 using Newtonsoft.Json;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for Quartz scheduler meta-data.</summary>
+public class SchedulerMetaData
 {
-    /// <summary>JSON wrapper for Quartz scheduler meta-data.</summary>
-    public class SchedulerMetaData
+    [JsonProperty("InStandbyMode")]
+    public bool InStandbyMode { get; set; }
+
+    [JsonProperty("JobStoreType")]
+    public string JobStoreType { get; set; }
+
+    [JsonProperty("JobStoreClustered")]
+    public bool JobStoreClustered { get; set; }
+
+    [JsonProperty("JobsStoreSupportsPersistence")]
+    public bool JobStoreSupportsPersistence { get; set; }
+
+    [JsonProperty("NumbersOfJobsExecuted")]
+    public int NumbersOfJobsExecuted { get; set; }
+
+    [JsonProperty("RunningSince")]
+    public DateTimeOffset? RunningSince { get; set; }
+
+    [JsonProperty("SchedulerInstanceId")]
+    public string SchedulerInstanceId { get; set; }
+
+    [JsonProperty("SchedulerName")]
+    public string SchedulerName { get; set; }
+
+    [JsonProperty("SchedulerRemote")]
+    public bool SchedulerRemote { get; set; }
+
+    [JsonProperty("SchedulerType")]
+    public string SchedulerType { get; set; }
+
+    [JsonProperty("Shutdown")]
+    public bool Shutdown { get; set; }
+
+    [JsonProperty("Started")]
+    public bool Started { get; set; }
+
+    [JsonProperty("Summary")]
+    public string Summary { get; set; }
+
+    [JsonProperty("ThreadPoolSize")]
+    public int ThreadPoolSize { get; set; }
+
+    [JsonProperty("ThreadPoolType")]
+    public string ThreadPoolType { get; set; }
+
+    [JsonProperty("Version")]
+    public string Version { get; set; }
+
+    public SchedulerMetaData() { }
+
+    public SchedulerMetaData(Quartz.SchedulerMetaData meta)
     {
-        [JsonProperty("InStandbyMode")]
-        public bool InStandbyMode { get; set; }
-
-        [JsonProperty("JobStoreType")]
-        public string JobStoreType { get; set; }
-
-        [JsonProperty("JobStoreClustered")]
-        public bool JobStoreClustered { get; set; }
-
-        [JsonProperty("JobsStoreSupportsPersistence")]
-        public bool JobStoreSupportsPersistence { get; set; }
-
-        [JsonProperty("NumbersOfJobsExecuted")]
-        public int NumbersOfJobsExecuted { get; set; }
-
-        [JsonProperty("RunningSince")]
-        public DateTimeOffset? RunningSince { get; set; }
-
-        [JsonProperty("SchedulerInstanceId")]
-        public string SchedulerInstanceId { get; set; }
-
-        [JsonProperty("SchedulerName")]
-        public string SchedulerName { get; set; }
-
-        [JsonProperty("SchedulerRemote")]
-        public bool SchedulerRemote { get; set; }
-
-        [JsonProperty("SchedulerType")]
-        public string SchedulerType { get; set; }
-
-        [JsonProperty("Shutdown")]
-        public bool Shutdown { get; set; }
-
-        [JsonProperty("Started")]
-        public bool Started { get; set; }
-
-        [JsonProperty("Summary")]
-        public string Summary { get; set; }
-
-        [JsonProperty("ThreadPoolSize")]
-        public int ThreadPoolSize { get; set; }
-
-        [JsonProperty("ThreadPoolType")]
-        public string ThreadPoolType { get; set; }
-
-        [JsonProperty("Version")]
-        public string Version { get; set; }
-
-        public SchedulerMetaData() { }
-
-        public SchedulerMetaData(Quartz.SchedulerMetaData meta)
-        {
-            InStandbyMode = meta.InStandbyMode;
-            JobStoreType = meta.JobStoreType?.FullName;
-            JobStoreClustered = meta.JobStoreClustered;
-            JobStoreSupportsPersistence = meta.JobStoreSupportsPersistence;
-            NumbersOfJobsExecuted = meta.NumberOfJobsExecuted;
-            RunningSince = meta.RunningSince;
-            SchedulerInstanceId = meta.SchedulerInstanceId;
-            SchedulerName = meta.SchedulerName;
-            SchedulerRemote = meta.SchedulerRemote;
-            SchedulerType = meta.SchedulerType?.FullName;
-            Shutdown = meta.Shutdown;
-            Started = meta.Started;
-            Summary = meta.GetSummary();
-            ThreadPoolSize = meta.ThreadPoolSize;
-            ThreadPoolType = meta.ThreadPoolType?.FullName;
-            Version = meta.Version;
-        }
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static SchedulerMetaData FromJsonString(string json) => JsonConvert.DeserializeObject<SchedulerMetaData>(json);
+        InStandbyMode = meta.InStandbyMode;
+        JobStoreType = meta.JobStoreType?.FullName;
+        JobStoreClustered = meta.JobStoreClustered;
+        JobStoreSupportsPersistence = meta.JobStoreSupportsPersistence;
+        NumbersOfJobsExecuted = meta.NumberOfJobsExecuted;
+        RunningSince = meta.RunningSince;
+        SchedulerInstanceId = meta.SchedulerInstanceId;
+        SchedulerName = meta.SchedulerName;
+        SchedulerRemote = meta.SchedulerRemote;
+        SchedulerType = meta.SchedulerType?.FullName;
+        Shutdown = meta.Shutdown;
+        Started = meta.Started;
+        Summary = meta.GetSummary();
+        ThreadPoolSize = meta.ThreadPoolSize;
+        ThreadPoolType = meta.ThreadPoolType?.FullName;
+        Version = meta.Version;
     }
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static SchedulerMetaData FromJsonString(string json) => JsonConvert.DeserializeObject<SchedulerMetaData>(json);
 }
+

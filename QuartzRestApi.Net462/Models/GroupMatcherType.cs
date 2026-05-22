@@ -26,14 +26,13 @@
 
 using System.Runtime.Serialization;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>The matching type for group matchers.</summary>
+public enum GroupMatcherType
 {
-    /// <summary>The matching type for group matchers.</summary>
-    public enum GroupMatcherType
-    {
-        [DataMember(Name = "Contains")]  Contains,
-        [DataMember(Name = "EndsWith")]  EndsWith,
-        [DataMember(Name = "Equals")]    Equals,
-        [DataMember(Name = "StartsWith")] StartsWith
-    }
+    [DataMember(Name = "Contains")]  Contains,
+    [DataMember(Name = "EndsWith")]  EndsWith,
+    [DataMember(Name = "Equals")]    Equals,
+    [DataMember(Name = "StartsWith")] StartsWith
 }
+

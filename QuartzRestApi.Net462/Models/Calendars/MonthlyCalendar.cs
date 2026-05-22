@@ -28,37 +28,36 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models.Calendars
+namespace QuartzRestApi.Models.Calendars;
+/// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.MonthlyCalendar"/>.</summary>
+public class MonthlyCalendar : BaseCalendar
 {
-    /// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.MonthlyCalendar"/>.</summary>
-    public class MonthlyCalendar : BaseCalendar
+    [JsonProperty("DaysExcluded")]
+    public List<bool> DaysExcluded { get; set; } = new List<bool>();
+
+    public MonthlyCalendar() { Type = CalendarType.Monthly; }
+
+    public MonthlyCalendar(Quartz.Impl.Calendar.MonthlyCalendar cal) : base(cal)
     {
-        [JsonProperty("DaysExcluded")]
-        public List<bool> DaysExcluded { get; set; } = new List<bool>();
-
-        public MonthlyCalendar() { Type = CalendarType.Monthly; }
-
-        public MonthlyCalendar(Quartz.Impl.Calendar.MonthlyCalendar cal) : base(cal)
-        {
-            Type = CalendarType.Monthly;
-            TimeZone = cal.TimeZone;
-            foreach (var day in cal.DaysExcluded)
-                DaysExcluded.Add(day);
-        }
-
-        public override ICalendar ToCalendar()
-        {
-            var result = new Quartz.Impl.Calendar.MonthlyCalendar
-            {
-                Description = Description,
-                TimeZone = TimeZone
-            };
-            for (var i = 0; i < DaysExcluded.Count; i++)
-                result.SetDayExcluded(i + 1, DaysExcluded[i]);
-            return result;
-        }
-
-        public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-        public static MonthlyCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<MonthlyCalendar>(json);
+        Type = CalendarType.Monthly;
+        TimeZone = cal.TimeZone;
+        foreach (var day in cal.DaysExcluded)
+            DaysExcluded.Add(day);
     }
+
+    public override ICalendar ToCalendar()
+    {
+        var result = new Quartz.Impl.Calendar.MonthlyCalendar
+        {
+            Description = Description,
+            TimeZone = TimeZone
+        };
+        for (var i = 0; i < DaysExcluded.Count; i++)
+            result.SetDayExcluded(i + 1, DaysExcluded[i]);
+        return result;
+    }
+
+    public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+    public static MonthlyCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<MonthlyCalendar>(json);
 }
+

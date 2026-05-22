@@ -28,63 +28,80 @@ using System;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for <see cref="IJobDetail"/>.</summary>
+public class JobDetail
 {
-    /// <summary>JSON wrapper for <see cref="IJobDetail"/>.</summary>
-    public class JobDetail
+    [JsonProperty("JobKey")]
+    public JobKey JobKey { get; set; }
+
+    [JsonProperty("Description")]
+    public string Description { get; set; }
+
+    [JsonProperty("JobType")]
+    public string JobType { get; set; }
+
+    [JsonProperty("JobDataMap")]
+    public JobDataMap JobDataMap { get; set; }
+
+    [JsonProperty("Durable")]
+    public bool Durable { get; set; }
+
+    [JsonProperty("Replace")]
+    public bool Replace { get; set; }
+
+    [JsonProperty("StoreNonDurableWhileAwaitingScheduling")]
+    public bool StoreNonDurableWhileAwaitingScheduling { get; set; }
+
+    public JobDetail() { }
+
+    public JobDetail(
+        JobKey jobKey,
+        string description,
+        string jobType,
+        JobDataMap jobDataMap,
+        bool durable,
+        bool replace,
+        bool storeNonDurableWhileAwaitingScheduling)
     {
-        [JsonProperty("JobKey")]
-        public JobKey JobKey { get; set; }
-
-        [JsonProperty("Description")]
-        public string Description { get; set; }
-
-        [JsonProperty("JobType")]
-        public string JobType { get; set; }
-
-        [JsonProperty("JobDataMap")]
-        public JobDataMap JobDataMap { get; set; }
-
-        [JsonProperty("Durable")]
-        public bool Durable { get; set; }
-
-        [JsonProperty("Replace")]
-        public bool Replace { get; set; }
-
-        [JsonProperty("StoreNonDurableWhileAwaitingScheduling")]
-        public bool StoreNonDurableWhileAwaitingScheduling { get; set; }
-
-        public JobDetail() { }
-
-        public JobDetail(IJobDetail detail)
-        {
-            JobKey = new JobKey(detail.Key);
-            Description = detail.Description;
-            JobType = detail.JobType?.FullName;
-            JobDataMap = detail.JobDataMap;
-            Durable = detail.Durable;
-        }
-
-        public IJobDetail ToJobDetail()
-        {
-            var type = string.IsNullOrWhiteSpace(JobType) ? null : Type.GetType(JobType);
-            if (type == null)
-                type = typeof(FallbackNoOpJob);
-            var builder = JobBuilder.Create(type)
-                .WithIdentity(JobKey.Name, JobKey.Group ?? "DEFAULT")
-                .WithDescription(Description);
-
-            if (Durable)
-                builder.StoreDurably();
-
-            if (JobDataMap != null && JobDataMap.Count > 0)
-                builder.UsingJobData(JobDataMap);
-
-            return builder.Build();
-        }
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static JobDetail FromJsonString(string json) => JsonConvert.DeserializeObject<JobDetail>(json);
+        JobKey = jobKey;
+        Description = description;
+        JobType = jobType;
+        JobDataMap = jobDataMap;
+        Durable = durable;
+        Replace = replace;
+        StoreNonDurableWhileAwaitingScheduling = storeNonDurableWhileAwaitingScheduling;
     }
+
+    public JobDetail(IJobDetail detail)
+    {
+        JobKey = new JobKey(detail.Key);
+        Description = detail.Description;
+        JobType = detail.JobType?.FullName;
+        JobDataMap = detail.JobDataMap;
+        Durable = detail.Durable;
+    }
+
+    public IJobDetail ToJobDetail()
+    {
+        var type = string.IsNullOrWhiteSpace(JobType) ? null : Type.GetType(JobType);
+        if (type == null)
+            type = typeof(FallbackNoOpJob);
+        var builder = JobBuilder.Create(type)
+            .WithIdentity(JobKey.Name, JobKey.Group ?? "DEFAULT")
+            .WithDescription(Description);
+
+        if (Durable)
+            builder.StoreDurably();
+
+        if (JobDataMap != null && JobDataMap.Count > 0)
+            builder.UsingJobData(JobDataMap);
+
+        return builder.Build();
+    }
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static JobDetail FromJsonString(string json) => JsonConvert.DeserializeObject<JobDetail>(json);
 }
+

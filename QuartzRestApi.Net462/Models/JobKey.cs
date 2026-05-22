@@ -26,20 +26,19 @@
 
 using Newtonsoft.Json;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for <see cref="Quartz.JobKey"/>.</summary>
+public class JobKey : Key
 {
-    /// <summary>JSON wrapper for <see cref="Quartz.JobKey"/>.</summary>
-    public class JobKey : Key
-    {
-        [JsonConstructor]
-        public JobKey(string name) : base(name) { }
-        public JobKey(string name, string group) : base(name, group) { }
-        public JobKey(Quartz.JobKey key) : base(key.Name, key.Group) { }
+    [JsonConstructor]
+    public JobKey(string name) : base(name) { }
+    public JobKey(string name, string group) : base(name, group) { }
+    public JobKey(Quartz.JobKey key) : base(key.Name, key.Group) { }
 
-        public Quartz.JobKey ToJobKey() => new Quartz.JobKey(Name, Group);
+    public Quartz.JobKey ToJobKey() => new Quartz.JobKey(Name, Group);
 
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
 
-        public static JobKey FromJsonString(string json) => JsonConvert.DeserializeObject<JobKey>(json);
-    }
+    public static JobKey FromJsonString(string json) => JsonConvert.DeserializeObject<JobKey>(json);
 }
+

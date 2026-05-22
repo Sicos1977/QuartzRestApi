@@ -26,19 +26,18 @@
 
 using Newtonsoft.Json;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>A JSON wrapper for <see cref="Quartz.TriggerKey"/> or <see cref="Quartz.JobKey"/>.</summary>
+public class Key
 {
-    /// <summary>A JSON wrapper for <see cref="Quartz.TriggerKey"/> or <see cref="Quartz.JobKey"/>.</summary>
-    public class Key
-    {
-        [JsonProperty("Name")]
-        public string Name { get; set; }
+    [JsonProperty("Name")]
+    public string Name { get; set; }
 
-        [JsonProperty("Group")]
-        public string Group { get; set; }
+    [JsonProperty("Group")]
+    public string Group { get; set; }
 
-        public Key() { }
-        public Key(string name) { Name = name; }
-        public Key(string name, string group) { Name = name; Group = group; }
-    }
+    public Key() { }
+    public Key(string name) { Name = name; }
+    public Key(string name, string group) { Name = name; Group = group; }
 }
+

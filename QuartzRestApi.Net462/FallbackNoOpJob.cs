@@ -27,13 +27,12 @@
 using System.Threading.Tasks;
 using Quartz;
 
-namespace QuartzRestApi
+namespace QuartzRestApi;
+
+/// <summary>
+///     Internal no-operation job used as a placeholder when the original job type cannot be resolved.
+/// </summary>
+public sealed class FallbackNoOpJob : IJob
 {
-    /// <summary>
-    ///     Internal no-operation job used as a placeholder when the original job type cannot be resolved.
-    /// </summary>
-    internal sealed class FallbackNoOpJob : IJob
-    {
-        public Task Execute(IJobExecutionContext context) => Task.FromResult(0);
-    }
+    public Task Execute(IJobExecutionContext context) => Task.FromResult(0);
 }

@@ -27,27 +27,26 @@
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for <see cref="JobDataMap"/> and <see cref="JobKey"/>.</summary>
+public class JobKeyWithDataMap
 {
-    /// <summary>JSON wrapper for <see cref="JobDataMap"/> and <see cref="JobKey"/>.</summary>
-    public class JobKeyWithDataMap
+    [JsonProperty("JobKey")]
+    public JobKey JobKey { get; set; }
+
+    [JsonProperty("JobDataMap")]
+    public JobDataMap JobDataMap { get; set; }
+
+    public JobKeyWithDataMap() { }
+
+    public JobKeyWithDataMap(JobKey jobKey, JobDataMap jobDataMap)
     {
-        [JsonProperty("JobKey")]
-        public JobKey JobKey { get; set; }
-
-        [JsonProperty("JobDataMap")]
-        public JobDataMap JobDataMap { get; set; }
-
-        public JobKeyWithDataMap() { }
-
-        public JobKeyWithDataMap(JobKey jobKey, JobDataMap jobDataMap)
-        {
-            JobKey = jobKey;
-            JobDataMap = jobDataMap;
-        }
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static JobKeyWithDataMap FromJsonString(string json) => JsonConvert.DeserializeObject<JobKeyWithDataMap>(json);
+        JobKey = jobKey;
+        JobDataMap = jobDataMap;
     }
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static JobKeyWithDataMap FromJsonString(string json) => JsonConvert.DeserializeObject<JobKeyWithDataMap>(json);
 }
+

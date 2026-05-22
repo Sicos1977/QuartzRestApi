@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>latest</LangVersion>
     <RootNamespace>QuartzRestApi.Tests</RootNamespace>
     <!-- Disable the new Microsoft.Testing.Platform runner; use classic VSTest for net462 -->
     <EnableMSTestRunner>false</EnableMSTestRunner>

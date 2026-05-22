@@ -29,37 +29,36 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models.Calendars
+namespace QuartzRestApi.Models.Calendars;
+/// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.WeeklyCalendar"/>.</summary>
+public class WeeklyCalendar : BaseCalendar
 {
-    /// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.WeeklyCalendar"/>.</summary>
-    public class WeeklyCalendar : BaseCalendar
+    [JsonProperty("DaysExcluded")]
+    public List<bool> DaysExcluded { get; set; } = new List<bool>();
+
+    public WeeklyCalendar() { Type = CalendarType.Weekly; }
+
+    public WeeklyCalendar(Quartz.Impl.Calendar.WeeklyCalendar cal) : base(cal)
     {
-        [JsonProperty("DaysExcluded")]
-        public List<bool> DaysExcluded { get; set; } = new List<bool>();
-
-        public WeeklyCalendar() { Type = CalendarType.Weekly; }
-
-        public WeeklyCalendar(Quartz.Impl.Calendar.WeeklyCalendar cal) : base(cal)
-        {
-            Type = CalendarType.Weekly;
-            TimeZone = cal.TimeZone;
-            foreach (var day in cal.DaysExcluded)
-                DaysExcluded.Add(day);
-        }
-
-        public override ICalendar ToCalendar()
-        {
-            var result = new Quartz.Impl.Calendar.WeeklyCalendar
-            {
-                Description = Description,
-                TimeZone = TimeZone
-            };
-            for (var i = 0; i < DaysExcluded.Count; i++)
-                result.SetDayExcluded((DayOfWeek)(i + 1), DaysExcluded[i]);
-            return result;
-        }
-
-        public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-        public static WeeklyCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<WeeklyCalendar>(json);
+        Type = CalendarType.Weekly;
+        TimeZone = cal.TimeZone;
+        foreach (var day in cal.DaysExcluded)
+            DaysExcluded.Add(day);
     }
+
+    public override ICalendar ToCalendar()
+    {
+        var result = new Quartz.Impl.Calendar.WeeklyCalendar
+        {
+            Description = Description,
+            TimeZone = TimeZone
+        };
+        for (var i = 0; i < DaysExcluded.Count; i++)
+            result.SetDayExcluded((DayOfWeek)(i + 1), DaysExcluded[i]);
+        return result;
+    }
+
+    public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+    public static WeeklyCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<WeeklyCalendar>(json);
 }
+

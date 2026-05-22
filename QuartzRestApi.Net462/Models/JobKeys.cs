@@ -29,24 +29,23 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>A list of <see cref="JobKey"/>s.</summary>
+public class JobKeys : List<JobKey>
 {
-    /// <summary>A list of <see cref="JobKey"/>s.</summary>
-    public class JobKeys : List<JobKey>
+    public JobKeys() { }
+
+    public JobKeys(IEnumerable<Quartz.JobKey> jobKeys)
     {
-        public JobKeys() { }
-
-        public JobKeys(IEnumerable<Quartz.JobKey> jobKeys)
-        {
-            foreach (var k in jobKeys)
-                Add(new JobKey(k.Name, k.Group));
-        }
-
-        public IReadOnlyCollection<Quartz.JobKey> ToJobKeys()
-            => new ReadOnlyCollection<Quartz.JobKey>(this.Select(m => m.ToJobKey()).ToList());
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static JobKeys FromJsonString(string json) => JsonConvert.DeserializeObject<JobKeys>(json);
+        foreach (var k in jobKeys)
+            Add(new JobKey(k.Name, k.Group));
     }
+
+    public IReadOnlyCollection<Quartz.JobKey> ToJobKeys()
+        => new ReadOnlyCollection<Quartz.JobKey>(this.Select(m => m.ToJobKey()).ToList());
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static JobKeys FromJsonString(string json) => JsonConvert.DeserializeObject<JobKeys>(json);
 }
+

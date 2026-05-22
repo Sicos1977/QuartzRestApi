@@ -27,33 +27,32 @@
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models.Calendars
+namespace QuartzRestApi.Models.Calendars;
+/// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.CronCalendar"/>.</summary>
+public class CronCalendar : BaseCalendar
 {
-    /// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.CronCalendar"/>.</summary>
-    public class CronCalendar : BaseCalendar
+    [JsonProperty("CronExpression")]
+    public string CronExpression { get; set; }
+
+    public CronCalendar() { Type = CalendarType.Cron; }
+
+    public CronCalendar(Quartz.Impl.Calendar.CronCalendar cal) : base(cal)
     {
-        [JsonProperty("CronExpression")]
-        public string CronExpression { get; set; }
-
-        public CronCalendar() { Type = CalendarType.Cron; }
-
-        public CronCalendar(Quartz.Impl.Calendar.CronCalendar cal) : base(cal)
-        {
-            Type = CalendarType.Cron;
-            TimeZone = cal.TimeZone;
-            CronExpression = cal.CronExpression?.CronExpressionString;
-        }
-
-        public override ICalendar ToCalendar()
-        {
-            return new Quartz.Impl.Calendar.CronCalendar(CronExpression)
-            {
-                Description = Description,
-                TimeZone = TimeZone
-            };
-        }
-
-        public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-        public static CronCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<CronCalendar>(json);
+        Type = CalendarType.Cron;
+        TimeZone = cal.TimeZone;
+        CronExpression = cal.CronExpression?.CronExpressionString;
     }
+
+    public override ICalendar ToCalendar()
+    {
+        return new Quartz.Impl.Calendar.CronCalendar(CronExpression)
+        {
+            Description = Description,
+            TimeZone = TimeZone
+        };
+    }
+
+    public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+    public static CronCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<CronCalendar>(json);
 }
+

@@ -24,28 +24,27 @@
 // THE SOFTWARE.
 //
 
-namespace QuartzRestApi.Security
+namespace QuartzRestApi.Security;
+/// <summary>
+///     Represents a named API key profile that grants access to the scheduler endpoints.
+/// </summary>
+public sealed class ApiKeyProfile
 {
-    /// <summary>
-    ///     Represents a named API key profile that grants access to the scheduler endpoints.
-    /// </summary>
-    public sealed class ApiKeyProfile
+    #region Properties
+    /// <summary>A friendly name for the profile.</summary>
+    public string Name { get; }
+
+    /// <summary>The API key value.</summary>
+    public string ApiKey { get; }
+    #endregion
+
+    #region Constructor
+    /// <summary>Creates a new profile with the given name and key.</summary>
+    public ApiKeyProfile(string name, string apiKey)
     {
-        #region Properties
-        /// <summary>A friendly name for the profile.</summary>
-        public string Name { get; }
-
-        /// <summary>The API key value.</summary>
-        public string ApiKey { get; }
-        #endregion
-
-        #region Constructor
-        /// <summary>Creates a new profile with the given name and key.</summary>
-        public ApiKeyProfile(string name, string apiKey)
-        {
-            Name = name;
-            ApiKey = apiKey;
-        }
-        #endregion
+        Name = name;
+        ApiKey = apiKey;
     }
+    #endregion
 }
+

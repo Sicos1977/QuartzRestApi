@@ -33,82 +33,81 @@ using Owin;
 using Quartz;
 using QuartzRestApi.Security;
 
-namespace QuartzRestApi
+namespace QuartzRestApi;
+/// <summary>
+///     Hosts a self-contained REST API for managing and monitoring a Quartz.NET scheduler
+///     using OWIN/Web API 2 self-hosting on .NET Framework 4.6.2.
+/// </summary>
+public class SchedulerHost : IDisposable
 {
+    #region Fields
+    private readonly string _baseAddress;
+    private readonly IScheduler _scheduler;
+    private readonly ApiKeyOptions _apiKeyOptions;
+    private IDisposable _owinApp;
+    #endregion
+
+    #region Constructors
+    /// <summary>Creates a host without authentication.</summary>
+    public SchedulerHost(string baseAddress, IScheduler scheduler)
+        : this(baseAddress, scheduler, (string)null) { }
+
     /// <summary>
-    ///     Hosts a self-contained REST API for managing and monitoring a Quartz.NET scheduler
-    ///     using OWIN/Web API 2 self-hosting on .NET Framework 4.6.2.
+    ///     Creates a host with a single API key.
+    ///     Pass <see langword="null"/> or empty to disable authentication.
     /// </summary>
-    public class SchedulerHost : IDisposable
+    public SchedulerHost(string baseAddress, IScheduler scheduler, string apiKey)
+        : this(baseAddress, scheduler, new ApiKeyOptions(apiKey)) { }
+
+    /// <summary>Creates a host with multiple named API key profiles.</summary>
+    public SchedulerHost(string baseAddress, IScheduler scheduler, IEnumerable<ApiKeyProfile> profiles)
+        : this(baseAddress, scheduler, new ApiKeyOptions(profiles)) { }
+
+    private SchedulerHost(string baseAddress, IScheduler scheduler, ApiKeyOptions options)
     {
-        #region Fields
-        private readonly string _baseAddress;
-        private readonly IScheduler _scheduler;
-        private readonly ApiKeyOptions _apiKeyOptions;
-        private IDisposable _owinApp;
-        #endregion
-
-        #region Constructors
-        /// <summary>Creates a host without authentication.</summary>
-        public SchedulerHost(string baseAddress, IScheduler scheduler)
-            : this(baseAddress, scheduler, (string)null) { }
-
-        /// <summary>
-        ///     Creates a host with a single API key.
-        ///     Pass <see langword="null"/> or empty to disable authentication.
-        /// </summary>
-        public SchedulerHost(string baseAddress, IScheduler scheduler, string apiKey)
-            : this(baseAddress, scheduler, new ApiKeyOptions(apiKey)) { }
-
-        /// <summary>Creates a host with multiple named API key profiles.</summary>
-        public SchedulerHost(string baseAddress, IScheduler scheduler, IEnumerable<ApiKeyProfile> profiles)
-            : this(baseAddress, scheduler, new ApiKeyOptions(profiles)) { }
-
-        private SchedulerHost(string baseAddress, IScheduler scheduler, ApiKeyOptions options)
-        {
-            _baseAddress = baseAddress;
-            _scheduler = scheduler;
-            _apiKeyOptions = options;
-        }
-        #endregion
-
-        #region Start
-        /// <summary>Starts the Web API.</summary>
-        public Task Start()
-        {
-            _owinApp = WebApp.Start(_baseAddress, app =>
-            {
-                var config = new HttpConfiguration();
-                config.MapHttpAttributeRoutes();
-
-                // API key authentication
-                config.MessageHandlers.Add(new ApiKeyMessageHandler(_apiKeyOptions));
-
-                // Register scheduler via a minimal dependency resolver
-                config.DependencyResolver = new SchedulerDependencyResolver(_scheduler);
-
-                app.UseWebApi(config);
-            });
-
-            return Task.FromResult(0);
-        }
-        #endregion
-
-        #region Stop
-        /// <summary>Stops the Web API.</summary>
-        public Task Stop()
-        {
-            Dispose();
-            return Task.FromResult(0);
-        }
-        #endregion
-
-        #region Dispose
-        public void Dispose()
-        {
-            _owinApp?.Dispose();
-            _owinApp = null;
-        }
-        #endregion
+        _baseAddress = baseAddress;
+        _scheduler = scheduler;
+        _apiKeyOptions = options;
     }
+    #endregion
+
+    #region Start
+    /// <summary>Starts the Web API.</summary>
+    public Task Start()
+    {
+        _owinApp = WebApp.Start(_baseAddress, app =>
+        {
+            var config = new HttpConfiguration();
+            config.MapHttpAttributeRoutes();
+
+            // API key authentication
+            config.MessageHandlers.Add(new ApiKeyMessageHandler(_apiKeyOptions));
+
+            // Register scheduler via a minimal dependency resolver
+            config.DependencyResolver = new SchedulerDependencyResolver(_scheduler);
+
+            app.UseWebApi(config);
+        });
+
+        return Task.FromResult(0);
+    }
+    #endregion
+
+    #region Stop
+    /// <summary>Stops the Web API.</summary>
+    public Task Stop()
+    {
+        Dispose();
+        return Task.FromResult(0);
+    }
+    #endregion
+
+    #region Dispose
+    public void Dispose()
+    {
+        _owinApp?.Dispose();
+        _owinApp = null;
+    }
+    #endregion
 }
+

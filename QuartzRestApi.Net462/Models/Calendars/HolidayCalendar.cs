@@ -29,37 +29,36 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models.Calendars
+namespace QuartzRestApi.Models.Calendars;
+/// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.HolidayCalendar"/>.</summary>
+public class HolidayCalendar : BaseCalendar
 {
-    /// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.HolidayCalendar"/>.</summary>
-    public class HolidayCalendar : BaseCalendar
+    [JsonProperty("ExcludedDates")]
+    public List<DateTime> ExcludedDates { get; set; } = new List<DateTime>();
+
+    public HolidayCalendar() { Type = CalendarType.Holiday; }
+
+    public HolidayCalendar(Quartz.Impl.Calendar.HolidayCalendar cal) : base(cal)
     {
-        [JsonProperty("ExcludedDates")]
-        public List<DateTime> ExcludedDates { get; set; } = new List<DateTime>();
-
-        public HolidayCalendar() { Type = CalendarType.Holiday; }
-
-        public HolidayCalendar(Quartz.Impl.Calendar.HolidayCalendar cal) : base(cal)
-        {
-            Type = CalendarType.Holiday;
-            TimeZone = cal.TimeZone;
-            foreach (var d in cal.ExcludedDates)
-                ExcludedDates.Add(d);
-        }
-
-        public override ICalendar ToCalendar()
-        {
-            var result = new Quartz.Impl.Calendar.HolidayCalendar
-            {
-                Description = Description,
-                TimeZone = TimeZone
-            };
-            foreach (var d in ExcludedDates)
-                result.AddExcludedDate(d);
-            return result;
-        }
-
-        public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-        public static HolidayCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<HolidayCalendar>(json);
+        Type = CalendarType.Holiday;
+        TimeZone = cal.TimeZone;
+        foreach (var d in cal.ExcludedDates)
+            ExcludedDates.Add(d);
     }
+
+    public override ICalendar ToCalendar()
+    {
+        var result = new Quartz.Impl.Calendar.HolidayCalendar
+        {
+            Description = Description,
+            TimeZone = TimeZone
+        };
+        foreach (var d in ExcludedDates)
+            result.AddExcludedDate(d);
+        return result;
+    }
+
+    public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+    public static HolidayCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<HolidayCalendar>(json);
 }
+

@@ -30,49 +30,48 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace QuartzRestApi.Security
+namespace QuartzRestApi.Security;
+/// <summary>
+///     Web API 2 delegating handler that validates the <c>X-Api-Key</c> header
+///     when <see cref="ApiKeyOptions.IsEnabled"/> is <see langword="true"/>.
+/// </summary>
+internal sealed class ApiKeyMessageHandler : DelegatingHandler
 {
+    #region Fields
     /// <summary>
-    ///     Web API 2 delegating handler that validates the <c>X-Api-Key</c> header
-    ///     when <see cref="ApiKeyOptions.IsEnabled"/> is <see langword="true"/>.
+    ///     Configuration options for API key authentication.
     /// </summary>
-    internal sealed class ApiKeyMessageHandler : DelegatingHandler
+    private readonly ApiKeyOptions _options;
+    #endregion
+
+    #region ApiKeyMessageHandler
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="ApiKeyMessageHandler"/> class.
+    /// </summary>
+    /// <param name="options">The API key configuration options.</param>
+    internal ApiKeyMessageHandler(ApiKeyOptions options)
     {
-        #region Fields
-        /// <summary>
-        ///     Configuration options for API key authentication.
-        /// </summary>
-        private readonly ApiKeyOptions _options;
-        #endregion
-
-        #region ApiKeyMessageHandler
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ApiKeyMessageHandler"/> class.
-        /// </summary>
-        /// <param name="options">The API key configuration options.</param>
-        internal ApiKeyMessageHandler(ApiKeyOptions options)
-        {
-            _options = options;
-        }
-        #endregion
-
-        #region SendAsync
-        /// <summary>
-        ///     Sends an HTTP request and validates API key authentication if enabled.
-        /// </summary>
-        /// <param name="request">The HTTP request message to send.</param>
-        /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
-        /// <returns>A task that represents the asynchronous operation and contains the HTTP response message.</returns>
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            if (!_options.IsEnabled || request.Headers.TryGetValues("X-Api-Key", out var values) &&
-                _options.TryGetProfile(values.First(), out _))
-                return base.SendAsync(request, cancellationToken);
-
-            var response = request.CreateResponse(HttpStatusCode.Unauthorized);
-            return Task.FromResult(response);
-
-        }
-        #endregion
+        _options = options;
     }
+    #endregion
+
+    #region SendAsync
+    /// <summary>
+    ///     Sends an HTTP request and validates API key authentication if enabled.
+    /// </summary>
+    /// <param name="request">The HTTP request message to send.</param>
+    /// <param name="cancellationToken">A cancellation token to cancel the operation.</param>
+    /// <returns>A task that represents the asynchronous operation and contains the HTTP response message.</returns>
+    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+        if (!_options.IsEnabled || request.Headers.TryGetValues("X-Api-Key", out var values) &&
+            _options.TryGetProfile(values.First(), out _))
+            return base.SendAsync(request, cancellationToken);
+
+        var response = request.CreateResponse(HttpStatusCode.Unauthorized);
+        return Task.FromResult(response);
+
+    }
+    #endregion
 }
+

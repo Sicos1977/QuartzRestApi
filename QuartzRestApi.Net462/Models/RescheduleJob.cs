@@ -26,27 +26,26 @@
 
 using Newtonsoft.Json;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for rescheduling a job trigger.</summary>
+public class RescheduleJob
 {
-    /// <summary>JSON wrapper for rescheduling a job trigger.</summary>
-    public class RescheduleJob
+    [JsonProperty("CurrentTriggerKey")]
+    public TriggerKey CurrentTriggerKey { get; set; }
+
+    [JsonProperty("NewTrigger")]
+    public Trigger Trigger { get; set; }
+
+    public RescheduleJob() { }
+
+    public RescheduleJob(TriggerKey currentTriggerKey, Trigger newTrigger)
     {
-        [JsonProperty("CurrentTriggerKey")]
-        public TriggerKey CurrentTriggerKey { get; set; }
-
-        [JsonProperty("NewTrigger")]
-        public Trigger Trigger { get; set; }
-
-        public RescheduleJob() { }
-
-        public RescheduleJob(TriggerKey currentTriggerKey, Trigger newTrigger)
-        {
-            CurrentTriggerKey = currentTriggerKey;
-            Trigger = newTrigger;
-        }
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static RescheduleJob FromJsonString(string json) => JsonConvert.DeserializeObject<RescheduleJob>(json);
+        CurrentTriggerKey = currentTriggerKey;
+        Trigger = newTrigger;
     }
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static RescheduleJob FromJsonString(string json) => JsonConvert.DeserializeObject<RescheduleJob>(json);
 }
+

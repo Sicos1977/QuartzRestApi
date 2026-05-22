@@ -30,33 +30,32 @@ using System.Linq;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for scheduling a job with multiple triggers.</summary>
+public class JobDetailWithTriggers
 {
-    /// <summary>JSON wrapper for scheduling a job with multiple triggers.</summary>
-    public class JobDetailWithTriggers
+    [JsonProperty("JobDetail")]
+    public JobDetail JobDetail { get; set; }
+
+    [JsonProperty("Triggers")]
+    public List<Trigger> Triggers { get; set; }
+
+    [JsonProperty("Replace")]
+    public bool Replace { get; set; }
+
+    public JobDetailWithTriggers() { }
+
+    public JobDetailWithTriggers(JobDetail jobDetail, List<Trigger> triggers)
     {
-        [JsonProperty("JobDetail")]
-        public JobDetail JobDetail { get; set; }
-
-        [JsonProperty("Triggers")]
-        public List<Trigger> Triggers { get; set; }
-
-        [JsonProperty("Replace")]
-        public bool Replace { get; set; }
-
-        public JobDetailWithTriggers() { }
-
-        public JobDetailWithTriggers(JobDetail jobDetail, List<Trigger> triggers)
-        {
-            JobDetail = jobDetail;
-            Triggers = triggers;
-        }
-
-        public IReadOnlyCollection<ITrigger> ToReadOnlyTriggerCollection()
-            => new ReadOnlyCollection<ITrigger>(Triggers.Select(t => t.ToTrigger()).ToList());
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static JobDetailWithTriggers FromJsonString(string json) => JsonConvert.DeserializeObject<JobDetailWithTriggers>(json);
+        JobDetail = jobDetail;
+        Triggers = triggers;
     }
+
+    public IReadOnlyCollection<ITrigger> ToReadOnlyTriggerCollection()
+        => new ReadOnlyCollection<ITrigger>(Triggers.Select(t => t.ToTrigger()).ToList());
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static JobDetailWithTriggers FromJsonString(string json) => JsonConvert.DeserializeObject<JobDetailWithTriggers>(json);
 }
+

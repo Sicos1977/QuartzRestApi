@@ -29,45 +29,44 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Quartz.Util;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for the Quartz <see cref="Quartz.Impl.Matchers.GroupMatcher{T}"/>.</summary>
+public class GroupMatcher<T> where T : Key<T>
 {
-    /// <summary>JSON wrapper for the Quartz <see cref="Quartz.Impl.Matchers.GroupMatcher{T}"/>.</summary>
-    public class GroupMatcher<T> where T : Key<T>
+    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonProperty("Type")]
+    public GroupMatcherType Type { get; set; }
+
+    [JsonProperty("Value")]
+    public string Value { get; set; }
+
+    public GroupMatcher() { }
+
+    public GroupMatcher(GroupMatcherType type, string value)
     {
-        [JsonConverter(typeof(StringEnumConverter))]
-        [JsonProperty("Type")]
-        public GroupMatcherType Type { get; set; }
+        Type = type;
+        Value = value;
+    }
 
-        [JsonProperty("Value")]
-        public string Value { get; set; }
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
 
-        public GroupMatcher() { }
+    public static GroupMatcher<T> FromJsonString(string json) => JsonConvert.DeserializeObject<GroupMatcher<T>>(json);
 
-        public GroupMatcher(GroupMatcherType type, string value)
+    public Quartz.Impl.Matchers.GroupMatcher<T> ToGroupMatcher()
+    {
+        switch (Type)
         {
-            Type = type;
-            Value = value;
-        }
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static GroupMatcher<T> FromJsonString(string json) => JsonConvert.DeserializeObject<GroupMatcher<T>>(json);
-
-        public Quartz.Impl.Matchers.GroupMatcher<T> ToGroupMatcher()
-        {
-            switch (Type)
-            {
-                case GroupMatcherType.Contains:
-                    return Quartz.Impl.Matchers.GroupMatcher<T>.GroupContains(Value);
-                case GroupMatcherType.EndsWith:
-                    return Quartz.Impl.Matchers.GroupMatcher<T>.GroupEndsWith(Value);
-                case GroupMatcherType.Equals:
-                    return Quartz.Impl.Matchers.GroupMatcher<T>.GroupEquals(Value);
-                case GroupMatcherType.StartsWith:
-                    return Quartz.Impl.Matchers.GroupMatcher<T>.GroupStartsWith(Value);
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            case GroupMatcherType.Contains:
+                return Quartz.Impl.Matchers.GroupMatcher<T>.GroupContains(Value);
+            case GroupMatcherType.EndsWith:
+                return Quartz.Impl.Matchers.GroupMatcher<T>.GroupEndsWith(Value);
+            case GroupMatcherType.Equals:
+                return Quartz.Impl.Matchers.GroupMatcher<T>.GroupEquals(Value);
+            case GroupMatcherType.StartsWith:
+                return Quartz.Impl.Matchers.GroupMatcher<T>.GroupStartsWith(Value);
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 }
+

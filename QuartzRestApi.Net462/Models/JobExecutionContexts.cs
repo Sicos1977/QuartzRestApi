@@ -28,27 +28,26 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for a collection of <see cref="IJobExecutionContext"/>.</summary>
+public class JobExecutionContexts : List<JobExecutionContext>
 {
-    /// <summary>JSON wrapper for a collection of <see cref="IJobExecutionContext"/>.</summary>
-    public class JobExecutionContexts : List<JobExecutionContext>
+    public JobExecutionContexts() { }
+
+    public JobExecutionContexts(IReadOnlyCollection<IJobExecutionContext> contexts)
     {
-        public JobExecutionContexts() { }
+        foreach (var ctx in contexts)
+            Add(new JobExecutionContext(ctx));
+    }
 
-        public JobExecutionContexts(IReadOnlyCollection<IJobExecutionContext> contexts)
-        {
-            foreach (var ctx in contexts)
-                Add(new JobExecutionContext(ctx));
-        }
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
 
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static JobExecutionContexts FromJsonString(string json)
-        {
-            var list = JsonConvert.DeserializeObject<List<JobExecutionContext>>(json);
-            var result = new JobExecutionContexts();
-            if (list != null) result.AddRange(list);
-            return result;
-        }
+    public static JobExecutionContexts FromJsonString(string json)
+    {
+        var list = JsonConvert.DeserializeObject<List<JobExecutionContext>>(json);
+        var result = new JobExecutionContexts();
+        if (list != null) result.AddRange(list);
+        return result;
     }
 }
+

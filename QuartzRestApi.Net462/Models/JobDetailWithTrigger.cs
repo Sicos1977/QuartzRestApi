@@ -26,27 +26,26 @@
 
 using Newtonsoft.Json;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for scheduling a job with a single trigger.</summary>
+public class JobDetailWithTrigger
 {
-    /// <summary>JSON wrapper for scheduling a job with a single trigger.</summary>
-    public class JobDetailWithTrigger
+    [JsonProperty("JobDetail")]
+    public JobDetail JobDetail { get; set; }
+
+    [JsonProperty("Trigger")]
+    public Trigger Trigger { get; set; }
+
+    public JobDetailWithTrigger() { }
+
+    public JobDetailWithTrigger(JobDetail jobDetail, Trigger trigger)
     {
-        [JsonProperty("JobDetail")]
-        public JobDetail JobDetail { get; set; }
-
-        [JsonProperty("Trigger")]
-        public Trigger Trigger { get; set; }
-
-        public JobDetailWithTrigger() { }
-
-        public JobDetailWithTrigger(JobDetail jobDetail, Trigger trigger)
-        {
-            JobDetail = jobDetail;
-            Trigger = trigger;
-        }
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static JobDetailWithTrigger FromJsonString(string json) => JsonConvert.DeserializeObject<JobDetailWithTrigger>(json);
+        JobDetail = jobDetail;
+        Trigger = trigger;
     }
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static JobDetailWithTrigger FromJsonString(string json) => JsonConvert.DeserializeObject<JobDetailWithTrigger>(json);
 }
+

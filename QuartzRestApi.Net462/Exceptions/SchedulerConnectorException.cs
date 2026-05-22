@@ -26,21 +26,20 @@
 
 using System;
 
-namespace QuartzRestApi.Exceptions
+namespace QuartzRestApi.Exceptions;
+/// <summary>
+///     Exception that is thrown by <see cref="SchedulerConnector" /> when a communication
+///     error occurs with the remote <see cref="SchedulerHost" />.
+/// </summary>
+public class SchedulerConnectorException : Exception
 {
-    /// <summary>
-    ///     Exception that is thrown by <see cref="SchedulerConnector" /> when a communication
-    ///     error occurs with the remote <see cref="SchedulerHost" />.
-    /// </summary>
-    public class SchedulerConnectorException : Exception
-    {
-        /// <summary>Initializes a new instance of <see cref="SchedulerConnectorException" />.</summary>
-        public SchedulerConnectorException() { }
+    /// <summary>Initializes a new instance of <see cref="SchedulerConnectorException" />.</summary>
+    public SchedulerConnectorException() { }
 
-        /// <summary>Initializes a new instance with a descriptive error message.</summary>
-        public SchedulerConnectorException(string message) : base(message) { }
+    /// <summary>Initializes a new instance with a descriptive error message.</summary>
+    public SchedulerConnectorException(string message) : base(message) { }
 
-        /// <summary>Initializes a new instance with a message and an inner exception.</summary>
-        public SchedulerConnectorException(string message, Exception innerException) : base(message, innerException) { }
-    }
+    /// <summary>Initializes a new instance with a message and an inner exception.</summary>
+    public SchedulerConnectorException(string message, Exception innerException) : base(message, innerException) { }
 }
+

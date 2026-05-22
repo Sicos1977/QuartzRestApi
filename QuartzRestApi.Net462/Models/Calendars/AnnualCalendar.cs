@@ -29,36 +29,35 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models.Calendars
+namespace QuartzRestApi.Models.Calendars;
+/// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.AnnualCalendar"/>.</summary>
+public class AnnualCalendar : BaseCalendar
 {
-    /// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.AnnualCalendar"/>.</summary>
-    public class AnnualCalendar : BaseCalendar
+    [JsonProperty("DaysExcluded")]
+    public List<DateTime> DaysExcluded { get; set; } = new List<DateTime>();
+
+    public AnnualCalendar() { Type = CalendarType.Annual; }
+
+    public AnnualCalendar(Quartz.Impl.Calendar.AnnualCalendar cal) : base(cal)
     {
-        [JsonProperty("DaysExcluded")]
-        public List<DateTime> DaysExcluded { get; set; } = new List<DateTime>();
-
-        public AnnualCalendar() { Type = CalendarType.Annual; }
-
-        public AnnualCalendar(Quartz.Impl.Calendar.AnnualCalendar cal) : base(cal)
-        {
-            Type = CalendarType.Annual;
-            foreach (var day in cal.DaysExcluded)
-                DaysExcluded.Add(day);
-        }
-
-        public override ICalendar ToCalendar()
-        {
-            var result = new Quartz.Impl.Calendar.AnnualCalendar
-            {
-                Description = Description,
-                TimeZone = TimeZone
-            };
-            foreach (var day in DaysExcluded)
-                result.SetDayExcluded(day, true);
-            return result;
-        }
-
-        public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-        public static AnnualCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<AnnualCalendar>(json);
+        Type = CalendarType.Annual;
+        foreach (var day in cal.DaysExcluded)
+            DaysExcluded.Add(day);
     }
+
+    public override ICalendar ToCalendar()
+    {
+        var result = new Quartz.Impl.Calendar.AnnualCalendar
+        {
+            Description = Description,
+            TimeZone = TimeZone
+        };
+        foreach (var day in DaysExcluded)
+            result.SetDayExcluded(day, true);
+        return result;
+    }
+
+    public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+    public static AnnualCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<AnnualCalendar>(json);
 }
+

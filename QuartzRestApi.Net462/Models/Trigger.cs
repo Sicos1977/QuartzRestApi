@@ -28,94 +28,121 @@ using System;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for a Quartz trigger.</summary>
+public class Trigger : JobKeyWithDataMap
 {
-    /// <summary>JSON wrapper for a Quartz trigger.</summary>
-    public class Trigger : JobKeyWithDataMap
+    [JsonProperty("TriggerKey")]
+    public TriggerKey TriggerKey { get; set; }
+
+    [JsonProperty("Description")]
+    public string Description { get; set; }
+
+    [JsonProperty("CalendarName")]
+    public string CalendarName { get; set; }
+
+    [JsonProperty("CronSchedule")]
+    public string CronSchedule { get; set; }
+
+    [JsonProperty("NextFireTimeUtc")]
+    public DateTimeOffset? NextFireTimeUtc { get; set; }
+
+    [JsonProperty("PreviousFireTimeUtc")]
+    public DateTimeOffset? PreviousFireTimeUtc { get; set; }
+
+    [JsonProperty("StartTimeUtc")]
+    public DateTimeOffset StartTimeUtc { get; set; }
+
+    [JsonProperty("EndTimeUtc")]
+    public DateTimeOffset? EndTimeUtc { get; set; }
+
+    [JsonProperty("FinalFireTimeUtc")]
+    public DateTimeOffset? FinalFireTimeUtc { get; set; }
+
+    [JsonProperty("Priority")]
+    public int Priority { get; set; }
+
+    [JsonProperty("HasMillisecondPrecision")]
+    public bool HasMillisecondPrecision { get; set; }
+
+    public Trigger() { }
+
+    public Trigger(
+        TriggerKey triggerKey,
+        string description,
+        string calendarName,
+        string cronSchedule,
+        DateTimeOffset? nextFireTimeUtc,
+        DateTimeOffset? previousFireTimeUtc,
+        DateTimeOffset startTimeUtc,
+        DateTimeOffset? endTimeUtc,
+        DateTimeOffset? finalFireTimeUtc,
+        int priority,
+        JobKey jobKey,
+        JobDataMap jobDataMap)
     {
-        [JsonProperty("TriggerKey")]
-        public TriggerKey TriggerKey { get; set; }
-
-        [JsonProperty("Description")]
-        public string Description { get; set; }
-
-        [JsonProperty("CalendarName")]
-        public string CalendarName { get; set; }
-
-        [JsonProperty("CronSchedule")]
-        public string CronSchedule { get; set; }
-
-        [JsonProperty("NextFireTimeUtc")]
-        public DateTimeOffset? NextFireTimeUtc { get; set; }
-
-        [JsonProperty("PreviousFireTimeUtc")]
-        public DateTimeOffset? PreviousFireTimeUtc { get; set; }
-
-        [JsonProperty("StartTimeUtc")]
-        public DateTimeOffset StartTimeUtc { get; set; }
-
-        [JsonProperty("EndTimeUtc")]
-        public DateTimeOffset? EndTimeUtc { get; set; }
-
-        [JsonProperty("FinalFireTimeUtc")]
-        public DateTimeOffset? FinalFireTimeUtc { get; set; }
-
-        [JsonProperty("Priority")]
-        public int Priority { get; set; }
-
-        [JsonProperty("HasMillisecondPrecision")]
-        public bool HasMillisecondPrecision { get; set; }
-
-        public Trigger() { }
-
-        public Trigger(ITrigger trigger)
-        {
-            TriggerKey = new TriggerKey(trigger.Key);
-            JobKey = trigger.JobKey != null ? new JobKey(trigger.JobKey) : null;
-            JobDataMap = trigger.JobDataMap;
-            Description = trigger.Description;
-            CalendarName = trigger.CalendarName;
-            NextFireTimeUtc = trigger.GetNextFireTimeUtc();
-            PreviousFireTimeUtc = trigger.GetPreviousFireTimeUtc();
-            StartTimeUtc = trigger.StartTimeUtc;
-            EndTimeUtc = trigger.EndTimeUtc;
-            FinalFireTimeUtc = trigger.FinalFireTimeUtc;
-            Priority = trigger.Priority;
-            HasMillisecondPrecision = trigger.HasMillisecondPrecision;
-            CronSchedule = (trigger is ICronTrigger cron) ? cron.CronExpressionString : null;
-        }
-
-        public ITrigger ToTrigger()
-        {
-            var builder = TriggerBuilder.Create()
-                .WithIdentity(TriggerKey.Name, TriggerKey.Group ?? "DEFAULT");
-
-            if (JobKey != null)
-                builder.ForJob(new Quartz.JobKey(JobKey.Name, JobKey.Group ?? "DEFAULT"));
-
-            builder.StartAt(StartTimeUtc);
-
-            if (EndTimeUtc.HasValue)
-                builder.EndAt(EndTimeUtc.Value);
-
-            if (!string.IsNullOrWhiteSpace(CronSchedule))
-                builder.WithCronSchedule(CronSchedule);
-            else
-                builder.WithSimpleSchedule();
-
-            if (!string.IsNullOrWhiteSpace(CalendarName))
-                builder.ModifiedByCalendar(CalendarName);
-
-            if (JobDataMap != null && JobDataMap.Count > 0)
-                builder.UsingJobData(JobDataMap);
-
-            builder.WithPriority(Priority > 0 ? Priority : 5);
-
-            return builder.Build();
-        }
-
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static Trigger FromJsonString(string json) => JsonConvert.DeserializeObject<Trigger>(json);
+        TriggerKey = triggerKey;
+        Description = description;
+        CalendarName = calendarName;
+        CronSchedule = cronSchedule;
+        NextFireTimeUtc = nextFireTimeUtc;
+        PreviousFireTimeUtc = previousFireTimeUtc;
+        StartTimeUtc = startTimeUtc;
+        EndTimeUtc = endTimeUtc;
+        FinalFireTimeUtc = finalFireTimeUtc;
+        Priority = priority;
+        JobKey = jobKey;
+        JobDataMap = jobDataMap;
     }
+
+    public Trigger(ITrigger trigger)
+    {
+        TriggerKey = new TriggerKey(trigger.Key);
+        JobKey = trigger.JobKey != null ? new JobKey(trigger.JobKey) : null;
+        JobDataMap = trigger.JobDataMap;
+        Description = trigger.Description;
+        CalendarName = trigger.CalendarName;
+        NextFireTimeUtc = trigger.GetNextFireTimeUtc();
+        PreviousFireTimeUtc = trigger.GetPreviousFireTimeUtc();
+        StartTimeUtc = trigger.StartTimeUtc;
+        EndTimeUtc = trigger.EndTimeUtc;
+        FinalFireTimeUtc = trigger.FinalFireTimeUtc;
+        Priority = trigger.Priority;
+        HasMillisecondPrecision = trigger.HasMillisecondPrecision;
+        CronSchedule = (trigger is ICronTrigger cron) ? cron.CronExpressionString : null;
+    }
+
+    public ITrigger ToTrigger()
+    {
+        var builder = TriggerBuilder.Create()
+            .WithIdentity(TriggerKey.Name, TriggerKey.Group ?? "DEFAULT");
+
+        if (JobKey != null)
+            builder.ForJob(new Quartz.JobKey(JobKey.Name, JobKey.Group ?? "DEFAULT"));
+
+        builder.StartAt(StartTimeUtc);
+
+        if (EndTimeUtc.HasValue)
+            builder.EndAt(EndTimeUtc.Value);
+
+        if (!string.IsNullOrWhiteSpace(CronSchedule))
+            builder.WithCronSchedule(CronSchedule);
+        else
+            builder.WithSimpleSchedule();
+
+        if (!string.IsNullOrWhiteSpace(CalendarName))
+            builder.ModifiedByCalendar(CalendarName);
+
+        if (JobDataMap != null && JobDataMap.Count > 0)
+            builder.UsingJobData(JobDataMap);
+
+        builder.WithPriority(Priority > 0 ? Priority : 5);
+
+        return builder.Build();
+    }
+
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+    public static Trigger FromJsonString(string json) => JsonConvert.DeserializeObject<Trigger>(json);
 }
+

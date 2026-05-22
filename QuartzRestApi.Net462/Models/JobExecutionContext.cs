@@ -28,75 +28,74 @@ using System;
 using Newtonsoft.Json;
 using Quartz;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for <see cref="IJobExecutionContext"/>.</summary>
+public class JobExecutionContext
 {
-    /// <summary>JSON wrapper for <see cref="IJobExecutionContext"/>.</summary>
-    public class JobExecutionContext
+    [JsonProperty("Scheduler")]
+    public string Scheduler { get; set; }
+
+    [JsonProperty("Trigger")]
+    public Trigger Trigger { get; set; }
+
+    [JsonProperty("Calender")]
+    public string Calendar { get; set; }
+
+    [JsonProperty("Recovering")]
+    public bool Recovering { get; set; }
+
+    [JsonProperty("RecoveringTriggerKey")]
+    public TriggerKey RecoveringTriggerKey { get; set; }
+
+    [JsonProperty("RefireCount")]
+    public int RefireCount { get; set; }
+
+    [JsonProperty("MergedJobDataMap")]
+    public JobDataMap MergedJobDataMap { get; set; }
+
+    [JsonProperty("JobDetail")]
+    public JobDetail JobDetail { get; set; }
+
+    [JsonProperty("JobInstance")]
+    public string JobInstance { get; set; }
+
+    [JsonProperty("FireTimeUtc")]
+    public DateTimeOffset FireTimeUtc { get; set; }
+
+    [JsonProperty("ScheduledFireTimeUtc")]
+    public DateTimeOffset? ScheduledFireTimeUtc { get; set; }
+
+    [JsonProperty("PreviousFireTimeUtc")]
+    public DateTimeOffset? PreviousFireTimeUtc { get; set; }
+
+    [JsonProperty("NextFireTimeUtc")]
+    public DateTimeOffset? NextFireTimeUtc { get; set; }
+
+    [JsonProperty("FireInstanceId")]
+    public string FireInstanceId { get; set; }
+
+    [JsonProperty("JobRunTime")]
+    public TimeSpan JobRunTime { get; set; }
+
+    public JobExecutionContext() { }
+
+    public JobExecutionContext(IJobExecutionContext ctx)
     {
-        [JsonProperty("Scheduler")]
-        public string Scheduler { get; set; }
-
-        [JsonProperty("Trigger")]
-        public Trigger Trigger { get; set; }
-
-        [JsonProperty("Calender")]
-        public string Calendar { get; set; }
-
-        [JsonProperty("Recovering")]
-        public bool Recovering { get; set; }
-
-        [JsonProperty("RecoveringTriggerKey")]
-        public TriggerKey RecoveringTriggerKey { get; set; }
-
-        [JsonProperty("RefireCount")]
-        public int RefireCount { get; set; }
-
-        [JsonProperty("MergedJobDataMap")]
-        public JobDataMap MergedJobDataMap { get; set; }
-
-        [JsonProperty("JobDetail")]
-        public JobDetail JobDetail { get; set; }
-
-        [JsonProperty("JobInstance")]
-        public string JobInstance { get; set; }
-
-        [JsonProperty("FireTimeUtc")]
-        public DateTimeOffset FireTimeUtc { get; set; }
-
-        [JsonProperty("ScheduledFireTimeUtc")]
-        public DateTimeOffset? ScheduledFireTimeUtc { get; set; }
-
-        [JsonProperty("PreviousFireTimeUtc")]
-        public DateTimeOffset? PreviousFireTimeUtc { get; set; }
-
-        [JsonProperty("NextFireTimeUtc")]
-        public DateTimeOffset? NextFireTimeUtc { get; set; }
-
-        [JsonProperty("FireInstanceId")]
-        public string FireInstanceId { get; set; }
-
-        [JsonProperty("JobRunTime")]
-        public TimeSpan JobRunTime { get; set; }
-
-        public JobExecutionContext() { }
-
-        public JobExecutionContext(IJobExecutionContext ctx)
-        {
-            Scheduler = ctx.Scheduler?.SchedulerName;
-            Trigger = ctx.Trigger != null ? new Trigger(ctx.Trigger) : null;
-            Calendar = ctx.Calendar != null ? ctx.Trigger?.CalendarName : null;
-            Recovering = ctx.Recovering;
-            RecoveringTriggerKey = Recovering ? new TriggerKey(ctx.RecoveringTriggerKey) : null;
-            RefireCount = ctx.RefireCount;
-            MergedJobDataMap = ctx.MergedJobDataMap;
-            JobDetail = ctx.JobDetail != null ? new JobDetail(ctx.JobDetail) : null;
-            JobInstance = ctx.JobInstance?.GetType().FullName;
-            FireTimeUtc = ctx.FireTimeUtc;
-            ScheduledFireTimeUtc = ctx.ScheduledFireTimeUtc;
-            PreviousFireTimeUtc = ctx.PreviousFireTimeUtc;
-            NextFireTimeUtc = ctx.NextFireTimeUtc;
-            FireInstanceId = ctx.FireInstanceId;
-            JobRunTime = ctx.JobRunTime;
-        }
+        Scheduler = ctx.Scheduler?.SchedulerName;
+        Trigger = ctx.Trigger != null ? new Trigger(ctx.Trigger) : null;
+        Calendar = ctx.Calendar != null ? ctx.Trigger?.CalendarName : null;
+        Recovering = ctx.Recovering;
+        RecoveringTriggerKey = Recovering ? new TriggerKey(ctx.RecoveringTriggerKey) : null;
+        RefireCount = ctx.RefireCount;
+        MergedJobDataMap = ctx.MergedJobDataMap;
+        JobDetail = ctx.JobDetail != null ? new JobDetail(ctx.JobDetail) : null;
+        JobInstance = ctx.JobInstance?.GetType().FullName;
+        FireTimeUtc = ctx.FireTimeUtc;
+        ScheduledFireTimeUtc = ctx.ScheduledFireTimeUtc;
+        PreviousFireTimeUtc = ctx.PreviousFireTimeUtc;
+        NextFireTimeUtc = ctx.NextFireTimeUtc;
+        FireInstanceId = ctx.FireInstanceId;
+        JobRunTime = ctx.JobRunTime;
     }
 }
+

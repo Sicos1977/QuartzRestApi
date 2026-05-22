@@ -26,25 +26,24 @@
 
 using Newtonsoft.Json;
 
-namespace QuartzRestApi.Models
+namespace QuartzRestApi.Models;
+/// <summary>JSON wrapper for <see cref="Quartz.SchedulerContext"/>.</summary>
+public sealed class SchedulerContext : Quartz.SchedulerContext
 {
-    /// <summary>JSON wrapper for <see cref="Quartz.SchedulerContext"/>.</summary>
-    public sealed class SchedulerContext : Quartz.SchedulerContext
+    public SchedulerContext() { }
+
+    internal SchedulerContext(Quartz.SchedulerContext ctx)
     {
-        public SchedulerContext() { }
+        foreach (var item in ctx)
+            Add(item.Key, item.Value);
+    }
 
-        internal SchedulerContext(Quartz.SchedulerContext ctx)
-        {
-            foreach (var item in ctx)
-                Add(item.Key, item.Value);
-        }
+    public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
 
-        public string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public static SchedulerContext FromJsonString(string json)
-        {
-            var dict = JsonConvert.DeserializeObject<Quartz.SchedulerContext>(json);
-            return new SchedulerContext(dict ?? new Quartz.SchedulerContext());
-        }
+    public static SchedulerContext FromJsonString(string json)
+    {
+        var dict = JsonConvert.DeserializeObject<Quartz.SchedulerContext>(json);
+        return new SchedulerContext(dict ?? new Quartz.SchedulerContext());
     }
 }
+

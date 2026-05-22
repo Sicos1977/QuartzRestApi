@@ -26,15 +26,14 @@
 
 using System.Runtime.Serialization;
 
-namespace QuartzRestApi.Models.Calendars
+namespace QuartzRestApi.Models.Calendars;
+public enum CalendarType
 {
-    public enum CalendarType
-    {
-        [DataMember(Name = "Cron")]    Cron,
-        [DataMember(Name = "Daily")]   Daily,
-        [DataMember(Name = "Weekly")]  Weekly,
-        [DataMember(Name = "Monthly")] Monthly,
-        [DataMember(Name = "Annual")]  Annual,
-        [DataMember(Name = "Holiday")] Holiday
-    }
+    [DataMember(Name = "Cron")]    Cron,
+    [DataMember(Name = "Daily")]   Daily,
+    [DataMember(Name = "Weekly")]  Weekly,
+    [DataMember(Name = "Monthly")] Monthly,
+    [DataMember(Name = "Annual")]  Annual,
+    [DataMember(Name = "Holiday")] Holiday
 }
+
