@@ -31,8 +31,8 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using QuartzRestApi.Exceptions;
 using QuartzRestApi.Security;
-using QuartzRestApi.Wrappers;
-using QuartzRestApi.Wrappers.Calendars;
+using QuartzRestApi.Models;
+using QuartzRestApi.Models.Calendars;
 // ReSharper disable UnusedMember.Global
 
 namespace QuartzRestApi;

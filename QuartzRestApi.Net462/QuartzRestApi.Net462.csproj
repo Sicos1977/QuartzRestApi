@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <OutputType>Library</OutputType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <AssemblyName>QuartzRestApi.Net462</AssemblyName>
+    <RootNamespace>QuartzRestApi</RootNamespace>
+
+    <!-- NuGet package metadata -->
+    <PackageId>QuartzRestApi.Net462</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Kees van Spelde</Authors>
+    <Company>Magic-Sessions</Company>
+    <Product>QuartzRestApi.Net462</Product>
+    <Description>A self-hosted REST API library for Quartz.NET targeting .NET Framework 4.6.2, built on OWIN/WebAPI 2. Exposes a Quartz IScheduler over HTTP with optional API-key authentication.</Description>
+    <PackageTags>quartz;scheduler;rest;api;owin;webapi;netframework</PackageTags>
+    <PackageProjectUrl>https://github.com/Sicos1977/QuartzRestApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Sicos1977/QuartzRestApi</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright (C) 2022 - 2026 Magic-Sessions</Copyright>
+
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' != 'Release'">false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Owin.SelfHost" Version="4.2.3" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.OwinSelfHost" Version="5.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Quartz" Version="3.18.1" />
+  </ItemGroup>
+
+</Project>

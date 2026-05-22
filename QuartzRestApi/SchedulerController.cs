@@ -31,12 +31,14 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using Quartz;
 using Quartz.Spi;
-using QuartzRestApi.Wrappers;
-using QuartzRestApi.Wrappers.Calendars;
-using JobKey = QuartzRestApi.Wrappers.JobKey;
-using SchedulerMetaData = QuartzRestApi.Wrappers.SchedulerMetaData;
-using TriggerKey = QuartzRestApi.Wrappers.TriggerKey;
-using ScheduleJobsRequest = QuartzRestApi.Wrappers.ScheduleJobs;
+using QuartzRestApi.Models;
+using QuartzRestApi.Models.Calendars;
+using JobKey = QuartzRestApi.Models.JobKey;
+using SchedulerMetaData = QuartzRestApi.Models.SchedulerMetaData;
+using TriggerKey = QuartzRestApi.Models.TriggerKey;
+using ScheduleJobsRequest = QuartzRestApi.Models.ScheduleJobs;
+using SchedulerContext = QuartzRestApi.Models.SchedulerContext;
+
 // ReSharper disable RouteTemplates.ActionRoutePrefixCanBeExtractedToControllerRoute
 
 namespace QuartzRestApi;
@@ -165,7 +167,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     public ContentResult Context()
     {
         _logger?.LogInformation("Received request to return the scheduler context");
-        var result = new Wrappers.SchedulerContext(_scheduler.Context).ToJsonString();
+        var result = new SchedulerContext(_scheduler.Context).ToJsonString();
         _logger?.LogDebug("Returning '{Result}'", result);
         return Content(result, "application/json");
     }
@@ -639,7 +641,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogInformation("Received request to reschedule the job that match the given trigger key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
-        var rescheduleJob = Wrappers.RescheduleJob.FromJsonString(json);
+        var rescheduleJob = Models.RescheduleJob.FromJsonString(json);
         var result = _scheduler.RescheduleJob(rescheduleJob.CurrentTriggerKey.ToTriggerKey(),
             rescheduleJob.Trigger.ToTrigger());
 

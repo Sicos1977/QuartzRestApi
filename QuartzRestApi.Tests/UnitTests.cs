@@ -31,11 +31,11 @@ using System.Collections.Specialized;
 using System.Linq;
 using Quartz;
 using Quartz.Impl;
-using QuartzRestApi.Wrappers;
-using GroupMatcherType = QuartzRestApi.Wrappers.GroupMatcherType;
-using JobKey = QuartzRestApi.Wrappers.JobKey;
-using RescheduleJob = QuartzRestApi.Wrappers.RescheduleJob;
-using TriggerKey = QuartzRestApi.Wrappers.TriggerKey;
+using QuartzRestApi.Models;
+using GroupMatcherType = QuartzRestApi.Models.GroupMatcherType;
+using JobKey = QuartzRestApi.Models.JobKey;
+using RescheduleJob = QuartzRestApi.Models.RescheduleJob;
+using TriggerKey = QuartzRestApi.Models.TriggerKey;
 
 namespace QuartzRestApi.Tests;
 
@@ -182,7 +182,6 @@ public class UnitTests
     #endregion
 
     #region Scheduler state
-
     /// <summary>
     ///     Verifies that <c>IsJobGroupPaused</c> returns <c>false</c> for an active job group.
     /// </summary>
@@ -855,7 +854,7 @@ public class UnitTests
     public async Task AddCalendar_And_DeleteCalendar()
     {
         var quartzCalendar = new Quartz.Impl.Calendar.MonthlyCalendar();
-        var calendar = new Wrappers.Calendars.MonthlyCalendar(quartzCalendar)
+        var calendar = new Models.Calendars.MonthlyCalendar(quartzCalendar)
         {
             Name = "testCalendar",
             Replace = false,

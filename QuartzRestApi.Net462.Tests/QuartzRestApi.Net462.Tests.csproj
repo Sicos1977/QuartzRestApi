@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <RootNamespace>QuartzRestApi.Tests</RootNamespace>
+    <!-- Disable the new Microsoft.Testing.Platform runner; use classic VSTest for net462 -->
+    <EnableMSTestRunner>false</EnableMSTestRunner>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSTest.TestAdapter" Version="4.2.3" />
+    <PackageReference Include="MSTest.TestFramework" Version="4.2.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
+    <PackageReference Include="Quartz" Version="3.18.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QuartzRestApi.Net462\QuartzRestApi.Net462.csproj" />
+  </ItemGroup>
+
+</Project>
