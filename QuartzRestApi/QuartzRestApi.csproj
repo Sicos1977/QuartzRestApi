@@ -1,44 +1,47 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <OutputType>Library</OutputType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
 
-	<PropertyGroup>
-		<TargetFramework>net10.0</TargetFramework>
-		<LangVersion>latest</LangVersion>
-		<OutputType>Library</OutputType>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<NoWarn>$(NoWarn);1591</NoWarn>
+    <!-- Disables static asset extraction to prevent obj/pack manifest errors -->
+    <EnableStaticWebAssets>false</EnableStaticWebAssets>
 
-		<!-- NuGet package metadata -->
-		<PackageId>QuartzRestApi</PackageId>
-		<Version>1.0.1</Version>
-		<Authors>Kees van Spelde</Authors>
-		<Company>Magic-Sessions</Company>
-		<Product>QuartzRestApi</Product>
-		<Description>A self-hosted REST API library for Quartz.NET, built on .NET 10 with ASP.NET Core / Kestrel. Exposes a Quartz IScheduler over HTTP with optional API-key authentication and an interactive Scalar/OpenAPI browser.</Description>
-		<PackageTags>quartz;scheduler;rest;api;kestrel;aspnetcore</PackageTags>
-		<PackageProjectUrl>https://github.com/Sicos1977/QuartzRestApi</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/Sicos1977/QuartzRestApi</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageIcon>icon.png</PackageIcon>
-		<Copyright>Copyright (C) 2022 - 2026 Magic-Sessions</Copyright>
+    <!-- NuGet package metadata -->
+    <PackageId>QuartzRestApi</PackageId>
+    <Version>1.0.2</Version>
+    <Authors>Kees van Spelde</Authors>
+    <Company>Magic-Sessions</Company>
+    <Product>QuartzRestApi</Product>
+    <Description>A self-hosted REST API library for Quartz.NET, built on .NET 10 with ASP.NET Core / Kestrel. Exposes a Quartz IScheduler over HTTP with optional API-key authentication and an interactive Scalar/OpenAPI browser.</Description>
+    <PackageTags>quartz;scheduler;rest;api;kestrel;aspnetcore</PackageTags>
+    <PackageProjectUrl>https://github.com</PackageProjectUrl>
+    <RepositoryUrl>https://github.com</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <Copyright>Copyright (C) 2022 - 2026 Magic-Sessions</Copyright>
 
-		<!-- Only produce a NuGet package in Release builds -->
-		<IsPackable>true</IsPackable>
-		<GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
-		<GeneratePackageOnBuild Condition="'$(Configuration)' != 'Release'">false</GeneratePackageOnBuild>
-	</PropertyGroup>
+    <!-- Delegation of packaging directly to the automation script -->
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
-		<PackageReference Include="Quartz" Version="3.18.1" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
-		<PackageReference Include="Scalar.AspNetCore" Version="2.14.14" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
+    <PackageReference Include="Quartz" Version="3.18.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.8" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.14.14" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<None Include="..\README.md" Pack="true" PackagePath="\" />
-		<None Include="..\icon.png" Pack="true" PackagePath="\" />
-	</ItemGroup>
-
+  <ItemGroup>
+    <None Include="..\icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 </Project>

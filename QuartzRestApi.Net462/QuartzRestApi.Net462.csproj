@@ -6,7 +6,7 @@
     <OutputType>Library</OutputType>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);1591</NoWarn>
-    <AssemblyName>QuartzRestApi.Net462</AssemblyName>
+    <AssemblyName>QuartzRestApi</AssemblyName>
     <RootNamespace>QuartzRestApi</RootNamespace>
 
     <!-- NuGet package metadata -->
