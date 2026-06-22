@@ -82,6 +82,29 @@ public class JobDetail
     public bool Replace { get; init; }
 
     /// <summary>
+    /// Whether the associated Job class carries the <see cref="PersistJobDataAfterExecutionAttribute" />.
+    /// </summary>
+    [JsonPropertyName("PersistJobDataAfterExecution")]
+    public bool PersistJobDataAfterExecution { get; init; }
+
+    /// <summary>
+    ///     Whether the associated Job class carries the <see cref="DisallowConcurrentExecutionAttribute" />.
+    /// </summary>
+    [JsonPropertyName("ConcurrentExecutionDisallowed")]
+    public bool ConcurrentExecutionDisallowed { get; init; }
+
+    /// <summary>
+    ///     Set whether or not the <see cref="IScheduler" /> should re-Execute
+    ///     the <see cref="IJob" /> if a 'recovery' or 'fail-over' situation is
+    /// encountered.
+    /// </summary>
+    /// <remarks>
+    ///     If not explicitly set, the default value is <see langword="false" />.
+    /// </remarks>
+    [JsonPropertyName("RequestsRecovery")]
+    public bool RequestsRecovery { get; init; }
+
+    /// <summary>
     ///     Whether the <see cref="IJob" /> should be stored durable while awaiting scheduling
     /// </summary>
     [JsonPropertyName("StoreNonDurableWhileAwaitingScheduling")]
@@ -147,6 +170,9 @@ public class JobDetail
         JobType = jobDetail.JobType.ToString();
         JobDataMap = jobDetail.JobDataMap;
         Durable = jobDetail.Durable;
+        ConcurrentExecutionDisallowed = jobDetail.ConcurrentExecutionDisallowed;
+        PersistJobDataAfterExecution = jobDetail.PersistJobDataAfterExecution;
+        RequestsRecovery = jobDetail.RequestsRecovery;
     }
     #endregion
 
