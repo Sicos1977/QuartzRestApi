@@ -115,7 +115,8 @@ public class UnitTests
         await scheduler.AddCalendar("monthlyCalendar", mc, true, true);
         await scheduler.ScheduleJob(schedulerJob, schedulerTrigger);
 
-        _host = new SchedulerHost("http://localhost:44344", scheduler, null);
+        var logger = new QuartzRestApi.Loggers.Console();
+        _host = new SchedulerHost("http://localhost:44344", scheduler, logger);
         await _host.Start();
 
         _connector = new SchedulerConnector("http://localhost:44344");

@@ -137,13 +137,11 @@ public class SchedulerHost
     public async Task Start(CancellationToken cancellationToken = default)
     {
         var builder = WebApplication.CreateBuilder();
+        var uri = new Uri(_baseAddress);
+        var listenUrl = $"{uri.Scheme}://{uri.Authority}";
 
-        builder.WebHost
-            .UseKestrel()
-            .UseUrls(_baseAddress);
-
+        builder.WebHost.UseKestrel().UseUrls(listenUrl);
         builder.Logging.ClearProviders();
-
         builder.Services.AddSingleton(_scheduler);
         builder.Services.AddSingleton(_apiKeyOptions);
         builder.Services.AddRouting();
