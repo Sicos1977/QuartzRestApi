@@ -31,11 +31,13 @@ using System.Collections.Specialized;
 using System.Linq;
 using Quartz;
 using Quartz.Impl;
-using QuartzRestApi.Models;
-using GroupMatcherType = QuartzRestApi.Models.GroupMatcherType;
-using JobKey = QuartzRestApi.Models.JobKey;
-using RescheduleJob = QuartzRestApi.Models.RescheduleJob;
-using TriggerKey = QuartzRestApi.Models.TriggerKey;
+using QuartzRestApi.Models.Groups;
+using QuartzRestApi.Models.Jobs;
+using QuartzRestApi.Models.Triggers;
+using GroupMatcherType = QuartzRestApi.Models.Groups.GroupMatcherType;
+using JobKey = QuartzRestApi.Models.Jobs.JobKey;
+using RescheduleJob = QuartzRestApi.Models.Jobs.RescheduleJob;
+using TriggerKey = QuartzRestApi.Models.Triggers.TriggerKey;
 using TestJob = QuartzRestApi.FallbackNoOpJob;
 
 namespace QuartzRestApi.Tests;
@@ -164,21 +166,16 @@ public class UnitTests
     /// <param name="jobName">The name of the job associated with the trigger.</param>
     /// <param name="jobGroup">The group of the job associated with the trigger.</param>
     /// <param name="cron">The cron expression for the trigger schedule.</param>
-    /// <returns>A new instance of <see cref="Trigger"/> configured with the specified parameters.</returns>
-    private static Trigger MakeTrigger(string triggerName, string triggerGroup, string jobName, string jobGroup, string cron) =>
-        new(
-            new TriggerKey(triggerName, triggerGroup),
-            description: null,
-            calendarName: null,
-            cronSchedule: cron,
-            nextFireTimeUtc: null,
-            previousFireTimeUtc: null,
-            startTimeUtc: DateTimeOffset.UtcNow,
-            endTimeUtc: null,
-            finalFireTimeUtc: null,
-            priority: 5,
-            new JobKey(jobName, jobGroup),
-            jobDataMap: null);
+    /// <returns>A new instance of <see cref="CronTrigger"/> configured with the specified parameters.</returns>
+    private static CronTrigger MakeTrigger(string triggerName, string triggerGroup, string jobName, string jobGroup, string cron)
+    {
+        return new CronTrigger
+        {
+            TriggerKey = new TriggerKey(triggerName, triggerGroup),
+            JobKey = new JobKey(jobName, jobGroup),
+            CronExpressionString = cron
+        };
+    }
     #endregion
 
     #region Scheduler state
@@ -626,11 +623,10 @@ public class UnitTests
     {
         var request = new JobDetailWithTriggers(
             MakeJobDetail("MultiTriggerJob", "TestGroup"),
-            new List<Trigger>
-            {
+            [
                 MakeTrigger("MultiTrigger1", "TestGroup", "MultiTriggerJob", "TestGroup", "0 * * ? * *"),
                 MakeTrigger("MultiTrigger2", "TestGroup", "MultiTriggerJob", "TestGroup", "0 30 * ? * *")
-            });
+            ]);
 
         await _connector.ScheduleJobWithTriggers(request);
 
@@ -648,9 +644,7 @@ public class UnitTests
     {
         var jobs = new List<JobDetailWithTriggers>
         {
-            new(MakeJobDetail("BatchJob1", "BatchGroup"),
-                new List<Trigger>
-                    { MakeTrigger("BatchTrigger1", "BatchGroup", "BatchJob1", "BatchGroup", "0 * * ? * *") })
+            new(MakeJobDetail("BatchJob1", "BatchGroup"), [MakeTrigger("BatchTrigger1", "BatchGroup", "BatchJob1", "BatchGroup", "0 * * ? * *")])
         };
 
         await _connector.ScheduleJobs(new ScheduleJobs(jobs, replace: true));
@@ -693,12 +687,12 @@ public class UnitTests
         var unscheduled = await _connector.UnscheduleJob(triggerKey);
         Assert.IsTrue(unscheduled);
 
-        var quartzTrigger = TriggerBuilder.Create()
+        var quartzTrigger = (ICronTrigger) TriggerBuilder.Create()
             .WithIdentity("TriggerKey", "JobKeyGroup")
             .ForJob(new Quartz.JobKey("JobKeyName", "JobKeyGroup"))
             .WithCronSchedule("0 * * ? * *")
             .Build();
-        await _connector.ScheduleJob(new Trigger(quartzTrigger));
+        await _connector.ScheduleJob(new CronTrigger(quartzTrigger));
     }
 
     /// <summary>
@@ -713,8 +707,8 @@ public class UnitTests
 
         var keys = new TriggerKeys(new List<Quartz.TriggerKey>
         {
-            new Quartz.TriggerKey("UnscheduleTriggerA", "TestGroup"),
-            new Quartz.TriggerKey("UnscheduleTriggerB", "TestGroup")
+            new("UnscheduleTriggerA", "TestGroup"),
+            new("UnscheduleTriggerB", "TestGroup")
         }.AsReadOnly());
 
         var result = await _connector.UnscheduleJobs(keys);
@@ -754,8 +748,8 @@ public class UnitTests
 
         var keys = new JobKeys(new List<Quartz.JobKey>
         {
-            new Quartz.JobKey("DeleteJobA", "TestGroup"),
-            new Quartz.JobKey("DeleteJobB", "TestGroup")
+            new("DeleteJobA", "TestGroup"),
+            new("DeleteJobB", "TestGroup")
         }.AsReadOnly());
 
         var result = await _connector.DeleteJobs(keys);
