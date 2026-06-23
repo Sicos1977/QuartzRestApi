@@ -1,4 +1,4 @@
-//
+﻿//
 // CronCalendar.cs
 //
 // Author: Kees van Spelde <sicos2002@hotmail.com>
@@ -23,36 +23,86 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-
+using System;
 using Newtonsoft.Json;
 using Quartz;
 
 namespace QuartzRestApi.Models.Calendars;
-/// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.CronCalendar"/>.</summary>
+
+/// <summary>
+///     A json wrapper for the <see cref="Quartz.Impl.Calendar.CronCalendar" />
+/// </summary>
 public class CronCalendar : BaseCalendar
 {
+    #region Properties
+    /// <summary>
+    ///     The cron expression
+    /// </summary>
+    /// <remarks>
+    ///     Only used when the <see cref="Type" /> is <see cref="CalendarType.Cron" />
+    /// </remarks>
     [JsonProperty("CronExpression")]
-    public string CronExpression { get; set; }
+    public string CronExpression { get; internal set; }
+    #endregion
 
-    public CronCalendar() { Type = CalendarType.Cron; }
+    #region Constructors
+    /// <summary>
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    public CronCalendar() { }
 
-    public CronCalendar(Quartz.Impl.Calendar.CronCalendar cal) : base(cal)
+    /// <summary>
+    ///     Takes a <see cref="Quartz.Impl.Calendar.CronCalendar" /> and wraps it in a json object.
+    /// </summary>
+    /// <param name="cronCalendar"><see cref="Quartz.Impl.Calendar.CronCalendar" /></param>
+    public CronCalendar(Quartz.Impl.Calendar.CronCalendar cronCalendar) : base(cronCalendar)
     {
         Type = CalendarType.Cron;
-        TimeZone = cal.TimeZone;
-        CronExpression = cal.CronExpression?.CronExpressionString;
+        CronExpression = cronCalendar?.CronExpression.CronExpressionString;
+        TimeZone = cronCalendar?.TimeZone;
     }
+    #endregion
 
+    #region ToCalendar
+    /// <summary>
+    ///     Returns this object as a Quartz <see cref="ICalendar" />
+    /// </summary>
+    /// <returns></returns>
     public override ICalendar ToCalendar()
     {
-        return new Quartz.Impl.Calendar.CronCalendar(CronExpression)
+        var result = new Quartz.Impl.Calendar.CronCalendar(CronExpression)
         {
             Description = Description,
             TimeZone = TimeZone
         };
+
+        return result;
     }
+    #endregion
 
-    public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-    public static CronCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<CronCalendar>(json);
+    #region ToJsonString
+    /// <summary>
+    ///     Returns this object as a json string
+    /// </summary>
+    /// <returns></returns>
+    public new string ToJsonString()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
+    #endregion
+
+    #region FromJsonString
+    /// <summary>
+    ///     Returns the <see cref="CronCalendar" /> object from the given <paramref name="json" /> string
+    /// </summary>
+    /// <param name="json">The json string</param>
+    /// <returns>
+    ///     <see cref="CronCalendar" />
+    /// </returns>
+    public new static CronCalendar FromJsonString(string json)
+    {
+        return JsonConvert.DeserializeObject<CronCalendar>(json);
+    }
+    #endregion
 }
-

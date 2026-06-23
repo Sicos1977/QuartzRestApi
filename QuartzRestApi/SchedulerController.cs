@@ -31,13 +31,15 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Logging;
 using Quartz;
 using Quartz.Spi;
-using QuartzRestApi.Models;
 using QuartzRestApi.Models.Calendars;
-using JobKey = QuartzRestApi.Models.JobKey;
-using SchedulerMetaData = QuartzRestApi.Models.SchedulerMetaData;
-using TriggerKey = QuartzRestApi.Models.TriggerKey;
-using ScheduleJobsRequest = QuartzRestApi.Models.ScheduleJobs;
-using SchedulerContext = QuartzRestApi.Models.SchedulerContext;
+using JobKey = QuartzRestApi.Models.Jobs.JobKey;
+using SchedulerMetaData = QuartzRestApi.Models.Scheduler.SchedulerMetaData;
+using TriggerKey = QuartzRestApi.Models.Triggers.TriggerKey;
+using ScheduleJobsRequest = QuartzRestApi.Models.Jobs.ScheduleJobs;
+using SchedulerContext = QuartzRestApi.Models.Scheduler.SchedulerContext;
+using QuartzRestApi.Models.Triggers;
+using QuartzRestApi.Models.Jobs;
+using QuartzRestApi.Models.Groups;
 
 // ReSharper disable RouteTemplates.ActionRoutePrefixCanBeExtractedToControllerRoute
 
@@ -510,7 +512,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogInformation("Received request to schedule a job identified by a trigger");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
-        var trigger = Trigger.FromJsonString(json).ToTrigger();
+        var trigger = TriggerBase.FromJsonString(json).ToTrigger();
         var result = _scheduler.ScheduleJob(trigger);
 
         _logger?.LogDebug("Job scheduled, returning '{Result}'", result);
@@ -641,7 +643,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogInformation("Received request to reschedule the job that match the given trigger key");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
-        var rescheduleJob = Models.RescheduleJob.FromJsonString(json);
+        var rescheduleJob = Models.Jobs.RescheduleJob.FromJsonString(json);
         var result = _scheduler.RescheduleJob(rescheduleJob.CurrentTriggerKey.ToTriggerKey(),
             rescheduleJob.Trigger.ToTrigger());
 
@@ -1178,14 +1180,24 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var trigger = await _scheduler.GetTrigger(triggerKey.ToTriggerKey());
-        if (trigger == null)
+        var quartzTrigger = await _scheduler.GetTrigger(triggerKey.ToTriggerKey());
+        if (quartzTrigger == null)
         {
             _logger?.LogInformation("No trigger found");
             return Content("null", "application/json");
         }
 
-        var result = new Trigger(trigger).ToJsonString();
+        TriggerBase trigger = quartzTrigger switch
+        {
+            ISimpleTrigger simpleTrigger => new SimpleTrigger(simpleTrigger),
+            ICalendarIntervalTrigger calendarIntervalTrigger => new CalendarIntervalTrigger(calendarIntervalTrigger),
+            ICronTrigger cronTrigger => new CronTrigger(cronTrigger),
+            IDailyTimeIntervalTrigger dailyTimeIntervalTrigger => new DailyTimeIntervalTrigger(dailyTimeIntervalTrigger),
+            IRecurrenceTrigger recurrenceTrigger => new RecurrenceTrigger(recurrenceTrigger),
+            _ => throw new ArgumentOutOfRangeException(nameof(quartzTrigger), quartzTrigger, "Unsupported trigger type")
+        };
+
+        var result = trigger.ToJsonString();
 
         _logger?.LogInformation("Returning trigger for the given trigger key");
         _logger?.LogDebug("JSON '{Result}'", result);
@@ -1282,37 +1294,16 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
             return Content("null", "application/json");
         }
 
-        string result;
-
-        switch (calendar)
+        var result = calendar switch
         {
-            case Quartz.Impl.Calendar.CronCalendar cronCalendar:
-                result = new CronCalendar(cronCalendar).ToJsonString();
-                break;
-            
-            case Quartz.Impl.Calendar.DailyCalendar dailyCalendar:
-                result = new DailyCalendar(dailyCalendar).ToJsonString();
-                break;
-            
-            case Quartz.Impl.Calendar.WeeklyCalendar weeklyCalendar:
-                result = new WeeklyCalendar(weeklyCalendar).ToJsonString();
-                break;
-            
-            case Quartz.Impl.Calendar.MonthlyCalendar monthlyCalendar:
-                result = new MonthlyCalendar(monthlyCalendar).ToJsonString();
-                break;
-            
-            case Quartz.Impl.Calendar.AnnualCalendar annualCalendar:
-                result = new AnnualCalendar(annualCalendar).ToJsonString();
-                break;
-            
-            case Quartz.Impl.Calendar.HolidayCalendar holidayCalendar:
-                result = new HolidayCalendar(holidayCalendar).ToJsonString();
-                break;
-            
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+            Quartz.Impl.Calendar.CronCalendar cronCalendar => new CronCalendar(cronCalendar).ToJsonString(),
+            Quartz.Impl.Calendar.DailyCalendar dailyCalendar => new DailyCalendar(dailyCalendar).ToJsonString(),
+            Quartz.Impl.Calendar.WeeklyCalendar weeklyCalendar => new WeeklyCalendar(weeklyCalendar).ToJsonString(),
+            Quartz.Impl.Calendar.MonthlyCalendar monthlyCalendar => new MonthlyCalendar(monthlyCalendar).ToJsonString(),
+            Quartz.Impl.Calendar.AnnualCalendar annualCalendar => new AnnualCalendar(annualCalendar).ToJsonString(),
+            Quartz.Impl.Calendar.HolidayCalendar holidayCalendar => new HolidayCalendar(holidayCalendar).ToJsonString(),
+            _ => throw new ArgumentOutOfRangeException()
+        };
 
         _logger?.LogInformation("Returning calendar");
         _logger?.LogDebug("JSON '{Result}'", result);

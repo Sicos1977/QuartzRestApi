@@ -32,10 +32,12 @@ using System.Linq;
 using Quartz;
 using Quartz.Impl;
 using QuartzRestApi.Models;
-using GroupMatcherType = QuartzRestApi.Models.GroupMatcherType;
-using JobKey = QuartzRestApi.Models.JobKey;
-using RescheduleJob = QuartzRestApi.Models.RescheduleJob;
-using TriggerKey = QuartzRestApi.Models.TriggerKey;
+using GroupMatcherType = QuartzRestApi.Models.Groups.GroupMatcherType;
+using JobKey = QuartzRestApi.Models.Jobs.JobKey;
+using RescheduleJob = QuartzRestApi.Models.Jobs.RescheduleJob;
+using TriggerKey = QuartzRestApi.Models.Triggers.Triggers.TriggerKey;
+using QuartzRestApi.Models.Jobs;
+using QuartzRestApi.Models.Groups;
 
 namespace QuartzRestApi.Tests;
 

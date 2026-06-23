@@ -31,8 +31,11 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using QuartzRestApi.Exceptions;
 using QuartzRestApi.Security;
-using QuartzRestApi.Models;
 using QuartzRestApi.Models.Calendars;
+using QuartzRestApi.Models.Triggers;
+using QuartzRestApi.Models.Jobs;
+using QuartzRestApi.Models.Groups;
+using QuartzRestApi.Models.Scheduler;
 // ReSharper disable UnusedMember.Global
 
 namespace QuartzRestApi;
@@ -342,7 +345,7 @@ public class SchedulerConnector
     ///     Schedules the trigger with the job identified by the trigger
     /// </summary>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<DateTimeOffset> ScheduleJob(Trigger trigger)
+    public async Task<DateTimeOffset> ScheduleJob(TriggerBase trigger)
     {
         var response = await _httpClient.PostAsync("Scheduler/ScheduleJobIdentifiedWithTrigger", JsonBody(trigger.ToJsonString())).ConfigureAwait(false);
         return await ReadJsonAsync<DateTimeOffset>(response).ConfigureAwait(false);
@@ -624,7 +627,7 @@ public class SchedulerConnector
     ///     Returns the trigger for the given trigger key
     /// </summary>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<Trigger> GetTrigger(TriggerKey triggerKey)
+    public async Task<TriggerBase> GetTrigger(TriggerKey triggerKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetTrigger")
         {
@@ -632,7 +635,7 @@ public class SchedulerConnector
         };
         var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
-        return string.IsNullOrWhiteSpace(json) ? null : Trigger.FromJsonString(json);
+        return string.IsNullOrWhiteSpace(json) ? null : TriggerBase.FromJsonString(json);
     }
     #endregion
 

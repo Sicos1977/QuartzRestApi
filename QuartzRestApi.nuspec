@@ -2,7 +2,7 @@
 <package xmlns="http://microsoft.com">
   <metadata>
     <id>QuartzRestApi</id>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <authors>Kees van Spelde</authors>
     <company>Magic-Sessions</company>
     <product>QuartzRestApi</product>
@@ -10,13 +10,11 @@
     <copyright>Copyright (C) 2022 - 2026 Magic-Sessions</copyright>
     <tags>quartz;scheduler;rest;api;kestrel;aspnetcore;owin;webapi;netframework</tags>
     <license type="expression">MIT</license>
-
     <!-- Project website & Metadata links -->
     <projectUrl>https://github.com</projectUrl>
     <repository type="git" url="https://github.com" />
     <readme>README.md</readme>
     <icon>icon.png</icon>
-    
     <dependencies>
       <!-- Dependencies voor .NET Framework 4.6.2 -->
       <group targetFramework=".NETFramework4.6.2">
@@ -39,11 +37,9 @@
     <file src="README.md" target="README.md" />
     <file src="LICENSE" target="LICENSE" />
     <file src="icon.png" target="icon.png" />
-
     <!-- .NET Framework 4.6.2 binaries -->
     <file src="QuartzRestApi.Net462/bin/Release/net462/QuartzRestApi.dll" target="lib/net462/QuartzRestApi.dll" />
     <file src="QuartzRestApi.Net462/bin/Release/net462/QuartzRestApi.xml" target="lib/net462/QuartzRestApi.xml" />
-
     <!-- .NET 10.0 binaries -->
     <file src="QuartzRestApi/bin/Release/net10.0/QuartzRestApi.dll" target="lib/net10.0/QuartzRestApi.dll" />
     <file src="QuartzRestApi/bin/Release/net10.0/QuartzRestApi.xml" target="lib/net10.0/QuartzRestApi.xml" />

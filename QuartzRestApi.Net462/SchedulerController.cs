@@ -28,16 +28,19 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Quartz;
-using QuartzRestApi.Models;
 using QuartzRestApi.Models.Calendars;
-using JobKey = QuartzRestApi.Models.JobKey;
-using TriggerKey = QuartzRestApi.Models.TriggerKey;
-using SchedulerMetaData = QuartzRestApi.Models.SchedulerMetaData;
-using ScheduleJobsRequest = QuartzRestApi.Models.ScheduleJobs;
-using SchedulerContext = QuartzRestApi.Models.SchedulerContext;
+using QuartzRestApi.Models.Groups;
+using QuartzRestApi.Models.Jobs;
+using QuartzRestApi.Models.Triggers;
+using JobKey = QuartzRestApi.Models.Jobs.JobKey;
+using TriggerKey = QuartzRestApi.Models.Triggers.TriggerKey;
+using SchedulerMetaData = QuartzRestApi.Models.Scheduler.SchedulerMetaData;
+using ScheduleJobsRequest = QuartzRestApi.Models.Jobs.ScheduleJobs;
+using SchedulerContext = QuartzRestApi.Models.Scheduler.SchedulerContext;
 
 namespace QuartzRestApi;
 /// <summary>
@@ -46,21 +49,30 @@ namespace QuartzRestApi;
 [RoutePrefix("")]
 public class SchedulerController : ApiController
 {
+    #region Fields
+    /// <summary>
+    ///    The Quartz.NET scheduler instance that this controller exposes over HTTP.
+    /// </summary>
     private readonly IScheduler _scheduler;
+    #endregion
 
+    #region Constructor
     /// <summary>Creates a new instance of <see cref="SchedulerController"/>.</summary>
     public SchedulerController(IScheduler scheduler)
     {
         _scheduler = scheduler;
     }
+    #endregion
 
+    #region RawJson
     /// <summary>Creates an <see cref="HttpResponseMessage"/> with raw JSON content.</summary>
     private HttpResponseMessage RawJson(string json)
     {
         var response = Request.CreateResponse(HttpStatusCode.OK);
-        response.Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+        response.Content = new StringContent(json, Encoding.UTF8, "application/json");
         return response;
     }
+    #endregion
 
     #region IsJobGroupPaused
     [HttpGet, Route("Scheduler/IsJobGroupPaused/{groupName}")]
@@ -181,7 +193,7 @@ public class SchedulerController : ApiController
     [HttpPost, Route("Scheduler/ScheduleJobIdentifiedWithTrigger")]
     public Task<DateTimeOffset> ScheduleJobIdentifiedWithTrigger([FromBody] string json)
     {
-        var trigger = Trigger.FromJsonString(json).ToTrigger();
+        var trigger = TriggerBase.FromJsonString(json).ToTrigger();
         return _scheduler.ScheduleJob(trigger);
     }
     #endregion
@@ -223,7 +235,7 @@ public class SchedulerController : ApiController
     [HttpPost, Route("Scheduler/RescheduleJob")]
     public Task<DateTimeOffset?> RescheduleJob([FromBody] string json)
     {
-        var rescheduleJob = Models.RescheduleJob.FromJsonString(json);
+        var rescheduleJob = Models.Jobs.RescheduleJob.FromJsonString(json);
         return _scheduler.RescheduleJob(
             rescheduleJob.CurrentTriggerKey.ToTriggerKey(),
             rescheduleJob.Trigger.ToTrigger());
@@ -382,8 +394,19 @@ public class SchedulerController : ApiController
     public async Task<HttpResponseMessage> GetTrigger([FromBody] string json)
     {
         var triggerKey = TriggerKey.FromJsonString(json);
-        var trigger = await _scheduler.GetTrigger(triggerKey.ToTriggerKey());
-        return RawJson(trigger == null ? "null" : new Trigger(trigger).ToJsonString());
+        var quartzTrigger = await _scheduler.GetTrigger(triggerKey.ToTriggerKey());
+
+        TriggerBase trigger = quartzTrigger switch
+        {
+            ISimpleTrigger simpleTrigger => new SimpleTrigger(simpleTrigger),
+            ICalendarIntervalTrigger calendarIntervalTrigger => new CalendarIntervalTrigger(calendarIntervalTrigger),
+            ICronTrigger cronTrigger => new CronTrigger(cronTrigger),
+            IDailyTimeIntervalTrigger dailyTimeIntervalTrigger => new DailyTimeIntervalTrigger(dailyTimeIntervalTrigger),
+            IRecurrenceTrigger recurrenceTrigger => new RecurrenceTrigger(recurrenceTrigger),
+            _ => throw new ArgumentOutOfRangeException(nameof(quartzTrigger), quartzTrigger, "Unsupported trigger type")
+        };
+
+        return RawJson(trigger.ToJsonString());
     }
     #endregion
 

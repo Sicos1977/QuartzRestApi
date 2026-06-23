@@ -1,4 +1,4 @@
-//
+﻿//
 // Key.cs
 //
 // Author: Kees van Spelde <sicos2002@hotmail.com>
@@ -22,22 +22,49 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-//
 
 using Newtonsoft.Json;
 
 namespace QuartzRestApi.Models;
-/// <summary>A JSON wrapper for <see cref="Quartz.TriggerKey"/> or <see cref="Quartz.JobKey"/>.</summary>
+
+/// <summary>
+///     A json wrapper for the <see cref="Quartz.TriggerKey" /> or <see cref="Quartz.JobKey" />
+/// </summary>
 public class Key
 {
+    #region Fields
+    /// <summary>
+    ///     Returns the name of the trigger
+    /// </summary>
     [JsonProperty("Name")]
     public string Name { get; set; }
 
+    /// <summary>
+    ///     Returns the group of the trigger
+    /// </summary>
     [JsonProperty("Group")]
     public string Group { get; set; }
+    #endregion
 
-    public Key() { }
-    public Key(string name) { Name = name; }
-    public Key(string name, string group) { Name = name; Group = group; }
+    #region Constructor
+    /// <summary>
+    ///     Makes this object and sets it's needed properties
+    /// </summary>
+    /// <param name="name">The name</param>
+    public Key(string name)
+    {
+        Name = name;
+    }
+
+    /// <summary>
+    ///     Makes this object and sets it's needed properties
+    /// </summary>
+    /// <param name="name">The name</param>
+    /// <param name="group">The group</param>
+    public Key(string name, string group)
+    {
+        Name = name;
+        Group = group;
+    }
+    #endregion
 }
-

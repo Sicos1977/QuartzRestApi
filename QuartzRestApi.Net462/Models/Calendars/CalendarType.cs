@@ -1,4 +1,4 @@
-//
+﻿//
 // CalendarType.cs
 //
 // Author: Kees van Spelde <sicos2002@hotmail.com>
@@ -23,17 +23,45 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-
 using System.Runtime.Serialization;
 
 namespace QuartzRestApi.Models.Calendars;
+
 public enum CalendarType
 {
-    [DataMember(Name = "Cron")]    Cron,
-    [DataMember(Name = "Daily")]   Daily,
-    [DataMember(Name = "Weekly")]  Weekly,
-    [DataMember(Name = "Monthly")] Monthly,
-    [DataMember(Name = "Annual")]  Annual,
-    [DataMember(Name = "Holiday")] Holiday
-}
+    /// <summary>
+    ///     It is a cron calendar
+    /// </summary>
+    [DataMember(Name = "Cron")] 
+    Cron,
 
+    /// <summary>
+    ///     It is a daily calendar
+    /// </summary>
+    [DataMember(Name = "Daily")] 
+    Daily,
+
+    /// <summary>
+    ///     It is a week calendar
+    /// </summary>
+    [DataMember(Name = "Weekly")] 
+    Weekly,
+
+    /// <summary>
+    ///     It is a monthly calendar
+    /// </summary>
+    [DataMember(Name = "Monthly")] 
+    Monthly,
+
+    /// <summary>
+    ///     It is an annual calendar
+    /// </summary>
+    [DataMember(Name = "Annual")] 
+    Annual,
+
+    /// <summary>
+    ///     It is a holiday calendar
+    /// </summary>
+    [DataMember(Name = "Holiday")] 
+    Holiday
+}

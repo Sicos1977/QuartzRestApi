@@ -1,0 +1,89 @@
+﻿//
+// CronTrigger.cs
+//
+// Author: Kees van Spelde <sicos2002@hotmail.com>
+//
+// Copyright (c) 2022 - 2026 Magic-Sessions. (www.magic-sessions.com)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+
+using Quartz;
+using System;
+using Newtonsoft.Json;
+
+namespace QuartzRestApi.Models.Triggers;
+
+/// <summary>
+///     DTO for a <see cref="ICronTrigger"/>.
+///     Represents a trigger that fires according to a cron expression.
+/// </summary>
+public class CronTrigger : TriggerBase
+{
+    #region Properties
+    /// <summary>
+    ///     The cron expression that defines the fire schedule, e.g. <c>"0 0 12 * * ?"</c>
+    /// </summary>
+    [JsonProperty("CronExpressionString")]
+    public string CronExpressionString { get; set; }
+
+    /// <summary>
+    ///     The time zone for which the <see cref="CronExpressionString"/> will be resolved
+    /// </summary>
+    [JsonProperty("TimeZone")]
+    public TimeZoneInfo TimeZone { get; set; }
+    #endregion
+
+    #region Constructors
+    /// <summary>
+    ///     Parameterless constructor for JSON deserialization
+    /// </summary>
+    [JsonConstructor]
+    public CronTrigger() { }
+
+    /// <summary>
+    ///     Creates a new <see cref="CronTrigger"/> DTO from a Quartz <see cref="ICronTrigger"/>
+    /// </summary>
+    /// <param name="trigger">The Quartz cron trigger to map from</param>
+    public CronTrigger(ICronTrigger trigger) : base(trigger)
+    {
+        CronExpressionString = trigger.CronExpressionString;
+        TimeZone = trigger.TimeZone;
+    }
+    #endregion
+
+    #region ToTrigger
+    /// <summary>
+    ///     Converts this DTO back to a Quartz <see cref="ITrigger"/> with a cron schedule
+    /// </summary>
+    /// <returns>A configured Quartz <see cref="Quartz.ITrigger"/></returns>
+    public override ITrigger ToTrigger()
+    {
+        var builder = ApplyCommonProperties(TriggerBuilder.Create());
+
+        builder = builder.WithCronSchedule(CronExpressionString, x =>
+        {
+            if (TimeZone != null)
+                x.InTimeZone(TimeZone);
+        });
+
+        return builder.Build();
+    }
+    #endregion
+}

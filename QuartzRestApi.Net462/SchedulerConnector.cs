@@ -30,8 +30,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using QuartzRestApi.Exceptions;
-using QuartzRestApi.Models;
 using QuartzRestApi.Models.Calendars;
+using QuartzRestApi.Models.Groups;
+using QuartzRestApi.Models.Jobs;
+using QuartzRestApi.Models.Scheduler;
+using QuartzRestApi.Models.Triggers;
+
 // ReSharper disable UnusedMember.Global
 
 namespace QuartzRestApi;
@@ -71,8 +75,7 @@ public class SchedulerConnector
     /// </summary>
     /// <param name="json">The JSON string to include in the request body.</param>
     /// <returns>A <see cref="StringContent"/> instance with the specified JSON string.</returns>
-    private static StringContent JsonBody(string json) =>
-        new StringContent(JsonConvert.SerializeObject(json), Encoding.UTF8, "application/json");
+    private static StringContent JsonBody(string json) => new(JsonConvert.SerializeObject(json), Encoding.UTF8, "application/json");
 
     /// <summary>
     ///     Reads the response body and throws a <see cref="SchedulerConnectorException"/> when
@@ -339,7 +342,7 @@ public class SchedulerConnector
     ///     Schedules the trigger with the job identified by the trigger
     /// </summary>
     /// <exception cref="SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<DateTimeOffset> ScheduleJob(Trigger trigger)
+    public async Task<DateTimeOffset> ScheduleJob(TriggerBase trigger)
     {
         var response = await _httpClient.PostAsync("Scheduler/ScheduleJobIdentifiedWithTrigger", JsonBody(trigger.ToJsonString())).ConfigureAwait(false);
         return await ReadJson<DateTimeOffset>(response);
@@ -586,7 +589,7 @@ public class SchedulerConnector
     ///     Returns the trigger for the given trigger key
     /// </summary>
     /// <exception cref="SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<Trigger> GetTrigger(TriggerKey triggerKey)
+    public async Task<TriggerBase> GetTrigger(TriggerKey triggerKey)
     {
         var request = new HttpRequestMessage(HttpMethod.Post, "Scheduler/GetTrigger")
         {
@@ -594,7 +597,7 @@ public class SchedulerConnector
         };
         var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
-        return string.IsNullOrWhiteSpace(json) ? null : Trigger.FromJsonString(json);
+        return string.IsNullOrWhiteSpace(json) ? null : TriggerBase.FromJsonString(json);
     }
     #endregion
 

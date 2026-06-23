@@ -1,4 +1,4 @@
-//
+﻿//
 // HolidayCalendar.cs
 //
 // Author: Kees van Spelde <sicos2002@hotmail.com>
@@ -23,29 +23,55 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Quartz;
 
 namespace QuartzRestApi.Models.Calendars;
-/// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.HolidayCalendar"/>.</summary>
+
+/// <summary>
+///     A json wrapper for the <see cref="Quartz.Impl.Calendar.HolidayCalendar" />
+/// </summary>
 public class HolidayCalendar : BaseCalendar
 {
+    #region Properties
+    /// <summary>
+    ///     Returns a collection of dates representing the excluded
+    ///     days. Only the month, day and year of the returned dates are
+    ///     significant
+    /// </summary>
     [JsonProperty("ExcludedDates")]
-    public List<DateTime> ExcludedDates { get; set; } = new List<DateTime>();
+    public List<DateTime> ExcludedDates { get; internal set; }
+    #endregion
 
-    public HolidayCalendar() { Type = CalendarType.Holiday; }
+    #region Constructors
+    /// <summary>
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    public HolidayCalendar() { }
 
-    public HolidayCalendar(Quartz.Impl.Calendar.HolidayCalendar cal) : base(cal)
+    /// <summary>
+    ///     Takes a <see cref="Quartz.Impl.Calendar.HolidayCalendar" /> and wraps it in a json object.
+    /// </summary>
+    /// <param name="holidayCalendar"><see cref="Quartz.Impl.Calendar.HolidayCalendar" /></param>
+    public HolidayCalendar(Quartz.Impl.Calendar.HolidayCalendar holidayCalendar) : base(holidayCalendar)
     {
         Type = CalendarType.Holiday;
-        TimeZone = cal.TimeZone;
-        foreach (var d in cal.ExcludedDates)
-            ExcludedDates.Add(d);
-    }
 
+        foreach (var excludedDate in holidayCalendar.ExcludedDates)
+            ExcludedDates.Add(excludedDate);
+
+        TimeZone = holidayCalendar.TimeZone;
+    }
+    #endregion
+
+    #region ToCalendar
+    /// <summary>
+    ///     Returns this object as a Quartz <see cref="ICalendar" />
+    /// </summary>
+    /// <returns></returns>
     public override ICalendar ToCalendar()
     {
         var result = new Quartz.Impl.Calendar.HolidayCalendar
@@ -53,12 +79,36 @@ public class HolidayCalendar : BaseCalendar
             Description = Description,
             TimeZone = TimeZone
         };
-        foreach (var d in ExcludedDates)
-            result.AddExcludedDate(d);
+
+        foreach (var day in ExcludedDates)
+            result.AddExcludedDate(day);
+
         return result;
     }
+    #endregion
 
-    public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-    public static HolidayCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<HolidayCalendar>(json);
+    #region ToJsonString
+    /// <summary>
+    ///     Returns this object as a json string
+    /// </summary>
+    /// <returns></returns>
+    public new string ToJsonString()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
+    #endregion
+
+    #region FromJsonString
+    /// <summary>
+    ///     Returns the <see cref="HolidayCalendar" /> object from the given <paramref name="json" /> string
+    /// </summary>
+    /// <param name="json">The json string</param>
+    /// <returns>
+    ///     <see cref="HolidayCalendar" />
+    /// </returns>
+    public new static HolidayCalendar FromJsonString(string json)
+    {
+        return JsonConvert.DeserializeObject<HolidayCalendar>(json);
+    }
+    #endregion
 }
-

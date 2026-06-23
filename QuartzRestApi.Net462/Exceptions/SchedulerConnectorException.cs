@@ -27,19 +27,42 @@
 using System;
 
 namespace QuartzRestApi.Exceptions;
+
 /// <summary>
 ///     Exception that is thrown by <see cref="SchedulerConnector" /> when a communication
 ///     error occurs with the remote <see cref="SchedulerHost" />.
 /// </summary>
+/// <remarks>
+///     This exception indicates that the fault originated inside the
+///     <c>QuartzRestApi</c> assembly, either because the host returned a
+///     non-success HTTP status code or because the response could not be
+///     processed as expected.
+/// </remarks>
 public class SchedulerConnectorException : Exception
 {
-    /// <summary>Initializes a new instance of <see cref="SchedulerConnectorException" />.</summary>
+    #region Constructors
+    /// <summary>
+    ///     Initializes a new instance of <see cref="SchedulerConnectorException" />.
+    /// </summary>
     public SchedulerConnectorException() { }
 
-    /// <summary>Initializes a new instance with a descriptive error message.</summary>
+    /// <summary>
+    ///     Initializes a new instance of <see cref="SchedulerConnectorException" /> with a
+    ///     descriptive error message.
+    /// </summary>
+    /// <param name="message">A message that describes the error.</param>
     public SchedulerConnectorException(string message) : base(message) { }
 
-    /// <summary>Initializes a new instance with a message and an inner exception.</summary>
+    /// <summary>
+    ///     Initializes a new instance of <see cref="SchedulerConnectorException" /> with a
+    ///     descriptive error message and a reference to the inner exception that caused this
+    ///     exception.
+    /// </summary>
+    /// <param name="message">A message that describes the error.</param>
+    /// <param name="innerException">
+    ///     The exception that is the cause of the current exception, or <see langword="null" />
+    ///     if no inner exception is specified.
+    /// </param>
     public SchedulerConnectorException(string message, Exception innerException) : base(message, innerException) { }
+    #endregion
 }
-

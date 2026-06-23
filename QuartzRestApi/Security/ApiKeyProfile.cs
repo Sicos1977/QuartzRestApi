@@ -27,7 +27,8 @@
 using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using QuartzRestApi.Models;
+using QuartzRestApi.Models.Jobs;
+using QuartzRestApi.Models.Triggers;
 
 namespace QuartzRestApi.Security;
 
@@ -211,7 +212,7 @@ public sealed class ApiKeyProfile
 
     /// <summary>
     ///     Allows access to <c>POST Scheduler/ScheduleJobIdentifiedWithTrigger</c>.
-    ///     <br/>Corresponds to <see cref="SchedulerConnector.ScheduleJob(Trigger)"/>.
+    ///     <br/>Corresponds to <see cref="SchedulerConnector.ScheduleJob(TriggerBase)"/>.
     /// </summary>
     public bool ScheduleJobIdentifiedWithTrigger { get; set; }
 

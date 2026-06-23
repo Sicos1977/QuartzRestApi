@@ -43,7 +43,7 @@ internal class BaseConverter : JsonConverter<BaseCalendar>
         if (!root.TryGetProperty("Type", out var typeProp))
             throw new ArgumentException("Type is not set");
 
-        var type = Enum.Parse<CalendarType>(typeProp.GetString());
+        var type = Enum.Parse<CalendarType>(typeProp.GetString()!);
         var json = root.GetRawText();
 
         // Use options without this converter to avoid stack overflow

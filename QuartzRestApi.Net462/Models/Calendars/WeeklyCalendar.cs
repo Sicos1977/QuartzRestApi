@@ -1,4 +1,4 @@
-//
+﻿//
 // WeeklyCalendar.cs
 //
 // Author: Kees van Spelde <sicos2002@hotmail.com>
@@ -23,29 +23,53 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 //
-
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Quartz;
 
 namespace QuartzRestApi.Models.Calendars;
-/// <summary>JSON wrapper for <see cref="Quartz.Impl.Calendar.WeeklyCalendar"/>.</summary>
+
+/// <summary>
+///     A json wrapper for the <see cref="Quartz.ICalendar" />
+/// </summary>
 public class WeeklyCalendar : BaseCalendar
 {
+    #region Properties
+    /// <summary>
+    ///     Returns a collection of days of the week that are excluded
+    /// </summary>
     [JsonProperty("DaysExcluded")]
-    public List<bool> DaysExcluded { get; set; } = new List<bool>();
+    public List<bool> DaysExcluded { get; internal set; } = [];
+    #endregion
 
-    public WeeklyCalendar() { Type = CalendarType.Weekly; }
+    #region Constructors
+    /// <summary>
+    ///     Parameterless constructor for JSON deserialization.
+    /// </summary>
+    [JsonConstructor]
+    public WeeklyCalendar() { }
 
-    public WeeklyCalendar(Quartz.Impl.Calendar.WeeklyCalendar cal) : base(cal)
+    /// <summary>
+    ///     Takes a <see cref="Quartz.Impl.Calendar.WeeklyCalendar" /> and wraps it in a json object.
+    /// </summary>
+    /// <param name="weeklyCalendar"><see cref="Quartz.Impl.Calendar.WeeklyCalendar" /></param>
+    public WeeklyCalendar(Quartz.Impl.Calendar.WeeklyCalendar weeklyCalendar) : base(weeklyCalendar)
     {
         Type = CalendarType.Weekly;
-        TimeZone = cal.TimeZone;
-        foreach (var day in cal.DaysExcluded)
-            DaysExcluded.Add(day);
-    }
 
+        foreach(var day in weeklyCalendar.DaysExcluded)
+            DaysExcluded.Add(day);
+
+        TimeZone = weeklyCalendar.TimeZone;
+    }
+    #endregion
+
+    #region ToCalendar
+    /// <summary>
+    ///     Returns this object as a Quartz <see cref="Quartz.ICalendar" />
+    /// </summary>
+    /// <returns></returns>
     public override ICalendar ToCalendar()
     {
         var result = new Quartz.Impl.Calendar.WeeklyCalendar
@@ -53,12 +77,36 @@ public class WeeklyCalendar : BaseCalendar
             Description = Description,
             TimeZone = TimeZone
         };
-        for (var i = 0; i < DaysExcluded.Count; i++)
-            result.SetDayExcluded((DayOfWeek)(i + 1), DaysExcluded[i]);
+
+        for(var i = 0; i < DaysExcluded.Count; i++)
+            result.SetDayExcluded((DayOfWeek) i + 1, DaysExcluded[i]);
+
         return result;
     }
+    #endregion
 
-    public new string ToJsonString() => JsonConvert.SerializeObject(this, Formatting.Indented);
-    public static WeeklyCalendar FromJsonString(string json) => JsonConvert.DeserializeObject<WeeklyCalendar>(json);
+    #region ToJsonString
+    /// <summary>
+    ///     Returns this object as a json string
+    /// </summary>
+    /// <returns></returns>
+    public new string ToJsonString()
+    {
+        return JsonConvert.SerializeObject(this, Formatting.Indented);
+    }
+    #endregion
+
+    #region FromJsonString
+    /// <summary>
+    ///     Returns the <see cref="WeeklyCalendar" /> object from the given <paramref name="json" /> string
+    /// </summary>
+    /// <param name="json">The json string</param>
+    /// <returns>
+    ///     <see cref="WeeklyCalendar" />
+    /// </returns>
+    public new static WeeklyCalendar FromJsonString(string json)
+    {
+        return JsonConvert.DeserializeObject<WeeklyCalendar>(json);
+    }
+    #endregion
 }
-
