@@ -99,7 +99,7 @@ public class AnnualCalendar : BaseCalendar
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>
-    ///     <see cref="Trigger" />
+    ///     <see cref="AnnualCalendar" />
     /// </returns>
     public new static AnnualCalendar FromJsonString(string json)
     {

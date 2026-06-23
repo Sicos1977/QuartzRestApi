@@ -149,7 +149,7 @@ public class SchedulerMetaData
     public SchedulerMetaData(Quartz.SchedulerMetaData metaData)
     {
         InStandbyMode = metaData.InStandbyMode;
-        JobStoreType = metaData.JobStoreType?.FullName;
+        JobStoreType = metaData.JobStoreType.FullName;
         JobStoreClustered = metaData.JobStoreClustered;
         JobStoreSupportsPersistence = metaData.JobStoreSupportsPersistence;
         NumbersOfJobsExecuted = metaData.NumberOfJobsExecuted;
@@ -184,7 +184,7 @@ public class SchedulerMetaData
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>
-    ///     <see cref="Trigger" />
+    ///     <see cref="SchedulerMetaData" />
     /// </returns>
     public static SchedulerMetaData FromJsonString(string json)
     {

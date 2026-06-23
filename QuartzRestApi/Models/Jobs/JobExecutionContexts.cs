@@ -72,7 +72,7 @@ public class JobExecutionContexts : List<JobExecutionContext>
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>
-    ///     <see cref="Trigger" />
+    ///     <see cref="JobExecutionContexts" />
     /// </returns>
     public static JobExecutionContexts FromJsonString(string json)
     {

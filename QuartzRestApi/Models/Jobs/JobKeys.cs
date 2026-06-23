@@ -83,7 +83,7 @@ public class JobKeys : List<JobKey>
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>
-    ///     <see cref="Trigger" />
+    ///     <see cref="JobKeys" />
     /// </returns>
     public static JobKeys FromJsonString(string json)
     {

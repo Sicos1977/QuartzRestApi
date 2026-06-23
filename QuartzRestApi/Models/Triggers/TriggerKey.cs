@@ -90,7 +90,7 @@ public class TriggerKey : Key
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>
-    ///     <see cref="Trigger" />
+    ///     <see cref="TriggerKey" />
     /// </returns>
     public static TriggerKey FromJsonString(string json)
     {

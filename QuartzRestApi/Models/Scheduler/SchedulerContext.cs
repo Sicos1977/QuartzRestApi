@@ -68,7 +68,7 @@ public sealed class SchedulerContext : Quartz.SchedulerContext
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>
-    ///     <see cref="Trigger" />
+    ///     <see cref="SchedulerContext" />
     /// </returns>
     public static SchedulerContext FromJsonString(string json)
     {

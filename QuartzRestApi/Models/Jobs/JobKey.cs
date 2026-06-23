@@ -90,7 +90,7 @@ public class JobKey : Key
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>
-    ///     <see cref="Trigger" />
+    ///     <see cref="JobKey" />
     /// </returns>
     public static JobKey FromJsonString(string json)
     {

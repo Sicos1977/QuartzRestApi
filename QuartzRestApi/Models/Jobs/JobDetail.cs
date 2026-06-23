@@ -216,7 +216,7 @@ public class JobDetail
     /// </summary>
     /// <param name="json">The json string</param>
     /// <returns>
-    ///     <see cref="Trigger" />
+    ///     <see cref="JobDetail" />
     /// </returns>
     public static JobDetail FromJsonString(string json)
     {
