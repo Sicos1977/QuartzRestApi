@@ -11,7 +11,7 @@
 
     <!-- NuGet package metadata -->
     <PackageId>QuartzRestApi</PackageId>
-    <Version>1.0.4</Version>
+    <Version>1.1.1</Version>
     <Authors>Kees van Spelde</Authors>
     <Company>Magic-Sessions</Company>
     <Product>QuartzRestApi</Product>
