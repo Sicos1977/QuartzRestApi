@@ -33,7 +33,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
     <PackageReference Include="Quartz" Version="3.18.1" />
-    <PackageReference Include="Scalar.AspNetCore" Version="2.16.5" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.16.6" />
   </ItemGroup>
 
   <ItemGroup>
