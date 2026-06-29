@@ -168,17 +168,47 @@ var loaded = ApiKeyProfile.FromJson(File.ReadAllText("readOnly.json"));
 
 ## Interactive API documentation (Scalar / OpenAPI)
 
-*Note: Interactive UI features are natively powered by Scalar on .NET 10 targets.*
+> **⚠️ Additional package required**  
+> OpenAPI and Scalar support are **opt-in** features that require an additional NuGet package:
+> ```
+> dotnet add package QuartzRestApi.OpenApi
+> ```
+> Without this package, the `/openapi/v1.json` and `/scalar/v1` endpoints will **not** be available.
 
-When the host is running, interactive API documentation is available at:
+### Enabling OpenAPI/Scalar (.NET 10 only)
+
+After installing `QuartzRestApi.OpenApi`, configure the host with OpenAPI and Scalar support:
+
+```csharp
+using QuartzRestApi.OpenApi;
+
+var host = new SchedulerHost("http://localhost:44344", scheduler, logger);
+
+// Enable OpenAPI + Scalar
+await host.Start(
+    configureServices: services => services.AddQuartzOpenApi(),
+    configureApp: app => app.UseQuartzScalar()
+);
+```
+
+### Available endpoints
+
+When OpenAPI/Scalar is enabled, the following endpoints become available:
 
 
 | URL | Description |
 |---|---|
 | `/openapi/v1.json` | Raw OpenAPI 3 document |
-| `/scalar/v1` | [Scalar](https://scalar.com/) interactive API reference (.NET 10 only) |
+| `/scalar/v1` | [Scalar](https://scalar.com/) interactive API reference |
 
 Open `http://localhost:44344/scalar/v1` in a browser to explore and test all endpoints without writing any code.
+
+### Alternative: Use the hosted documentation
+
+If you don't want to install the OpenAPI package, you can use the **pre-built interactive API reference** on the documentation site:  
+**[https://sicos1977.github.io/QuartzRestApi/api-reference.html](https://sicos1977.github.io/QuartzRestApi/api-reference.html)**
+
+This hosted version works without any additional packages and provides the same Scalar UI experience.
 
 ---
 
