@@ -227,6 +227,41 @@ All public methods on `SchedulerConnector` document this exception via `<excepti
 
 ---
 
+## Testing
+
+The `QuartzRestApi.Tests` project contains a comprehensive integration test suite with 50+ tests covering all scheduler operations:
+
+- Scheduler state and metadata queries
+- Job and trigger lifecycle (schedule, reschedule, unschedule, pause, resume, delete)
+- Calendar operations (add, retrieve, delete)
+- Existence checks and group queries
+- Error state recovery
+- Multi-job/trigger batch operations
+
+All tests run against a live in-memory `SchedulerHost` instance to ensure end-to-end correctness of the REST API.
+
+### Running tests
+
+```bash
+dotnet test QuartzRestApi.Tests/QuartzRestApi.Tests.csproj
+```
+
+### Recent fixes (January 2026)
+
+The test suite previously had JSON serialization issues that caused 22 out of 50 tests to fail. These have been resolved:
+
+1. **Double JSON serialization** — Controller methods returning pre-serialized JSON strings were being serialized again by ASP.NET Core, wrapping the JSON in extra quotes. Fixed by returning `ContentResult` with `application/json` content type instead of `string`.
+
+2. **Incorrect deserialization logic** — `SchedulerContext.FromJsonString` and `SchedulerMetaData.FromJsonString` attempted to unwrap a JSON string layer that no longer existed after fix #1. Removed the unnecessary `Deserialize<string>` step.
+
+3. **Missing public constructor** — `SchedulerContext` had an `internal` parameterless constructor marked with `[JsonConstructor]`, preventing `System.Text.Json` from deserializing it. Changed to `public`.
+
+4. **List-derived wrappers without parameterless constructors** — `JobKeys`, `TriggerKeys`, and `Triggers` inherit from `List<T>` but lacked parameterless constructors required by `System.Text.Json`. Added `public` parameterless constructors to all three classes.
+
+All 50 tests now pass successfully.
+
+---
+
 ## License
 
 QuartzRestApi is Copyright (C) 2022 - 2026 Magic-Sessions and is licensed under the MIT license:
