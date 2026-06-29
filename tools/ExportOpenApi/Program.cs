@@ -3,9 +3,12 @@
 
 using System.Collections.Specialized;
 using System.Net.Http;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using Quartz.Impl;
 using QuartzRestApi;
+using QuartzRestApi.OpenApi;
 
 var output = args.Length > 0 ? args[0] : "openapi.json";
 const string address = "http://localhost:44399";
@@ -22,7 +25,10 @@ var scheduler = new StdSchedulerFactory(properties).GetScheduler().Result;
 await scheduler.Start();
 
 var host = new SchedulerHost(address, scheduler, logger: null);
-host.Start();
+await host.Start(
+    configureServices: services => services.AddQuartzOpenApi(),
+    configureApp: app => app.MapQuartzOpenApi()
+);
 
 // Give Kestrel a moment to finish binding
 await Task.Delay(500);
@@ -31,7 +37,7 @@ using var http = new HttpClient();
 var json = await http.GetStringAsync($"{address}/openapi/v1.json");
 
 await File.WriteAllTextAsync(output, json);
-Console.WriteLine($"OpenAPI spec written to {output}");
+Console.WriteLine($"OpenAPI spec written to '{output}'");
 
-host.Stop();
+await host.Stop();
 await scheduler.Shutdown();

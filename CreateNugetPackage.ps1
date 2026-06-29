@@ -1,9 +1,11 @@
 <#
 .SYNOPSIS
-    Builds the QuartzRestApi projects in Release mode and packages them into a single 
-    multi-targeted NuGet package with dynamic version patching across all projects.
+    Builds the QuartzRestApi projects in Release mode and packages them into NuGet packages.
+    Creates two packages:
+    - QuartzRestApi: Core library (multi-targeted .NET 10 + .NET Framework 4.6.2)
+    - QuartzRestApi.OpenApi: Optional OpenAPI/Scalar extension (.NET 10 only)
 .PARAMETER Version
-    Optional. The version number to apply to the projects and NuGet package (e.g., 1.0.2).
+    Optional. The version number to apply to all projects and NuGet packages (e.g., 1.0.2).
 #>
 param (
     [Parameter(Mandatory = $false)]
@@ -14,6 +16,7 @@ $ErrorActionPreference = "Stop"
 
 $FrameworkProject = "QuartzRestApi.Net462/QuartzRestApi.Net462.csproj"
 $CoreProject = "QuartzRestApi/QuartzRestApi.csproj"
+$OpenApiProject = "QuartzRestApi.OpenApi/QuartzRestApi.OpenApi.csproj"
 $NuspecPath = "QuartzRestApi.nuspec"
 $ArtifactsDir = "artifacts"
 
@@ -28,6 +31,8 @@ function Invoke-DotNetCommand {
 
 Write-Host "==================================================" -ForegroundColor Cyan
 Write-Host " Starting QuartzRestApi Build & Package Process   " -ForegroundColor Cyan
+Write-Host " - QuartzRestApi (Core library)                   " -ForegroundColor Cyan
+Write-Host " - QuartzRestApi.OpenApi (OpenAPI extension)      " -ForegroundColor Cyan
 Write-Host "==================================================" -ForegroundColor Cyan
 
 # 1. Handle Version Patching
@@ -61,20 +66,24 @@ if (Test-Path $ArtifactsDir) {
 New-Item -ItemType Directory -Path $ArtifactsDir -Force | Out-Null
 
 # 3. Clean projects
-Write-Host "`n[1/3] Cleaning projects..." -ForegroundColor Green
+Write-Host "`n[1/4] Cleaning projects..." -ForegroundColor Green
 Invoke-DotNetCommand { dotnet clean $FrameworkProject -c Release --nologo }
 Invoke-DotNetCommand { dotnet clean $CoreProject -c Release --nologo }
+Invoke-DotNetCommand { dotnet clean $OpenApiProject -c Release --nologo }
 
 # 4. Build projects with dynamic versioning
-Write-Host "`n[2/3] Building projects (Release mode)..." -ForegroundColor Green
+Write-Host "`n[2/4] Building projects (Release mode)..." -ForegroundColor Green
 Write-Host "Building .NET Framework 4.6.2 variant..." -ForegroundColor Gray
 Invoke-DotNetCommand { dotnet build $FrameworkProject -c Release --nologo $BuildArgs }
 
 Write-Host "Building .NET 10 variant..." -ForegroundColor Gray
 Invoke-DotNetCommand { dotnet build $CoreProject -c Release --nologo $BuildArgs }
 
-# 5. Pack package
-Write-Host "`n[3/3] Creating unified NuGet package..." -ForegroundColor Green
+Write-Host "Building .NET 10 OpenAPI extension..." -ForegroundColor Gray
+Invoke-DotNetCommand { dotnet build $OpenApiProject -c Release --nologo $BuildArgs }
+
+# 5. Pack main package
+Write-Host "`n[3/4] Creating QuartzRestApi NuGet package (multi-targeted)..." -ForegroundColor Green
 Invoke-DotNetCommand {
     dotnet pack $CoreProject `
         -c Release `
@@ -85,7 +94,19 @@ Invoke-DotNetCommand {
         --nologo
 }
 
+# 6. Pack OpenAPI extension package
+Write-Host "`n[4/4] Creating QuartzRestApi.OpenApi NuGet package..." -ForegroundColor Green
+Invoke-DotNetCommand {
+    dotnet pack $OpenApiProject `
+        -c Release `
+        -o $ArtifactsDir `
+        $BuildArgs `
+        --nologo
+}
+
 Write-Host "`n==================================================" -ForegroundColor Cyan
 Write-Host " Build & Package Successful!" -ForegroundColor Green
-Write-Host " Your NuGet package is available in: $ArtifactsDir" -ForegroundColor Yellow
+Write-Host " Packages created in: $ArtifactsDir" -ForegroundColor Yellow
+Write-Host "  - QuartzRestApi (Core library)" -ForegroundColor White
+Write-Host "  - QuartzRestApi.OpenApi (OpenAPI extension)" -ForegroundColor White
 Write-Host "==================================================" -ForegroundColor Cyan

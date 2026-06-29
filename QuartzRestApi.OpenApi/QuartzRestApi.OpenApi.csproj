@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <OutputType>Library</OutputType>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <AssemblyName>QuartzRestApi.OpenApi</AssemblyName>
+    <RootNamespace>QuartzRestApi.OpenApi</RootNamespace>
+
+    <!-- NuGet package metadata -->
+    <PackageId>QuartzRestApi.OpenApi</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Kees van Spelde</Authors>
+    <Company>Magic-Sessions</Company>
+    <Product>QuartzRestApi.OpenApi</Product>
+    <Description>OpenAPI (Swagger) extension package for QuartzRestApi. Adds MapQuartzOpenApi and AddQuartzOpenApi extension methods to enable optional OpenAPI documentation generation.</Description>
+    <PackageTags>quartz;scheduler;rest;api;openapi;swagger;scalar</PackageTags>
+    <PackageProjectUrl>https://github.com/Sicos1977/QuartzRestApi</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Sicos1977/QuartzRestApi</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>Copyright (C) 2022 - 2026 Magic-Sessions</Copyright>
+
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild Condition="'$(Configuration)' != 'Release'">false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
+    <PackageReference Include="Scalar.AspNetCore" Version="2.16.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QuartzRestApi\QuartzRestApi.csproj" />
+  </ItemGroup>
+
+</Project>

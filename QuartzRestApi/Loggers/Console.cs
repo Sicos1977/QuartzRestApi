@@ -36,9 +36,9 @@ namespace QuartzRestApi.Loggers;
 
 /// <summary>
 ///     Console logger for LibreOfficeKit. Internally uses <see cref="StreamLogger"/> 
-///     with <see cref="Console.OpenStandardOutput()"/>.
+///     with <see cref="System.Console.OpenStandardOutput()"/>.
 /// </summary>
-public sealed class ConsoleLogger : ILogger, IDisposable
+public class ConsoleLogger : ILogger, IDisposable
 {
     #region Fields
     /// <summary>
@@ -57,7 +57,7 @@ public sealed class ConsoleLogger : ILogger, IDisposable
     {
         // Use Console.OpenStandardOutput() to get the console stream
         // leaveOpen: true because we don't own the console stream
-        var consoleStream = Console.OpenStandardOutput();
+        var consoleStream = System.Console.OpenStandardOutput();
         _streamLogger = new StreamLogger(consoleStream, categoryName, minLevel, leaveOpen: true);
     }
     #endregion
@@ -90,4 +90,21 @@ public sealed class ConsoleLogger : ILogger, IDisposable
         _streamLogger.Dispose();
     }
     #endregion
+}
+
+/// <summary>
+///     Backward-compatibility alias for <see cref="ConsoleLogger"/>.
+/// </summary>
+[Obsolete("Use ConsoleLogger instead. This alias exists for backward compatibility.")]
+public class Console : ConsoleLogger
+{
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="Console"/> class.
+    /// </summary>
+    /// <param name="categoryName">The category name for the logger.</param>
+    /// <param name="minLevel">The minimum log level to output.</param>
+    public Console(string? categoryName = null, LogLevel minLevel = LogLevel.Information)
+        : base(categoryName, minLevel)
+    {
+    }
 }

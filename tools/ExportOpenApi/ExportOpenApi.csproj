@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\QuartzRestApi\QuartzRestApi.csproj" />
+    <ProjectReference Include="..\..\QuartzRestApi.OpenApi\QuartzRestApi.OpenApi.csproj" />
   </ItemGroup>
 
 </Project>

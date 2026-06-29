@@ -31,10 +31,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi;
 using Quartz;
 using QuartzRestApi.Security;
-using Scalar.AspNetCore;
+
 
 namespace QuartzRestApi;
 
@@ -134,7 +133,30 @@ public class SchedulerHost
     ///     Starts the Web API.
     /// </summary>
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
-    public async Task Start(CancellationToken cancellationToken = default)
+    public Task Start(CancellationToken cancellationToken = default)
+        => Start(null, null, cancellationToken);
+
+    /// <summary>
+    ///     Starts the Web API with optional configuration callbacks for services and application pipeline.
+    /// </summary>
+    /// <param name="configureServices">Optional callback to configure additional services before the application is built.</param>
+    /// <param name="configureApp">Optional callback to configure the application pipeline after the application is built.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    /// <remarks>
+    ///     Use the <paramref name="configureServices"/> callback to register additional services such as OpenAPI document generation.
+    ///     Use the <paramref name="configureApp"/> callback to map additional endpoints such as OpenAPI or Scalar UI.
+    ///     Example:
+    ///     <code>
+    ///     await host.Start(
+    ///         configureServices: services => services.AddQuartzOpenApi(),
+    ///         configureApp: app => app.MapQuartzOpenApi()
+    ///     );
+    ///     </code>
+    /// </remarks>
+    public async Task Start(
+        Action<IServiceCollection> configureServices,
+        Action<WebApplication> configureApp,
+        CancellationToken cancellationToken = default)
     {
         var builder = WebApplication.CreateBuilder();
         var uri = new Uri(_baseAddress);
@@ -146,32 +168,19 @@ public class SchedulerHost
         builder.Services.AddSingleton(_apiKeyOptions);
         builder.Services.AddRouting();
         builder.Services.AddControllers().AddApplicationPart(typeof(SchedulerHost).Assembly);
-        builder.Services.AddOpenApi(options =>
-        {
-            options.AddDocumentTransformer((document, _, _) =>
-            {
-                document.Info = new OpenApiInfo
-                {
-                    Title = "QuartzRestApi",
-                    Version = "v1",
-                    Description = "A self-hosted REST API for Quartz.NET schedulers, built on .NET 10 with ASP.NET Core / Kestrel.",
-                    Contact = new OpenApiContact { Name = "Kees van Spelde", Email = "sicos2002@hotmail.com" },
-                    License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://opensource.org/licenses/MIT") }
-                };
-                return Task.CompletedTask;
-            });
-        });
 
         if (_logger != null)
             builder.Services.AddSingleton(_logger);
+
+        configureServices?.Invoke(builder.Services);
 
         _app = builder.Build();
 
         _app.UseMiddleware<ApiKeyMiddleware>();
         _app.UseRouting();
         _app.MapControllers();
-        _app.MapOpenApi();
-        _app.MapScalarApiReference();
+
+        configureApp?.Invoke(_app);
 
         await _app.StartAsync(cancellationToken).ConfigureAwait(false);
     }
