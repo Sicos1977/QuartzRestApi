@@ -124,7 +124,7 @@ public class SchedulerHost
         _baseAddress = baseAddress;
         _scheduler = scheduler;
         _logger = logger;
-        _apiKeyOptions = new Security.ApiKeyOptions(profiles);
+        _apiKeyOptions = new ApiKeyOptions(profiles);
     }
     #endregion
 
@@ -133,8 +133,7 @@ public class SchedulerHost
     ///     Starts the Web API.
     /// </summary>
     /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
-    public Task Start(CancellationToken cancellationToken = default)
-        => Start(null, null, cancellationToken);
+    public Task Start(CancellationToken cancellationToken = default) => Start(null, null, cancellationToken);
 
     /// <summary>
     ///     Starts the Web API with optional configuration callbacks for services and application pipeline.
@@ -163,7 +162,7 @@ public class SchedulerHost
         var listenUrl = $"{uri.Scheme}://{uri.Authority}";
 
         builder.WebHost.UseKestrel().UseUrls(listenUrl);
-        builder.Logging.ClearProviders();
+        //builder.Logging.ClearProviders();
         builder.Services.AddSingleton(_scheduler);
         builder.Services.AddSingleton(_apiKeyOptions);
         builder.Services.AddRouting();
