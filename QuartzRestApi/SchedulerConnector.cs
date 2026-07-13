@@ -28,6 +28,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using QuartzRestApi.Exceptions;
 using QuartzRestApi.Security;
@@ -127,10 +128,12 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if the given JobGroup is paused
     /// </summary>
+    /// <param name="groupName">The name of the job group.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> IsJobGroupPaused(string groupName)
+    public async Task<bool> IsJobGroupPaused(string groupName, CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync($"Scheduler/IsJobGroupPaused/{groupName}").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync($"Scheduler/IsJobGroupPaused/{groupName}", cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -139,10 +142,12 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if the given TriggerGroup is paused
     /// </summary>
+    /// <param name="groupName">The name of the trigger group.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> IsTriggerGroupPaused(string groupName)
+    public async Task<bool> IsTriggerGroupPaused(string groupName, CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync($"Scheduler/IsTriggerGroupPaused/{groupName}").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync($"Scheduler/IsTriggerGroupPaused/{groupName}", cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -151,10 +156,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the name of the scheduler
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<string> SchedulerName()
+    public async Task<string> SchedulerName(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/SchedulerName").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/SchedulerName", cancellationToken).ConfigureAwait(false);
         return await ReadString(response);
     }
     #endregion
@@ -163,10 +169,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the instance id of the scheduler
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<string> SchedulerInstanceId()
+    public async Task<string> SchedulerInstanceId(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/SchedulerInstanceId").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/SchedulerInstanceId", cancellationToken).ConfigureAwait(false);
         return await ReadString(response);
     }
     #endregion
@@ -175,10 +182,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the <see cref="SchedulerContext" /> of the scheduler
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<SchedulerContext> Context()
+    public async Task<SchedulerContext> Context(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/SchedulerContext").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/SchedulerContext", cancellationToken).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return SchedulerContext.FromJsonString(json);
     }
@@ -188,10 +196,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if the scheduler is in standby mode
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> InStandbyMode()
+    public async Task<bool> InStandbyMode(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/InStandbyMode").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/InStandbyMode", cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -200,10 +209,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if the scheduler is shutdown
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> IsShutdown()
+    public async Task<bool> IsShutdown(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/Isshutdown").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/Isshutdown", cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -212,10 +222,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if the scheduler has been started
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> IsStarted()
+    public async Task<bool> IsStarted(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/IsStarted").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/IsStarted", cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -224,10 +235,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns a <see cref="SchedulerMetaData"/> object describing the settings and capabilities of the scheduler
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<SchedulerMetaData> GetMetaData()
+    public async Task<SchedulerMetaData> GetMetaData(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/GetMetaData").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/GetMetaData", cancellationToken).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return SchedulerMetaData.FromJsonString(json);
     }
@@ -237,10 +249,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the list of currently executing jobs
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<JobExecutionContexts> GetCurrentlyExecutingJobs()
+    public async Task<JobExecutionContexts> GetCurrentlyExecutingJobs(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/GetCurrentlyExecutingJobs").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/GetCurrentlyExecutingJobs", cancellationToken).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return JobExecutionContexts.FromJsonString(json);
     }
@@ -250,10 +263,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the names of all known job groups
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<IReadOnlyCollection<string>> GetJobGroupNames()
+    public async Task<IReadOnlyCollection<string>> GetJobGroupNames(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/GetJobGroupNames").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/GetJobGroupNames", cancellationToken).ConfigureAwait(false);
         return await ReadJsonAsync<List<string>>(response).ConfigureAwait(false);
     }
     #endregion
@@ -262,10 +276,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the names of all known trigger groups
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<IReadOnlyCollection<string>> GetTriggerGroupNames()
+    public async Task<IReadOnlyCollection<string>> GetTriggerGroupNames(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/GetTriggerGroupNames").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/GetTriggerGroupNames", cancellationToken).ConfigureAwait(false);
         return await ReadJsonAsync<List<string>>(response).ConfigureAwait(false);
     }
     #endregion
@@ -274,10 +289,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the names of all paused trigger groups
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<IReadOnlyCollection<string>> GetPausedTriggerGroups()
+    public async Task<IReadOnlyCollection<string>> GetPausedTriggerGroups(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/GetPausedTriggerGroups").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/GetPausedTriggerGroups", cancellationToken).ConfigureAwait(false);
         return await ReadJsonAsync<List<string>>(response).ConfigureAwait(false);
     }
     #endregion
@@ -286,9 +302,10 @@ public class SchedulerConnector
     /// <summary>
     ///     Starts the scheduler
     /// </summary>
-    public async Task Start()
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task Start(CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/Start", null).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/Start", null, cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -296,9 +313,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Starts the scheduler after the given delay in seconds
     /// </summary>
-    public async Task StartDelayed(int delaySeconds)
+    /// <param name="delaySeconds">The delay in seconds.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task StartDelayed(int delaySeconds, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync($"Scheduler/StartDelayed/{delaySeconds}", null).ConfigureAwait(false);
+        await _httpClient.PostAsync($"Scheduler/StartDelayed/{delaySeconds}", null, cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -306,9 +325,10 @@ public class SchedulerConnector
     /// <summary>
     ///     Puts the scheduler in standby mode
     /// </summary>
-    public async Task Standby()
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task Standby(CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/Standby", null).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/Standby", null, cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -316,17 +336,20 @@ public class SchedulerConnector
     /// <summary>
     ///     Shuts down the scheduler
     /// </summary>
-    public async Task Shutdown()
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task Shutdown(CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/Shutdown", null).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/Shutdown", null, cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Shuts down the scheduler, optionally waiting for running jobs to complete
     /// </summary>
-    public async Task Shutdown(bool waitForJobsToComplete)
+    /// <param name="waitForJobsToComplete">Whether to wait for jobs to complete.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task Shutdown(bool waitForJobsToComplete, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync($"Scheduler/Shutdown/{waitForJobsToComplete}", null).ConfigureAwait(false);
+        await _httpClient.PostAsync($"Scheduler/Shutdown/{waitForJobsToComplete}", null, cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -334,37 +357,45 @@ public class SchedulerConnector
     /// <summary>
     ///     Schedules a job with a job detail and a single trigger
     /// </summary>
+    /// <param name="jobDetailWithTrigger">The job detail with trigger.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<DateTimeOffset> ScheduleJob(JobDetailWithTrigger jobDetailWithTrigger)
+    public async Task<DateTimeOffset> ScheduleJob(JobDetailWithTrigger jobDetailWithTrigger, CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.PostAsync("Scheduler/ScheduleJobWithJobDetailAndTrigger", JsonBody(jobDetailWithTrigger.ToJsonString())).ConfigureAwait(false);
+        var response = await _httpClient.PostAsync("Scheduler/ScheduleJobWithJobDetailAndTrigger", JsonBody(jobDetailWithTrigger.ToJsonString()), cancellationToken).ConfigureAwait(false);
         return await ReadJsonAsync<DateTimeOffset>(response).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Schedules the trigger with the job identified by the trigger
     /// </summary>
+    /// <param name="trigger">The trigger.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<DateTimeOffset> ScheduleJob(TriggerBase trigger)
+    public async Task<DateTimeOffset> ScheduleJob(TriggerBase trigger, CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.PostAsync("Scheduler/ScheduleJobIdentifiedWithTrigger", JsonBody(trigger.ToJsonString())).ConfigureAwait(false);
+        var response = await _httpClient.PostAsync("Scheduler/ScheduleJobIdentifiedWithTrigger", JsonBody(trigger.ToJsonString()), cancellationToken).ConfigureAwait(false);
         return await ReadJsonAsync<DateTimeOffset>(response).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Schedules a job with a job detail and multiple triggers
     /// </summary>
-    public async Task ScheduleJobWithTriggers(JobDetailWithTriggers jobDetailWithTriggers)
+    /// <param name="jobDetailWithTriggers">The job detail with triggers.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task ScheduleJobWithTriggers(JobDetailWithTriggers jobDetailWithTriggers, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/ScheduleJobWithJobDetailAndTriggers", JsonBody(jobDetailWithTriggers.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/ScheduleJobWithJobDetailAndTriggers", JsonBody(jobDetailWithTriggers.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Schedules multiple jobs, each with their own set of triggers
     /// </summary>
-    public async Task ScheduleJobs(ScheduleJobs scheduleJobs)
+    /// <param name="scheduleJobs">The jobs to schedule.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task ScheduleJobs(ScheduleJobs scheduleJobs, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/ScheduleJobs", JsonBody(scheduleJobs.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/ScheduleJobs", JsonBody(scheduleJobs.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -372,20 +403,24 @@ public class SchedulerConnector
     /// <summary>
     ///     Removes the trigger with the given key from the scheduler
     /// </summary>
+    /// <param name="triggerKey">The trigger key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> UnscheduleJob(TriggerKey triggerKey)
+    public async Task<bool> UnscheduleJob(TriggerKey triggerKey, CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.PostAsync("Scheduler/UnscheduleJob", JsonBody(triggerKey.ToJsonString())).ConfigureAwait(false);
+        var response = await _httpClient.PostAsync("Scheduler/UnscheduleJob", JsonBody(triggerKey.ToJsonString()), cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
 
     /// <summary>
     ///     Removes all triggers with the given keys from the scheduler
     /// </summary>
+    /// <param name="triggerKeys">The trigger keys.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> UnscheduleJobs(TriggerKeys triggerKeys)
+    public async Task<bool> UnscheduleJobs(TriggerKeys triggerKeys, CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.PostAsync("Scheduler/UnscheduleJobs", JsonBody(triggerKeys.ToJsonString())).ConfigureAwait(false);
+        var response = await _httpClient.PostAsync("Scheduler/UnscheduleJobs", JsonBody(triggerKeys.ToJsonString()), cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -394,10 +429,12 @@ public class SchedulerConnector
     /// <summary>
     ///     Replaces the current trigger with a new trigger for the same job
     /// </summary>
+    /// <param name="rescheduleJob">The reschedule job details.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<DateTimeOffset?> RescheduleJob(RescheduleJob rescheduleJob)
+    public async Task<DateTimeOffset?> RescheduleJob(RescheduleJob rescheduleJob, CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.PostAsync("Scheduler/RescheduleJob", JsonBody(rescheduleJob.ToJsonString())).ConfigureAwait(false);
+        var response = await _httpClient.PostAsync("Scheduler/RescheduleJob", JsonBody(rescheduleJob.ToJsonString()), cancellationToken).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
         if (json == "null") return null;
         return JsonSerializer.Deserialize<DateTimeOffset>(json);
@@ -408,9 +445,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Adds a job with no associated trigger
     /// </summary>
-    public async Task AddJob(JobDetail jobDetail)
+    /// <param name="jobDetail">The job detail.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task AddJob(JobDetail jobDetail, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/AddJob", JsonBody(jobDetail.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/AddJob", JsonBody(jobDetail.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -418,28 +457,32 @@ public class SchedulerConnector
     /// <summary>
     ///     Deletes the job with the given key and all associated triggers
     /// </summary>
+    /// <param name="jobKey">The job key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> DeleteJob(JobKey jobKey)
+    public async Task<bool> DeleteJob(JobKey jobKey, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Delete, "Scheduler/DeleteJob")
         {
             Content = JsonBody(jobKey.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
 
     /// <summary>
     ///     Deletes all jobs with the given keys and their associated triggers
     /// </summary>
+    /// <param name="jobKeys">The job keys.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> DeleteJobs(JobKeys jobKeys)
+    public async Task<bool> DeleteJobs(JobKeys jobKeys, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Delete, "Scheduler/DeleteJobs")
         {
             Content = JsonBody(jobKeys.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -448,17 +491,21 @@ public class SchedulerConnector
     /// <summary>
     ///     Triggers the identified job to execute immediately
     /// </summary>
-    public async Task TriggerJob(JobKey jobKey)
+    /// <param name="jobKey">The job key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task TriggerJob(JobKey jobKey, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/TriggerJobWithJobkey", JsonBody(jobKey.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/TriggerJobWithJobkey", JsonBody(jobKey.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Triggers the identified job to execute immediately with a data map
     /// </summary>
-    public async Task TriggerJob(JobKeyWithDataMap jobKeyWithDataMap)
+    /// <param name="jobKeyWithDataMap">The job key with data map.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task TriggerJob(JobKeyWithDataMap jobKeyWithDataMap, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/TriggerJobWithDataMap", JsonBody(jobKeyWithDataMap.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/TriggerJobWithDataMap", JsonBody(jobKeyWithDataMap.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -466,17 +513,21 @@ public class SchedulerConnector
     /// <summary>
     ///     Pauses the job with the given key
     /// </summary>
-    public async Task PauseJob(JobKey jobKey)
+    /// <param name="jobKey">The job key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task PauseJob(JobKey jobKey, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/PauseJob", JsonBody(jobKey.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/PauseJob", JsonBody(jobKey.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Pauses all jobs matching the given group matcher
     /// </summary>
-    public async Task PauseJobs(GroupMatcher<Quartz.JobKey> groupMatcher)
+    /// <param name="groupMatcher">The group matcher.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task PauseJobs(GroupMatcher<Quartz.JobKey> groupMatcher, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/PauseJobs", JsonBody(groupMatcher.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/PauseJobs", JsonBody(groupMatcher.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -484,25 +535,30 @@ public class SchedulerConnector
     /// <summary>
     ///     Pauses the trigger with the given key
     /// </summary>
-    public async Task PauseTrigger(TriggerKey triggerKey)
+    /// <param name="triggerKey">The trigger key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task PauseTrigger(TriggerKey triggerKey, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/PauseTrigger", JsonBody(triggerKey.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/PauseTrigger", JsonBody(triggerKey.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Pauses all triggers matching the given group matcher
     /// </summary>
-    public async Task PauseTriggers(GroupMatcher<Quartz.TriggerKey> groupMatcher)
+    /// <param name="groupMatcher">The group matcher.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task PauseTriggers(GroupMatcher<Quartz.TriggerKey> groupMatcher, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/PauseTriggers", JsonBody(groupMatcher.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/PauseTriggers", JsonBody(groupMatcher.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Pauses all triggers
     /// </summary>
-    public async Task PauseAllTriggers()
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task PauseAllTriggers(CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/PauseAllTriggers", null).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/PauseAllTriggers", null, cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -510,19 +566,23 @@ public class SchedulerConnector
     /// <summary>
     ///     Resumes the job with the given key
     /// </summary>
-    public async Task ResumeJob(JobKey jobKey)
+    /// <param name="jobKey">The job key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task ResumeJob(JobKey jobKey, CancellationToken cancellationToken = default)
     {
         await _httpClient.PostAsync("Scheduler/ResumeJob",
-            JsonBody(jobKey.ToJsonString())).ConfigureAwait(false);
+            JsonBody(jobKey.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Resumes all jobs matching the given group matcher
     /// </summary>
-    public async Task ResumeJobs(GroupMatcher<Quartz.JobKey> groupMatcher)
+    /// <param name="groupMatcher">The group matcher.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task ResumeJobs(GroupMatcher<Quartz.JobKey> groupMatcher, CancellationToken cancellationToken = default)
     {
         await _httpClient.PostAsync("Scheduler/ResumeJobs",
-            JsonBody(groupMatcher.ToJsonString())).ConfigureAwait(false);
+            JsonBody(groupMatcher.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -530,27 +590,32 @@ public class SchedulerConnector
     /// <summary>
     ///     Resumes the trigger with the given key
     /// </summary>
-    public async Task ResumeTrigger(TriggerKey triggerKey)
+    /// <param name="triggerKey">The trigger key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task ResumeTrigger(TriggerKey triggerKey, CancellationToken cancellationToken = default)
     {
         await _httpClient.PostAsync("Scheduler/ResumeTrigger",
-            JsonBody(triggerKey.ToJsonString())).ConfigureAwait(false);
+            JsonBody(triggerKey.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Resumes all triggers matching the given group matcher
     /// </summary>
-    public async Task ResumeTriggers(GroupMatcher<Quartz.TriggerKey> groupMatcher)
+    /// <param name="groupMatcher">The group matcher.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task ResumeTriggers(GroupMatcher<Quartz.TriggerKey> groupMatcher, CancellationToken cancellationToken = default)
     {
         await _httpClient.PostAsync("Scheduler/ResumeTriggers",
-            JsonBody(groupMatcher.ToJsonString())).ConfigureAwait(false);
+            JsonBody(groupMatcher.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
     ///     Resumes all triggers
     /// </summary>
-    public async Task ResumeAllTriggers()
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task ResumeAllTriggers(CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/ResumeAllTriggers", null).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/ResumeAllTriggers", null, cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -558,14 +623,16 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns all job keys matching the given group matcher
     /// </summary>
+    /// <param name="groupMatcher">The group matcher.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<JobKeys> GetJobKeys(GroupMatcher<Quartz.JobKey> groupMatcher)
+    public async Task<JobKeys> GetJobKeys(GroupMatcher<Quartz.JobKey> groupMatcher, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetJobKeys")
         {
             Content = JsonBody(groupMatcher.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? JobKeys.FromJsonString("[]") : JobKeys.FromJsonString(json);
     }
@@ -575,14 +642,16 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns all trigger keys matching the given group matcher
     /// </summary>
+    /// <param name="groupMatcher">The group matcher.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<TriggerKeys> GetTriggerKeys(GroupMatcher<Quartz.TriggerKey> groupMatcher)
+    public async Task<TriggerKeys> GetTriggerKeys(GroupMatcher<Quartz.TriggerKey> groupMatcher, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetTriggerKeys")
         {
             Content = JsonBody(groupMatcher.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? TriggerKeys.FromJsonString("[]") : TriggerKeys.FromJsonString(json);
     }
@@ -592,14 +661,16 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns all triggers associated with the given job key
     /// </summary>
+    /// <param name="jobKey">The job key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<Triggers> GetTriggersOfJob(JobKey jobKey)
+    public async Task<Triggers> GetTriggersOfJob(JobKey jobKey, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetTriggersOfJob")
         {
             Content = JsonBody(jobKey.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? Triggers.FromJsonString("[]") : Triggers.FromJsonString(json);
     }
@@ -609,14 +680,16 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the job detail for the given job key
     /// </summary>
+    /// <param name="jobKey">The job key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<JobDetail> GetJobDetail(JobKey jobKey)
+    public async Task<JobDetail> GetJobDetail(JobKey jobKey, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetJobDetail")
         {
             Content = JsonBody(jobKey.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? null : JobDetail.FromJsonString(json);
     }
@@ -626,14 +699,16 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the trigger for the given trigger key
     /// </summary>
+    /// <param name="triggerKey">The trigger key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<TriggerBase> GetTrigger(TriggerKey triggerKey)
+    public async Task<TriggerBase> GetTrigger(TriggerKey triggerKey, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetTrigger")
         {
             Content = JsonBody(triggerKey.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         var json = await ReadBodyAsync(response).ConfigureAwait(false);
         return string.IsNullOrWhiteSpace(json) ? null : TriggerBase.FromJsonString(json);
     }
@@ -643,14 +718,16 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the current state of the given trigger
     /// </summary>
+    /// <param name="triggerKey">The trigger key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<string> GetTriggerState(TriggerKey triggerKey)
+    public async Task<string> GetTriggerState(TriggerKey triggerKey, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/GetTriggerState")
         {
             Content = JsonBody(triggerKey.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         return await ReadString(response);
     }
     #endregion
@@ -659,9 +736,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Adds a calendar to the scheduler
     /// </summary>
-    public async Task AddCalendar(BaseCalendar calendar)
+    /// <param name="calendar">The calendar to add.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task AddCalendar(BaseCalendar calendar, CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/AddCalendar", JsonBody(calendar.ToJsonString())).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/AddCalendar", JsonBody(calendar.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -669,11 +748,13 @@ public class SchedulerConnector
     /// <summary>
     ///     Deletes the calendar with the given name. Returns <c>true</c> when deleted.
     /// </summary>
+    /// <param name="calendarName">The calendar name.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> DeleteCalendar(string calendarName)
+    public async Task<bool> DeleteCalendar(string calendarName, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Delete, $"Scheduler/DeleteCalendar/{calendarName}");
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -682,10 +763,12 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the calendar with the given name as a JSON string
     /// </summary>
+    /// <param name="calendarName">The calendar name.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<string> GetCalendar(string calendarName)
+    public async Task<string> GetCalendar(string calendarName, CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync($"Scheduler/Getcalendar/{calendarName}").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync($"Scheduler/Getcalendar/{calendarName}", cancellationToken).ConfigureAwait(false);
         return await ReadBodyAsync(response).ConfigureAwait(false);
     }
     #endregion
@@ -694,10 +777,11 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns the names of all registered calendars
     /// </summary>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<IReadOnlyCollection<string>> GetCalendarNames()
+    public async Task<IReadOnlyCollection<string>> GetCalendarNames(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync("Scheduler/GetCalendarNames").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync("Scheduler/GetCalendarNames", cancellationToken).ConfigureAwait(false);
         return await ReadJsonAsync<List<string>>(response).ConfigureAwait(false);
     }
     #endregion
@@ -706,24 +790,28 @@ public class SchedulerConnector
     /// <summary>
     ///     Requests cancellation of all executing instances of the given job
     /// </summary>
+    /// <param name="jobKey">The job key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> InterruptJob(JobKey jobKey)
+    public async Task<bool> InterruptJob(JobKey jobKey, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/InterruptJobKey")
         {
             Content = JsonBody(jobKey.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
 
     /// <summary>
     ///     Requests cancellation of the executing job instance with the given fire instance id
     /// </summary>
+    /// <param name="fireInstanceId">The fire instance id.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> InterruptJob(string fireInstanceId)
+    public async Task<bool> InterruptJob(string fireInstanceId, CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetAsync($"Scheduler/interruptfireinstanceid/{fireInstanceId}").ConfigureAwait(false);
+        var response = await _httpClient.GetAsync($"Scheduler/interruptfireinstanceid/{fireInstanceId}", cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -732,28 +820,32 @@ public class SchedulerConnector
     /// <summary>
     ///     Returns <c>true</c> if a job with the given key exists
     /// </summary>
+    /// <param name="jobKey">The job key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> CheckExists(JobKey jobKey)
+    public async Task<bool> CheckExists(JobKey jobKey, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/CheckExistsJobkey")
         {
             Content = JsonBody(jobKey.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
 
     /// <summary>
     ///     Returns <c>true</c> if a trigger with the given key exists
     /// </summary>
+    /// <param name="triggerKey">The trigger key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     /// <exception cref="Exceptions.SchedulerConnectorException">Thrown when the scheduler host returns a non-success HTTP status code.</exception>
-    public async Task<bool> CheckExists(TriggerKey triggerKey)
+    public async Task<bool> CheckExists(TriggerKey triggerKey, CancellationToken cancellationToken = default)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, "Scheduler/CheckExistsTriggerkey")
         {
             Content = JsonBody(triggerKey.ToJsonString())
         };
-        var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+        var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
         return await ReadBool(response);
     }
     #endregion
@@ -762,9 +854,10 @@ public class SchedulerConnector
     /// <summary>
     ///     Clears all scheduling data — all jobs, triggers and calendars
     /// </summary>
-    public async Task Clear()
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task Clear(CancellationToken cancellationToken = default)
     {
-        await _httpClient.PostAsync("Scheduler/Clear", null).ConfigureAwait(false);
+        await _httpClient.PostAsync("Scheduler/Clear", null, cancellationToken).ConfigureAwait(false);
     }
     #endregion
 
@@ -772,10 +865,12 @@ public class SchedulerConnector
     /// <summary>
     ///     Resets the given trigger from error state back to normal or paused
     /// </summary>
-    public async Task ResetTriggerFromErrorState(TriggerKey triggerKey)
+    /// <param name="triggerKey">The trigger key.</param>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+    public async Task ResetTriggerFromErrorState(TriggerKey triggerKey, CancellationToken cancellationToken = default)
     {
         await _httpClient.PostAsync("Scheduler/ResetTriggerFromErrorState",
-            JsonBody(triggerKey.ToJsonString())).ConfigureAwait(false);
+            JsonBody(triggerKey.ToJsonString()), cancellationToken).ConfigureAwait(false);
     }
     #endregion
 }

@@ -71,7 +71,7 @@ public class SchedulerHost
     /// <summary>
     ///     Holds the configuration options for API key security.
     /// </summary>
-    private readonly Security.ApiKeyOptions _apiKeyOptions;
+    private readonly ApiKeyOptions _apiKeyOptions;
 
     /// <summary>
     ///     Represents the current instance of the web application being configured or run.

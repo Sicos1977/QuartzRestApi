@@ -25,6 +25,7 @@
 //
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -79,6 +80,14 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     }
     #endregion
 
+    #region Properties
+    /// <summary>
+    ///     Gets the cancellation token from the current HTTP request context.
+    ///     When the client disconnects, this token is cancelled.
+    /// </summary>
+    private CancellationToken RequestCancellationToken => HttpContext?.RequestAborted ?? CancellationToken.None;
+    #endregion
+
     #region OnActionExecutionAsync
     /// <summary>
     ///     Intercepts every action on this controller and logs any unhandled exception to <see cref="_logger" />.
@@ -107,7 +116,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     public Task<bool> IsJobGroupPaused(string groupName)
     {
         _logger?.LogInformation("Received request to check if the job group '{GroupName}' is paused", groupName);
-        var result = _scheduler.IsJobGroupPaused(groupName);
+        var result = _scheduler.IsJobGroupPaused(groupName, RequestCancellationToken);
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
     }
@@ -124,7 +133,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     public async Task<bool> IsTriggerGroupPaused(string groupName)
     {
         _logger?.LogInformation("Received request to check if the trigger group '{GroupName}' is paused", groupName);
-        var result = await _scheduler.IsTriggerGroupPaused(groupName);
+        var result = await _scheduler.IsTriggerGroupPaused(groupName, RequestCancellationToken);
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
     }
@@ -221,7 +230,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     public async Task<ContentResult> GetMetaData()
     {
         _logger?.LogInformation("Received request to return the meta-data");
-        var result = new SchedulerMetaData(await _scheduler.GetMetaData()).ToJsonString();
+        var result = new SchedulerMetaData(await _scheduler.GetMetaData(RequestCancellationToken)).ToJsonString();
         _logger?.LogInformation("Returning meta-data");
         _logger?.LogDebug("JSON '{Result}'", result);
         return Content(result, "application/json");
@@ -253,7 +262,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     {
         _logger?.LogInformation("Received request to return the currently executing jobs");
 
-        var jobExecutionContext = await _scheduler.GetCurrentlyExecutingJobs();
+        var jobExecutionContext = await _scheduler.GetCurrentlyExecutingJobs(RequestCancellationToken);
         var result = new JobExecutionContexts(jobExecutionContext).ToJsonString();
 
         _logger?.LogInformation("Returning currently executing jobs");
@@ -272,7 +281,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     {
         _logger?.LogInformation("Received request to return the job group names");
 
-        var result = _scheduler.GetJobGroupNames();
+        var result = _scheduler.GetJobGroupNames(RequestCancellationToken);
 
         _logger?.LogInformation("Returning job group names");
         _logger?.LogDebug("JSON '{Result}'", result);
@@ -290,7 +299,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     {
         _logger?.LogInformation("Received request to return the trigger group names");
 
-        var result = _scheduler.GetTriggerGroupNames();
+        var result = _scheduler.GetTriggerGroupNames(RequestCancellationToken);
 
         _logger?.LogInformation("Returning trigger group names");
         _logger?.LogDebug("JSON '{Result}'", result);
@@ -308,7 +317,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     {
         _logger?.LogInformation("Received request to return the paused trigger groups");
 
-        var result = _scheduler.GetPausedTriggerGroups();
+        var result = _scheduler.GetPausedTriggerGroups(RequestCancellationToken);
 
         _logger?.LogInformation("Returning paused trigger groups");
         _logger?.LogDebug("JSON '{Result}'", result);
@@ -330,13 +339,13 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     /// <seealso cref="StartDelayed" />
     /// <seealso cref="Standby" />
     /// <seealso cref="Shutdown(bool)" />
-    [HttpPost]
+     [HttpPost]
     [Route("Scheduler/Start")]
     public Task Start()
     {
         _logger?.LogInformation("Received request to start the scheduler");
 
-        var result = _scheduler.Start();
+        var result = _scheduler.Start(RequestCancellationToken);
 
         _logger?.LogInformation("The scheduler is started");
         return result;
@@ -359,7 +368,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     {
         _logger?.LogInformation("Received request to start the scheduler with a delay of '{Delay}' seconds", delay);
 
-        var result = _scheduler.StartDelayed(new TimeSpan(0, 0, delay));
+        var result = _scheduler.StartDelayed(new TimeSpan(0, 0, delay), RequestCancellationToken);
 
         _logger?.LogInformation("The scheduler is started");
         return result;
@@ -416,7 +425,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     {
         _logger?.LogInformation("Received request to put the scheduler in standby mode");
 
-        var result = _scheduler.Standby();
+        var result = _scheduler.Standby(RequestCancellationToken);
 
         _logger?.LogInformation("The scheduler is in standby mode");
         return result;
@@ -432,13 +441,13 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     ///     The scheduler cannot be re-started.
     /// </remarks>
     /// <seealso cref="Shutdown(bool)" />
-    [HttpPost]
+     [HttpPost]
     [Route("Scheduler/Shutdown")]
     public Task Shutdown()
     {
         _logger?.LogInformation("Received request to shutdown the scheduler");
 
-        var result = _scheduler.Shutdown();
+        var result = _scheduler.Shutdown(RequestCancellationToken);
 
         _logger?.LogInformation("The scheduler is shutdown");
         return result;
@@ -464,7 +473,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
             ? "Received request to shutdown the scheduler but wait for the jobs to complete first"
             : "Received request to shutdown the scheduler and not to wait for the jobs to complete first");
 
-        var result = _scheduler.Shutdown(waitForJobsToComplete);
+        var result = _scheduler.Shutdown(waitForJobsToComplete, RequestCancellationToken);
 
         _logger?.LogInformation("The scheduler is shutdown");
         return result;
@@ -491,7 +500,8 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         var jobDetailWithTrigger = JobDetailWithTrigger.FromJsonString(json);
         var result = _scheduler.ScheduleJob(
             jobDetailWithTrigger.JobDetail.ToJobDetail(),
-            jobDetailWithTrigger.Trigger.ToTrigger());
+            jobDetailWithTrigger.Trigger.ToTrigger(),
+            RequestCancellationToken);
 
         _logger?.LogDebug("Job scheduled, returning '{Result}'", result);
         return result;
@@ -513,7 +523,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var trigger = TriggerBase.FromJsonString(json).ToTrigger();
-        var result = _scheduler.ScheduleJob(trigger);
+        var result = _scheduler.ScheduleJob(trigger, RequestCancellationToken);
 
         _logger?.LogDebug("Job scheduled, returning '{Result}'", result);
         return result;
@@ -566,7 +576,8 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         var result = _scheduler.ScheduleJob(
             jobDetailWithTriggers.JobDetail.ToJobDetail(),
             jobDetailWithTriggers.ToReadOnlyTriggerCollection(),
-            jobDetailWithTriggers.Replace);
+            jobDetailWithTriggers.Replace,
+            RequestCancellationToken);
 
         _logger?.LogDebug("Job scheduled");
         return result;
@@ -581,14 +592,14 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     ///         not durable, then the job will also be deleted.
     ///     </para>
     /// </summary>
-    [HttpPost]
+     [HttpPost]
     [Route("Scheduler/UnscheduleJob")]
     public Task<bool> UnscheduleJob([FromBody] string json)
     {
         _logger?.LogInformation("Received request to unschedule a job that matches the trigger");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
-        var result = _scheduler.UnscheduleJob(TriggerKey.FromJsonString(json).ToTriggerKey());
+        var result = _scheduler.UnscheduleJob(TriggerKey.FromJsonString(json).ToTriggerKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Job that matches the trigger unscheduled, returning '{Result}'", result);
         return result;
@@ -616,7 +627,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogInformation("Received request to unschedule all the jobs that match the given triggers");
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
-        var result = _scheduler.UnscheduleJobs(TriggerKeys.FromJsonString(json).ToTriggerKeys());
+        var result = _scheduler.UnscheduleJobs(TriggerKeys.FromJsonString(json).ToTriggerKeys(), RequestCancellationToken);
 
         _logger?.LogInformation("Jobs unscheduled that are matching the given triggers, returning '{Result}'", result);
         return result;
@@ -645,7 +656,8 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
 
         var rescheduleJob = Models.Jobs.RescheduleJob.FromJsonString(json);
         var result = _scheduler.RescheduleJob(rescheduleJob.CurrentTriggerKey.ToTriggerKey(),
-            rescheduleJob.Trigger.ToTrigger());
+            rescheduleJob.Trigger.ToTrigger(),
+            RequestCancellationToken);
 
         _logger?.LogInformation("Job rescheduled that matches the given trigger key, returning '{Result}'", result);
         return result;
@@ -673,7 +685,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
 
         var addJob = JobDetail.FromJsonString(json);
         var result = _scheduler.AddJob(addJob.ToJobDetail(), addJob.Replace,
-            addJob.StoreNonDurableWhileAwaitingScheduling);
+            addJob.StoreNonDurableWhileAwaitingScheduling, RequestCancellationToken);
 
         _logger?.LogInformation("Job added to the scheduler");
         return result;
@@ -694,7 +706,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var result = _scheduler.DeleteJob(jobKey.ToJobKey());
+        var result = _scheduler.DeleteJob(jobKey.ToJobKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Removed job from the scheduler, result '{Result}'", result);
         return result;
@@ -727,7 +739,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKeys = JobKeys.FromJsonString(json).ToJobKeys();
-        var result = _scheduler.DeleteJobs(jobKeys);
+        var result = _scheduler.DeleteJobs(jobKeys, RequestCancellationToken);
 
         _logger?.LogInformation("Removed jobs from the scheduler, result '{Result}'", result);
         return result;
