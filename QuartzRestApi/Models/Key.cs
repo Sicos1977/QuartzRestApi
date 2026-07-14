@@ -67,4 +67,15 @@ public class Key
         Group = group;
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"Name : '{Name}'\n" +
+               $"Group : '{Group}'";
+    }
+    #endregion
 }

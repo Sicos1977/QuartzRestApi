@@ -108,4 +108,17 @@ public class JobDetailWithTriggers
         return JsonSerializer.Deserialize<JobDetailWithTriggers>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        var triggers = Triggers == null ? null : string.Join("; ", Triggers);
+        return $"JobDetail : '{JobDetail}'\n" +
+               $"Triggers : '{triggers}'\n" +
+               $"Replace : '{Replace}'";
+    }
+    #endregion
 }

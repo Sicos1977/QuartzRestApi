@@ -43,7 +43,7 @@ public class HolidayCalendar : BaseCalendar
     ///     significant
     /// </summary>
     [JsonPropertyName("ExcludedDates")]
-    public List<DateTime> ExcludedDates { get; internal set; }
+    public List<DateTime> ExcludedDates { get; internal set; } = [];
     #endregion
 
     #region Constructors
@@ -110,6 +110,18 @@ public class HolidayCalendar : BaseCalendar
     public new static HolidayCalendar FromJsonString(string json)
     {
         return JsonSerializer.Deserialize<HolidayCalendar>(json);
+    }
+    #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        var excludedDates = ExcludedDates == null ? null : string.Join("; ", ExcludedDates);
+        return $"{base.ToString()}\n" +
+               $"ExcludedDates : '{excludedDates}'";
     }
     #endregion
 }

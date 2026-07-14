@@ -191,4 +191,29 @@ public class SchedulerMetaData
         return JsonSerializer.Deserialize<SchedulerMetaData>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"InStandbyMode : '{InStandbyMode}'\n" +
+               $"JobStoreType : '{JobStoreType}'\n" +
+               $"JobStoreClustered : '{JobStoreClustered}'\n" +
+               $"JobStoreSupportsPersistence : '{JobStoreSupportsPersistence}'\n" +
+               $"NumbersOfJobsExecuted : '{NumbersOfJobsExecuted}'\n" +
+               $"RunningSince : '{RunningSince}'\n" +
+               $"SchedulerInstanceId : '{SchedulerInstanceId}'\n" +
+               $"SchedulerName : '{SchedulerName}'\n" +
+               $"SchedulerRemote : '{SchedulerRemote}'\n" +
+               $"SchedulerType : '{SchedulerType}'\n" +
+               $"Shutdown : '{Shutdown}'\n" +
+               $"Started : '{Started}'\n" +
+               $"ThreadPoolSize : '{ThreadPoolSize}'\n" +
+               $"ThreadPoolType : '{ThreadPoolType}'\n" +
+               $"Version : '{Version}'\n" +
+               $"Summary : '{Summary}'";
+    }
+    #endregion
 }

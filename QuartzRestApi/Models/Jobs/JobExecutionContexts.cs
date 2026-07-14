@@ -26,6 +26,7 @@
 
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text.Json;
 using Quartz;
 
@@ -81,6 +82,16 @@ public class JobExecutionContexts : List<JobExecutionContext>
         if (list != null)
             result.AddRange(list);
         return result;
+    }
+    #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return string.Join("\n", this.Select(item => $"Item : '{item}'"));
     }
     #endregion
 }

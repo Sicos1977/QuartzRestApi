@@ -86,4 +86,16 @@ public class CronTrigger : TriggerBase
         return builder.Build();
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"{base.ToString()}\n" +
+               $"CronExpressionString : '{CronExpressionString}'\n" +
+               $"TimeZone : '{TimeZone}'";
+    }
+    #endregion
 }

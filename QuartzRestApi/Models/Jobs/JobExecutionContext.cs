@@ -177,4 +177,28 @@ public class JobExecutionContext
         JobRunTime = jobExecutionContext.JobRunTime;
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"Scheduler : '{Scheduler}'\n" +
+               $"Trigger : '{Trigger}'\n" +
+               $"Calendar : '{Calendar}'\n" +
+               $"Recovering : '{Recovering}'\n" +
+               $"RecoveringTriggerKey : '{RecoveringTriggerKey}'\n" +
+               $"RefireCount : '{RefireCount}'\n" +
+               $"MergedJobDataMap : '{MergedJobDataMap}'\n" +
+               $"JobDetail : '{JobDetail}'\n" +
+               $"JobInstance : '{JobInstance}'\n" +
+               $"FireTimeUtc : '{FireTimeUtc}'\n" +
+               $"ScheduledFireTimeUtc : '{ScheduledFireTimeUtc}'\n" +
+               $"PreviousFireTimeUtc : '{PreviousFireTimeUtc}'\n" +
+               $"NextFireTimeUtc : '{NextFireTimeUtc}'\n" +
+               $"FireInstanceId : '{FireInstanceId}'\n" +
+               $"JobRunTime : '{JobRunTime}'";
+    }
+    #endregion
 }

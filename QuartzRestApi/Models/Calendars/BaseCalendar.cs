@@ -140,4 +140,20 @@ public abstract class BaseCalendar
     /// </returns>
     public abstract ICalendar ToCalendar();
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"Name : '{Name}'\n" +
+               $"Type : '{Type}'\n" +
+               $"Description : '{Description}'\n" +
+               $"TimeZone : '{TimeZone}'\n" +
+               $"CalendarBase : '{CalendarBase}'\n" +
+               $"Replace : '{Replace}'\n" +
+               $"UpdateTriggers : '{UpdateTriggers}'";
+    }
+    #endregion
 }

@@ -94,4 +94,17 @@ public class RecurrenceTrigger : TriggerBase
         return builder.Build();
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"{base.ToString()}\n" +
+               $"RecurrenceRule : '{RecurrenceRule}'\n" +
+               $"TimeZone : '{TimeZone}'\n" +
+               $"TimesTriggered : '{TimesTriggered}'";
+    }
+    #endregion
 }

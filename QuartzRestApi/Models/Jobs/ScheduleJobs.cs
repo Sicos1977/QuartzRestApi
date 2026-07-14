@@ -100,4 +100,16 @@ public class ScheduleJobs
         return JsonSerializer.Deserialize<ScheduleJobs>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        var jobs = Jobs == null ? null : string.Join("; ", Jobs);
+        return $"Jobs : '{jobs}'\n" +
+               $"Replace : '{Replace}'";
+    }
+    #endregion
 }

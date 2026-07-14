@@ -24,6 +24,7 @@
 // THE SOFTWARE.
 //
 
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -74,6 +75,16 @@ public sealed class SchedulerContext : Quartz.SchedulerContext
     {
         var result = JsonSerializer.Deserialize<SchedulerContext>(json);
         return new SchedulerContext(result);
+    }
+    #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return string.Join("\n", this.Select(item => $"{item.Key} : '{item.Value}'"));
     }
     #endregion
 }

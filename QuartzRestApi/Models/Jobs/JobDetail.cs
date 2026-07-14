@@ -223,4 +223,23 @@ public class JobDetail
         return JsonSerializer.Deserialize<JobDetail>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"JobKey : '{JobKey}'\n" +
+               $"Description : '{Description}'\n" +
+               $"JobType : '{JobType}'\n" +
+               $"JobDataMap : '{JobDataMap}'\n" +
+               $"Durable : '{Durable}'\n" +
+               $"Replace : '{Replace}'\n" +
+               $"PersistJobDataAfterExecution : '{PersistJobDataAfterExecution}'\n" +
+               $"ConcurrentExecutionDisallowed : '{ConcurrentExecutionDisallowed}'\n" +
+               $"RequestsRecovery : '{RequestsRecovery}'\n" +
+               $"StoreNonDurableWhileAwaitingScheduling : '{StoreNonDurableWhileAwaitingScheduling}'";
+    }
+    #endregion
 }

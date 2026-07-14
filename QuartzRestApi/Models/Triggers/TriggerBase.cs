@@ -197,4 +197,25 @@ public abstract class TriggerBase : JobKeyWithDataMap
         return JsonSerializer.Deserialize<TriggerBase>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"JobKey : '{JobKey}'\n" +
+               $"JobDataMap : '{JobDataMap}'\n" +
+               $"TriggerKey : '{TriggerKey}'\n" +
+               $"Description : '{Description}'\n" +
+               $"CalendarName : '{CalendarName}'\n" +
+               $"NextFireTimeUtc : '{NextFireTimeUtc}'\n" +
+               $"PreviousFireTimeUtc : '{PreviousFireTimeUtc}'\n" +
+               $"StartTimeUtc : '{StartTimeUtc}'\n" +
+               $"EndTimeUtc : '{EndTimeUtc}'\n" +
+               $"FinalFireTimeUtc : '{FinalFireTimeUtc}'\n" +
+               $"Priority : '{Priority}'\n" +
+               $"HasMillisecondPrecision : '{HasMillisecondPrecision}'";
+    }
+    #endregion
 }

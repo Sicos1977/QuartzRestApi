@@ -99,4 +99,17 @@ public class SimpleTrigger : TriggerBase
         return builder.Build();
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"{base.ToString()}\n" +
+               $"RepeatCount : '{RepeatCount}'\n" +
+               $"RepeatInterval : '{RepeatInterval}'\n" +
+               $"TimesTriggered : '{TimesTriggered}'";
+    }
+    #endregion
 }

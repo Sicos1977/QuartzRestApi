@@ -110,4 +110,16 @@ public class WeeklyCalendar : BaseCalendar
         return JsonSerializer.Deserialize<WeeklyCalendar>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        var daysExcluded = DaysExcluded == null ? null : string.Join("; ", DaysExcluded);
+        return $"{base.ToString()}\n" +
+               $"DaysExcluded : '{daysExcluded}'";
+    }
+    #endregion
 }

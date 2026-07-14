@@ -73,6 +73,16 @@ public class JobKey : Key
     }
     #endregion
 
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"Name : '{Name}', Group : '{Group}'";
+    }
+    #endregion
+
     #region ToJsonString
     /// <summary>
     ///     Returns this object as a json string

@@ -122,4 +122,20 @@ public class DailyTimeIntervalTrigger : TriggerBase
         return builder.Build();
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"{base.ToString()}\n" +
+               $"RepeatCount : '{RepeatCount}'\n" +
+               $"RepeatInterval : '{RepeatInterval}'\n" +
+               $"RepeatIntervalUnit : '{RepeatIntervalUnit}'\n" +
+               $"StartTimeOfDay : '{StartTimeOfDay}'\n" +
+               $"EndTimeOfDay : '{EndTimeOfDay}'\n" +
+               $"TimesTriggered : '{TimesTriggered}'";
+    }
+    #endregion
 }

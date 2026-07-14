@@ -66,6 +66,16 @@ public class TriggerKeys : List<TriggerKey>
     }
     #endregion
 
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return string.Join("\n", this.Select(item => $"Item : '{item}'"));
+    }
+    #endregion
+
     #region ToJsonString
     /// <summary>
     ///     Returns this object as a json string

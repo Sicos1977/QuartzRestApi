@@ -106,4 +106,15 @@ public class CronCalendar : BaseCalendar
         return JsonSerializer.Deserialize<CronCalendar>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"{base.ToString()}\n" +
+               $"CronExpression : '{CronExpression}'";
+    }
+    #endregion
 }

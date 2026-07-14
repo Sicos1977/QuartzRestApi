@@ -92,4 +92,15 @@ public class JobKeyWithDataMap
         return JsonSerializer.Deserialize<JobKeyWithDataMap>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"JobKey : '{JobKey}'\n" +
+               $"JobDataMap : '{JobDataMap}'";
+    }
+    #endregion
 }

@@ -108,4 +108,15 @@ public class GroupMatcher<T> where T : Key<T>
         };
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"Type : '{Type}'\n" +
+               $"Value : '{Value}'";
+    }
+    #endregion
 }

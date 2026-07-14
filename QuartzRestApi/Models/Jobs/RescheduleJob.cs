@@ -93,4 +93,15 @@ public class RescheduleJob
         return JsonSerializer.Deserialize<RescheduleJob>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"CurrentTriggerKey : '{CurrentTriggerKey}'\n" +
+               $"Trigger : '{Trigger}'";
+    }
+    #endregion
 }

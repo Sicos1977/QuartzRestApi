@@ -85,7 +85,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     ///     Gets the cancellation token from the current HTTP request context.
     ///     When the client disconnects, this token is cancelled.
     /// </summary>
-    private CancellationToken RequestCancellationToken => HttpContext?.RequestAborted ?? CancellationToken.None;
+    private CancellationToken RequestCancellationToken => HttpContext.RequestAborted;
     #endregion
 
     #region OnActionExecutionAsync
@@ -549,7 +549,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var scheduleJobs = ScheduleJobsRequest.FromJsonString(json);
-        var result = _scheduler.ScheduleJobs(scheduleJobs.ToSchedulerDictionary(), scheduleJobs.Replace);
+        var result = _scheduler.ScheduleJobs(scheduleJobs.ToSchedulerDictionary(), scheduleJobs.Replace, RequestCancellationToken);
 
         _logger?.LogDebug("Jobs scheduled");
         return result;
@@ -758,7 +758,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var result = _scheduler.TriggerJob(jobKey.ToJobKey());
+        var result = _scheduler.TriggerJob(jobKey.ToJobKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Job triggered");
         return result;
@@ -782,7 +782,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
 
         var jobKeyWithDataMap = JobKeyWithDataMap.FromJsonString(json);
         var result =
-            _scheduler.TriggerJob(jobKeyWithDataMap.JobKey.ToJobKey(), jobKeyWithDataMap.JobDataMap);
+            _scheduler.TriggerJob(jobKeyWithDataMap.JobKey.ToJobKey(), jobKeyWithDataMap.JobDataMap, RequestCancellationToken);
 
         _logger?.LogInformation("Job triggered");
         return result;
@@ -802,7 +802,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        await _scheduler.PauseJob(jobKey.ToJobKey());
+        await _scheduler.PauseJob(jobKey.ToJobKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Job paused");
     }
@@ -842,7 +842,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var groupMatcher = GroupMatcher<Quartz.JobKey>.FromJsonString(json);
-        var result = _scheduler.PauseJobs(groupMatcher.ToGroupMatcher());
+        var result = _scheduler.PauseJobs(groupMatcher.ToGroupMatcher(), RequestCancellationToken);
 
         _logger?.LogInformation("Jobs paused");
         return result;
@@ -861,7 +861,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var result = _scheduler.PauseTrigger(triggerKey.ToTriggerKey());
+        var result = _scheduler.PauseTrigger(triggerKey.ToTriggerKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Trigger paused");
         return result;
@@ -901,7 +901,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var groupMatcher = GroupMatcher<Quartz.TriggerKey>.FromJsonString(json);
-        var result = _scheduler.PauseTriggers(groupMatcher.ToGroupMatcher());
+        var result = _scheduler.PauseTriggers(groupMatcher.ToGroupMatcher(), RequestCancellationToken);
 
         _logger?.LogInformation("Triggers paused");
         return result;
@@ -926,7 +926,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var result = _scheduler.ResumeJob(jobKey.ToJobKey());
+        var result = _scheduler.ResumeJob(jobKey.ToJobKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Job resumed");
         return result;
@@ -952,7 +952,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var groupMatcher = GroupMatcher<Quartz.JobKey>.FromJsonString(json);
-        var result = _scheduler.ResumeJobs(groupMatcher.ToGroupMatcher());
+        var result = _scheduler.ResumeJobs(groupMatcher.ToGroupMatcher(), RequestCancellationToken);
 
         _logger?.LogInformation("Jobs resumed");
         return result;
@@ -976,7 +976,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var result = _scheduler.ResumeTrigger(triggerKey.ToTriggerKey());
+        var result = _scheduler.ResumeTrigger(triggerKey.ToTriggerKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Trigger resumed");
         return result;
@@ -1000,7 +1000,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var groupMatcher = GroupMatcher<Quartz.TriggerKey>.FromJsonString(json);
-        var result = _scheduler.ResumeTriggers(groupMatcher.ToGroupMatcher());
+        var result = _scheduler.ResumeTriggers(groupMatcher.ToGroupMatcher(), RequestCancellationToken);
 
         _logger?.LogInformation("Triggers resumed");
         return result;
@@ -1026,7 +1026,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     public async Task PauseAll()
     {
         _logger?.LogInformation("Received request to pause all trigger");
-        await _scheduler.PauseAll();
+        await _scheduler.PauseAll(RequestCancellationToken);
         _logger?.LogInformation("All triggers paused");
     }
     #endregion
@@ -1046,7 +1046,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     public async Task ResumeAll()
     {
         _logger?.LogInformation("Received request to resume all trigger");
-        await _scheduler.ResumeAll();
+        await _scheduler.ResumeAll(RequestCancellationToken);
         _logger?.LogInformation("All triggers resumed");
     }
     #endregion
@@ -1063,7 +1063,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var groupMatcher = GroupMatcher<Quartz.JobKey>.FromJsonString(json);
-        var jobKeys = await _scheduler.GetJobKeys(groupMatcher.ToGroupMatcher());
+        var jobKeys = await _scheduler.GetJobKeys(groupMatcher.ToGroupMatcher(), RequestCancellationToken);
 
         if (jobKeys.Count == 0)
         {
@@ -1097,7 +1097,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var triggers = await _scheduler.GetTriggersOfJob(jobKey.ToJobKey());
+        var triggers = await _scheduler.GetTriggersOfJob(jobKey.ToJobKey(), RequestCancellationToken);
 
         if (triggers.Count == 0)
         {
@@ -1126,7 +1126,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var groupMatcher = GroupMatcher<Quartz.TriggerKey>.FromJsonString(json);
-        var triggerKeys = await _scheduler.GetTriggerKeys(groupMatcher.ToGroupMatcher());
+        var triggerKeys = await _scheduler.GetTriggerKeys(groupMatcher.ToGroupMatcher(), RequestCancellationToken);
 
         if (triggerKeys.Count == 0)
         {
@@ -1159,7 +1159,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var jobDetail = await _scheduler.GetJobDetail(jobKey.ToJobKey());
+        var jobDetail = await _scheduler.GetJobDetail(jobKey.ToJobKey(), RequestCancellationToken);
 
         if (jobDetail == null)
         {
@@ -1192,7 +1192,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var quartzTrigger = await _scheduler.GetTrigger(triggerKey.ToTriggerKey());
+        var quartzTrigger = await _scheduler.GetTrigger(triggerKey.ToTriggerKey(), RequestCancellationToken);
         if (quartzTrigger == null)
         {
             _logger?.LogInformation("No trigger found");
@@ -1235,7 +1235,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var triggerState = await _scheduler.GetTriggerState(triggerKey.ToTriggerKey());
+        var triggerState = await _scheduler.GetTriggerState(triggerKey.ToTriggerKey(), RequestCancellationToken);
         var result = triggerState.ToString();
 
         _logger?.LogInformation("Returning '{Result}'", result);
@@ -1259,9 +1259,9 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         var calendar = baseCalendar.ToCalendar();
 
         if (!string.IsNullOrEmpty(baseCalendar.CalendarBase))
-            calendar.CalendarBase = await _scheduler.GetCalendar(baseCalendar.CalendarBase);
+            calendar.CalendarBase = await _scheduler.GetCalendar(baseCalendar.CalendarBase, RequestCancellationToken);
 
-        await _scheduler.AddCalendar(baseCalendar.Name, calendar, baseCalendar.Replace, baseCalendar.UpdateTriggers);
+        await _scheduler.AddCalendar(baseCalendar.Name, calendar, baseCalendar.Replace, baseCalendar.UpdateTriggers, RequestCancellationToken);
     }
     #endregion
 
@@ -1282,7 +1282,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     {
         _logger?.LogInformation("Received request to delete the calendar '{CalName}' from the scheduler", calName);
 
-        var result = await _scheduler.DeleteCalendar(calName);
+        var result = await _scheduler.DeleteCalendar(calName, RequestCancellationToken);
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1299,7 +1299,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     {
         _logger?.LogInformation("Received request to get the calendar with the name '{CalName}' from the scheduler", calName);
 
-        var calendar = await _scheduler.GetCalendar(calName);
+        var calendar = await _scheduler.GetCalendar(calName, RequestCancellationToken);
         if (calendar == null)
         {
             _logger?.LogInformation("Calendar with the name '{CalName}' not found", calName);
@@ -1332,7 +1332,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     [Route("Scheduler/GetCalendarNames")]
     public Task<IReadOnlyCollection<string>> GetCalendarNames()
     {
-        return _scheduler.GetCalendarNames();
+        return _scheduler.GetCalendarNames(RequestCancellationToken);
     }
     #endregion
 
@@ -1374,7 +1374,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var result = await _scheduler.Interrupt(jobKey.ToJobKey());
+        var result = await _scheduler.Interrupt(jobKey.ToJobKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1406,7 +1406,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogInformation(
             "Received request for cancellation, within this Scheduler instance, of the identified executing job instance");
 
-        var result = await _scheduler.Interrupt(fireInstanceId);
+        var result = await _scheduler.Interrupt(fireInstanceId, RequestCancellationToken);
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1428,7 +1428,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var jobKey = JobKey.FromJsonString(json);
-        var result = await _scheduler.CheckExists(jobKey.ToJobKey());
+        var result = await _scheduler.CheckExists(jobKey.ToJobKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1450,7 +1450,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var result = await _scheduler.CheckExists(triggerKey.ToTriggerKey());
+        var result = await _scheduler.CheckExists(triggerKey.ToTriggerKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Returning '{Result}'", result);
         return result;
@@ -1467,7 +1467,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
     public async Task Clear()
     {
         _logger?.LogInformation("Received request to clear the whole scheduler");
-        await _scheduler.Clear();
+        await _scheduler.Clear(RequestCancellationToken);
         _logger?.LogInformation("Scheduler cleared");
     }
     #endregion
@@ -1489,7 +1489,7 @@ public class SchedulerController : ControllerBase, IAsyncActionFilter
         _logger?.LogDebug("Received JSON '{Json}'", json);
 
         var triggerKey = TriggerKey.FromJsonString(json);
-        var result = _scheduler.ResetTriggerFromErrorState(triggerKey.ToTriggerKey());
+        var result = _scheduler.ResetTriggerFromErrorState(triggerKey.ToTriggerKey(), RequestCancellationToken);
 
         _logger?.LogInformation("Trigger reset from error state");
         return result;

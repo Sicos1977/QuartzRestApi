@@ -173,4 +173,17 @@ public class DailyCalendar : BaseCalendar
         return JsonSerializer.Deserialize<DailyCalendar>(json);
     }
     #endregion
+
+    #region ToString
+    /// <summary>
+    ///     Returns the values of this object as a readable string.
+    /// </summary>
+    public override string ToString()
+    {
+        return $"{base.ToString()}\n" +
+               $"RangeStartingTime : '{RangeStartingTime}'\n" +
+               $"RangeEndingTime : '{RangeEndingTime}'\n" +
+               $"InvertTimeRange : '{InvertTimeRange}'";
+    }
+    #endregion
 }
