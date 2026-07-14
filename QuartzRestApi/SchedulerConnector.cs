@@ -55,15 +55,22 @@ public class SchedulerConnector
     ///     Create a new instance of the <see cref="SchedulerConnector"/>
     /// </summary>
     /// <param name="schedulerHostAddress">The host address of the scheduler</param>
+    /// <param name="timeout">
+    ///     Optional request timeout. When provided, this value is applied to <see cref="HttpClient.Timeout"/>.
+    ///     When not provided, the default timeout of <see cref="HttpClient"/> is used.
+    /// </param>
     /// <param name="apiKey">
     ///     Optional API key. When supplied it is sent as the <c>X-Api-Key</c> header on
     ///     every request. Must match the key configured on the <see cref="SchedulerHost"/>.
     ///     Pass <see langword="null"/> or an empty string when the host has no key configured.
     /// </param>
-    public SchedulerConnector(string schedulerHostAddress, string apiKey = null)
+    public SchedulerConnector(string schedulerHostAddress, TimeSpan? timeout = null, string apiKey = null)
     {
         _httpClient = new HttpClient();
         _httpClient.BaseAddress = new Uri(schedulerHostAddress);
+
+        if (timeout.HasValue)
+            _httpClient.Timeout = timeout.Value;
 
         if (!string.IsNullOrWhiteSpace(apiKey))
             _httpClient.DefaultRequestHeaders.Add(ApiKeyMiddleware.HeaderName, apiKey);
